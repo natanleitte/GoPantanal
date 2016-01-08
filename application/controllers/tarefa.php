@@ -9,34 +9,16 @@
        }
 
        public function formataData($data) {
-//           //Wed Jan 27 2016 00:00:00 GMT+0000
+           $mesesDoAno = array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dec");
+           
            $mes = substr($data, 4, 3);
-
-           if (strcmp($mes, "Jan") == 0)
-               $mes = "01";
-           else if (strcmp($mes, "Feb") == 0)
-               $mes = "02";
-           else if (strcmp($mes, "Mar") == 0)
-               $mes = "03";
-           else if (strcmp($mes, "Apr") == 0)
-               $mes = "04";
-           else if (strcmp($mes, "May") == 0)
-               $mes = "05";
-           else if (strcmp($mes, "Jun") == 0)
-               $mes = "06";
-           else if (strcmp($mes, "Jul") == 0)
-               $mes = "07";
-           else if (strcmp($mes, "Ago") == 0)
-               $mes = "08";
-           else if (strcmp($mes, "Sep") == 0)
-               $mes = "09";
-           else if (strcmp($mes, "Out") == 0)
-               $mes = "10";
-           else if (strcmp($mes, "Nov") == 0)
-               $mes = "11";
-           else if (strcmp($mes, "Dez") == 0)
-               $mes = "12";
-
+           
+           for($i = 0; $i < count($mesesDoAno); $i++){
+               if (strcmp($mes, $mesesDoAno[$i]) == 0) {
+                $mes = "'" . ($i + 1) . "'";
+               }
+           }
+           
            $dia = substr($data, 8, 2);
            $ano = substr($data, 11, 4);
 
