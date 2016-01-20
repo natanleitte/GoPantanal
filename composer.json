@@ -1,19 +1,29 @@
 {
-	"description": "The CodeIgniter framework",
-	"name": "codeigniter/framework",
-	"type": "project",
-	"homepage": "http://codeigniter.com",
-	"license": "MIT",
-	"support": {
-		"forum": "http://forum.codeigniter.com/",
-		"wiki": "https://github.com/bcit-ci/CodeIgniter/wiki",
-		"irc": "irc://irc.freenode.net/codeigniter",
-		"source": "https://github.com/bcit-ci/CodeIgniter"
-	},
+	"name": "php-imap/php-imap",
+	"description": "PHP class to access mailbox by POP3/IMAP/NNTP using IMAP extension",
+	"keywords": [
+		"PHP",
+		"IMAP",
+		"mail"
+	],
+	"homepage": "https://github.com/barbushin/php-imap",
+	"license": "BSD 3-Clause",
+	"type": "library",
+	"authors": [
+		{
+			"name": "Sergey Barbushin",
+			"homepage": "http://linkedin.com/in/barbushin",
+			"email": "barbushin@gmail.com"
+		}
+	],
 	"require": {
-		"php": ">=5.2.4"
+		"php": ">=5.3.0",
+		"ext-imap": "*"
 	},
-	"require-dev": {
-		"mikey179/vfsStream": "1.1.*"
-	}
+	"autoload": {
+		"psr-4": {
+			"PhpImap\\": "src/PhpImap/"
+		}
+	},
+	"minimum-stability": "stable"
 }

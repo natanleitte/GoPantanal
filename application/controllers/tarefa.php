@@ -38,7 +38,5 @@
 
            $this->TarefaModel->setTarefa($data);
        }
-
    }
-
 ?>
