@@ -49,7 +49,19 @@
                                 <button class="btn bgm-green btn-float"><i class="zmdi zmdi-mail-send"></i></button>
                             </div>
                         </div>
+                        
+                        <div class="dropdown pmop-message">
+                            <a data-toggle="dropdown" href="" class="btn bgm-white btn-float z-depth-1">
+                                <i class="zmdi zmdi-comment-text-alt"></i>
+                            </a>
 
+                            <div class="dropdown-menu">
+                                <textarea placeholder="Write something..."></textarea>
+
+                                <button class="btn bgm-green btn-float"><i class="zmdi zmdi-mail-send"></i></button>
+                            </div>
+                        </div>
+                        
                         <a href="" class="pmop-edit">
                             <i class="zmdi zmdi-camera"></i> <span class="hidden-xs">Update Profile Picture</span>
                         </a>
