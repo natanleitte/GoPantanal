@@ -221,7 +221,7 @@
                                 <div id="best-selling" class="dash-widget-item">
                                     <div class="dash-widget-header">
                                         <div class="dash-widget-title">Best Sellings</div>
-                                        <img src="<?php echo base_url();?>assets/img/widgets/alpha.jpg" alt="">
+                                        <img src="assets/img/widgets/alpha.jpg" alt="">
                                         <div class="main-item">
                                             <small>Samsung Galaxy Alpha</small>
                                             <h2>$799.99</h2>
@@ -232,7 +232,7 @@
                                         <a class="lv-item" href="">
                                             <div class="media">
                                                 <div class="pull-left">
-                                                    <img class="lv-img-sm" src="<?php echo base_url();?>assets/img/widgets/note4.jpg" alt="">
+                                                    <img class="lv-img-sm" src="assets/img/widgets/note4.jpg" alt="">
                                                 </div>
                                                 <div class="media-body">
                                                     <div class="lv-title">Samsung Galaxy Note 4</div>
@@ -243,7 +243,7 @@
                                         <a class="lv-item" href="">
                                             <div class="media">
                                                 <div class="pull-left">
-                                                    <img class="lv-img-sm" src="<?php echo base_url();?>assets/img/widgets/mate7.jpg" alt="">
+                                                    <img class="lv-img-sm" src="assets/img/widgets/mate7.jpg" alt="">
                                                 </div>
                                                 <div class="media-body">
                                                     <div class="lv-title">Huawei Ascend Mate</div>
@@ -254,7 +254,7 @@
                                         <a class="lv-item" href="">
                                             <div class="media">
                                                 <div class="pull-left">
-                                                    <img class="lv-img-sm" src="<?php echo base_url();?>assets/img/widgets/535.jpg" alt="">
+                                                    <img class="lv-img-sm" src="assets/img/widgets/535.jpg" alt="">
                                                 </div>
                                                 <div class="media-body">
                                                     <div class="lv-title">Nokia Lumia 535</div>
@@ -576,7 +576,7 @@
                                         <a class="lv-item" href="">
                                             <div class="media">
                                                 <div class="pull-left">
-                                                    <img class="lv-img-sm" src="<?php echo base_url();?>assets/img/profile-pics/1.jpg" alt="">
+                                                    <img class="lv-img-sm" src="assets/img/profile-pics/1.jpg" alt="">
                                                 </div>
                                                 <div class="media-body">
                                                     <div class="lv-title">David Belle</div>
@@ -587,7 +587,7 @@
                                         <a class="lv-item" href="">
                                             <div class="media">
                                                 <div class="pull-left">
-                                                    <img class="lv-img-sm" src="<?php echo base_url();?>assets/img/profile-pics/2.jpg" alt="">
+                                                    <img class="lv-img-sm" src="assets/img/profile-pics/2.jpg" alt="">
                                                 </div>
                                                 <div class="media-body">
                                                     <div class="lv-title">Jonathan Morris</div>
@@ -598,7 +598,7 @@
                                         <a class="lv-item" href="">
                                             <div class="media">
                                                 <div class="pull-left">
-                                                    <img class="lv-img-sm" src="<?php echo base_url();?>assets/img/profile-pics/3.jpg" alt="">
+                                                    <img class="lv-img-sm" src="assets/img/profile-pics/3.jpg" alt="">
                                                 </div>
                                                 <div class="media-body">
                                                     <div class="lv-title">Fredric Mitchell Jr.</div>
@@ -609,7 +609,7 @@
                                         <a class="lv-item" href="">
                                             <div class="media">
                                                 <div class="pull-left">
-                                                    <img class="lv-img-sm" src="<?php echo base_url();?>assets/img/profile-pics/4.jpg" alt="">
+                                                    <img class="lv-img-sm" src="assets/img/profile-pics/4.jpg" alt="">
                                                 </div>
                                                 <div class="media-body">
                                                     <div class="lv-title">Glenn Jecobs</div>
@@ -620,7 +620,7 @@
                                         <a class="lv-item" href="">
                                             <div class="media">
                                                 <div class="pull-left">
-                                                    <img class="lv-img-sm" src="<?php echo base_url();?>assets/img/profile-pics/4.jpg" alt="">
+                                                    <img class="lv-img-sm" src="assets/img/profile-pics/4.jpg" alt="">
                                                 </div>
                                                 <div class="media-body">
                                                     <div class="lv-title">Bill Phillips</div>

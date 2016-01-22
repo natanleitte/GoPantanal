@@ -20,9 +20,9 @@
 
 //           json_encode($tarefas);
 
-           $this->load->view('header');
+           $this->load->view('header', $data);
            $this->load->view('agenda/index');
-           $this->load->view('footer', $data);
+           $this->load->view('footerAgenda', $data);
        }
 
    }

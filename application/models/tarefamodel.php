@@ -18,6 +18,11 @@
            return $this->db->get("tarefa");
        }
 
+       public function updateTarefa($data, $id) {
+           $this->db->where("id", $id);
+           $this->db->update("tarefa", $data);
+       }
+
    }
 
 ?>

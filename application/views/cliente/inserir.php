@@ -48,7 +48,7 @@
                 <form role="form" id="formCliente">
 
                     <div class="row">
-                        <div class="col-sm-4">                       
+                        <div class="col-sm-6">                       
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
                                 <div class="fg-line">
@@ -76,15 +76,9 @@
 
                             <br/>
 
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="zmdi zmdi-pin"></i></span>
-                                <div class="fg-line">    
-                                    <input type="text" id="endereco" name="endereco" class="form-control" placeholder="Endereço">
-                                </div>
-                            </div>
                         </div>
 
-                        <div class="col-sm-4">                       
+                        <div class="col-sm-6">                       
                             <div class="input-group">
                                 <div class="fg-line">
                                     <input type="text" id="passaporte" name="passaporte" class="form-control" placeholder="Passaporte">
@@ -98,70 +92,21 @@
                                 <div class="fg-line">
                                     <input type="text" class="form-control" placeholder="Idade">
                                 </div>
-                                <span class="input-group-addon last"><i class="zmdi zmdi-sun"></i></span>
-                            </div>
-
-                            <br/>
-
-                            <div class="input-group">
-                                <div class="fg-line">
-                                    <input type="text" class="form-control" placeholder="Flight">
-                                </div>
-                                <span class="input-group-addon last"><i class="zmdi zmdi-airplane"></i></span>
+                                <span class="input-group-addon last"><i class="zmdi zmdi-account-calendar"></i></span>
                             </div>
 
                             <br/>
 
                             <div class="input-group">
                                 <div class="fg-line">    
-                                    <input type="text" class="form-control" placeholder="Location">
+                                    <input type="text" id="endereco" name="endereco" class="form-control" placeholder="Endereço">
                                 </div>
-                                <span class="input-group-addon last"><i class="zmdi zmdi-my-location"></i></span>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4">                       
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="zmdi zmdi-arrow-missed"></i></span>
-                                <div class="fg-line">
-                                    <input type="text" class="form-control" placeholder="Internet">
-                                </div>
-                                <span class="input-group-addon last"><i class="zmdi zmdi-globe"></i></span>
-                            </div>
-
-                            <br/>
-
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="zmdi zmdi-money"></i></span>
-                                <div class="fg-line">
-                                    <input type="text" class="form-control" placeholder="Notifications">
-                                </div>
-                                <span class="input-group-addon last"><i class="zmdi zmdi-plus-circle-o"></i></span>
-                            </div>
-
-                            <br/>
-
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="zmdi zmdi-mail-send"></i></span>
-                                <div class="fg-line">
-                                    <input type="text" class="form-control" placeholder="Layers">
-                                </div>
-                                <span class="input-group-addon last"><i class="zmdi zmdi-layers "></i></span>
-                            </div>
-
-                            <br/>
-
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="zmdi zmdi-portable-wifi"></i></span>
-                                <div class="fg-line">    
-                                    <input type="text" class="form-control" placeholder="Messages">
-                                </div>
-                                <span class="input-group-addon last"><i class="zmdi zmdi-dialpad"></i></span>
+                                <span class="input-group-addon"><i class="zmdi zmdi-pin"></i></span>
                             </div>
                         </div>
                     </div>
                 </form>
-                
+
                 <br/>
                 <button onclick="adicionarCliente()" class="btn btn-block btn-primary waves-effect">Enviar <i class="zmdi zmdi-mail-send"></i></button>
 
