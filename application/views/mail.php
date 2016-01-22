@@ -53,8 +53,8 @@
                     include 'PhpImap\IncomingMail.php';
 
                     $servidor = 'a2plcpnl0303.prod.iad2.secureserver.net';
-                    $usuario = 'resplandeca';
-                    $senha = 'Leaf193915';
+                    $usuario = 'jorge@leafweb.com.br';
+                    $senha = 'WolV@972';
 
                     $mailbox = new PhpImap\Mailbox('{' . $servidor . ':993/imap/ssl}INBOX', $usuario, $senha);
                     $mails = array();
