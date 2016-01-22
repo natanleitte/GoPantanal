@@ -44,7 +44,7 @@
                         <th data-column-id="id" data-type="text">De</th>
                         <th data-column-id="sender">Assunto</th>
                         <th data-column-id="received" data-order="desc">Data</th>
-                        <th data-column-id="commands" data-formatter="commands" data-sortable="false">Opções</th>
+                        <th data-column-id="commands" data-formatter="commands" data-sortable="false"></th>
                     </tr>
                 </thead>
                 <tbody>
