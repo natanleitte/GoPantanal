@@ -324,9 +324,8 @@
                 <li class="sub-menu">
                     <a href="index.html"><i class="zmdi zmdi-accounts"></i> Clientes</a>
                     <ul>
-                        <li><a href="<?php echo base_url() . "index.php/" ?>cliente">Todos</a></li>
+                        <li><a href="<?php echo base_url() . "index.php/" ?>cliente">Ver Todos</a></li>
                         <li><a href="<?php echo base_url() . "index.php/" ?>cliente/inserir">Inserir</a></li>
-                        <li><a href="top-mainmenu.html">Mainmenu on top</a></li>
                     </ul>
                 </li>
                 <li><a href="<?php echo base_url() . "index.php/" ?>agenda"><i class="zmdi zmdi-calendar"></i> Agenda</a></li>

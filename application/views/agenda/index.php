@@ -44,12 +44,12 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Add an Event</h4>
+                        <h4 class="modal-title">Adicionar um Evento</h4>
                     </div>
                     <div class="modal-body">
                         <form class="addEvent" role="form" id="formTarefa">
                             <div class="form-group">
-                                <label for="eventName">Event Name</label>
+                                <label for="eventName">Título do Evento</label>
                                 <div class="fg-line">
                                     <input type="text" class="input-sm form-control" name="titulo" id="eventName" placeholder="ex: Agendar hotel">
                                 </div>
