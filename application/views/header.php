@@ -2,10 +2,10 @@
 <!--[if IE 9 ]><html class="ie9"><![endif]-->
 
 <?php
-   $count = 0;
-   foreach ($tarefas->result() as $tarefa)
-       if ($tarefa->status == 'A')
-           $count++;
+$count = 0;
+foreach ($tarefas->result() as $tarefa)
+    if ($tarefa->status == 'A')
+        $count++;
 ?>
 
 <head>
@@ -14,7 +14,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Go Pantanal</title>
 
+
     <!-- Vendor CSS -->
+    <link href="<?php echo base_url() . "assets/" ?>vendors/bootgrid/jquery.bootgrid.min.css" rel="stylesheet">
     <link href="<?php echo base_url() . "assets/" ?>vendors/bower_components/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
     <link href="<?php echo base_url() . "assets/" ?>vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
     <link href="<?php echo base_url() . "assets/" ?>vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.css" rel="stylesheet">
@@ -24,6 +26,8 @@
     <!-- CSS -->
     <link href="<?php echo base_url() . "assets/" ?>css/app.min.1.css" rel="stylesheet">
     <link href="<?php echo base_url() . "assets/" ?>css/app.min.2.css" rel="stylesheet">
+    
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
 
 </head>
 <body>
@@ -210,9 +214,9 @@
                         <a data-toggle="dropdown" href="">
                             <i class="tm-icon zmdi zmdi-view-list-alt"></i>
                             <?php
-                               if ($count > 0) {
-                                   echo "<i class='tmn-counts'>" . $count . "</i>";
-                               }
+                            if ($count > 0) {
+                                echo "<i class='tmn-counts'>" . $count . "</i>";
+                            }
                             ?>
                         </a>
                         <div class="dropdown-menu pull-right dropdown-menu-lg">
@@ -222,20 +226,20 @@
                                 </div>
                                 <div class="lv-body">
                                     <?php
-                                       foreach ($tarefas->result() as $tarefa) {
+                                    foreach ($tarefas->result() as $tarefa) {
 
-                                           if ($tarefa->status == 'A') {
+                                        if ($tarefa->status == 'A') {
 
-                                               echo "  <div class='lv-item'>";
-                                               echo "<div class='lv-title m-b-5'>" . $tarefa->titulo . "</div>";
-                                               echo "<div class='progress'>";
-                                               echo "<div class='progress-bar' role='progressbar' aria-valuenow='100' aria-valuemin='0' aria-valuemax='100' style='width: 100%'>";
-                                               echo "<span class='sr-only'>100% Complete (success)</span>";
-                                               echo "</div>";
-                                               echo "</div>";
-                                               echo "</div>";
-                                           }
-                                       }
+                                            echo "  <div class='lv-item'>";
+                                            echo "<div class='lv-title m-b-5'>" . $tarefa->titulo . "</div>";
+                                            echo "<div class='progress'>";
+                                            echo "<div class='progress-bar' role='progressbar' aria-valuenow='100' aria-valuemin='0' aria-valuemax='100' style='width: 100%'>";
+                                            echo "<span class='sr-only'>100% Complete (success)</span>";
+                                            echo "</div>";
+                                            echo "</div>";
+                                            echo "</div>";
+                                        }
+                                    }
                                     ?>
                                 </div>
 
@@ -330,6 +334,7 @@
                 </li>
                 <li><a href="<?php echo base_url() . "index.php/" ?>agenda"><i class="zmdi zmdi-calendar"></i> Agenda</a></li>
                 <li><a href="<?php echo base_url() . "index.php/" ?>tarefa"><i class="zmdi zmdi-view-list"></i> Tarefas</a></li>
+                <li><a href="<?php echo base_url() . "index.php/" ?>mail"><i class="zmdi zmdi-email"></i> E-mail</a></li>
 <!--
                 <li class="sub-menu">
                     <a href=""><i class="zmdi zmdi-view-compact"></i> Headers</a>
