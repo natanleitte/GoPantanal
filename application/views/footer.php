@@ -88,6 +88,7 @@
     <script src="vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
 <![endif]-->
 
+<script src="<?php echo base_url() . "assets/" ?>vendors/bootgrid/jquery.bootgrid.updated.min.js"></script>
 <script src="<?php echo base_url() . "assets/" ?>js/flot-charts/curved-line-chart.js"></script>
 <script src="<?php echo base_url() . "assets/" ?>js/flot-charts/line-chart.js"></script>
 <script src="<?php echo base_url() . "assets/" ?>js/charts.js"></script>
