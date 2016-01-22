@@ -83,11 +83,13 @@
 //               echo json_encode($cliente);
 //           }
 
-           $teste = array(
-              'nome' => $this->input->post('query')
-//              'pwd' => $this->input->post('pwd')
-           );
-           echo json_encode($teste);
+//           $data['teste'] = array(
+//              'nome' => $this->input->post('query')
+////              'pwd' => $this->input->post('pwd')
+//           );
+           
+           echo json_encode($clientes->result());
+           return $clientes->result();
        }
 
    }

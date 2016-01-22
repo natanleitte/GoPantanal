@@ -335,7 +335,7 @@ foreach ($tarefas->result() as $tarefa)
                 </li>
                 <li><a href="<?php echo base_url() . "index.php/" ?>agenda"><i class="zmdi zmdi-calendar"></i> Agenda</a></li>
                 <li><a href="<?php echo base_url() . "index.php/" ?>tarefa"><i class="zmdi zmdi-view-list"></i> Tarefas</a></li>
-
+<!--
                 <li class="sub-menu">
                     <a href=""><i class="zmdi zmdi-view-compact"></i> Headers</a>
 
@@ -440,7 +440,7 @@ foreach ($tarefas->result() as $tarefa)
                 </li>
                 <li>
                     <a href="https://wrapbootstrap.com/theme/material-admin-responsive-angularjs-WB011H985"><i class="zmdi zmdi-money"></i> Buy this template</a>
-                </li>
+                </li>-->
             </ul>
         </aside>
 

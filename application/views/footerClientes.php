@@ -67,10 +67,11 @@
             datatype: 'json',
             data: {query: $("#busca").val()},
             success: function (data) {
-//                for($i=0; $i < data.length; $i++){
-                console.log(data.nome);
+                for($i=0; $i < data.length; $i++){
+
+                console.log(data[$i]['nome']);
             
-//            }//fim do laço
+            }//fim do laço
                 
 //                swal("Cliente inserido com sucesso!", "", "success");
 //                $("#nome, #email, #telefone, #endereco, #passaporte").val('');

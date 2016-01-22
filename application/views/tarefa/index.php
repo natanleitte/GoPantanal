@@ -3,7 +3,7 @@
         <div class="col-sm-12">
 
             <!-- Todo Lists -->
-            <div id="todo-lists" style="background: #20B2AA; color: #fff; margin-bottom: 30px; font-family:cursive; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);">
+            <div id="todo-lists" style="background: #20B2AA; color: #fff; margin-bottom: 30px; font-family: inherit; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);">
                 <div class="tl-header">
                     <h2>Tarefas</h2>
                     <small>Adicione e edite suas tarefas</small>

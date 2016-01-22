@@ -39,7 +39,7 @@ $(document).ready(function () {
         $('body').on('change', 'input:checkbox', function () {
             if ($(this).is(':checked')) {
                 $.ajax({
-                    url: 'http://localhost:82/GoPantanal/' + 'index.php/tarefa/alteraStatusDaTarefa',
+                    url: $('#base_url').val() + 'index.php/tarefa/alteraStatusDaTarefa',
                     type: 'POST',
                     data: {id: $(this).attr('id'), status: "I"},
                     success: function (msg) {
@@ -50,7 +50,7 @@ $(document).ready(function () {
             }
             else {
                $.ajax({
-                    url: 'http://localhost:82/GoPantanal/' + 'index.php/tarefa/alteraStatusDaTarefa',
+                    url: $('#base_url').val() + 'index.php/tarefa/alteraStatusDaTarefa',
                     type: 'POST',
                     data: {id: $(this).attr('id'), status: "A"},
                     success: function (msg) {

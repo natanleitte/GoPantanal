@@ -27,7 +27,7 @@
         </div>
 
         <!-- Add button -->
-        <button class="btn btn-float btn-danger m-btn"><i class="zmdi zmdi-plus"></i></button>
+        <button onclick="window.location.href='../index.php/cliente/inserir'" class="btn btn-float btn-danger m-btn"><i class="zmdi zmdi-plus"></i></button>
 
 
         <div class="card">
