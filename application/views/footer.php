@@ -3,11 +3,10 @@
     Copyright &copy; 2015 GoPantanal Admin
 
     <ul class="f-menu">
-        <li><a href="">Home</a></li>
-        <li><a href="">Dashboard</a></li>
-        <li><a href="">Reports</a></li>
-        <li><a href="">Support</a></li>
-        <li><a href="">Contact</a></li>
+        <li><a href="<?php echo base_url() ?>">Home</a></li>
+        <li><a href="<?php echo base_url() ?>index.php/cliente">Clientes</a></li>
+        <li><a href="<?php echo base_url() ?>index.php/agenda">Agenda</a></li>
+        <li><a href="<?php echo base_url() ?>index.php/tarefa">Tarefas</a></li>
     </ul>
 </footer>
 
