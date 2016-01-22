@@ -1,19 +1,3 @@
-<?php
-include 'PhpImap\Mailbox.php';
-include 'PhpImap\IncomingMail.php';
-
-$mailbox = new PhpImap\Mailbox('{a2plcpnl0303.prod.iad2.secureserver.net:993/imap/ssl}INBOX', 'jorge@leafweb.com.br', 'WolV@972');
-$mails = array();
-
-$mailsIds = $mailbox->searchMailbox('ALL');
-//if (!$mailsIds) {
-//    die('Mailbox is empty');
-//}
-//$id = reset($mailsIds);
-//$mail = $mailbox->getMail($id);
-//var_dump($mail);
-?>
-
 <section id="content">
     <div class="container">
         <div class="block-header">
@@ -48,7 +32,7 @@ $mailsIds = $mailbox->searchMailbox('ALL');
                 </li>
             </ul>
         </div>
-        
+
         <div class="card">
             <div class="card-header">
                 <h2>Emails</h2>
@@ -64,14 +48,34 @@ $mailsIds = $mailbox->searchMailbox('ALL');
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach($mailsIds as $id){
+                    <?php
+                    include 'PhpImap\Mailbox.php';
+                    include 'PhpImap\IncomingMail.php';
+                    
+                    $servidor = 'a2plcpnl0303.prod.iad2.secureserver.net';
+                    $usuario = 'jorge@leafweb.com.br';
+                    $senha = 'WolV@972';
+                    
+                    $mailbox = new PhpImap\Mailbox('{'.$servidor.':993/imap/ssl}INBOX', $usuario, $senha);
+                    $mails = array();
+
+                    $mailsIds = $mailbox->searchMailbox('ALL');
+                    
+                    //if (!$mailsIds) {
+                    //    die('Mailbox is empty');
+                    //}
+                    //$id = reset($mailsIds);
+                    //$mail = $mailbox->getMail($id);
+                    //var_dump($mail);
+                    
+                    foreach ($mailsIds as $id) {
                         $mail = $mailbox->getMail($id);
                         ?>
-                    <tr>
-                        <td><?php echo $mail->fromAddress; ?></td>
-                        <td><?php echo $mail->subject; ?></td>
-                        <td><?php echo $mail->date; ?></td>
-                    </tr>
+                        <tr>
+                            <td><?php echo $mail->fromAddress; ?></td>
+                            <td><?php echo $mail->subject; ?></td>
+                            <td><?php echo $mail->date; ?></td>
+                        </tr>
                     <?php } ?>
                 </tbody>
             </table>
@@ -82,7 +86,7 @@ $mailsIds = $mailbox->searchMailbox('ALL');
 <!-- Data Table -->
 <script type="text/javascript">
     $(document).ready(function() {
-        
+
         $("#data-table-command").bootgrid({
             css: {
                 icon: 'zmdi icon',
