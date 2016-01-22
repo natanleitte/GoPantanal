@@ -443,7 +443,9 @@ class Mailbox {
      */
 	public function getMail($mailId, $markAsSeen = true) {
 		$head = imap_rfc822_parse_headers(imap_fetchheader($this->getImapStream(), $mailId, FT_UID));
-
+                
+                set_time_limit (1000);
+                
 		$mail = new IncomingMail();
 		$mail->id = $mailId;
 		$mail->date = date('Y-m-d H:i:s', isset($head->date) ? strtotime(preg_replace('/\(.*?\)/', '', $head->date)) : time());

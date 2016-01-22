@@ -335,6 +335,7 @@ foreach ($tarefas->result() as $tarefa)
                 </li>
                 <li><a href="<?php echo base_url() . "index.php/" ?>agenda"><i class="zmdi zmdi-calendar"></i> Agenda</a></li>
                 <li><a href="<?php echo base_url() . "index.php/" ?>tarefa"><i class="zmdi zmdi-view-list"></i> Tarefas</a></li>
+                <li><a href="<?php echo base_url() . "index.php/" ?>mail"><i class="zmdi zmdi-email"></i> E-mail</a></li>
 <!--
                 <li class="sub-menu">
                     <a href=""><i class="zmdi zmdi-view-compact"></i> Headers</a>

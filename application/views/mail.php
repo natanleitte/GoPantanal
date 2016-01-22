@@ -51,25 +51,29 @@
                     <?php
                     include 'PhpImap\Mailbox.php';
                     include 'PhpImap\IncomingMail.php';
-                    
-                    $servidor = 'a2plcpnl0303.prod.iad2.secureserver.net';
-                    $usuario = 'jorge@leafweb.com.br';
-                    $senha = 'WolV@972';
-                    
-                    $mailbox = new PhpImap\Mailbox('{'.$servidor.':993/imap/ssl}INBOX', $usuario, $senha);
-                    $mails = array();
 
+                    $servidor = 'a2plcpnl0303.prod.iad2.secureserver.net';
+                    $usuario = 'resplandeca';
+                    $senha = 'Leaf193915';
+
+                    $mailbox = new PhpImap\Mailbox('{' . $servidor . ':993/imap/ssl}INBOX', $usuario, $senha);
+                    $mails = array();
                     $mailsIds = $mailbox->searchMailbox('ALL');
-                    
+
+
                     //if (!$mailsIds) {
                     //    die('Mailbox is empty');
                     //}
                     //$id = reset($mailsIds);
                     //$mail = $mailbox->getMail($id);
                     //var_dump($mail);
-                    
+
                     foreach ($mailsIds as $id) {
-                        $mail = $mailbox->getMail($id);
+                        try {
+                            $mail = $mailbox->getMail($id);
+                        } catch (Exception $exc) {
+                            echo 'Houve um erro ao recuperar o email com id: ' . $id . '. <br>Erro: ' . $exc->getTraceAsString();
+                        }
                         ?>
                         <tr>
                             <td><?php echo $mail->fromAddress; ?></td>
