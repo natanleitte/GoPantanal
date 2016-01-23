@@ -27,7 +27,7 @@ foreach ($tarefas->result() as $tarefa)
     <link href="<?php echo base_url() . "assets/" ?>css/app.min.1.css" rel="stylesheet">
     <link href="<?php echo base_url() . "assets/" ?>css/app.min.2.css" rel="stylesheet">
     
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
 </head>
 <body>
