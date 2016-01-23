@@ -47,6 +47,7 @@ class Mail extends CI_Controller {
 
     public function detalharEmail() {
         $id = $this->input->post('input-com-id-do-email');
+        $this->EmailModel->marcarComoLido($id);
         $data['email'] = $this->EmailModel->obterPor($id);
         $this->renderizarParaPaginaDeDetalhesDoEmail($data);
     }
