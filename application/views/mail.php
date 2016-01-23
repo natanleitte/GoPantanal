@@ -36,19 +36,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
-                        include APPPATH . 'controllers\email\GerenciadorDeEmails.php';
-
-                        $gerenciadorDeEmails = new GerenciadorDeEmails();
-                        exit();
-
-                        foreach ($gerenciadorDeEmails->idsDosEmailsRecebidos as $id) {
-                            $email = $gerenciadorDeEmails->obterEmailPor($id);
-                    ?>
+                    <?php foreach ($emails as $email) { ?>
                     <tr>
-                        <td><?php echo $email->fromAddress; ?></td>
-                        <td><?php echo $email->subject; ?></td>
-                        <td><?php echo $email->date; ?></td>
+                        <td><?php echo $email->emailRemetente; ?></td>
+                        <td><?php echo $email->assunto; ?></td>
+                        <td><?php echo $email->dataDeEnvio; ?></td>
                     </tr>
                     <?php } ?>
                 </tbody>
@@ -71,7 +63,8 @@
             },
             formatters: {
                 "commands": function(column, row) {
-                    return "<button type=\"button\" class=\"btn btn-icon command-edit waves-effect waves-circle\" data-row-id=\"" + row.id + "\"><span class=\"zmdi zmdi-edit\"></span></button> " +
+                    return "<button type=\"button\" class=\"btn btn-icon command-edit waves-effect waves-circle\" data-row-id=\"" + row.id + "\"><span class=\"zmdi zmdi-email-open\"></span></button> " +
+                            "<button type=\"button\" class=\"btn btn-icon command-edit waves-effect waves-circle\" data-row-id=\"" + row.id + "\"><span class=\"zmdi zmdi-mail-reply\"></span></button>" +
                             "<button type=\"button\" class=\"btn btn-icon command-delete waves-effect waves-circle\" data-row-id=\"" + row.id + "\"><span class=\"zmdi zmdi-delete\"></span></button>";
                 }
             }
