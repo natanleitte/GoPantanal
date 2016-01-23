@@ -50,6 +50,12 @@ class Mail extends CI_Controller {
         $data['email'] = $this->EmailModel->obterPor($id);
         $this->renderizarParaPaginaDeDetalhesDoEmail($data);
     }
+    
+    public function excluirEmail(){
+        $id = $this->input->post('input-com-id-do-email');
+        $this->EmailModel->excluir($id);
+        redirect("mail", 'location');
+    }
 
     private function renderizarParaPaginaDeDetalhesDoEmail($data) {
         $data['tarefas'] = $this->TarefaModel->getTarefas();
