@@ -64,5 +64,4 @@ class Mail extends CI_Controller {
         $this->load->view('email/DetalhesEmail', $data);
         $this->load->view('footer');
     }
-
 }
