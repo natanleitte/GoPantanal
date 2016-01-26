@@ -180,6 +180,10 @@ class Mailbox {
         return $mailsIds ? $mailsIds : array();
     }
 
+    public function obterCorpoDoEmail($id) {
+        return imap_fetchbody($this->getImapStream(), $id, 2, FT_UID);
+    }
+
     /**
      * Save mail body.
      * @return bool
