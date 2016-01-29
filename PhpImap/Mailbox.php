@@ -184,6 +184,56 @@ class Mailbox {
         return imap_fetchbody($this->getImapStream(), $id, 2, FT_UID);
     }
 
+    public function obterAnexosDoEmail($id) {
+        $estrutura = imap_fetchstructure($this->getImapStream(), $id, FT_UID);
+
+        $anexos = array();
+        if (isset($estrutura->parts) && count($estrutura->parts)) {
+            for ($i = 0; $i < count($estrutura->parts); $i++) {
+                $anexos[$i] = array(
+                    'estaAnexado' => false,
+                    'nomeDoArquivo' => '',
+                    'nome' => '',
+                    'anexo' => '');
+
+                if ($estrutura->parts[$i]->ifdparameters) {
+                    foreach ($estrutura->parts[$i]->dparameters as $objeto) {
+                        if (strtolower($objeto->attribute) == 'nomeDoArquivo') {
+                            $anexos[$i]['estaAnexado'] = true;
+                            $anexos[$i]['nomeDoArquivo'] = $objeto->value;
+                        }
+                    }
+                }
+
+                if ($estrutura->parts[$i]->ifparameters) {
+                    foreach ($estrutura->parts[$i]->parameters as $objeto) {
+                        if (strtolower($objeto->attribute) == 'nome') {
+                            $anexos[$i]['estaAnexado'] = true;
+                            $anexos[$i]['nome'] = $objeto->value;
+                        }
+                    }
+                }
+
+                if ($anexos[$i]['estaAnexado']) {
+                    $anexos[$i]['anexo'] = imap_fetchbody($this->getImapStream(), $id, $i + 1);
+                    if ($estrutura->parts[$i]->encoding == 3) { // 3 = BASE64
+                        $anexos[$i]['anexo'] = base64_decode($anexos[$i]['anexo']);
+                    } elseif ($estrutura->parts[$i]->encoding == 4) { // 4 = QUOTED-PRINTABLE
+                        $anexos[$i]['anexo'] = quoted_printable_decode($anexos[$i]['anexo']);
+                    }
+                }
+            } // for($i = 0; $i < count($estrutura->parts); $i++)
+        } // if(isset($estrutura->parts) && count($estrutura->parts))
+
+        if (count($anexos) != 0) {
+            foreach ($anexos as $at) {
+                if ($at['estaAnexado'] == 1) {
+                    file_put_contents($at['nomeDoArquivo'], $at['estaAnexado']);
+                }
+            }
+        }
+    }
+
     /**
      * Save mail body.
      * @return bool

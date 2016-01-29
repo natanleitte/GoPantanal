@@ -8,12 +8,15 @@
            $this->load->helper('form');
 
            $this->load->model('TarefaModel');
+           $this->load->model('EmailModel');
            $this->load->model('ClienteModel');
        }
 
        public function index() {
-           $data['tarefas'] = $this->TarefaModel->getTarefas();
-           $data['clientes'] = $this->ClienteModel->getClientes();
+            $data['tarefas'] = $this->TarefaModel->getTarefas();
+            $data['emails'] = $this->EmailModel->obterTodos();
+            $data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
+            $data['clientes'] = $this->ClienteModel->getClientes();
 
            $this->load->view('header', $data);
            $this->load->view('cliente/index', $data);

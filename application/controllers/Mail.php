@@ -20,7 +20,7 @@ class Mail extends CI_Controller {
 
         $data['tarefas'] = $this->TarefaModel->getTarefas();
         $data['emails'] = $this->EmailModel->obterTodos();
-
+        $data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
         $this->load->view('header', $data);
         $this->load->view('email/mail');
         $this->load->view('footer');
@@ -28,7 +28,6 @@ class Mail extends CI_Controller {
 
     private function salvarNovosEmailsNoBanco() {
         $listaDeEmails = $this->gerenciadorDeEmails->obterNovosEmails();
-
         foreach ($listaDeEmails as $email) {
             $data['dataDeEnvio'] = $email->dataDeEnvio;
             $data['assunto'] = $email->assunto;
@@ -46,9 +45,14 @@ class Mail extends CI_Controller {
     }
 
     public function detalharEmail() {
-        $id = $this->input->post('input-com-id-do-email');
+//        $id = $this->input->post('input-com-id-do-email');
+        $id = $this->input->get('idDoEmailNoServidor', TRUE);
         $this->EmailModel->marcarComoLido($id);
         $data['email'] = $this->EmailModel->obterPor($id);
+        $data['tarefas'] = $this->TarefaModel->getTarefas();
+        $data['emails'] = $this->EmailModel->obterTodos();
+        $data['ultimosCincoEmails'] = $this->EmailModel->obterOsUltimosCincoEmails();
+        $data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
         $this->renderizarParaPaginaDeDetalhesDoEmail($data);
     }
     
@@ -59,7 +63,6 @@ class Mail extends CI_Controller {
     }
 
     private function renderizarParaPaginaDeDetalhesDoEmail($data) {
-        $data['tarefas'] = $this->TarefaModel->getTarefas();
         $this->load->view('header', $data);
         $this->load->view('email/DetalhesEmail', $data);
         $this->load->view('footer');
