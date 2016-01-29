@@ -94,19 +94,11 @@
 
 <script src="<?php echo base_url() . "assets/" ?>js/charts.js"></script>
 <script src="<?php echo base_url() . "assets/" ?>js/functions.js"></script>
+<script src="<?php echo base_url() . "assets/" ?>js/tarefa.js"></script>
 <script src="<?php echo base_url() . "assets/" ?>js/demo.js"></script>
 
 <!--Altera linguagem do calendário-->
 <script src='<?php echo base_url() . "assets/" ?>vendors/bower_components/fullcalendar/dist/lang/pt-br.js'></script>
-
-//<?php
-//   echo "<script type='text/javascript'>";
-//
-//   foreach ($tarefas->result() as $tarefa) {
-//       echo var person = {firstName:"John", lastName:"Doe", age:46};
-//   }
-//
-?>
 
 </body>
 </html>
