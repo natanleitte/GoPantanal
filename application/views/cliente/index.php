@@ -32,7 +32,7 @@
 
         <div class="card">
             <div class="lv-header-alt clearfix m-b-5">
-                <h2 class="lvh-label hidden-xs">19,453 Records</h2>
+                <!--<h2 class="lvh-label hidden-xs">19,453 Records</h2>-->
 
                 <div class="lvh-search">
                     <input type="text" placeholder="Start typing..." class="lvhs-input" id="busca">
@@ -110,9 +110,12 @@
                         echo "<strong>" . $cliente->nome . "</strong>";
                         echo "<small>" . $cliente->email . "</small>";
                         echo "</div>";
+                        echo "<form action='" . base_url() . "index.php/cliente/profile'>";
                         echo "<div class='c-footer'>";
-                        echo "<button onclick='window.location.href='./cliente/profile?id=" . $cliente->id . "' class='waves-effect'><i class='zmdi zmdi-person-add'></i> Ver</button>";
+                        echo "<input type='hidden' name='id' value='" . $cliente->id . "' />";
+                        echo "<button class='btn-primary'><i class='zmdi zmdi-person-add'></i>Ver</button>";
                         echo "</div>";
+                        echo "</form>";
                         echo "</div>";
                         echo "</div>";
                     }
