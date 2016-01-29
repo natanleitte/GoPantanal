@@ -7,7 +7,7 @@
 <section id="content">
     <div class="container">
         <div class="block-header">
-            <h2>Inserir Cliente</h2>
+            <h2>Cliente</h2>
 
             <ul class="actions">
                 <li>
@@ -43,12 +43,12 @@
 
         <div class="card">
             <div class="card-header">
-                <h2>Input Groups <small>Extend form controls by adding text or buttons before, after, or on both sides of any text-based inputs.</small></h2>
+                <h2>Editar Cliente</h2>
             </div>
 
             <div class="card-body card-padding">
-                <p class="c-black f-500 m-b-5">Basic Example</p>
-                <small>Place one add-on or button on either side of an input. You may also place one on both sides of an input.</small>
+<!--                <p class="c-black f-500 m-b-5">Basic Example</p>
+                <small>Place one add-on or button on either side of an input. You may also place one on both sides of an input.</small>-->
 
                 <br/><br/>
                 <form role="form" id="formCliente">

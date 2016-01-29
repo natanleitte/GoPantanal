@@ -108,7 +108,7 @@
                 </form>
 
                 <br/>
-                <button onclick="adicionarCliente()" class="btn btn-block btn-primary waves-effect">Enviar <i class="zmdi zmdi-mail-send"></i></button>
+                <button onclick="adicionarCliente()" class="btn btn-block btn-primary waves-effect">Salvar <i class="zmdi zmdi-mail-send"></i></button>
 
             </div>
         </div>

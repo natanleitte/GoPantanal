@@ -42,7 +42,7 @@ foreach ($tarefas->result() as $tarefa)
             </li>
 
             <li class="logo hidden-xs">
-                <a href="<?php echo base_url(); ?>">Go Pantanal</a>
+                <a href="<?php echo base_url(); ?>">Go Pantanal <small> beta </small></a>
             </li>
 
             <li class="pull-right">

@@ -44,12 +44,13 @@ class Cliente extends CI_Controller {
 
         $this->ClienteModel->setCliente($data);
 
-//           header('Location:' . base_url() . 'index.php/cliente/inserir');
+//        header('Location:' . base_url() . 'index.php/cliente');
     }
 
     public function profile() {
         $data['cliente'] = $this->ClienteModel->getCliente($this->input->get('id'));
-
+        $data['emails'] = $this->EmailModel->obterTodos();
+        $data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
         $data['tarefas'] = $this->TarefaModel->getTarefas();
 
         $this->load->view('header', $data);
@@ -59,7 +60,8 @@ class Cliente extends CI_Controller {
 
     public function editar() {
         $data['cliente'] = $this->ClienteModel->getCliente($this->input->get('id'));
-
+        $data['emails'] = $this->EmailModel->obterTodos();
+        $data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
         $data['tarefas'] = $this->TarefaModel->getTarefas();
 
         $this->load->view('header', $data);
