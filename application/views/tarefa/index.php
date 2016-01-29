@@ -7,7 +7,6 @@
                 <div class="tl-header">
                     <h2>Tarefas</h2>
                     <small>Adicione e edite suas tarefas</small>
-
                     <ul class="actions actions-alt">
                         <li class="dropdown">
                             <a href="" data-toggle="dropdown">
@@ -49,7 +48,7 @@
 
                     <?php
                        foreach ($tarefas->result() as $tarefa) {
-                           echo "<div class='checkbox media'>";
+                           echo "<div class='checkbox media' >";
                            echo "<div class='pull-right'>";
                            echo "<ul class='actions actions-alt'>";
                            echo "<li class='dropdown'>";
@@ -58,7 +57,7 @@
                            echo "</a>";
 
                            echo "<ul class='dropdown-menu dropdown-menu-right'>";
-                           echo "<li><a href=''>Delete</a></li>";
+                           echo "<li><a href='". base_url() . "index.php/tarefa/excluir?id=". $tarefa->id ."'>Delete</a></li>";
                            echo "<li><a href=''>Archive</a></li>";
                            echo "</ul>";
                            echo "</li>";
@@ -66,7 +65,7 @@
                            echo "</div>";
                            echo "<div class='media-body'>";
                            echo "<label>";
-                           echo "<input id='" . $tarefa->id . "' type='checkbox'>";
+                           echo "<input id='" . $tarefa->id . "' class='js-tarefa-cadastrada' type='checkbox'>";
                            echo "<i class='input-helper'></i>";
                            echo "<span>" . $tarefa->titulo . "</span>";
                            echo "</label>";

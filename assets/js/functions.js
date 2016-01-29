@@ -17,7 +17,7 @@ $(window).load(function () {
 
         }
     }
-})
+});
 
 $(document).ready(function () {
     /* --------------------------------------------------------
@@ -34,71 +34,7 @@ $(document).ready(function () {
                 $('#tw-switch').prop('checked', true);
             }
         }
-        
-        //Altera o status da tarefa -> 'A' -> Ativo ou 'I' -> Inativo
-        $('body').on('change', 'input:checkbox', function () {
-            if ($(this).is(':checked')) {
-                $.ajax({
-                    url: $('#base_url').val() + 'index.php/tarefa/alteraStatusDaTarefa',
-                    type: 'POST',
-                    data: {id: $(this).attr('id'), status: "I"},
-                    success: function (msg) {
-//                swal("Evento inserido com sucesso!","", "success");
-
-                    }
-                });
-            }
-            else {
-               $.ajax({
-                    url: $('#base_url').val() + 'index.php/tarefa/alteraStatusDaTarefa',
-                    type: 'POST',
-                    data: {id: $(this).attr('id'), status: "A"},
-                    success: function (msg) {
-//                swal("Evento inserido com sucesso!","", "success");
-
-                    }
-                });
-            }
-        });
-        
-        $('body').on('change', '#toggle-width input:checkbox', function () {
-            if ($(this).is(':checked')) {
-                setTimeout(function () {
-                    $('body').addClass('toggled sw-toggled');
-                    localStorage.setItem('ma-layout-status', 1);
-                }, 250);
-                
-//                var id = ;
-                
-                $.ajax({
-                    url: 'http://localhost:82/GoPantanal/' + 'index.php/tarefa/alteraStatusDaTarefa',
-                    type: 'POST',
-                    data: {id: $(this).attr('id'), status: "A"},
-                    success: function (msg) {
-//                swal("Evento inserido com sucesso!","", "success");
-
-                    }
-                });
-            }
-            else {
-                setTimeout(function () {
-                    $('body').removeClass('toggled sw-toggled');
-                    localStorage.setItem('ma-layout-status', 0);
-                }, 250);
-
-//                $.ajax({
-//                    url: '<?= base_url(); ?>' + 'index.php/tarefa/alteraStatusDaTarefa',
-//                    type: 'POST',
-//                    data: $("#formTarefa").serialize(),
-//                    success: function (msg) {
-////                swal("Evento inserido com sucesso!","", "success");
-//
-//                    }
-//                });
-            }
-        });
-    })();
-
+    });        
     /* --------------------------------------------------------
      Scrollbar
      -----------------------------------------------------------*/
@@ -379,68 +315,6 @@ $(document).ready(function () {
             error: function (error) {
                 $("#weather-widget").html('<p>' + error + '</p>');
             }
-        });
-    }
-
-    /*
-     * Todo Add new item
-     */
-    if ($('#todo-lists')[0]) {
-        //Add Todo Item
-        $('body').on('click', '#add-tl-item .add-new-item', function () {
-            $(this).parent().addClass('toggled');
-        });
-
-        //Dismiss
-        $('body').on('click', '.add-tl-actions > a', function (e) {
-            e.preventDefault();
-            var x = $(this).closest('#add-tl-item');
-            var y = $(this).data('tl-action');
-
-            if (y == "dismiss") {
-                x.find('textarea').val('');
-                x.removeClass('toggled');
-            }
-
-            if (y == "save") {
-                x.find('textarea').val('');
-                x.removeClass('toggled');
-                $("#tarefas").append("<div class='checkbox media'>" +
-                        " <div class='pull-right'> " +
-                        "<ul class='actions actions-alt'>" +
-                        " <li class='dropdown'>" +
-                        "<a href='' data-toggle='dropdown'>" +
-                        "<i class='zmdi zmdi-more-vert'></i>" +
-                        "</a>" +
-                        "<ul class='dropdown-menu dropdown-menu-right'>" +
-                        "<li><a href=''>Delete</a></li>" +
-                        "<li><a href=''>Archive</a></li>" +
-                        "</ul>" +
-                        "</li>" +
-                        " </ul>" +
-                        "</div>" +
-                        "<div class='media-body'>" +
-                        "<label>" +
-                        "<input type='checkbox'>" +
-                        "<i class='input-helper'></i>" +
-                        "<span>" + $('#message').val() + "</span>" +
-                        "</label>" +
-                        "</div>" +
-                        "</div>");
-
-            }
-            var tituloDaTarefa = $('#message').val();
-            $('#message').val('');
-            
-             $.ajax({
-                    url:$('#base_url').val() + 'index.php/tarefa/inserirTarefa',
-                    type: 'POST',
-                    data: {titulo: tituloDaTarefa, data_ini:'teste', data_fim:'teste', status: 'A'},
-                    success: function (msg) {
-//                swal("Evento inserido com sucesso!","", "success");
-
-                    }
-                });
         });
     }
 
