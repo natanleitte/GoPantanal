@@ -26,7 +26,8 @@ tarefa.gerenciaItem = $(document).ready(function() {
                 x.find('textarea').val('');
                 x.removeClass('toggled');
                 var tituloDaTarefa = $('#message').val();
-                if (!tituloDaTarefa.trim() && tituloDaTarefa.length > 100) {
+                
+                if (tituloDaTarefa.trim()) {
                     $('#message').val('');
 
                     $.ajax({
@@ -39,7 +40,6 @@ tarefa.gerenciaItem = $(document).ready(function() {
                         }
                     });
                 } else {
-                    window.location.reload();
                     swal("Tarefa esta com a descrição em branco.", "", "info");
                 }
             }

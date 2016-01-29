@@ -14,17 +14,8 @@
                 <div class="tl-body" id="tarefas">
                     <div id="add-tl-item">
                         <i class="add-new-item zmdi zmdi-plus"></i>
-
                         <div class="add-tl-body">
-                            <div class="fg-line">
-                                    <script>
-                                        $(function() {
-                                            $("#datepicker").datepicker();
-                                        });
-                                    </script>
-                                <input type="text" class="input-sm input-lg form-control" id="message" placeholder="Ex: Criar orçamento para o cliente...">
-                                <input class="input-sm input-lg form-control" type="text" id="datepicker" placeholder="DD/MM/YYYY">
-                            </div>
+                            <input type="text" class="input-sm input-lg form-control" id="message" placeholder="Ex: Criar orçamento para o cliente...">
                             <input type="hidden" id="base_url" value="<?php echo base_url(); ?>"/>
                             <div class="add-tl-actions">
                                 <a href="" data-tl-action="dismiss"><i class="zmdi zmdi-close"></i></a>
@@ -59,4 +50,3 @@
         </div>
     </div>
 </section>
-<script src="<?php echo base_url() . "assets/" ?>js/tarefa.js"></script>
