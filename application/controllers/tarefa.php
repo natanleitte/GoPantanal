@@ -25,10 +25,8 @@ class Tarefa extends CI_Controller {
 
     public function inserirTarefa() {
         $data['titulo'] = $this->input->post('titulo');
-
         $data['data_ini'] = $this->DataUtils->engenhariaAlternativaParaData($this->input->post('data_ini'));
         $data['data_fim'] = $this->DataUtils->engenhariaAlternativaParaData($this->input->post('data_fim'));
-
         $data['status'] = $this->input->post('status');
 
         $this->TarefaModel->setTarefa($data);
