@@ -3,7 +3,7 @@
     <div class="container">
 
         <div class="block-header">
-            <h2>Clientes<small>Manage your contact information</small></h2>
+            <h2>Clientes</h2>
 
             <ul class="actions m-t-20 hidden-xs">
                 <li class="dropdown">
@@ -27,7 +27,7 @@
         </div>
 
         <!-- Add button -->
-        <button onclick="window.location.href='../index.php/cliente/inserir'" class="btn btn-float btn-danger m-btn"><i class="zmdi zmdi-plus"></i></button>
+        <button onclick="window.location.href = '../index.php/cliente/inserir'" class="btn btn-float btn-danger m-btn"><i class="zmdi zmdi-plus"></i></button>
 
 
         <div class="card">
@@ -99,30 +99,29 @@
                 <div class="contacts clearfix row" id="clientes">
 
                     <?php
-                       foreach ($clientes->result() as $cliente) {
-                           echo "<div class='col-md-2 col-sm-4 col-xs-6' id='" . $cliente->id . $cliente->nome . "'>";
-                           echo "<div class='c-item'>";
-                           echo "<a href='" . base_url() . "index.php/cliente/profile?id=" . $cliente->id . "' class='ci-avatar'>";
-                           echo "<img src='" . base_url() . "assets/img/contacts/10.jpg' alt=''>";
-                           echo "</a>";
+                    foreach ($clientes->result() as $cliente) {
+                        echo "<div class='col-md-2 col-sm-4 col-xs-6' id='" . $cliente->id . $cliente->nome . "'>";
+                        echo "<div class='c-item'>";
+                        echo "<a href='" . base_url() . "index.php/cliente/profile?id=" . $cliente->id . "' class='ci-avatar'>";
+                        echo "<img src='" . base_url() . "assets/img/contacts/anonimo.png' alt=''>";
+                        echo "</a>";
 
-                           echo "<div class='c-info'>";
-                           echo "<strong>" . $cliente->nome . "</strong>";
-                           echo "<small>" . $cliente->email . "</small>";
-                           echo "</div>";
-
-                           echo "<div class='c-footer'>";
-                           echo "<button class='waves-effect'><i class='zmdi zmdi-person-add'></i> Add</button>";
-                           echo "</div>";
-                           echo "</div>";
-                           echo "</div>";
-                       }
+                        echo "<div class='c-info'>";
+                        echo "<strong>" . $cliente->nome . "</strong>";
+                        echo "<small>" . $cliente->email . "</small>";
+                        echo "</div>";
+                        echo "<div class='c-footer'>";
+                        echo "<button onclick='window.location.href='./cliente/profile?id=" . $cliente->id . "' class='waves-effect'><i class='zmdi zmdi-person-add'></i> Ver</button>";
+                        echo "</div>";
+                        echo "</div>";
+                        echo "</div>";
+                    }
                     ?>                  
 
                 </div>
 
                 <div class="load-more">
-                    <a href=""><i class="zmdi zmdi-refresh-alt"></i> Load More...</a>
+                    <a href=""><i class="zmdi zmdi-refresh-alt"></i> Carregar Mais...</a>
                 </div>
             </div>
         </div>

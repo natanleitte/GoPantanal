@@ -42,7 +42,7 @@ foreach ($tarefas->result() as $tarefa)
             </li>
 
             <li class="logo hidden-xs">
-                <a href="<?php echo base_url(); ?>">Go Pantanal</a>
+                <a href="<?php echo base_url(); ?>">Go Pantanal <small> beta </small></a>
             </li>
 
             <li class="pull-right">
@@ -115,7 +115,7 @@ foreach ($tarefas->result() as $tarefa)
                                     <a class="lv-item" href="">
                                         <div class="media">
                                             <div class="pull-left">
-                                                <img class="lv-img-sm" src="<?php echo base_url() . "assets/" ?>img/profile-pics/1.jpg" alt="">
+                                                <img class="lv-img-sm" src="<?php echo base_url()?>assets/img/profile-pics/1.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lv-title">David Belle</div>
@@ -259,11 +259,11 @@ foreach ($tarefas->result() as $tarefa)
             <div class="profile-menu">
                 <a href="">
                     <div class="profile-pic">
-                        <img src="assets/img/profile-pics/1.jpg" alt="">
+                        <img src="<?php echo base_url(); ?>assets/img/profile-pics/4.jpg" alt="">
                     </div>
 
                     <div class="profile-info">
-                        Malinda Hollaway
+                        Go Pantanal
 
                         <i class="zmdi zmdi-caret-down"></i>
                     </div>
