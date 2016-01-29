@@ -48,7 +48,7 @@ tarefa.gerenciaItem = $(document).ready(function() {
 });
 
 tarefa.alteraStatusDaTarefa = $(document).ready(function() {
-    $('body').on('change', 'input:checkbox', function() {
+    $('.js-container-da-tarefa').on('change', 'input:checkbox', function() {
         if ($(this).is(':checked')) {
             $.ajax({
                 url: $('#base_url').val() + 'index.php/tarefa/alteraStatusDaTarefa',
@@ -69,19 +69,5 @@ tarefa.alteraStatusDaTarefa = $(document).ready(function() {
                 }
             });
         }
-    });
-});
-
-tarefa.excluir = $(document).ready(function() {
-    $('.js-excluir-tarefa').on('click', function() {
-        var idDaTarefa = $(this).attr('iddatarefa');
-        alert(idDaTarefa);
-        $.ajax({
-            url: $('#base_url').val() + 'index.php/tarefa/excluir',
-            type: 'POST',
-            data: {id: idDaTarefa},
-            success: function(msg) {
-            }
-        });
     });
 });

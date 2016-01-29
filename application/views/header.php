@@ -29,6 +29,13 @@ foreach ($tarefas->result() as $tarefa)
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
+
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css">
+
 </head>
 <body>
     <header id="header" class="clearfix" data-current-skin="blue">
@@ -61,7 +68,7 @@ foreach ($tarefas->result() as $tarefa)
                     <li class="dropdown">
                         <a data-toggle="dropdown" href="">
                             <i class="tm-icon zmdi zmdi-email"></i>
-                            <?php echo $qtdDeEmailsNaoLidos > 0 ? "<i class='tmn-counts'>". $qtdDeEmailsNaoLidos ."</i>" : "";?>
+                            <?php echo $qtdDeEmailsNaoLidos > 0 ? "<i class='tmn-counts'>" . $qtdDeEmailsNaoLidos . "</i>" : ""; ?>
                         </a>
                         <div class="dropdown-menu dropdown-menu-lg pull-right">
                             <div class="listview">
@@ -69,25 +76,28 @@ foreach ($tarefas->result() as $tarefa)
                                     Caixa de Entrada
                                 </div>
                                 <div class="lv-body">
-                                    <?php 
+                                    <?php
                                     $contadorDeEmails = 0;
-                                    foreach($emails as $email){?>
-                                    <a class="lv-item" href="<?php echo base_url() . "index.php/Mail/detalharEmail?idDoEmailNoServidor=" . $email->idDoEmailNoServidor; ?>">
-                                        <!--<input name="input-com-id-do-email" hidden="true" value="<?php // echo $email->idDoEmailNoServidor; ?>" />-->
-                                        <div class="media">
-                                            <div class="pull-left">
-                                                <i class="zmdi <?php echo $email->foiLido ? "zmdi-email-open" : "zmdi-email"; ?> zmdi-hc-3x"></i>
+                                    foreach ($emails as $email) {
+                                        ?>
+                                        <a class="lv-item" href="<?php echo base_url() . "index.php/Mail/detalharEmail?idDoEmailNoServidor=" . $email->idDoEmailNoServidor; ?>">
+                                            <div class="media">
+                                                <div class="pull-left">
+                                                    <i class="zmdi <?php echo $email->foiLido ? "zmdi-email-open" : "zmdi-email"; ?> zmdi-hc-3x"></i>
+                                                </div>
+                                                <div class="media-body">
+                                                    <div class="lv-title"><?php echo $email->nomeRemetente; ?></div>
+                                                    <small class="lv-small"><?php echo $email->assunto; ?></small>
+                                                </div>
                                             </div>
-                                            <div class="media-body">
-                                                <div class="lv-title"><?php echo $email->nomeRemetente; ?></div>
-                                                <small class="lv-small"><?php echo $email->assunto; ?></small>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <?php 
+                                        </a>
+                                        <?php
                                         $contadorDeEmails ++;
-                                        if($contadorDeEmails === 5){break;}
-                                    }?>
+                                        if ($contadorDeEmails === 5) {
+                                            break;
+                                        }
+                                    }
+                                    ?>
                                 </div>
                                 <a class="lv-footer" href="<?php echo base_url() . "index.php/mail"; ?>">Ver todos</a>
                             </div>
@@ -115,7 +125,7 @@ foreach ($tarefas->result() as $tarefa)
                                     <a class="lv-item" href="">
                                         <div class="media">
                                             <div class="pull-left">
-                                                <img class="lv-img-sm" src="<?php echo base_url()?>assets/img/profile-pics/1.jpg" alt="">
+                                                <img class="lv-img-sm" src="<?php echo base_url() ?>assets/img/profile-pics/1.jpg" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="lv-title">David Belle</div>

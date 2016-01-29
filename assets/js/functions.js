@@ -550,6 +550,24 @@ $(document).ready(function () {
     ;
 
     /*
+     * Ativa Menu Lateral
+     */
+    $('body').on('change', '#toggle-width input:checkbox', function () {
+            if ($(this).is(':checked')) {
+                setTimeout(function () {
+                    $('body').addClass('toggled sw-toggled');
+                    localStorage.setItem('ma-layout-status', 1);
+                }, 250);
+            }
+            else {
+                setTimeout(function () {
+                    $('body').removeClass('toggled sw-toggled');
+                    localStorage.setItem('ma-layout-status', 0);
+                }, 250);
+            }
+        });
+
+    /*
      * Waves Animation
      */
     (function () {
