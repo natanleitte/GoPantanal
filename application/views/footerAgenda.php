@@ -274,7 +274,6 @@
 
             if (eventName != '') {
                 //Render Event
-                alert($('#getStart').val());
                 $('#calendar').fullCalendar('renderEvent', {
                     title: eventName,
                     start: $('#getStart').val(),
