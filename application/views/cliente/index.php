@@ -103,7 +103,7 @@
                            echo "<div class='col-md-2 col-sm-4 col-xs-6' id='" . $cliente->id . $cliente->nome . "'>";
                            echo "<div class='c-item'>";
                            echo "<a href='" . base_url() . "index.php/cliente/profile?id=" . $cliente->id . "' class='ci-avatar'>";
-                           echo "<img src='" . base_url() . "assets/img/contacts/10.jpg' alt=''>";
+                           echo "<img src='" . base_url() . "assets/img/contacts/anonimo.png' alt=''>";
                            echo "</a>";
 
                            echo "<div class='c-info'>";
