@@ -45,7 +45,7 @@
                         <?php echo form_close(); ?>
                         <script>
                             $('#enviarEmail').on('click', function(){
-                                var conteudoDaDiv = $(".note-editing-area").html();
+                                var conteudoDaDiv = $(".note-editable").html();
                                 $("#corpoDoEmail").val(conteudoDaDiv);
                             });
                         </script>

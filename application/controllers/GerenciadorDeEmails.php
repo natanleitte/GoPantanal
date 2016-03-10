@@ -67,7 +67,7 @@ class GerenciadorDeEmails extends CI_Controller {
 
         $this->email->from($email->emailRemetente);
         $this->email->to($email->emailDestinatario);
-        $this->email->subject("Resposta: " . $email->assunto);
+        $this->email->subject($email->assunto);
         $this->email->message($email->corpoDoEmail);
         $this->email->send();
         echo $this->email->print_debugger();

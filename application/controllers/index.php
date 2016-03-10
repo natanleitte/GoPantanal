@@ -13,6 +13,7 @@
             $data['tarefas'] = $this->TarefaModel->getTarefas();
             $data['emails'] = $this->EmailModel->obterTodos();
             $data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
+            $data['ultimosCincoEmails'] = $this->EmailModel->obterOsUltimosCincoEmails();
 
            $this->load->view('header', $data);
            $this->load->view('index');

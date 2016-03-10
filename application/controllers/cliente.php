@@ -17,6 +17,7 @@ class Cliente extends CI_Controller {
         $data['emails'] = $this->EmailModel->obterTodos();
         $data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
         $data['clientes'] = $this->ClienteModel->getClientes();
+        $data['ultimosCincoEmails'] = $this->EmailModel->obterOsUltimosCincoEmails();
 
         $this->load->view('header', $data);
         $this->load->view('cliente/index', $data);
