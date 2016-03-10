@@ -29,21 +29,15 @@
 
                     <!-- Responder email form -->
                     <div>
-                        <?php echo form_open(base_url() . 'index.php/Mail/enviar'); ?>
+                        <?php echo form_open(base_url() . 'index.php/Mail/enviar?id=' . $email->idDoEmailNoServidor); ?>
                             <div class="card-body card-padding">
-                                <p class="f-500 c-black m-b-20">Responder</p>
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <input id="destinatario" type="hidden" name="destinatario" value="<?php echo $email->emailRemetente; ?>">
                                         <input id="corpoDoEmail" type="hidden" name="corpoDoEmail" value="">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="zmdi zmdi-assignment"></i></span>
-                                            <div class="fg-line">    
-                                                <input id="assunto" type="text" class="form-control" name="assunto" placeholder=" Assunto...">
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
+                                <h3>Responder</h3>
                                 <br/>
                                 <div class="html-editor"></div>
                             </div>
@@ -51,8 +45,8 @@
                         <?php echo form_close(); ?>
                         <script>
                             $('#enviarEmail').on('click', function(){
-                                var valorDaDiv = $(".note-editing-area").text();
-                                $("#corpoDoEmail").val(valorDaDiv);
+                                var conteudoDaDiv = $(".note-editing-area").html();
+                                $("#corpoDoEmail").val(conteudoDaDiv);
                             });
                         </script>
                     </div>

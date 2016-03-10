@@ -74,18 +74,13 @@ class Mail extends CI_Controller {
     }
 
     public function enviar() {
+        $this->idDoEmailDetalhado = $this->input->get('id', TRUE);
+        $dadosDoEmail = $this->EmailModel->obterPor($this->idDoEmailDetalhado);
         $email = new Email;
         $email->emailRemetente = "jorge@nexxus.com.br";
-        $email->assunto = $this->input->post('assunto');
-        $email->emailDestinatario = $this->input->post('destinatario');
+        $email->assunto = $dadosDoEmail->assunto;
+        $email->emailDestinatario = $dadosDoEmail->emailRemetente;
         $email->corpoDoEmail = quoted_printable_decode($this->input->post('corpoDoEmail'));
-
-//        echo "Remetente: " . $email->emailRemetente . "<br>";
-//        echo "Assunto: " . $email->assunto . "<br>";
-//        echo "Destinatario: " . $email->emailDestinatario . "<br>";
-//        echo "Corpo do email: " . $email->corpoDoEmail;
-        echo $this->idDoEmailDetalhado;
-        exit();
 
         $this->gerenciadorDeEmails->enviar($email);
         
