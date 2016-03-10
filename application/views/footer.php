@@ -82,6 +82,18 @@
 <script src="<?php echo base_url() . "assets/" ?>vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.min.js"></script>
 <script src="<?php echo base_url() . "assets/" ?>vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
 
+<script src="<?php echo base_url() . "assets/" ?>vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
+<script src="<?php echo base_url() . "assets/" ?>vendors/bower_components/nouislider/distribute/jquery.nouislider.all.min.js"></script>
+<script src="<?php echo base_url() . "assets/" ?>vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+<script src="<?php echo base_url() . "assets/" ?>vendors/bower_components/typeahead.js/dist/typeahead.bundle.min.js"></script>
+<script src="<?php echo base_url() . "assets/" ?>vendors/summernote/dist/summernote-updated.min.js"></script>
+
+
+<script src="<?php echo base_url() . "assets/" ?>vendors/bower_components/chosen/chosen.jquery.min.js"></script>
+<script src="<?php echo base_url() . "assets/" ?>vendors/fileinput/fileinput.min.js"></script>
+<script src="<?php echo base_url() . "assets/" ?>vendors/input-mask/input-mask.min.js"></script>
+<script src="<?php echo base_url() . "assets/" ?>vendors/farbtastic/farbtastic.min.js"></script>
+
 <!-- Placeholder for IE9 -->
 <!--[if IE 9 ]>
     <script src="vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>

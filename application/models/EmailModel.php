@@ -13,6 +13,7 @@ class EmailModel extends CI_Model {
 
     public function obterTodos() {
         return $this->db->get('email')->result();
+
     }
 
     public function obterPor($id) {
@@ -40,6 +41,7 @@ class EmailModel extends CI_Model {
     
     public function obterOsUltimosCincoEmails(){
         $this->db->limit(5);
+        $this->db->order_by('idDoEmailNoServidor', 'desc');
         return $this->db->get('email')->result();
     }
 }

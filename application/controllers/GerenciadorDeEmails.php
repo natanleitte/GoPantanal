@@ -2,7 +2,6 @@
 
 include 'PhpImap\Mailbox.php';
 include 'PhpImap\IncomingMail.php';
-include APPPATH . 'controllers\email\Email.php';
 
 class GerenciadorDeEmails extends CI_Controller {
 
@@ -51,5 +50,21 @@ class GerenciadorDeEmails extends CI_Controller {
         }
         return $listaDeNovosEmails;
     }
+    
+    public function enviar($email){
+        $this->load->library('email');
+        
+        $config['protocol'] = 'smtp';
+        $config['mailpath'] = '/usr/sbin/sendmail';
+        $config['charset'] = 'iso-8859-1';
+        $config['wordwrap'] = TRUE;
 
+        $this->email->initialize($config);
+
+        $this->email->from($email->emailRemetente);
+        $this->email->to($email->emailDestinatario);
+        $this->email->subject($email->assunto);
+        $this->email->message($email->corpoDoEmail);
+        $this->email->send();
+    }
 }

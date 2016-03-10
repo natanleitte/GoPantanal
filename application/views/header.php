@@ -22,13 +22,24 @@ foreach ($tarefas->result() as $tarefa)
     <link href="<?php echo base_url() . "assets/" ?>vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.css" rel="stylesheet">
     <link href="<?php echo base_url() . "assets/" ?>vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
     <link href="<?php echo base_url() . "assets/" ?>vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">        
-
+    <link href="<?php echo base_url() . "assets/" ?>vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet">
+    <link href="<?php echo base_url() . "assets/" ?>vendors/bower_components/nouislider/distribute/jquery.nouislider.min.css" rel="stylesheet">
+    <link href="<?php echo base_url() . "assets/" ?>vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="<?php echo base_url() . "assets/" ?>vendors/farbtastic/farbtastic.css" rel="stylesheet">
+    <link href="<?php echo base_url() . "assets/" ?>vendors/bower_components/chosen/chosen.min.css" rel="stylesheet">
+    <link href="<?php echo base_url() . "assets/" ?>vendors/summernote/dist/summernote.css" rel="stylesheet">
+    
     <!-- CSS -->
     <link href="<?php echo base_url() . "assets/" ?>css/app.min.1.css" rel="stylesheet">
     <link href="<?php echo base_url() . "assets/" ?>css/app.min.2.css" rel="stylesheet">
 
+    <!-- Following CSS are used only for the Demp purposes thus you can remove this anytime. -->
+    <style type="text/css">
+        .toggle-switch .ts-label {
+            min-width: 130px;
+        }
+    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-
 </head>
 <body>
     <header id="header" class="clearfix" data-current-skin="blue">

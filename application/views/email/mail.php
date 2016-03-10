@@ -24,15 +24,14 @@
                 <h2>Emails</h2>
             </div>
 
-            <table id="data-table-command" class="table table-striped table-vmiddle js-email">
+            <table id="data-table-command" class="table table-striped table-vmiddle">
                 <thead>
                     <tr>
-                        <th data-column-id="id" data-type="numeric" data-identifier="true">Id</th>
+                        <th data-column-id="id" data-type="numeric" data-order="desc" data-identifier="true">Id</th>
                         <th data-column-id="De" data-type="text">De</th>
                         <th data-column-id="Assunto">Assunto</th>
                         <th data-column-id="Data" data-order="desc">Data</th>
-                        <th data-column-id="commands" data-formatter="commands"
-                            data-sortable="false"></th>
+                        <th data-column-id="commands" data-formatter="commands" data-sortable="false"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,7 +40,7 @@
                         <td> <?php echo $email->idDoEmailNoServidor; ?> </td>
                         <td><?php echo $email->emailRemetente; ?></td>
                         <td><?php echo $email->assunto; ?></td>
-                        <td><?php echo $email->dataDeEnvio; ?></td>
+                        <td><?php echo date('d/m/Y H:i:s', strtotime($email->dataDeEnvio)); ?></td>
                     </tr>
                     <?php } ?>
                 </tbody>
@@ -65,19 +64,10 @@
             },
             formatters: {
                 "commands": function(column, row) {
-                    return "<div class=\"row\">"+
-                            "<form action=\"http://localhost/projects/goPantanal/GoPantanal/index.php/Mail/detalharEmail\" method=\"post\" accept-charset=\"utf-8\" class=\"col-sm-6 col-md-3\">" +
-                            "<input id=\"js-input-com-id-do-email\" name=\"input-com-id-do-email\" hidden=\"true\" value=\"" + row.id + "\" />" +
-                            "<button id=\"js-botao-visualizar-email\" type=\"submit\" class=\"btn btn-icon command-edit waves-effect waves-circle\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Visualizar e-mail\" data-row-id=\"" + row.id + "\"><span class=\"zmdi zmdi-email-open\"></span></button></form>" +
-                            
-                            "<form action=\"http://localhost/projects/goPantanal/GoPantanal/index.php/Mail/excluirEmail\" method=\"post\" accept-charset=\"utf-8\" class=\"col-sm-6 col-md-3\">" +
-                            "<input id=\"js-input-com-id-do-email\" name=\"input-com-id-do-email\" hidden=\"true\" value=\"" + row.id + "\" />" +
-                            "<button type=\"submit\" class=\"btn btn-icon command-delete waves-effect waves-circle\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Excluir\" data-row-id=\"" + row.id + "\"><span class=\"zmdi zmdi-delete\"></span></button></form>"+
-                            "<\div>";
+                return  "<a class='btn btn-icon command-edit waves-effect waves-circle' href='<?php echo base_url(); ?>index.php/Mail/detalharEmail?id=" + row.id + "'><span class='zmdi zmdi-email-open'></span></a>" +
+                        "<a class='btn btn-icon command-edit waves-effect waves-circle' href=' <?php echo base_url(); ?>index.php/Mail/excluirEmail?id=" + row.id + "'><span class='zmdi zmdi-delete'></span></a>";
                 }
             }
         });
-        
-        $('.js-email').parent('tr').css('font-weight', 'bold');
     });
 </script>

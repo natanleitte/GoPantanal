@@ -1,10 +1,12 @@
 <?php
 
+include APPPATH . 'controllers\email\Email.php';
 include APPPATH . 'controllers\GerenciadorDeEmails.php';
 
 class Mail extends CI_Controller {
 
     private $gerenciadorDeEmails;
+    private $idDoEmailDetalhado;
 
     public function __construct() {
         parent::__construct();
@@ -45,21 +47,24 @@ class Mail extends CI_Controller {
     }
 
     public function detalharEmail() {
-//        $id = $this->input->post('input-com-id-do-email');
-        $id = $this->input->get('idDoEmailNoServidor', TRUE);
-        $this->EmailModel->marcarComoLido($id);
-        $data['email'] = $this->EmailModel->obterPor($id);
+        $this->idDoEmailDetalhado = $this->input->get('id', TRUE);
+        $this->EmailModel->marcarComoLido($this->idDoEmailDetalhado);
+        $this->configurarDadosParaExibirPaginaDeDetalhesDeEmail();
+    }
+
+    private function configurarDadosParaExibirPaginaDeDetalhesDeEmail() {
+        $data['email'] = $this->EmailModel->obterPor($this->idDoEmailDetalhado);
         $data['tarefas'] = $this->TarefaModel->getTarefas();
         $data['emails'] = $this->EmailModel->obterTodos();
         $data['ultimosCincoEmails'] = $this->EmailModel->obterOsUltimosCincoEmails();
         $data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
         $this->renderizarParaPaginaDeDetalhesDoEmail($data);
     }
-    
-    public function excluirEmail(){
-        $id = $this->input->post('input-com-id-do-email');
-        $this->EmailModel->excluir($id);
-        redirect("mail", 'location');
+
+    public function excluirEmail() {
+        $this->idDoEmailDetalhado = $this->input->get('idDoEmailNoServidor', TRUE);
+        $this->EmailModel->excluir($this->idDoEmailDetalhado);
+        $this->configurarDadosParaExibirPaginaDeDetalhesDeEmail();
     }
 
     private function renderizarParaPaginaDeDetalhesDoEmail($data) {
@@ -67,4 +72,24 @@ class Mail extends CI_Controller {
         $this->load->view('email/DetalhesEmail', $data);
         $this->load->view('footer');
     }
+
+    public function enviar() {
+        $email = new Email;
+        $email->emailRemetente = "jorge@nexxus.com.br";
+        $email->assunto = $this->input->post('assunto');
+        $email->emailDestinatario = $this->input->post('destinatario');
+        $email->corpoDoEmail = quoted_printable_decode($this->input->post('corpoDoEmail'));
+
+//        echo "Remetente: " . $email->emailRemetente . "<br>";
+//        echo "Assunto: " . $email->assunto . "<br>";
+//        echo "Destinatario: " . $email->emailDestinatario . "<br>";
+//        echo "Corpo do email: " . $email->corpoDoEmail;
+        echo $this->idDoEmailDetalhado;
+        exit();
+
+        $this->gerenciadorDeEmails->enviar($email);
+        
+        $this->configurarDadosParaExibirPaginaDeDetalhesDeEmail();
+    }
+
 }
