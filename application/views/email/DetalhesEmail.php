@@ -12,8 +12,8 @@
                             <h2>
                                 <?php echo $email->assunto; ?>
                                 <small>
-                                    <?php echo "<b>" . $email->nomeRemetente . "</b>" . " - [" . $email->emailRemetente . "]"; ?>
-                                    Cc: <?php echo $email->emailCC . "<br>"; ?>
+                                    <?php echo "De: <b>" . $email->nomeRemetente . "</b>" . " - ( " . $email->emailRemetente . " )<br>"; ?>
+                                    <?php echo "Cc: <b>" . $email->emailCC . "</b><br>"; ?>
                                     Encaminhado em <?php echo date('d/m/Y H:i:s', strtotime($email->dataDeEnvio)); ?>
                                 </small>
                             </h2>
@@ -30,21 +30,22 @@
                     <!-- Responder email form -->
                     <div>
                         <?php echo form_open(base_url() . 'index.php/Mail/enviar?id=' . $email->idDoEmailNoServidor); ?>
-                            <div class="card-body card-padding">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <input id="destinatario" type="hidden" name="destinatario" value="<?php echo $email->emailRemetente; ?>">
-                                        <input id="corpoDoEmail" type="hidden" name="corpoDoEmail" value="">
-                                    </div>
+                        <div class="card-body card-padding">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <input id="destinatario" type="hidden" name="destinatario" value="<?php echo $email->emailRemetente; ?>">
+                                    <input id="corpoDoEmail" type="hidden" name="corpoDoEmail" value="">
                                 </div>
-                                <h3>Responder</h3>
-                                <br/>
-                                <div class="html-editor"></div>
                             </div>
-                            <button id="enviarEmail" class="btn btn-default"><i class="zmdi zmdi-mail-send"></i></button>
+                            <blockquote class="m-b-25">
+                                <p>Responder</p>
+                            </blockquote>
+                            <div class="html-editor"></div>
+                        </div>
+                        <button id="enviarEmail" class="btn bgm-blue btn-float waves-effect"><i class="zmdi zmdi-mail-send"></i></button>
                         <?php echo form_close(); ?>
                         <script>
-                            $('#enviarEmail').on('click', function(){
+                            $('#enviarEmail').on('click', function() {
                                 var conteudoDaDiv = $(".note-editable").html();
                                 $("#corpoDoEmail").val(conteudoDaDiv);
                             });
