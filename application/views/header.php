@@ -28,7 +28,7 @@ foreach ($tarefas->result() as $tarefa)
     <link href="<?php echo base_url() . "assets/" ?>vendors/farbtastic/farbtastic.css" rel="stylesheet">
     <link href="<?php echo base_url() . "assets/" ?>vendors/bower_components/chosen/chosen.min.css" rel="stylesheet">
     <link href="<?php echo base_url() . "assets/" ?>vendors/summernote/dist/summernote.css" rel="stylesheet">
-    
+
     <!-- CSS -->
     <link href="<?php echo base_url() . "assets/" ?>css/app.min.1.css" rel="stylesheet">
     <link href="<?php echo base_url() . "assets/" ?>css/app.min.2.css" rel="stylesheet">
@@ -41,7 +41,7 @@ foreach ($tarefas->result() as $tarefa)
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 </head>
-<body>
+<body class="toggled sw-toggled">
     <header id="header" class="clearfix" data-current-skin="blue">
         <ul class="header-inner">
             <li id="menu-trigger" data-trigger="#sidebar">
@@ -58,17 +58,6 @@ foreach ($tarefas->result() as $tarefa)
 
             <li class="pull-right">
                 <ul class="top-menu">
-                    <li id="toggle-width">
-                        <div class="toggle-switch">
-                            <input id="tw-switch" type="checkbox" hidden="hidden">
-                            <label for="tw-switch" class="ts-helper"></label>
-                        </div>
-                    </li>
-
-                    <li id="top-search">
-                        <a href=""><i class="tm-icon zmdi zmdi-search"></i></a>
-                    </li>
-
                     <li class="dropdown">
                         <a data-toggle="dropdown" href="">
                             <i class="tm-icon zmdi zmdi-email"></i>
@@ -81,26 +70,23 @@ foreach ($tarefas->result() as $tarefa)
                                 </div>
                                 <div class="lv-body">
                                     <?php
-                                    $contadorDeEmails = 0;
-                                    foreach ($emails as $email) {
+                                    foreach ($ultimosCincoEmails as $email) {
                                         ?>
                                         <a class="lv-item" href="<?php echo base_url() . "index.php/Mail/detalharEmail?idDoEmailNoServidor=" . $email->idDoEmailNoServidor; ?>">
                                             <div class="media">
                                                 <div class="pull-left">
-                                                    <i class="zmdi <?php echo $email->foiLido ? "zmdi-email-open" : "zmdi-email"; ?> zmdi-hc-3x"></i>
+                                                    <i class="zmdi <?php echo $email->foiLido ? "zmdi-email-open" : "zmdi-email"; ?> zmdi-hc-2x"></i>
                                                 </div>
                                                 <div class="media-body">
-                                                    <div class="lv-title"><?php echo $email->nomeRemetente; ?></div>
-                                                    <small class="lv-small"><?php echo $email->assunto; ?></small>
+                                                    <?php echo $email->foiLido ? "" : "<b>"; ?>
+                                                    <div class="lv-title"><?php echo $email->assunto; ?></div>
+                                                    <small class="lv-small"><?php echo $email->nomeRemetente; ?></small>
+                                                    <?php echo $email->foiLido ? "" : "</b>"; ?>
                                                 </div>
                                             </div>
                                         </a>
                                         <?php
-                                        $contadorDeEmails ++;
-                                        if ($contadorDeEmails === 5) {
-                                            break;
-                                        }
-                                    }
+                                    } //Fim do foreach
                                     ?>
                                 </div>
                                 <a class="lv-footer" href="<?php echo base_url() . "index.php/mail"; ?>">Ver todos</a>
@@ -251,13 +237,9 @@ foreach ($tarefas->result() as $tarefa)
                             </li>
                         </ul>
                     </li>
-                    <li class="hidden-xs" id="chat-trigger" data-trigger="#chat">
-                        <a href=""><i class="tm-icon zmdi zmdi-comment-alt-text"></i></a>
-                    </li>
                 </ul>
             </li>
         </ul>
-
 
         <!-- Top Search Content -->
         <div id="top-search-wrap">
@@ -275,10 +257,8 @@ foreach ($tarefas->result() as $tarefa)
                     <div class="profile-pic">
                         <img src="<?php echo base_url(); ?>assets/img/profile-pics/4.jpg" alt="">
                     </div>
-
                     <div class="profile-info">
                         Go Pantanal
-
                         <i class="zmdi zmdi-caret-down"></i>
                     </div>
                 </a>
@@ -313,210 +293,6 @@ foreach ($tarefas->result() as $tarefa)
                 <li><a href="<?php echo base_url() . "index.php/" ?>agenda"><i class="zmdi zmdi-calendar"></i> Agenda</a></li>
                 <li><a href="<?php echo base_url() . "index.php/" ?>tarefa"><i class="zmdi zmdi-view-list"></i> Tarefas</a></li>
                 <li><a href="<?php echo base_url() . "index.php/" ?>mail"><i class="zmdi zmdi-email"></i> E-mail</a></li>
-                <!--
-                                <li class="sub-menu">
-                                    <a href=""><i class="zmdi zmdi-view-compact"></i> Headers</a>
-                
-                                    <ul>
-                                        <li><a href="textual-menu.html">Textual menu</a></li>
-                                        <li><a href="image-logo.html">Image logo</a></li>
-                                        <li><a href="top-mainmenu.html">Mainmenu on top</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="typography.html"><i class="zmdi zmdi-format-underlined"></i> Typography</a></li>
-                                <li class="sub-menu">
-                                    <a href=""><i class="zmdi zmdi-widgets"></i> Widgets</a>
-                
-                                    <ul>
-                                        <li><a href="widget-templates.html">Templates</a></li>
-                                        <li><a href="widgets.html">Widgets</a></li>
-                                    </ul>
-                                </li>
-                                <li class="sub-menu">
-                                    <a href=""><i class="zmdi zmdi-view-list"></i> Tables</a>
-                
-                                    <ul>
-                                        <li><a href="tables.html">Normal Tables</a></li>
-                                        <li><a href="data-tables.html">Data Tables</a></li>
-                                    </ul>
-                                </li>
-                                <li class="sub-menu">
-                                    <a href=""><i class="zmdi zmdi-collection-text"></i> Forms</a>
-                
-                                    <ul>
-                                        <li><a href="form-elements.html">Basic Form Elements</a></li>
-                                        <li><a href="form-components.html">Form Components</a></li>
-                                        <li><a href="form-examples.html">Form Examples</a></li>
-                                        <li><a href="form-validations.html">Form Validation</a></li>
-                                    </ul>
-                                </li>
-                                <li class="sub-menu">
-                                    <a href=""><i class="zmdi zmdi-swap-alt"></i>User Interface</a>
-                                    <ul>
-                                        <li><a href="colors.html">Colors</a></li>
-                                        <li><a href="animations.html">Animations</a></li>
-                                        <li><a href="box-shadow.html">Box Shadow</a></li>
-                                        <li><a href="buttons.html">Buttons</a></li>
-                                        <li><a href="icons.html">Icons</a></li>
-                                        <li><a href="alerts.html">Alerts</a></li>
-                                        <li><a href="preloaders.html">Preloaders</a></li>
-                                        <li><a href="notification-dialog.html">Notifications & Dialogs</a></li>
-                                        <li><a href="media.html">Media</a></li>
-                                        <li><a href="components.html">Components</a></li>
-                                        <li><a href="other-components.html">Others</a></li>
-                                    </ul>
-                                </li>
-                                <li class="sub-menu">
-                                    <a href=""><i class="zmdi zmdi-trending-up"></i>Charts</a>
-                                    <ul>
-                                        <li><a href="flot-charts.html">Flot Charts</a></li>
-                                        <li><a href="other-charts.html">Other Charts</a></li>
-                                    </ul>
-                                </li>
-                
-                                <li class="sub-menu">
-                                    <a href=""><i class="zmdi zmdi-image"></i>Photo Gallery</a>
-                                    <ul>
-                                        <li><a href="photos.html">Default</a></li>
-                                        <li><a href="photo-timeline.html">Timeline</a></li>
-                                    </ul>
-                                </li>
-                
-                                <li><a href="generic-classes.html"><i class="zmdi zmdi-layers"></i> Generic Classes</a></li>
-                                <li class="sub-menu">
-                                    <a href=""><i class="zmdi zmdi-collection-item"></i> Sample Pages</a>
-                                    <ul>
-                                        <li><a href="profile-about.html">Profile</a></li>
-                                        <li><a href="list-view.html">List View</a></li>
-                                        <li><a href="messages.html">Messages</a></li>
-                                        <li><a href="pricing-table.html">Pricing Table</a></li>
-                                        <li><a href="contacts.html">Contacts</a></li>
-                                        <li><a href="wall.html">Wall</a></li>
-                                        <li><a href="invoice.html">Invoice</a></li>
-                                        <li><a href="login.html">Login and Sign Up</a></li>
-                                        <li><a href="lockscreen.html">Lockscreen</a></li>
-                                        <li><a href="404.html">Error 404</a></li>
-                                    </ul>
-                                </li>
-                                <li class="sub-menu">
-                                    <a href="form-examples.html"><i class="zmdi zmdi-menu"></i> 3 Level Menu</a>
-                
-                                    <ul>
-                                        <li><a href="form-elements.html">Level 2 link</a></li>
-                                        <li><a href="form-components.html">Another level 2 Link</a></li>
-                                        <li class="sub-menu">
-                                            <a href="form-examples.html">I have children too</a>
-                
-                                            <ul>
-                                                <li><a href="">Level 3 link</a></li>
-                                                <li><a href="">Another Level 3 link</a></li>
-                                                <li><a href="">Third one</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="form-validations.html">One more 2</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="https://wrapbootstrap.com/theme/material-admin-responsive-angularjs-WB011H985"><i class="zmdi zmdi-money"></i> Buy this template</a>
-                                </li>-->
             </ul>
-        </aside>
-
-        <aside id="chat" class="sidebar c-overflow">
-
-            <div class="chat-search">
-                <div class="fg-line">
-                    <input type="text" class="form-control" placeholder="Search People">
-                </div>
-            </div>
-
-            <div class="listview">
-                <a class="lv-item" href="">
-                    <div class="media">
-                        <div class="pull-left p-relative">
-                            <img class="lv-img-sm" src="assets/img/profile-pics/2.jpg" alt="">
-                            <i class="chat-status-busy"></i>
-                        </div>
-                        <div class="media-body">
-                            <div class="lv-title">Jonathan Morris</div>
-                            <small class="lv-small">Available</small>
-                        </div>
-                    </div>
-                </a>
-
-                <a class="lv-item" href="">
-                    <div class="media">
-                        <div class="pull-left">
-                            <img class="lv-img-sm" src="assets/img/profile-pics/1.jpg" alt="">
-                        </div>
-                        <div class="media-body">
-                            <div class="lv-title">David Belle</div>
-                            <small class="lv-small">Last seen 3 hours ago</small>
-                        </div>
-                    </div>
-                </a>
-
-                <a class="lv-item" href="">
-                    <div class="media">
-                        <div class="pull-left p-relative">
-                            <img class="lv-img-sm" src="assets/img/profile-pics/3.jpg" alt="">
-                            <i class="chat-status-online"></i>
-                        </div>
-                        <div class="media-body">
-                            <div class="lv-title">Fredric Mitchell Jr.</div>
-                            <small class="lv-small">Availble</small>
-                        </div>
-                    </div>
-                </a>
-
-                <a class="lv-item" href="">
-                    <div class="media">
-                        <div class="pull-left p-relative">
-                            <img class="lv-img-sm" src="assets/img/profile-pics/4.jpg" alt="">
-                            <i class="chat-status-online"></i>
-                        </div>
-                        <div class="media-body">
-                            <div class="lv-title">Glenn Jecobs</div>
-                            <small class="lv-small">Availble</small>
-                        </div>
-                    </div>
-                </a>
-
-                <a class="lv-item" href="">
-                    <div class="media">
-                        <div class="pull-left">
-                            <img class="lv-img-sm" src="assets/img/profile-pics/5.jpg" alt="">
-                        </div>
-                        <div class="media-body">
-                            <div class="lv-title">Bill Phillips</div>
-                            <small class="lv-small">Last seen 3 days ago</small>
-                        </div>
-                    </div>
-                </a>
-
-                <a class="lv-item" href="">
-                    <div class="media">
-                        <div class="pull-left">
-                            <img class="lv-img-sm" src="assets/img/profile-pics/6.jpg" alt="">
-                        </div>
-                        <div class="media-body">
-                            <div class="lv-title">Wendy Mitchell</div>
-                            <small class="lv-small">Last seen 2 minutes ago</small>
-                        </div>
-                    </div>
-                </a>
-                <a class="lv-item" href="">
-                    <div class="media">
-                        <div class="pull-left p-relative">
-                            <img class="lv-img-sm" src="assets/img/profile-pics/7.jpg" alt="">
-                            <i class="chat-status-busy"></i>
-                        </div>
-                        <div class="media-body">
-                            <div class="lv-title">Teena Bell Ann</div>
-                            <small class="lv-small">Busy</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
         </aside>
 

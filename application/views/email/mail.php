@@ -1,53 +1,37 @@
 <section id="content">
     <div class="container">
-        <div class="block-header">
-
-            <ul class="actions">
-                <li><a href=""> <i class="zmdi zmdi-trending-up"></i>
-                    </a></li>
-                <li><a href=""> <i class="zmdi zmdi-check-all"></i>
-                    </a></li>
-                <li class="dropdown"><a href="" data-toggle="dropdown"> <i
-                            class="zmdi zmdi-more-vert"></i>
-                    </a>
-
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <li><a href="">Refresh</a></li>
-                        <li><a href="">Manage Widgets</a></li>
-                        <li><a href="">Widgets Settings</a></li>
-                    </ul></li>
-            </ul>
-        </div>
 
         <div class="card">
-            <div class="card-header">
-                <h2>Emails</h2>
-            </div>
+            <blockquote class="m-b-25">
+                <p>E-mails</p>
+            </blockquote>
 
             <table id="data-table-command" class="table table-striped table-vmiddle">
                 <thead>
                     <tr>
-                        <th data-column-id="id" data-type="numeric" data-order="desc" data-identifier="true">Id</th>
-                        <th data-column-id="De" data-type="text">De</th>
-                        <th data-column-id="Assunto">Assunto</th>
-                        <th data-column-id="Data" data-order="desc">Data</th>
+                        <th data-column-id="novo" data-type="numeric" data-hidden="true"></th>
+                        <th data-column-id="id" data-formatter="id" data-type="numeric" data-order="desc" data-hidden="true"></th>
+                        <th data-column-id="de" data-formatter="de" data-type="text">De</th>
+                        <th data-column-id="assunto" data-formatter="assunto" data-type="text">Assunto</th>
+                        <th data-column-id="data" data-formatter="data" data-type="text">Data</th>
                         <th data-column-id="commands" data-formatter="commands" data-sortable="false"></th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($emails as $email) { ?>
-                    <tr>
-                        <td> <?php echo $email->idDoEmailNoServidor; ?> </td>
-                        <td><?php echo $email->emailRemetente; ?></td>
-                        <td><?php echo $email->assunto; ?></td>
-                        <td><?php echo date('d/m/Y H:i:s', strtotime($email->dataDeEnvio)); ?></td>
-                    </tr>
+                        <tr>
+                            <td> <?php echo $email->foiLido; ?> </td>
+                            <td> <?php echo $email->idDoEmailNoServidor; ?> </td>
+                            <td><?php echo $email->emailRemetente; ?></td>
+                            <td><?php echo $email->assunto; ?></td>
+                            <td><?php echo date('d/m/Y H:i:s', strtotime($email->dataDeEnvio)); ?></td>
+                        </tr>
                     <?php } ?>
                 </tbody>
             </table>
         </div>
     </div>
-    
+
 </section>
 
 
@@ -64,10 +48,35 @@
             },
             formatters: {
                 "commands": function(column, row) {
-                return  "<a class='btn btn-icon command-edit waves-effect waves-circle' href='<?php echo base_url(); ?>index.php/Mail/detalharEmail?id=" + row.id + "'><span class='zmdi zmdi-email-open'></span></a>" +
-                        "<a class='btn btn-icon command-edit waves-effect waves-circle' href=' <?php echo base_url(); ?>index.php/Mail/excluirEmail?id=" + row.id + "'><span class='zmdi zmdi-delete'></span></a>";
+                    return  "<a class='btn btn-icon command-edit waves-effect waves-circle' href='<?php echo base_url(); ?>index.php/Mail/detalharEmail?id=" + row.id + "'><span class='zmdi zmdi-email-open'></span></a>" +
+                            "<a class='btn btn-icon command-edit waves-effect waves-circle' href=' <?php echo base_url(); ?>index.php/Mail/excluirEmail?id=" + row.id + "'><span class='zmdi zmdi-delete'></span></a>";
+                },
+                "de": function(column, row) {
+                    if (!row.novo) {
+                        return "<b>" + row.de + "</b>";
+                    } else {
+                        return row.de;
+                    }
+                },
+                "assunto": function(column, row) {
+                    if (!row.novo) {
+                        return "<b>" + row.assunto + "</b>";
+                    } else {
+                        return row.assunto;
+                    }
+                },
+                "data": function(column, row) {
+                    if (!row.novo) {
+                        return "<b>" + row.data + "</b>";
+                    } else {
+                        return row.data;
+                    }
                 }
             }
         });
+    });
+    $(this).ready(function() {
+        $('td:nth-child(1)').hide();
+        $('td:nth-child(2)').hide();
     });
 </script>

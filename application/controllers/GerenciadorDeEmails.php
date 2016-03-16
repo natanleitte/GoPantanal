@@ -44,21 +44,25 @@ class GerenciadorDeEmails extends CI_Controller {
             $email->idDoEmailNoServidor = $emailRetornado->id;
             $email->corpoDoEmail = quoted_printable_decode($this->caixaDeEmails->obterCorpoDoEmail($emailRetornado->id));
             $email->foiLido = FALSE;
-            
+
             array_push($listaDeNovosEmails, $email);
             $this->caixaDeEmails->markMailAsRead($id);
         }
         return $listaDeNovosEmails;
     }
-    
-    public function enviar($email){
-        $this->load->library('email');
-        
-        $config['protocol'] = 'smtp';
-        $config['mailpath'] = '/usr/sbin/sendmail';
-        $config['charset'] = 'iso-8859-1';
-        $config['wordwrap'] = TRUE;
 
+    public function enviar($email) {
+        $config = Array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://a2plcpnl0303.prod.iad2.secureserver.net',
+            'smtp_port' => 465,
+            'smtp_user' => 'jorge@leafweb.com.br',
+            'smtp_pass' => 'WolV@972',
+            'mailtype' => 'html',
+            'charset' => 'utf-8'
+        );
+        $this->load->library('email');
+        $this->email->set_newline("\r\n");
         $this->email->initialize($config);
 
         $this->email->from($email->emailRemetente);
@@ -66,5 +70,7 @@ class GerenciadorDeEmails extends CI_Controller {
         $this->email->subject($email->assunto);
         $this->email->message($email->corpoDoEmail);
         $this->email->send();
+        echo $this->email->print_debugger();
     }
+
 }
