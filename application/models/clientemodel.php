@@ -14,12 +14,17 @@
 
        public function getClientes() {
            $this->load->database();
-
            return $this->db->get("cliente");
        }
 
        public function getCliente($id) {
            $this->db->where('id', $id);
+           return $this->db->get("cliente");
+       }
+       
+       public function getClientesPorDataDesc() {
+           $this->load->database();
+           $this->db->order_by("data_insercao", "desc"); 
            return $this->db->get("cliente");
        }
        

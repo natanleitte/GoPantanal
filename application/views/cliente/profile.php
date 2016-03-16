@@ -84,7 +84,7 @@ foreach ($cliente->result() as $row) {
                         <li>
                             <i class="zmdi zmdi-pin"></i>
                             <address class="m-b-0 ng-binding">
-                                <?php echo $row->endereco; ?>
+                                <?php echo $row->nacionalidade; ?>
                                 <!--                                44-46 Morningside Road,<br>
                                                                 Edinburgh,<br>
                                                                 Scotland-->
@@ -162,7 +162,7 @@ foreach ($cliente->result() as $row) {
                             </dl>
                             <dl class="dl-horizontal">
                                 <dt>Endereço</dt>
-                                <dd><?php echo $cliente->endereco; ?></dd>
+                                <dd><?php echo $cliente->nacionalidade; ?></dd>
                             </dl>
                             <dl class="dl-horizontal">
                                 <dt>Passaporte</dt>
