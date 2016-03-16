@@ -119,12 +119,30 @@
                                 </div>
                                 <span class="input-group-addon"><i class="zmdi zmdi-pin"></i></span>
                             </div>
-                            
+
+                            <br/>
+
                             <div class='input-group date' id='datetimepicker1'>
-                                <input type='text' class="form-control" placeholder="Data do Contato" />
+                                <input type='text' class="form-control" name="data_contato" placeholder="Data do Contato" />
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
+                            </div>
+
+                            <br/>
+
+                            <div class="form-group">
+                                <div class="fg-line">
+                                    <div class="select">
+                                        <select name="origem_contato" class="form-control" placeholder="Origem do Contato">
+                                            <option value="">Origem do contato...</option>
+                                            <option value="Email">Email</option>
+                                            <option value="Telefone">Telefone</option>
+                                            <option value="Site">Site</option>
+                                            <option value="Pessoal">Pessoal</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>                        
                     </div>
@@ -148,7 +166,7 @@
             data: $("#formCliente").serialize(),
             success: function (msg) {
                 swal("Cliente inserido com sucesso!", "", "success");
-                $("#nome, #email, #telefone, #nacionalidade, #passaporte").val('');
+                $("#nome, #email, #telefone, #nacionalidade, #passaporte, #observacao, #data_contato").val('');
             }
         });
         return false;

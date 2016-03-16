@@ -1,5 +1,7 @@
 <?php
 
+include APPPATH . 'controllers\utils\DataUtils.php';
+
 class Cliente extends CI_Controller {
 
     public function __construct() {
@@ -10,6 +12,7 @@ class Cliente extends CI_Controller {
         $this->load->model('TarefaModel');
         $this->load->model('EmailModel');
         $this->load->model('ClienteModel');
+        $this->DataUtils = new DataUtils();
     }
 
     public function index() {
@@ -42,6 +45,11 @@ class Cliente extends CI_Controller {
         $data['email'] = $this->input->post('email');
         $data['nacionalidade'] = $this->input->post('nacionalidade');
         $data['passaporte'] = $this->input->post('passaporte');
+        $data['data_contato'] = $this->DataUtils->converteDataParaFormatoDateDoMySql($this->input->post('data_contato'));
+        $data['origem_contato'] = $this->input->post('origem_contato');
+        $data['observacao'] = $this->input->post('observacao');
+
+
 
         $this->ClienteModel->setCliente($data);
 
