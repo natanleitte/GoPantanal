@@ -1,3 +1,12 @@
+<script type="text/javascript">
+    $(function () {
+        //$('#datetimepicker1').datetimepicker();
+        $('#datetimepicker1').datetimepicker({
+            format: 'DD/MM/YYYY',
+        });
+    });
+</script>
+
 <section id="content">
     <div class="container">
         <div class="block-header">
@@ -76,6 +85,13 @@
 
                             <br/>
 
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="zmdi zmdi-assignment-alert"></i></span>
+                                <div class="fg-line">    
+                                    <textarea id="observacao" name="observacao" class="form-control" placeholder="Observação"></textarea>
+                                </div>
+                            </div>
+
                         </div>
 
                         <div class="col-sm-6">                       
@@ -99,11 +115,18 @@
 
                             <div class="input-group">
                                 <div class="fg-line">    
-                                    <input type="text" id="endereco" name="endereco" class="form-control" placeholder="Endereço">
+                                    <input type="text" id="nacionalidade" name="nacionalidade" class="form-control" placeholder="Nacionalidade">
                                 </div>
                                 <span class="input-group-addon"><i class="zmdi zmdi-pin"></i></span>
                             </div>
-                        </div>
+                            
+                            <div class='input-group date' id='datetimepicker1'>
+                                <input type='text' class="form-control" placeholder="Data do Contato" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>                        
                     </div>
                 </form>
 
@@ -125,7 +148,7 @@
             data: $("#formCliente").serialize(),
             success: function (msg) {
                 swal("Cliente inserido com sucesso!", "", "success");
-                $("#nome, #email, #telefone, #endereco, #passaporte").val('');
+                $("#nome, #email, #telefone, #nacionalidade, #passaporte").val('');
             }
         });
         return false;

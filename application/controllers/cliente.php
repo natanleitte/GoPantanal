@@ -39,7 +39,7 @@ class Cliente extends CI_Controller {
         $data['nome'] = $this->input->post('nome');
         $data['telefone'] = $this->input->post('telefone');
         $data['email'] = $this->input->post('email');
-        $data['endereco'] = $this->input->post('endereco');
+        $data['nacionalidade'] = $this->input->post('nacionalidade');
         $data['passaporte'] = $this->input->post('passaporte');
 
         $this->ClienteModel->setCliente($data);
