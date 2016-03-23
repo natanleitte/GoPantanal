@@ -15,6 +15,13 @@ class Mail extends CI_Controller {
         $this->load->model('TarefaModel');
         $this->load->model('EmailModel');
         $this->gerenciadorDeEmails = new GerenciadorDeEmails();
+        
+        $this->verificaSeOUsuarioEstaLogado();
+    }
+    
+    private function verificaSeOUsuarioEstaLogado(){
+        $this->load->model('UsuarioModel', 'usuario');
+        return $this->usuario->estaLogado();
     }
 
     public function index() {
