@@ -84,8 +84,7 @@ class Mail extends CI_Controller {
         $email->corpoDoEmail = quoted_printable_decode($this->input->post('corpoDoEmail'));
 
         $this->gerenciadorDeEmails->enviar($email);
-        
+
         $this->configurarDadosParaExibirPaginaDeDetalhesDeEmail();
     }
-
 }
