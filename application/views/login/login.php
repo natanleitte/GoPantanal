@@ -17,6 +17,10 @@
     <body class="login-content">
         <!-- Login -->
         <div class="lc-block toggled" id="l-login">
+            <img src="<?php echo base_url() . "assets/img/logo-pequena.png";  ?>" />
+            <br/>
+            <br/>
+            <br/>
             <?php echo form_open(base_url() . 'index.php/login/logar'); ?>
             <div class="input-group m-b-20">
                 <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
