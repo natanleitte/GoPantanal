@@ -14,8 +14,12 @@ class Mail extends CI_Controller {
         $this->load->helper('form');
         $this->load->model('TarefaModel');
         $this->load->model('EmailModel');
-        $this->load->model('UsuarioModel');
-        $this->UsuarioModel->estaLogado();
+        
+//        TODO: Esse lixo não esta funcionando quando eu importo a model usuário para verificar
+//        se o usuário esta logado ou não. Temos que dar um jeito nisto.
+//        
+//        $this->load->model('UsuarioModel');
+//        $this->UsuarioModel->estaLogado();
         
         $this->gerenciadorDeEmails = new GerenciadorDeEmails();
     }
@@ -73,7 +77,7 @@ class Mail extends CI_Controller {
 
     private function renderizarParaPaginaDeDetalhesDoEmail($data) {
         $this->load->view('header', $data);
-        $this->load->view('email/DetalhesEmail', $data);
+        $this->load->view('email/DetalharEmail', $data);
         $this->load->view('footer');
     }
 
@@ -90,4 +94,5 @@ class Mail extends CI_Controller {
 
         $this->configurarDadosParaExibirPaginaDeDetalhesDeEmail();
     }
+
 }

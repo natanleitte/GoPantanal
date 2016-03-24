@@ -29,7 +29,7 @@ class GerenciadorDeEmails extends CI_Controller {
         $this->caixaDeEmails->markMailAsUnread($id);
     }
 
-    public function obterNovosEmails() {
+    public static function obterNovosEmails() {
         $listaDeNovosEmails = array();
         foreach ($this->idsDosEmailsRecebidos as $id) {
             $emailRetornado = $this->obterEmailPor($id);
