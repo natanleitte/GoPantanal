@@ -10,6 +10,8 @@ class Tarefa extends CI_Controller {
         $this->load->helper('form');
         $this->load->model('TarefaModel');
         $this->load->model('EmailModel');
+        $this->load->model('UsuarioModel');
+        $this->UsuarioModel->estaLogado();
         $this->DataUtils = new DataUtils();
     }
 

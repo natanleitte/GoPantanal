@@ -265,16 +265,7 @@ foreach ($tarefas->result() as $tarefa)
 
                 <ul class="main-menu">
                     <li>
-                        <a href="profile-about.html"><i class="zmdi zmdi-account"></i> View Profile</a>
-                    </li>
-                    <li>
-                        <a href=""><i class="zmdi zmdi-input-antenna"></i> Privacy Settings</a>
-                    </li>
-                    <li>
-                        <a href=""><i class="zmdi zmdi-settings"></i> Settings</a>
-                    </li>
-                    <li>
-                        <a href=""><i class="zmdi zmdi-time-restore"></i> Logout</a>
+                        <a href="<?php echo base_url() . "index.php/login/destruirSessao"; ?>"><i class="zmdi zmdi-time-restore"></i> Logout</a>
                     </li>
                 </ul>
             </div>

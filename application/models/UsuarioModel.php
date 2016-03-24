@@ -4,6 +4,7 @@ class UsuarioModel extends CI_Model {
 
     public function __construct() {
         parent::__construct();
+        $this->load->library('session');
     }
 
     public function existeOUsuarioESenhaInformadoNoFormulario() {
@@ -19,8 +20,7 @@ class UsuarioModel extends CI_Model {
     public function estaLogado() {
         $logged = $this->session->userdata('logged');
         if (!isset($logged) || $logged != true) {
-            echo 'Voce nao tem permissao para entrar nessa pagina. Efetuar Login';
-            die();
+            redirect(base_url());
         }
     }
 }

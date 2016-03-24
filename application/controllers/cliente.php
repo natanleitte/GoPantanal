@@ -12,6 +12,8 @@ class Cliente extends CI_Controller {
         $this->load->model('TarefaModel');
         $this->load->model('EmailModel');
         $this->load->model('ClienteModel');
+        $this->load->model('UsuarioModel');
+        $this->UsuarioModel->estaLogado();
         $this->DataUtils = new DataUtils();
     }
 
@@ -52,8 +54,6 @@ class Cliente extends CI_Controller {
 
 
         $this->ClienteModel->setCliente($data);
-
-//        header('Location:' . base_url() . 'index.php/cliente');
     }
 
     public function profile() {

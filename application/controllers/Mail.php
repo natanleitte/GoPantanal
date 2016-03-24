@@ -14,14 +14,10 @@ class Mail extends CI_Controller {
         $this->load->helper('form');
         $this->load->model('TarefaModel');
         $this->load->model('EmailModel');
-        $this->gerenciadorDeEmails = new GerenciadorDeEmails();
+        $this->load->model('UsuarioModel');
+        $this->UsuarioModel->estaLogado();
         
-        $this->verificaSeOUsuarioEstaLogado();
-    }
-    
-    private function verificaSeOUsuarioEstaLogado(){
-        $this->load->model('UsuarioModel', 'usuario');
-        return $this->usuario->estaLogado();
+        $this->gerenciadorDeEmails = new GerenciadorDeEmails();
     }
 
     public function index() {
