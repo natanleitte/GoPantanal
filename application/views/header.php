@@ -72,7 +72,7 @@ foreach ($tarefas->result() as $tarefa)
                                     <?php
                                     foreach ($ultimosCincoEmails as $email) {
                                         ?>
-                                        <a class="lv-item" href="<?php echo base_url() . "index.php/Mail/detalharEmail?idDoEmailNoServidor=" . $email->idDoEmailNoServidor; ?>">
+                                        <a class="lv-item" href="<?php echo base_url() . "index.php/Mail/detalharEmail?id=" . $email->idDoEmailNoServidor; ?>">
                                             <div class="media">
                                                 <div class="pull-left">
                                                     <i class="zmdi <?php echo $email->foiLido ? "zmdi-email-open" : "zmdi-email"; ?> zmdi-hc-2x"></i>

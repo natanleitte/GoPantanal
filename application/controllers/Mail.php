@@ -86,7 +86,7 @@ class Mail extends CI_Controller {
         $email->emailRemetente = "no-reply@gopantanal.com.br";
         $email->assunto = "[GoPantanal] Resposta - " . $dadosDoEmail->assunto;
         $email->emailDestinatario = $dadosDoEmail->emailRemetente;
-        $email->corpoDoEmail = quoted_printable_decode($this->input->post('corpoDoEmail'));
+        $email->corpoDoEmail = $this->input->post('corpoDoEmail');
 
         $this->data['statusEnvio'] = $this->configurarEDisparar($email) ? 1 : 0;
         
