@@ -3,7 +3,7 @@
 include 'PhpImap\Mailbox.php';
 include 'PhpImap\IncomingMail.php';
 
-class GerenciadorDeEmails extends CI_Controller {
+class GerenciadorDeEmails {
 
     private $servidor = 'a2plcpnl0303.prod.iad2.secureserver.net';
     private $usuario = 'jorge@leafweb.com.br';
@@ -12,7 +12,6 @@ class GerenciadorDeEmails extends CI_Controller {
     private $caixaDeEmails;
 
     public function __construct() {
-        parent::__construct();
         $this->caixaDeEmails = new PhpImap\Mailbox('{' . $this->servidor . ':993/imap/ssl}INBOX', $this->usuario, $this->senha);
         $this->idsDosEmailsRecebidos = $this->caixaDeEmails->searchMailbox();
     }
@@ -29,7 +28,7 @@ class GerenciadorDeEmails extends CI_Controller {
         $this->caixaDeEmails->markMailAsUnread($id);
     }
 
-    public static function obterNovosEmails() {
+    public function obterNovosEmails() {
         $listaDeNovosEmails = array();
         foreach ($this->idsDosEmailsRecebidos as $id) {
             $emailRetornado = $this->obterEmailPor($id);
@@ -50,27 +49,4 @@ class GerenciadorDeEmails extends CI_Controller {
         }
         return $listaDeNovosEmails;
     }
-
-    public function enviar($email) {
-        $config = Array(
-            'protocol' => 'smtp',
-            'smtp_host' => 'ssl://a2plcpnl0303.prod.iad2.secureserver.net',
-            'smtp_port' => 465,
-            'smtp_user' => 'jorge@leafweb.com.br',
-            'smtp_pass' => 'WolV@972',
-            'mailtype' => 'html',
-            'charset' => 'utf-8'
-        );
-        $this->load->library('email');
-        $this->email->set_newline("\r\n");
-        $this->email->initialize($config);
-
-        $this->email->from($email->emailRemetente);
-        $this->email->to($email->emailDestinatario);
-        $this->email->subject($email->assunto);
-        $this->email->message($email->corpoDoEmail);
-        $this->email->send();
-        echo $this->email->print_debugger();
-    }
-
 }

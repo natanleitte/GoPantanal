@@ -12,14 +12,7 @@ class Mail extends CI_Controller {
         parent::__construct();
         $this->load->helper('url');
         $this->load->helper('form');
-        $this->load->model('TarefaModel');
-        $this->load->model('EmailModel');
-        
-//        TODO: Esse lixo não esta funcionando quando eu importo a model usuário para verificar
-//        se o usuário esta logado ou não. Temos que dar um jeito nisto.
-//        
-//        $this->load->model('UsuarioModel');
-//        $this->UsuarioModel->estaLogado();
+        $this->UsuarioModel->estaLogado();
         
         $this->gerenciadorDeEmails = new GerenciadorDeEmails();
     }
@@ -90,9 +83,32 @@ class Mail extends CI_Controller {
         $email->emailDestinatario = $dadosDoEmail->emailRemetente;
         $email->corpoDoEmail = quoted_printable_decode($this->input->post('corpoDoEmail'));
 
-        $this->gerenciadorDeEmails->enviar($email);
+        $this->configurarEDisparar($email);
 
         $this->configurarDadosParaExibirPaginaDeDetalhesDeEmail();
+    }
+    
+    public function configurarEDisparar($email) {
+        $config = Array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://a2plcpnl0303.prod.iad2.secureserver.net',
+            'smtp_port' => 465,
+            'smtp_user' => 'jorge@leafweb.com.br',
+            'smtp_pass' => 'WolV@972',
+            'mailtype' => 'html',
+            'charset' => 'utf-8'
+        );
+        
+        $this->load->library('email');
+        $this->email->set_newline("\r\n");
+        $this->email->initialize($config);
+
+        $this->email->from($email->emailRemetente);
+        $this->email->to($email->emailDestinatario);
+        $this->email->subject($email->assunto);
+        $this->email->message($email->corpoDoEmail);
+        $this->email->send();
+        echo $this->email->print_debugger();
     }
 
 }

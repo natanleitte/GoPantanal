@@ -24,6 +24,7 @@ class Login extends CI_Controller {
             $this->session->set_userdata($data);
             redirect(base_url() . 'index.php/index');
         }
+        redirect(base_url());
     }
     
     public function destruirSessao(){
