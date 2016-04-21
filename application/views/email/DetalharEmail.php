@@ -4,6 +4,22 @@
             <div class="card">
                 <div class="card-header">
                     <div class="media">
+                        <div class="status-do-envio">
+                            <?php
+                            if($statusEnvio === 1){
+                                echo "<div class='alert alert-info alert-dismissible' role='alert'>" .
+                                        "<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>" .
+                                        "Encaminhado com sucesso!" .
+                                    "</div>";
+                            }else if($statusEnvio === 0){
+                                echo "<div class='alert alert-danger alert-dismissible' role='alert'>" .
+                                        "<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>" .
+                                        "Oops! ocorreu algum problema ao encaminhar" .
+                                    "</div>";
+                            }
+                            ?>
+                        </div>
+
                         <div class="pull-left">
                             <i class="zmdi zmdi-email-open zmdi-hc-5x"></i>
                         </div>
@@ -48,11 +64,30 @@
                             $('#enviarEmail').on('click', function() {
                                 var conteudoDaDiv = $(".note-editable").html();
                                 $("#corpoDoEmail").val(conteudoDaDiv);
-                            });
-                        </script>
+                            });</script>
                     </div>
                 </div>
             </div>
             <button class="btn btn-float bgm-red m-btn" data-action="print"><i class="zmdi zmdi-print"></i></button>
         </div>
 </section>
+<script>
+    $(document).ready(
+            $.urlParam = function(name) {
+                var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+                return results[1] || 0;
+            };
+            
+            if ($.urlParam('statusEnvio') === 1) {
+                $('.js-container-de-alertas').hasClass('alert-info').show();
+            }else{
+                $('.js-container-de-alertas').hasClass('alert-info').hidden();
+            }
+            
+            if ($.urlParam('statusEnvio') === 0) {
+                $('.js-container-de-alertas').hasClass('alert-danger').show();
+                }else{
+                    $('.js-container-de-alertas').hasClass('alert-danger').hidden();
+                }
+    );
+</script>

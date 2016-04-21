@@ -75,7 +75,7 @@
                 //Esconde as informaçoes do id e de novo na tela
                 "id": function(column, row) {
                     column.close;
-                },  
+                },
                 "novo": function(column, row) {
                     column.hide;
                 }
