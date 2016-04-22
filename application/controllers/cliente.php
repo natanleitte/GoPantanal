@@ -66,7 +66,13 @@ class Cliente extends CI_Controller {
         $this->load->view('cliente/editar', $this->data);
         $this->load->view('footer');
     }
-
+    
+    public function atualizarObservacao(){
+        $data['observacao'] = $this->input->post('observacao');
+        $this->ClienteModel->updateCliente($data, $this->input->get('id', TRUE));
+        $this->profile();
+    }
+    
     public function atualizarCliente() {
         $data['nome'] = $this->input->post('nome');
         $data['telefone'] = $this->input->post('telefone');

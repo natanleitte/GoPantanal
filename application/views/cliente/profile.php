@@ -77,14 +77,14 @@ foreach ($cliente->result() as $row) {
                     <h2>Contato</h2>
 
                     <ul>
-                        <li><i class="zmdi zmdi-phone"></i> <?php echo $row->telefone; ?></li>
-                        <li><i class="zmdi zmdi-email"></i> <?php echo $row->email; ?></li>
+                        <li><i class="zmdi zmdi-phone"></i> <?php echo $cliente->telefone; ?></li>
+                        <li><i class="zmdi zmdi-email"></i> <?php echo $cliente->email; ?></li>
                         <!--<li><i class="zmdi zmdi-facebook-box"></i> malinda.hollaway</li>-->
-                        <li><i class="zmdi zmdi-airplane"></i> <?php echo $row->passaporte; ?> </li>
+                        <li><i class="zmdi zmdi-airplane"></i> <?php echo $cliente->passaporte; ?> </li>
                         <li>
                             <i class="zmdi zmdi-pin"></i>
                             <address class="m-b-0 ng-binding">
-                                <?php echo $row->nacionalidade; ?>
+                                <?php echo $cliente->nacionalidade; ?>
                             </address>
                         </li>
                     </ul>
@@ -93,46 +93,40 @@ foreach ($cliente->result() as $row) {
 
             <div class="pm-body clearfix">
                 <ul class="tab-nav tn-justified">
-                    <li class="active waves-effect"><a href="profile-about.html">Início</a></li>
+                    <li class="active waves-effect"><a href="#">Início</a></li>
                     <li class="waves-effect"><a href="#">Compromissos Agendados</a></li>
                     <li class="waves-effect"><a href="#">Orçamentos</a></li>                 
                 </ul>
 
 
-                <!--                <div class="pmb-block">
-                                    <div class="pmbb-header">
-                                        <h2><i class="zmdi zmdi-equalizer m-r-5"></i> Summary</h2>
-                
-                                        <ul class="actions">
-                                            <li class="dropdown">
-                                                <a href="" data-toggle="dropdown">
-                                                    <i class="zmdi zmdi-more-vert"></i>
-                                                </a>
-                
-                                                <ul class="dropdown-menu dropdown-menu-right">
-                                                    <li>
-                                                        <a data-pmb-action="edit" href="">Edit</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="pmbb-body p-l-30">
-                                        <div class="pmbb-view">
-                                            Sed eu est vulputate, fringilla ligula ac, maximus arcu. Donec sed felis vel magna mattis ornare ut non turpis. Sed id arcu elit. Sed nec sagittis tortor. Mauris ante urna, ornare sit amet mollis eu, aliquet ac ligula. Nullam dolor metus, suscipit ac imperdiet nec, consectetur sed ex. Sed cursus porttitor leo.
-                                        </div>
-                
-                                        <div class="pmbb-edit">
-                                            <div class="fg-line">
-                                                <textarea class="form-control" rows="5" placeholder="Summary...">Sed eu est vulputate, fringilla ligula ac, maximus arcu. Donec sed felis vel magna mattis ornare ut non turpis. Sed id arcu elit. Sed nec sagittis tortor. Mauris ante urna, ornare sit amet mollis eu, aliquet ac ligula. Nullam dolor metus, suscipit ac imperdiet nec, consectetur sed ex. Sed cursus porttitor leo.</textarea>
-                                            </div>
-                                            <div class="m-t-10">
-                                                <button class="btn btn-primary btn-sm">Save</button>
-                                                <button data-pmb-action="reset" class="btn btn-link btn-sm">Cancel</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>-->
+                <div class="pmb-block">
+                    <div class="pmbb-header">
+                        <h2><i class="zmdi zmdi-assignment-o m-r-5"></i> Observação</h2>
+
+                        <ul class="actions">
+                            <li>
+                                <a data-pmb-action="edit" href=""><i class="zmdi zmdi-edit zmdi-hc-5x"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pmbb-body p-l-30">
+                        <div class="pmbb-view">
+                            <?php echo $cliente->observacao; ?>
+                        </div>
+
+                        <div class="pmbb-edit">
+                            <?php echo form_open(base_url() . "index.php/cliente/atualizarObservacao?id=" . $cliente->id); ?>
+                            <div class="fg-line">
+                                <textarea name="observacao" class="form-control" rows="5" placeholder="Insira aqui sua observação..."><?php echo $cliente->observacao; ?></textarea>
+                            </div>
+                            <div class="m-t-10">
+                                <button class="btn btn-primary btn-sm">Atualizar</button>
+                                <button data-pmb-action="reset" class="btn btn-link btn-sm">Cancelar</button>
+                            </div>
+                            <?php echo form_close(); ?>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="pmb-block">
                     <div class="pmbb-header">
@@ -172,10 +166,6 @@ foreach ($cliente->result() as $row) {
                             <dl class="dl-horizontal">
                                 <dt>Data do contato</dt>
                                 <dd><?php echo date('d/m/Y', strtotime($cliente->data_contato)); ?></dd>
-                            </dl>
-                            <dl class="dl-horizontal">
-                                <dt>Observação</dt>
-                                <dd><?php echo $cliente->observacao; ?></dd>
                             </dl>
                         </div>
 
