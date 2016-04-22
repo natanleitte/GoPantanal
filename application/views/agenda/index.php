@@ -4,37 +4,6 @@
     <div class="container c-alt">
         <div class="block-header">
             <h2>Agenda</h2>
-
-            <ul class="actions">
-                <li>
-                    <a href="">
-                        <i class="zmdi zmdi-trending-up"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <i class="zmdi zmdi-check-all"></i>
-                    </a>
-                </li>
-                <li class="dropdown">
-                    <a href="" data-toggle="dropdown">
-                        <i class="zmdi zmdi-more-vert"></i>
-                    </a>
-
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <li>
-                            <a href="">Refresh</a>
-                        </li>
-                        <li>
-                            <a href="">Manage Widgets</a>
-                        </li>
-                        <li>
-                            <a href="">Widgets Settings</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-
         </div>
 
         <div id="calendar"></div>
@@ -65,8 +34,8 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="eventName">Tag Color</label>
+                            <div id="cor-tarefa" class="form-group">
+                                <label for="eventName">Cores</label>
                                 <div class="event-tag">
                                     <span data-tag="bgm-teal" class="bgm-teal selected"></span>
                                     <span data-tag="bgm-red" class="bgm-red"></span>
@@ -85,6 +54,7 @@
                             <input type="hidden" name='data_ini' id="getStart" />
                             <input type="hidden" name='data_fim' id="getEnd" />
                             <input type="hidden" name='status' id="status" value="A"/>
+                            <input type="hidden" name='cor' value="" id="cor"/>
 
                         </form>
                     </div>
@@ -143,6 +113,8 @@
     }
 
     function adicionarTarefa() {
+        $('#cor').val($('#cor-tarefa').find('.selected').attr('data-tag'));
+        
         $.ajax({
             url: '<?= base_url(); ?>' + 'index.php/tarefa/inserirTarefa',
             type: 'POST',
