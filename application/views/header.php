@@ -29,9 +29,17 @@ foreach ($tarefas->result() as $tarefa)
     <link href="<?php echo base_url() . "assets/" ?>vendors/bower_components/chosen/chosen.min.css" rel="stylesheet">
     <link href="<?php echo base_url() . "assets/" ?>vendors/summernote/dist/summernote.css" rel="stylesheet">
 
+
+
     <!-- CSS -->
     <link href="<?php echo base_url() . "assets/" ?>css/app.min.1.css" rel="stylesheet">
     <link href="<?php echo base_url() . "assets/" ?>css/app.min.2.css" rel="stylesheet">
+
+
+    <!-- ResponsiveTab -->
+    <link type="text/css" href="<?php echo base_url() . "assets/" ?>responsive-tabs/css/responsive-tabs.css" rel="stylesheet">
+    <link type="text/css" href="<?php echo base_url() . "assets/" ?>responsive-tabs/css/style.css" rel="stylesheet">
+
 
     <!-- Following CSS are used only for the Demp purposes thus you can remove this anytime. -->
     <style type="text/css">
