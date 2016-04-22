@@ -91,7 +91,7 @@
                                 <div class="fg-line">
                                     <input type="text" id="responsavel" name="responsavel" class="form-control" placeholder="Responsável">
                                 </div>
-                                <span class="input-group-addon last"><i class="zmdi zmdi-airplane"></i></span>
+                                <span class="input-group-addon last"><i class="zmdi zmdi-account"></i></span>
                             </div>
 
                             <br/>
