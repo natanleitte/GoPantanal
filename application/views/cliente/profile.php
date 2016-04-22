@@ -85,9 +85,6 @@ foreach ($cliente->result() as $row) {
                             <i class="zmdi zmdi-pin"></i>
                             <address class="m-b-0 ng-binding">
                                 <?php echo $row->nacionalidade; ?>
-                                <!--                                44-46 Morningside Road,<br>
-                                                                Edinburgh,<br>
-                                                                Scotland-->
                             </address>
                         </li>
                     </ul>
@@ -97,7 +94,7 @@ foreach ($cliente->result() as $row) {
             <div class="pm-body clearfix">
                 <ul class="tab-nav tn-justified">
                     <li class="active waves-effect"><a href="profile-about.html">Início</a></li>
-                    <li class="waves-effect"><a href="#">Viagens</a></li>
+                    <li class="waves-effect"><a href="#">Compromissos Agendados</a></li>
                     <li class="waves-effect"><a href="#">Orçamentos</a></li>                 
                 </ul>
 
@@ -161,12 +158,24 @@ foreach ($cliente->result() as $row) {
                                 <dd><?php echo $cliente->telefone; ?></dd>
                             </dl>
                             <dl class="dl-horizontal">
-                                <dt>Endereço</dt>
+                                <dt>Nacionalidade</dt>
                                 <dd><?php echo $cliente->nacionalidade; ?></dd>
                             </dl>
                             <dl class="dl-horizontal">
                                 <dt>Passaporte</dt>
                                 <dd><?php echo $cliente->passaporte; ?></dd>
+                            </dl>
+                            <dl class="dl-horizontal">
+                                <dt>Origem do Contato</dt>
+                                <dd><?php echo $cliente->origem_contato; ?></dd>
+                            </dl>
+                            <dl class="dl-horizontal">
+                                <dt>Data do contato</dt>
+                                <dd><?php echo date('d/m/Y', strtotime($cliente->data_contato)); ?></dd>
+                            </dl>
+                            <dl class="dl-horizontal">
+                                <dt>Observação</dt>
+                                <dd><?php echo $cliente->observacao; ?></dd>
                             </dl>
                         </div>
 

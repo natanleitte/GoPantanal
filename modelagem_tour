@@ -1,0 +1,72 @@
+*** tour ***
+
+id
+id_cliente
+data_tour_ini
+data_tour_fim
+preco
+qtd_pessoas
+
+*** hotel ***
+id
+nome
+telefone
+email
+responsavel
+endereco
+cidade
+
+*** hotel_tour ***
+id
+id_tour
+id_hotel
+data_ini
+data_fim
+preco
+
+*** transporte ***
+id
+nome
+telefone
+email
+responsavel
+cidade
+
+*** transporte_tour ***
+id
+id_tour
+id_transporte
+data_ini
+data_fim
+preco
+
+*** passeio ***
+id
+descricao
+telefone
+email
+cidade
+
+*** passeio_tour ***
+id
+id_tour
+id_passeio
+data_ini
+data_fim
+preco
+
+*** guia ***
+id
+nome
+idioma
+telefone
+email
+cidade
+
+*** guia_tour ***
+id
+id_tour
+id_guia
+data_ini
+data_fim
+preco

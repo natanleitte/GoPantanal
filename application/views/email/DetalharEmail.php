@@ -4,6 +4,22 @@
             <div class="card">
                 <div class="card-header">
                     <div class="media">
+                        <div class="status-do-envio">
+                            <?php
+                            if ($statusEnvio === 1) {
+                                echo "<div class='alert alert-success alert-dismissible' role='alert'>" .
+                                "<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>" .
+                                "Encaminhado com sucesso!" .
+                                "</div>";
+                            } else if ($statusEnvio === 0) {
+                                echo "<div class='alert alert-danger alert-dismissible' role='alert'>" .
+                                "<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>" .
+                                "Oops! ocorreu algum problema ao encaminhar" .
+                                "</div>";
+                            }
+                            ?>
+                        </div>
+
                         <div class="pull-left">
                             <i class="zmdi zmdi-email-open zmdi-hc-5x"></i>
                         </div>
@@ -56,3 +72,11 @@
             <button class="btn btn-float bgm-red m-btn" data-action="print"><i class="zmdi zmdi-print"></i></button>
         </div>
 </section>
+<script type="text/javascript" defer="defer">
+    $(window).bind("load", function() {
+        $('.note-insert').hide();
+        $('.note-table').hide();
+        $('.note-view').hide();
+        $('.note-help').hide();
+    });
+</script>

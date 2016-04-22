@@ -12,6 +12,8 @@ class Cliente extends CI_Controller {
         $this->load->model('TarefaModel');
         $this->load->model('EmailModel');
         $this->load->model('ClienteModel');
+        $this->load->model('UsuarioModel');
+        $this->UsuarioModel->estaLogado();
         $this->DataUtils = new DataUtils();
     }
 
@@ -49,11 +51,7 @@ class Cliente extends CI_Controller {
         $data['origem_contato'] = $this->input->post('origem_contato');
         $data['observacao'] = $this->input->post('observacao');
 
-
-
         $this->ClienteModel->setCliente($data);
-
-//        header('Location:' . base_url() . 'index.php/cliente');
     }
 
     public function profile() {
@@ -87,21 +85,10 @@ class Cliente extends CI_Controller {
         $data['id'] = $this->input->post('id');
 
         $this->ClienteModel->updateCliente($data, $this->input->post('id'));
-
-//           header('Location:' . base_url() . 'index.php/cliente/inserir');
     }
 
     public function buscaCliente() {
-
         $clientes = $this->ClienteModel->getClientePorNome($this->input->post('query'));
-//           foreach ($clientes->result() as $cliente) {
-//               echo json_encode($cliente);
-//           }
-//           $data['teste'] = array(
-//              'nome' => $this->input->post('query')
-////              'pwd' => $this->input->post('pwd')
-//           );
-
         echo json_encode($clientes->result());
         return $clientes->result();
     }

@@ -2,6 +2,7 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
             <file>file:/C:/Program%20Files%20(x86)/EasyPHP-DevServer-14.1VC9/data/localweb/projects/GoPantanal/application/controllers/cliente.php</file>
             <file>file:/C:/Program%20Files%20(x86)/EasyPHP-DevServer-14.1VC9/data/localweb/projects/GoPantanal/application/models/clientemodel.php</file>
@@ -11,5 +12,8 @@
             <file>file:/C:/Program%20Files%20(x86)/EasyPHP-DevServer-14.1VC9/data/localweb/projects/GoPantanal/application/controllers/tour.php</file>
             <file>file:/C:/Program%20Files%20(x86)/EasyPHP-DevServer-14.1VC9/data/localweb/projects/GoPantanal/application/views/cliente/tour.php</file>
         </group>
+=======
+        <group/>
+>>>>>>> 9c03ada0ca4daaae0c4147d5b6c62b0a8a3ad2b8
     </open-files>
 </project-private>

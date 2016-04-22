@@ -72,7 +72,7 @@ foreach ($tarefas->result() as $tarefa)
                                     <?php
                                     foreach ($ultimosCincoEmails as $email) {
                                         ?>
-                                        <a class="lv-item" href="<?php echo base_url() . "index.php/Mail/detalharEmail?idDoEmailNoServidor=" . $email->idDoEmailNoServidor; ?>">
+                                        <a class="lv-item" href="<?php echo base_url() . "index.php/Mail/detalharEmail?id=" . $email->idDoEmailNoServidor; ?>">
                                             <div class="media">
                                                 <div class="pull-left">
                                                     <i class="zmdi <?php echo $email->foiLido ? "zmdi-email-open" : "zmdi-email"; ?> zmdi-hc-2x"></i>
@@ -265,16 +265,7 @@ foreach ($tarefas->result() as $tarefa)
 
                 <ul class="main-menu">
                     <li>
-                        <a href="profile-about.html"><i class="zmdi zmdi-account"></i> View Profile</a>
-                    </li>
-                    <li>
-                        <a href=""><i class="zmdi zmdi-input-antenna"></i> Privacy Settings</a>
-                    </li>
-                    <li>
-                        <a href=""><i class="zmdi zmdi-settings"></i> Settings</a>
-                    </li>
-                    <li>
-                        <a href=""><i class="zmdi zmdi-time-restore"></i> Logout</a>
+                        <a href="<?php echo base_url() . "index.php/login/destruirSessao"; ?>"><i class="zmdi zmdi-time-restore"></i> Logout</a>
                     </li>
                 </ul>
             </div>
@@ -293,6 +284,13 @@ foreach ($tarefas->result() as $tarefa)
                 <li><a href="<?php echo base_url() . "index.php/" ?>agenda"><i class="zmdi zmdi-calendar"></i> Agenda</a></li>
                 <li><a href="<?php echo base_url() . "index.php/" ?>tarefa"><i class="zmdi zmdi-view-list"></i> Tarefas</a></li>
                 <li><a href="<?php echo base_url() . "index.php/" ?>mail"><i class="zmdi zmdi-email"></i> E-mail</a></li>
+                 <li class="sub-menu">
+                    <a href="index.html"><i class="zmdi zmdi-hotel"></i> Hotéis</a>
+                    <ul>
+                        <li><a href="<?php echo base_url() . "index.php/" ?>hotel">Ver Todos</a></li>
+                        <li><a href="<?php echo base_url() . "index.php/" ?>hotel/inserir">Inserir</a></li>
+                    </ul>
+                </li>
             </ul>
         </aside>
 

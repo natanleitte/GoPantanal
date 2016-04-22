@@ -7,13 +7,13 @@ class Mail extends CI_Controller {
 
     private $gerenciadorDeEmails;
     private $idDoEmailDetalhado;
+    private $data;
 
     public function __construct() {
         parent::__construct();
         $this->load->helper('url');
         $this->load->helper('form');
-        $this->load->model('TarefaModel');
-        $this->load->model('EmailModel');
+        $this->UsuarioModel->estaLogado();
         $this->gerenciadorDeEmails = new GerenciadorDeEmails();
     }
 
@@ -50,27 +50,32 @@ class Mail extends CI_Controller {
     public function detalharEmail() {
         $this->idDoEmailDetalhado = $this->input->get('id', TRUE);
         $this->EmailModel->marcarComoLido($this->idDoEmailDetalhado);
+        
+        $this->data['statusEnvio'] = "";
         $this->configurarDadosParaExibirPaginaDeDetalhesDeEmail();
+        $this->renderizarParaPaginaDeDetalhesDoEmail();
     }
 
     private function configurarDadosParaExibirPaginaDeDetalhesDeEmail() {
-        $data['email'] = $this->EmailModel->obterPor($this->idDoEmailDetalhado);
-        $data['tarefas'] = $this->TarefaModel->getTarefas();
-        $data['emails'] = $this->EmailModel->obterTodos();
-        $data['ultimosCincoEmails'] = $this->EmailModel->obterOsUltimosCincoEmails();
-        $data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
-        $this->renderizarParaPaginaDeDetalhesDoEmail($data);
+        $this->data['email'] = $this->EmailModel->obterPor($this->idDoEmailDetalhado);
+        $this->data['tarefas'] = $this->TarefaModel->getTarefas();
+        $this->data['emails'] = $this->EmailModel->obterTodos();
+        $this->data['ultimosCincoEmails'] = $this->EmailModel->obterOsUltimosCincoEmails();
+        $this->data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
     }
 
     public function excluirEmail() {
         $this->idDoEmailDetalhado = $this->input->get('idDoEmailNoServidor', TRUE);
         $this->EmailModel->excluir($this->idDoEmailDetalhado);
+        
+        $this->data['statusEnvio'] = "";
         $this->configurarDadosParaExibirPaginaDeDetalhesDeEmail();
+        $this->renderizarParaPaginaDeDetalhesDoEmail();
     }
 
-    private function renderizarParaPaginaDeDetalhesDoEmail($data) {
-        $this->load->view('header', $data);
-        $this->load->view('email/DetalhesEmail', $data);
+    private function renderizarParaPaginaDeDetalhesDoEmail() {
+        $this->load->view('header', $this->data);
+        $this->load->view('email/DetalharEmail', $this->data);
         $this->load->view('footer');
     }
 
@@ -81,11 +86,34 @@ class Mail extends CI_Controller {
         $email->emailRemetente = "no-reply@gopantanal.com.br";
         $email->assunto = "[GoPantanal] Resposta - " . $dadosDoEmail->assunto;
         $email->emailDestinatario = $dadosDoEmail->emailRemetente;
-        $email->corpoDoEmail = quoted_printable_decode($this->input->post('corpoDoEmail'));
+        $email->corpoDoEmail = $this->input->post('corpoDoEmail');
 
-        $this->gerenciadorDeEmails->enviar($email);
+        $this->data['statusEnvio'] = $this->configurarEDisparar($email) ? 1 : 0;
         
         $this->configurarDadosParaExibirPaginaDeDetalhesDeEmail();
+        $this->renderizarParaPaginaDeDetalhesDoEmail();
+    }
+    
+    public function configurarEDisparar($email) {
+        $config = Array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://a2plcpnl0303.prod.iad2.secureserver.net',
+            'smtp_port' => 465,
+            'smtp_user' => 'jorge@leafweb.com.br',
+            'smtp_pass' => 'WolV@972',
+            'mailtype' => 'html',
+            'charset' => 'utf-8'
+        );
+        
+        $this->load->library('email');
+        $this->email->set_newline("\r\n");
+        $this->email->initialize($config);
+
+        $this->email->from($email->emailRemetente);
+        $this->email->to($email->emailDestinatario);
+        $this->email->subject($email->assunto);
+        $this->email->message($email->corpoDoEmail);
+        return $this->email->send();
     }
 
 }
