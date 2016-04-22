@@ -5,7 +5,7 @@ include APPPATH . 'controllers\utils\DataUtils.php';
 class Cliente extends CI_Controller {
 
     private $data;
-    
+
     public function __construct() {
         parent::__construct();
         $this->load->helper('url');
@@ -61,27 +61,30 @@ class Cliente extends CI_Controller {
 
     public function editar() {
         $this->configuracoesBasicasParaCarregarPagina();
-        
+
         $this->load->view('header', $this->data);
         $this->load->view('cliente/editar', $this->data);
         $this->load->view('footer');
     }
-    
-    public function atualizarObservacao(){
+
+    public function atualizarObservacao() {
         $data['observacao'] = $this->input->post('observacao');
         $this->ClienteModel->updateCliente($data, $this->input->get('id', TRUE));
         $this->profile();
     }
-    
+
     public function atualizarCliente() {
         $data['nome'] = $this->input->post('nome');
         $data['telefone'] = $this->input->post('telefone');
         $data['email'] = $this->input->post('email');
-        $data['endereco'] = $this->input->post('endereco');
+        $data['nacionalidade'] = $this->input->post('nacionalidade');
         $data['passaporte'] = $this->input->post('passaporte');
-        $data['id'] = $this->input->post('id');
+        $data['data_contato'] = $this->DataUtils->converteDataParaFormatoDateDoMySql($this->input->post('data_contato'));
+        $data['origem_contato'] = $this->input->post('origem_contato');
+        $data['observacao'] = $this->input->post('observacao');
 
-        $this->ClienteModel->updateCliente($data, $this->input->post('id'));
+        $this->ClienteModel->updateCliente($data, $this->input->get('id', TRUE));
+        $this->profile();
     }
 
     public function buscaCliente() {
@@ -97,4 +100,5 @@ class Cliente extends CI_Controller {
         $this->data['clientes'] = $this->ClienteModel->getClientesPorDataDesc();
         $this->data['ultimosCincoEmails'] = $this->EmailModel->obterOsUltimosCincoEmails();
     }
+
 }
