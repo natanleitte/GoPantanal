@@ -1,7 +1,7 @@
-tarefa = {};
+var tarefa = {};
 
 
-tarefa.gerenciaItem = $(document).ready(function() {
+tarefa.gerenciaItem = function() {
     /*
      * Todo Add new item
      */
@@ -26,6 +26,8 @@ tarefa.gerenciaItem = $(document).ready(function() {
                 x.find('textarea').val('');
                 x.removeClass('toggled');
                 var tituloDaTarefa = $('#message').val();
+                var clienteDaTarefa = $('#cliente').val();
+                var dataDaTarefa = moment().locale('en').format('ddd MMM DD YYYY hh:mm:ss');
                 
                 if (tituloDaTarefa.trim()) {
                     $('#message').val('');
@@ -33,10 +35,13 @@ tarefa.gerenciaItem = $(document).ready(function() {
                     $.ajax({
                         url: $('#base_url').val() + 'index.php/tarefa/inserirTarefa',
                         type: 'POST',
-                        data: {titulo: tituloDaTarefa, data_ini: 'teste', data_fim: 'teste', status: 'A'},
+                        data: {titulo: tituloDaTarefa, data_ini: (dataDaTarefa + " GMT+0000"), data_fim: (dataDaTarefa + " GMT+0000"), status: 'A', cliente: clienteDaTarefa},
                         success: function(msg) {
                             window.location.reload();
                             swal("Tarefa adicionada.", "", "success");
+                        },
+                        error: function(msg){
+                            console.log(msg);
                         }
                     });
                 } else {
@@ -45,9 +50,9 @@ tarefa.gerenciaItem = $(document).ready(function() {
             }
         });
     }
-});
+}
 
-tarefa.alteraStatusDaTarefa = $(document).ready(function() {
+tarefa.alteraStatusDaTarefa = function() {
     $('.js-container-da-tarefa').on('change', 'input:checkbox', function() {
         if ($(this).is(':checked')) {
             $.ajax({
@@ -70,4 +75,4 @@ tarefa.alteraStatusDaTarefa = $(document).ready(function() {
             });
         }
     });
-});
+}

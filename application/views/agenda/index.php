@@ -54,7 +54,7 @@
                                     <input type="text" class="input-sm form-control" name="titulo" id="eventName" placeholder="ex: Agendar hotel">
                                 </div>
                                 <div class="select">
-                                    <select class="form-control">
+                                    <select class="form-control" name="cliente">
                                         <option value="">Atribua a um cliente</option>
                                         <?php
                                         foreach($clientes->result() as $cliente){
