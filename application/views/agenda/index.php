@@ -53,6 +53,16 @@
                                 <div class="fg-line">
                                     <input type="text" class="input-sm form-control" name="titulo" id="eventName" placeholder="ex: Agendar hotel">
                                 </div>
+                                <div class="select">
+                                    <select class="form-control">
+                                        <option value="">Atribua a um cliente</option>
+                                        <?php
+                                        foreach($clientes->result() as $cliente){
+                                            echo "<option value=". $cliente->id .">" . $cliente->nome . "</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="form-group">
@@ -80,7 +90,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button class="btn btn-link" onclick="adicionarTarefa()">Adicionar Evento</button>
+                        <button class="btn btn-link" onclick="adicionarTarefa()" id="addEvent">Adicionar Evento</button>
                         <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
                     </div>
                 </div>
@@ -132,13 +142,12 @@
         });
     }
 
-    function adicionarTarefa(){
+    function adicionarTarefa() {
         $.ajax({
-            url: <?php echo base_url(); ?> + 'index.php/tarefa/inserirTarefa',
+            url: '<?= base_url(); ?>' + 'index.php/tarefa/inserirTarefa',
             type: 'POST',
             data: $("#formTarefa").serialize(),
-            success: function (msg) {
-                console.log(msg);
+            success: function(msg) {
                 var nFrom = 'top';
                 var nAlign = 'right';
                 var nIcons = 'fa fa-check';
@@ -149,11 +158,9 @@
                 var message = '';
 
                 notify(nFrom, nAlign, nIcons, nType, nAnimIn, nAnimOut, title, message);
-            },
-            error: function(msg){
-                console.log(msg);
             }
         });
         return false;
-    };
+    }
+    ;
 </script>
