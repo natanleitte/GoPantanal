@@ -8,6 +8,7 @@ class TarefaModel extends CI_Model {
     }
 
     public function setTarefa($data) {
+        $this->load->database();
         $this->db->insert("tarefa", $data);
     }
 
