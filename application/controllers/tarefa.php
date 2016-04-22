@@ -29,6 +29,8 @@ class Tarefa extends CI_Controller {
         $data['data_ini'] = $this->DataUtils->alterarParaSeisDaManhaA($this->input->post('data_ini'));
         $data['data_fim'] = $this->DataUtils->alterarParaSeisDaManhaA($this->input->post('data_fim'));
         $data['status'] = $this->input->post('status');
+        $data['id_cliente'] = $this->input->post('cliente');
+        $data['cor'] = $this->input->post('cor');
 
         $this->TarefaModel->setTarefa($data);
     }

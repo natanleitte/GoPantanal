@@ -16,6 +16,14 @@
                         <i class="add-new-item zmdi zmdi-plus"></i>
                         <div class="add-tl-body">
                             <input type="text" class="input-sm input-lg form-control" id="message" placeholder="Ex: Criar orçamento para o cliente...">
+                            <select class="form-control" id="cliente">
+                                <option value="">Atribua a um cliente</option>
+                                <?php
+                                foreach ($clientes->result() as $cliente) {
+                                    echo "<option value=" . $cliente->id . ">" . $cliente->nome . "</option>";
+                                }
+                                ?>
+                            </select>
                             <input type="hidden" id="base_url" value="<?php echo base_url(); ?>"/>
                             <div class="add-tl-actions">
                                 <a href="" data-tl-action="dismiss"><i class="zmdi zmdi-close"></i></a>
@@ -25,28 +33,34 @@
                     </div>
 
                     <?php
-                       foreach ($tarefas->result() as $tarefa) {
-                           echo "<div class='checkbox media' >";
-                                echo "<div class='pull-right'>";
-                                     echo "<ul class='actions actions-alt'>";
-                                          echo "<li class='dropdown'>";
-                                              echo "<a class='zmdi-delete' href='". base_url() . "index.php/tarefa/excluir?id=". $tarefa->id ."'><i class='zmdi zmdi-delete'></i></a>";
-                                          echo "</li";
-                                     echo "</ul>";
-                                echo "</div>";
-                                echo "<div class='media-body'>";
-                                     echo "<label>";
-                                         echo "<input id='" . $tarefa->id . "' class='js-tarefa-cadastrada' type='checkbox'>";
-                                         echo "<i class='input-helper'></i>";
-                                         echo "<span>" . $tarefa->titulo . "</span>";
-                                     echo "</label>";
-                                echo "</div>";
-                           echo "</div>";
-                       }
+                    foreach ($tarefas->result() as $tarefa) {
+                        echo "<div class='checkbox media' >";
+                        echo "<div class='pull-right'>";
+                        echo "<ul class='actions actions-alt'>";
+                        echo "<li class='dropdown'>";
+                        echo "<a class='zmdi-delete' href='" . base_url() . "index.php/tarefa/excluir?id=" . $tarefa->id . "'><i class='zmdi zmdi-delete'></i></a>";
+                        echo "</li";
+                        echo "</ul>";
+                        echo "</div>";
+                        echo "<div class='media-body'>";
+                        echo "<label>";
+                        echo "<input id='" . $tarefa->id . "' class='js-tarefa-cadastrada' type='checkbox'>";
+                        echo "<i class='input-helper'></i>";
+                        echo "<span><b>" . $tarefa->nome . "</b> - " . $tarefa->titulo . "</span>";
+                        echo "</label>";
+                        echo "</div>";
+                        echo "</div>";
+                    }
                     ?>
 
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            tarefa.alteraStatusDaTarefa();
+            tarefa.gerenciaItem();
+        });
+    </script>
 </section>

@@ -13,6 +13,8 @@ class TarefaModel extends CI_Model {
     }
 
     public function getTarefas() {
+        $this->db->select('tarefa.*, cliente.nome');
+        $this->db->join('cliente', 'cliente.id = tarefa.id_cliente');
         return $this->db->get("tarefa");
     }
 

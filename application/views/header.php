@@ -193,7 +193,7 @@ foreach ($tarefas->result() as $tarefa)
 
             <ul class="main-menu">
                 <li class="active">
-                    <a href="<?php echo base_url() ?>"><i class="zmdi zmdi-home"></i> Home</a>
+                    <a href="<?php echo base_url(). 'index.php/index'; ?>"><i class="zmdi zmdi-home"></i> Home</a>
                 </li>
                 <li class="sub-menu">
                     <a href="index.html"><i class="zmdi zmdi-accounts"></i> Clientes</a>

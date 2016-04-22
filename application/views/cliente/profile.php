@@ -98,36 +98,6 @@ foreach ($cliente->result() as $row) {
                     <li class="waves-effect"><a href="#">Orçamentos</a></li>                 
                 </ul>
 
-
-                <div class="pmb-block">
-                    <div class="pmbb-header">
-                        <h2><i class="zmdi zmdi-assignment-o m-r-5"></i> Observação</h2>
-
-                        <ul class="actions">
-                            <li>
-                                <a data-pmb-action="edit" href=""><i class="zmdi zmdi-edit zmdi-hc-5x"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="pmbb-body p-l-30">
-                        <div class="pmbb-view">
-                            <?php echo $cliente->observacao; ?>
-                        </div>
-
-                        <div class="pmbb-edit">
-                            <?php echo form_open(base_url() . "index.php/cliente/atualizarObservacao?id=" . $cliente->id); ?>
-                            <div class="fg-line">
-                                <textarea name="observacao" class="form-control" rows="5" placeholder="Insira aqui sua observação..."><?php echo $cliente->observacao; ?></textarea>
-                            </div>
-                            <div class="m-t-10">
-                                <button class="btn btn-primary btn-sm">Atualizar</button>
-                                <button data-pmb-action="reset" class="btn btn-link btn-sm">Cancelar</button>
-                            </div>
-                            <?php echo form_close(); ?>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="pmb-block">
                     <div class="pmbb-header">
                         <h2><i class="zmdi zmdi-account m-r-5"></i> Informações</h2>
@@ -168,7 +138,6 @@ foreach ($cliente->result() as $row) {
                                 <dd><?php echo date('d/m/Y', strtotime($cliente->data_contato)); ?></dd>
                             </dl>
                         </div>
-
                         <div class="pmbb-edit">
                             <dl class="dl-horizontal">
                                 <dt class="p-t-10">Full Name</dt>
@@ -216,6 +185,34 @@ foreach ($cliente->result() as $row) {
                                 <button class="btn btn-primary btn-sm">Save</button>
                                 <button data-pmb-action="reset" class="btn btn-link btn-sm">Cancel</button>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pmb-block">
+                    <div class="pmbb-header">
+                        <h2><i class="zmdi zmdi-assignment-o m-r-5"></i> Observação</h2>
+
+                        <ul class="actions">
+                            <li>
+                                <a data-pmb-action="edit" href=""><i class="zmdi zmdi-edit zmdi-hc-5x"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pmbb-body p-l-30">
+                        <div class="pmbb-view">
+                            <?php echo $cliente->observacao; ?>
+                        </div>
+
+                        <div class="pmbb-edit">
+                            <?php echo form_open(base_url() . "index.php/cliente/atualizarObservacao?id=" . $cliente->id); ?>
+                            <div class="fg-line">
+                                <textarea name="observacao" class="form-control" rows="5" placeholder="Insira aqui sua observação..."><?php echo $cliente->observacao; ?></textarea>
+                            </div>
+                            <div class="m-t-10">
+                                <button class="btn btn-primary btn-sm">Atualizar</button>
+                                <button data-pmb-action="reset" class="btn btn-link btn-sm">Cancelar</button>
+                            </div>
+                            <?php echo form_close(); ?>
                         </div>
                     </div>
                 </div>

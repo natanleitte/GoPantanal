@@ -3,11 +3,15 @@
     Copyright &copy; 2015 GoPantanal Admin
 
     <ul class="f-menu">
-        <li><a href="">Home</a></li>
-        <li><a href="">Dashboard</a></li>
-        <li><a href="">Reports</a></li>
-        <li><a href="">Support</a></li>
-        <li><a href="">Contact</a></li>
+        <li><a href="<?php echo base_url() ?>">Home</a></li>
+        <li><a href="<?php echo base_url() ?>index.php/cliente">Clientes</a></li>
+        <li><a href="<?php echo base_url() ?>index.php/agenda">Agenda</a></li>
+        <li><a href="<?php echo base_url() ?>index.php/tarefa">Tarefas</a></li>
+        <li><a href="<?php echo base_url() ?>index.php/mail">E-mail</a></li>
+        <li><a href="<?php echo base_url() ?>index.php/hotel">Hotel</a></li>
+        <li><a href="<?php echo base_url() ?>index.php/transporte">Transporte</a></li>
+        <li><a href="<?php echo base_url() ?>index.php/passeio">Passeio</a></li>
+        <li><a href="<?php echo base_url() ?>index.php/guia">Guia</a></li>
     </ul>
 </footer>
 
@@ -21,49 +25,6 @@
         <p>Please wait...</p>
     </div>
 </div>
-
-<!-- Older IE warning message -->
-<!--[if lt IE 9]>
-    <div class="ie-warning">
-        <h1 class="c-white">Warning!!</h1>
-        <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
-        <div class="iew-container">
-            <ul class="iew-download">
-                <li>
-                    <a href="http://www.google.com/chrome/">
-                        <img src="img/browsers/chrome.png" alt="">
-                        <div>Chrome</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.mozilla.org/en-US/firefox/new/">
-                        <img src="img/browsers/firefox.png" alt="">
-                        <div>Firefox</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://www.opera.com">
-                        <img src="img/browsers/opera.png" alt="">
-                        <div>Opera</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.apple.com/safari/">
-                        <img src="img/browsers/safari.png" alt="">
-                        <div>Safari</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
-                        <img src="img/browsers/ie.png" alt="">
-                        <div>IE (New)</div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <p>Sorry for the inconvenience!</p>
-    </div>   
-<![endif]-->
 
 <!-- Javascript Libraries -->
 <script src="<?php echo base_url() . "assets/" ?>vendors/bower_components/jquery/dist/jquery.min.js"></script>
@@ -99,14 +60,6 @@
 <!--Altera linguagem do calendário-->
 <script src='<?php echo base_url() . "assets/" ?>vendors/bower_components/fullcalendar/dist/lang/pt-br.js'></script>
 
-//<?php
-//   echo "<script type='text/javascript'>";
-//
-//   foreach ($tarefas->result() as $tarefa) {
-//       echo var person = {firstName:"John", lastName:"Doe", age:46};
-//   }
-//
-?>
 <script type="text/javascript">
     $(document).ready(function () {
         var date = new Date();
@@ -137,92 +90,11 @@
        echo "start: new Date('" . $tarefa->data_ini . "'),";
        echo "end: new Date('" . $tarefa->data_fim . "'),";
        echo "allDay: true,";
-       echo "className: 'bgm-cyan'";
+       echo "className: '".$tarefa->cor."'";
        echo "},";
    }
    echo "],";
 ?>
-//            
-//            events: [
-//                {
-//                    title: 'Hangout with friends',
-//                    start: new Date(y, m, 1),
-//                    allDay: true,
-//                    className: 'bgm-cyan'
-//                },
-//                {
-//                    title: 'Meeting with client',
-//                    start: new Date(y, m, 10),
-//                    allDay: true,
-//                    className: 'bgm-orange'
-//                },
-//                {
-//                    title: 'Repeat Event',
-//                    start: new Date(y, m, 18),
-//                    allDay: true,
-//                    className: 'bgm-amber'
-//                },
-//                {
-//                    title: 'Semester Exam',
-//                    start: new Date(y, m, 20),
-//                    allDay: true,
-//                    className: 'bgm-green'
-//                },
-//                {
-//                    title: 'Soccor match',
-//                    start: new Date(y, m, 5),
-//                    allDay: true,
-//                    className: 'bgm-lightblue'
-//                },
-//                {
-//                    title: 'Coffee time',
-//                    start: new Date(y, m, 21),
-//                    allDay: true,
-//                    className: 'bgm-orange'
-//                },
-//                {
-//                    title: 'Job Interview',
-//                    start: new Date(y, m, 5),
-//                    allDay: true,
-//                    className: 'bgm-amber'
-//                },
-//                {
-//                    title: 'IT Meeting',
-//                    start: new Date(y, m, 5),
-//                    allDay: true,
-//                    className: 'bgm-green'
-//                },
-//                {
-//                    title: 'Brunch at Beach',
-//                    start: new Date(y, m, 1),
-//                    allDay: true,
-//                    className: 'bgm-lightblue'
-//                },
-//                {
-//                    title: 'Live TV Show',
-//                    start: new Date(y, m, 15),
-//                    allDay: true,
-//                    className: 'bgm-cyan'
-//                },
-//                {
-//                    title: 'Software Conference',
-//                    start: new Date(y, m, 25),
-//                    allDay: true,
-//                    className: 'bgm-lightblue'
-//                },
-//                {
-//                    title: 'Coffee time',
-//                    start: new Date(y, m, 30),
-//                    allDay: true,
-//                    className: 'bgm-orange'
-//                },
-//                {
-//                    title: 'Job Interview',
-//                    start: new Date(y, m, 30),
-//                    allDay: true,
-//                    className: 'bgm-green'
-//                },
-//            ],
             //On Day Select
             select: function (start, end, allDay) {
                 $('#addNew-event').modal('show');
