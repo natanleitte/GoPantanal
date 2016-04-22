@@ -1,7 +1,7 @@
 <section id="content">
     <div class="container">
         <div class="block-header">
-            <h2>TRANSPORTES</h2>
+            <h2>GUIAS</h2>
 
             <ul class="actions">
                 <li>
@@ -36,7 +36,7 @@
 
         <div class="card">
             <div class="card-header">
-                <h2>Transportes</h2>
+                <h2>Guias</h2>
             </div>
 
             <div class="table-responsive">
@@ -44,6 +44,7 @@
                     <thead>
                         <tr>
                             <th data-column-id="id" data-type="numeric">Nome</th>
+                            <th data-column-id="sender">Idioma</th>
                             <th data-column-id="sender">Telefone</th>
                             <th data-column-id="received" data-order="desc">Email</th>
                             <th data-column-id="sender">Responsável</th>
@@ -54,14 +55,15 @@
                     </thead>
                     <tbody>
                         <?php
-                        foreach ($transportes->result() as $transporte) {
+                        foreach ($guias->result() as $guia) {
                             echo "<tr>";
-                            echo "<td>" . $transporte->nome . "</td>";
-                            echo "<td>" . $transporte->telefone . "</td>";
-                            echo "<td>" . $transporte->email . "</td>";
-                            echo "<td>" . $transporte->responsavel . "</td>";
-                            echo "<td>" . $transporte->endereco . "</td>";
-                            echo "<td>" . $transporte->cidade . "</td>";
+                            echo "<td>" . $guia->nome . "</td>";
+                            echo "<td>" . $guia->idioma . "</td>";
+                            echo "<td>" . $guia->telefone . "</td>";
+                            echo "<td>" . $guia->email . "</td>";
+                            echo "<td>" . $guia->responsavel . "</td>";
+                            echo "<td>" . $guia->endereco . "</td>";
+                            echo "<td>" . $guia->cidade . "</td>";
 
                             echo "</tr>";
                         }

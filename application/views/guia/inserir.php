@@ -10,7 +10,7 @@
 <section id="content">
     <div class="container">
         <div class="block-header">
-            <h2>Hotel</h2>
+            <h2>Guia</h2>
 
             <ul class="actions">
                 <li>
@@ -46,7 +46,7 @@
 
         <div class="card">
             <div class="card-header">
-                <h2>Inserir Transporte</h2>
+                <h2>Inserir Guia</h2>
             </div>
 
             <div class="card-body card-padding">
@@ -54,7 +54,7 @@
                 <!--<small>Place one add-on or button on either side of an input. You may also place one on both sides of an input.</small>-->
 
                 <br/><br/>
-                <form role="form" id="formTransporte">
+                <form role="form" id="formGuia">
 
                     <div class="row">
                         <div class="col-sm-6">                       
@@ -80,6 +80,15 @@
                                 <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
                                 <div class="fg-line">
                                     <input type="text" id="email" name="email" class="form-control" placeholder="Email">
+                                </div>
+                            </div>
+
+                            <br/>
+
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="zmdi zmdi-globe-alt"></i></span>
+                                <div class="fg-line">
+                                    <input type="text" id="idioma" name="idioma" class="form-control" placeholder="Idioma">
                                 </div>
                             </div>
 
@@ -119,7 +128,7 @@
                 </form>
 
                 <br/>
-                <button onclick="adicionarTransporte()" class="btn btn-block btn-primary waves-effect">Salvar <i class="zmdi zmdi-mail-send"></i></button>
+                <button onclick="adicionarGuia()" class="btn btn-block btn-primary waves-effect">Salvar <i class="zmdi zmdi-mail-send"></i></button>
 
             </div>
         </div>
@@ -127,17 +136,17 @@
 </section>
 
 <script type="text/javascript">
-    function adicionarTransporte()
+    function adicionarGuia()
     {
 //        alert("ola");
         $.ajax({
-            url: '<?= base_url(); ?>' + 'index.php/transporte/inserirTransporte',
+            url: '<?= base_url(); ?>' + 'index.php/guia/inserirGuia',
             type: 'POST',
-            data: $("#formTransporte").serialize(),
+            data: $("#formGuia").serialize(),
             success: function (msg) {
-                swal("Transporte inserido com sucesso!", "", "success");
+                swal("Guia inserido com sucesso!", "", "success");
                 $("#nome, #email, #telefone, #responsavel, #endereco, #cidade").val('');
-                window.location.href = '<?= base_url(); ?>' + 'index.php/transporte/';
+                window.location.href = '<?= base_url(); ?>' + 'index.php/guia/';
             }
         });
         return false;
