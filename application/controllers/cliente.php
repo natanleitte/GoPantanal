@@ -4,6 +4,8 @@ include APPPATH . 'controllers\utils\DataUtils.php';
 
 class Cliente extends CI_Controller {
 
+    private $data;
+    
     public function __construct() {
         parent::__construct();
         $this->load->helper('url');
@@ -18,23 +20,17 @@ class Cliente extends CI_Controller {
     }
 
     public function index() {
-        $data['tarefas'] = $this->TarefaModel->getTarefas();
-        $data['emails'] = $this->EmailModel->obterTodos();
-        $data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
-        $data['clientes'] = $this->ClienteModel->getClientesPorDataDesc();
-        $data['ultimosCincoEmails'] = $this->EmailModel->obterOsUltimosCincoEmails();
+        $this->configuracoesBasicasParaCarregarPagina();
 
-        $this->load->view('header', $data);
-        $this->load->view('cliente/index', $data);
-        $this->load->view('footerClientes', $data);
+        $this->load->view('header', $this->data);
+        $this->load->view('cliente/index', $this->data);
+        $this->load->view('footerClientes', $this->data);
     }
 
     public function inserir() {
-        $data['emails'] = $this->EmailModel->obterTodos();
-        $data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
-        $data['tarefas'] = $this->TarefaModel->getTarefas();
+        $this->configuracoesBasicasParaCarregarPagina();
 
-        $this->load->view('header', $data);
+        $this->load->view('header', $this->data);
         $this->load->view('cliente/inserir');
         $this->load->view('footer');
     }
@@ -55,24 +51,19 @@ class Cliente extends CI_Controller {
     }
 
     public function profile() {
-        $data['cliente'] = $this->ClienteModel->getCliente($this->input->get('id'));
-        $data['emails'] = $this->EmailModel->obterTodos();
-        $data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
-        $data['tarefas'] = $this->TarefaModel->getTarefas();
+        $this->configuracoesBasicasParaCarregarPagina();
+        $this->data['cliente'] = $this->ClienteModel->getCliente($this->input->get('id', TRUE));
 
-        $this->load->view('header', $data);
-        $this->load->view('cliente/profile', $data);
+        $this->load->view('header', $this->data);
+        $this->load->view('cliente/profile', $this->data);
         $this->load->view('footer');
     }
 
     public function editar() {
-        $data['cliente'] = $this->ClienteModel->getCliente($this->input->get('id'));
-        $data['emails'] = $this->EmailModel->obterTodos();
-        $data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
-        $data['tarefas'] = $this->TarefaModel->getTarefas();
-
-        $this->load->view('header', $data);
-        $this->load->view('cliente/editar', $data);
+        $this->configuracoesBasicasParaCarregarPagina();
+        
+        $this->load->view('header', $this->data);
+        $this->load->view('cliente/editar', $this->data);
         $this->load->view('footer');
     }
 
@@ -93,4 +84,11 @@ class Cliente extends CI_Controller {
         return $clientes->result();
     }
 
+    private function configuracoesBasicasParaCarregarPagina() {
+        $this->data['tarefas'] = $this->TarefaModel->getTarefas();
+        $this->data['emails'] = $this->EmailModel->obterTodos();
+        $this->data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
+        $this->data['clientes'] = $this->ClienteModel->getClientesPorDataDesc();
+        $this->data['ultimosCincoEmails'] = $this->EmailModel->obterOsUltimosCincoEmails();
+    }
 }
