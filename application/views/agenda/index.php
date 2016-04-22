@@ -74,6 +74,8 @@
 
                             <input type="hidden" name='data_ini' id="getStart" />
                             <input type="hidden" name='data_fim' id="getEnd" />
+                            <input type="hidden" name='status' id="status" value="A"/>
+
                         </form>
                     </div>
 
