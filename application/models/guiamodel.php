@@ -1,19 +1,19 @@
 <?php
 
-   class PasseioModel extends CI_Model {
+   class GuiaModel extends CI_Model {
 
        public function __construct() {
            parent::__construct();
            $this->load->database();
        }
 
-       public function setPasseio($data) {
+       public function setGuia($data) {
            $this->load->database();
-           $this->db->insert("passeio", $data);
+           $this->db->insert("guia", $data);
        }
        
-       public function getPasseios() {
-        return $this->db->get("passeio");
+       public function getGuias() {
+        return $this->db->get("guia");
     }
 
 }
