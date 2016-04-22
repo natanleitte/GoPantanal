@@ -11,6 +11,10 @@
            $this->load->database();
            $this->db->insert("hotel", $data);
        }
+       
+       public function getHoteis() {
+        return $this->db->get("hotel");
+    }
 
 }
 ?>
