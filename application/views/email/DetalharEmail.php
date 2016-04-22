@@ -28,7 +28,7 @@
                             <h2>
                                 <?php echo $email->assunto; ?>
                                 <small>
-                                    <?php echo "De: <b>" . $email->nomeRemetente . "</b>" . " - ( " . $email->emailRemetente . " )<br>"; ?>
+                                    <?php echo "De: <b>" . $email->nomeRemetente . "</b> - ( " . $email->emailRemetente . " )<br>"; ?>
                                     <?php echo "Cc: <b>" . $email->emailCC . "</b><br>"; ?>
                                     Encaminhado em <?php echo date('d/m/Y H:i:s', strtotime($email->dataDeEnvio)); ?>
                                 </small>
@@ -45,7 +45,7 @@
 
                     <!-- Responder email form -->
                     <div>
-                        <?php echo form_open(base_url() . 'index.php/Mail/enviar?id=' . $email->idDoEmailNoServidor); ?>
+                        <?php echo form_open_multipart(base_url() . 'index.php/Mail/enviar?id=' . $email->idDoEmailNoServidor); ?>
                         <div class="card-body card-padding">
                             <div class="row">
                                 <div class="col-sm-12">
@@ -54,8 +54,10 @@
                                 </div>
                             </div>
                             <blockquote class="m-b-25">
-                                <p>Responder</p>
+                                <p>Responder à <?php echo "<b>" . $email->nomeRemetente . "</b> - ( " . $email->emailRemetente . " )"; ?> </p>
                             </blockquote>
+                            <input type="file" name="userfile"/>
+                            <br>
                             <div class="html-editor"></div>
                         </div>
                         <button id="enviarEmail" class="btn bgm-blue btn-float waves-effect"><i class="zmdi zmdi-mail-send"></i></button>
