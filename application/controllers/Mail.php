@@ -50,7 +50,7 @@ class Mail extends CI_Controller {
     public function detalharEmail() {
         $this->idDoEmailDetalhado = $this->input->get('id', TRUE);
         $this->EmailModel->marcarComoLido($this->idDoEmailDetalhado);
-        
+
         $this->data['statusEnvio'] = "";
         $this->configurarDadosParaExibirPaginaDeDetalhesDeEmail();
         $this->renderizarParaPaginaDeDetalhesDoEmail();
@@ -67,7 +67,7 @@ class Mail extends CI_Controller {
     public function excluirEmail() {
         $this->idDoEmailDetalhado = $this->input->get('idDoEmailNoServidor', TRUE);
         $this->EmailModel->excluir($this->idDoEmailDetalhado);
-        
+
         $this->data['statusEnvio'] = "";
         $this->configurarDadosParaExibirPaginaDeDetalhesDeEmail();
         $this->renderizarParaPaginaDeDetalhesDoEmail();
@@ -89,11 +89,11 @@ class Mail extends CI_Controller {
         $email->corpoDoEmail = $this->input->post('corpoDoEmail');
 
         $this->data['statusEnvio'] = $this->configurarEDisparar($email) ? 1 : 0;
-        
+
         $this->configurarDadosParaExibirPaginaDeDetalhesDeEmail();
         $this->renderizarParaPaginaDeDetalhesDoEmail();
     }
-    
+
     public function configurarEDisparar($email) {
         $config = Array(
             'protocol' => 'smtp',
@@ -102,18 +102,31 @@ class Mail extends CI_Controller {
             'smtp_user' => 'jorge@leafweb.com.br',
             'smtp_pass' => 'WolV@972',
             'mailtype' => 'html',
-            'charset' => 'utf-8'
+            'charset' => 'utf-8',
         );
-        
         $this->load->library('email');
-        $this->email->set_newline("\r\n");
         $this->email->initialize($config);
-
+        
+        $configDoArquivo = array(
+            'upload_path' => './uploads/',
+            'allowed_types' => 'gif|jpg|png|pdf|doc|xls|xlsx|docx',
+            'max_size' => '100'
+        );
+        $this->load->library('upload', $configDoArquivo);
+        $this->email->initialize($configDoArquivo);
+        
+        $this->email->set_newline("\r\n");
         $this->email->from($email->emailRemetente);
         $this->email->to($email->emailDestinatario);
         $this->email->subject($email->assunto);
         $this->email->message($email->corpoDoEmail);
+
+        if ($this->upload->do_upload('userfile')) {
+            $attachdata = $this->upload->data();
+            $this->email->attach($attachdata['full_path']);
+            echo "esta possivelmente anexado!";
+            exit();
+        }
         return $this->email->send();
     }
-
 }
