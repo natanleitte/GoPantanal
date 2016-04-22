@@ -8,9 +8,6 @@ class Tarefa extends CI_Controller {
         parent::__construct();
         $this->load->helper('url');
         $this->load->helper('form');
-        $this->load->model('TarefaModel');
-        $this->load->model('EmailModel');
-        $this->load->model('UsuarioModel');
         $this->UsuarioModel->estaLogado();
         $this->DataUtils = new DataUtils();
     }
@@ -20,6 +17,7 @@ class Tarefa extends CI_Controller {
         $data['emails'] = $this->EmailModel->obterTodos();
         $data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
         $data['ultimosCincoEmails'] = $this->EmailModel->obterOsUltimosCincoEmails();
+        $data['clientes'] = $this->ClienteModel->getClientes();
 
         $this->load->view('header', $data);
         $this->load->view('tarefa/index', $data);
@@ -28,8 +26,8 @@ class Tarefa extends CI_Controller {
 
     public function inserirTarefa() {
         $data['titulo'] = $this->input->post('titulo');
-        $data['data_ini'] = $this->DataUtils->engenhariaAlternativaParaData($this->input->post('data_ini'));
-        $data['data_fim'] = $this->DataUtils->engenhariaAlternativaParaData($this->input->post('data_fim'));
+        $data['data_ini'] = $this->DataUtils->alterarParaSeisDaManhaA($this->input->post('data_ini'));
+        $data['data_fim'] = $this->DataUtils->alterarParaSeisDaManhaA($this->input->post('data_fim'));
         $data['status'] = $this->input->post('status');
 
         $this->TarefaModel->setTarefa($data);

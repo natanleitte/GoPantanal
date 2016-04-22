@@ -25,7 +25,7 @@ class DataUtils {
         return substr($data, 11, 4);
     }
 
-    public static function engenhariaAlternativaParaData($data) {
+    public static function alterarParaSeisDaManhaA($data) {
         $data[17] = '6';
         return $data;
     }

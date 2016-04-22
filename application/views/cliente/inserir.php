@@ -1,6 +1,5 @@
 <script type="text/javascript">
     $(function () {
-        //$('#datetimepicker1').datetimepicker();
         $('#datetimepicker1').datetimepicker({
             format: 'DD/MM/YYYY',
         });
@@ -159,7 +158,6 @@
 <script type="text/javascript">
     function adicionarCliente()
     {
-//        alert("ola");
         $.ajax({
             url: '<?= base_url(); ?>' + 'index.php/cliente/inserirCliente',
             type: 'POST',

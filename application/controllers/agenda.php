@@ -7,9 +7,6 @@ class Agenda extends CI_Controller {
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->helper('array');
-        $this->load->model("TarefaModel");
-        $this->load->model("EmailModel");
-        $this->load->model('UsuarioModel');
         $this->UsuarioModel->estaLogado();
     }
 
@@ -18,7 +15,8 @@ class Agenda extends CI_Controller {
         $data['emails'] = $this->EmailModel->obterTodos();
         $data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
         $data['ultimosCincoEmails'] = $this->EmailModel->obterOsUltimosCincoEmails();
-
+        $data['clientes'] = $this->ClienteModel->getClientes();
+        
         $this->load->view('header', $data);
         $this->load->view('agenda/index');
         $this->load->view('footerAgenda', $data);
