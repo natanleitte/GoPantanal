@@ -3,6 +3,13 @@ foreach ($cliente->result() as $row) {
     $cliente = $row;
 }
 ?>
+<script type="text/javascript">
+    $(function () {
+        $('#data').datetimepicker({
+            format: 'DD/MM/YYYY'
+        });
+    });
+</script>
 <section id="content">
     <div class="container">
 
@@ -139,53 +146,76 @@ foreach ($cliente->result() as $row) {
                             </dl>
                         </div>
                         <div class="pmbb-edit">
+                            <?php echo form_open(base_url() . "index.php/cliente/atualizarCliente?id=" . $cliente->id); ?>
                             <dl class="dl-horizontal">
-                                <dt class="p-t-10">Full Name</dt>
+                                <dt class="p-t-10">Nome</dt>
                                 <dd>
                                     <div class="fg-line">
-                                        <input type="text" class="form-control" placeholder="eg. Mallinda Hollaway">
+                                        <input name="nome" type="text" class="form-control" value="<?php echo $cliente->nome; ?>">
                                     </div>
-
                                 </dd>
                             </dl>
                             <dl class="dl-horizontal">
-                                <dt class="p-t-10">Gender</dt>
+                                <dt class="p-t-10">E-mail</dt>
                                 <dd>
                                     <div class="fg-line">
-                                        <select class="form-control">
-                                            <option>Male</option>
-                                            <option>Female</option>
-                                            <option>Other</option>
+                                        <input name="email" type="text" class="form-control" value="<?php echo $cliente->email; ?>">
+                                    </div>
+                                </dd>
+                            </dl>
+                            <dl class="dl-horizontal">
+                                <dt class="p-t-10">Telefone</dt>
+                                <dd>
+                                    <div class="fg-line">
+                                        <input name="telefone" type="text" class="form-control" value="<?php echo $cliente->telefone; ?>">
+                                    </div>
+                                </dd>
+                            </dl>
+                            <dl class="dl-horizontal">
+                                <dt class="p-t-10">Nacionalidade</dt>
+                                <dd>
+                                    <div class="fg-line">
+                                        <input name="nacionalidade" type="text" class="form-control" value="<?php echo $cliente->nacionalidade; ?>">
+                                    </div>
+                                </dd>
+                            </dl>
+                            <dl class="dl-horizontal">
+                                <dt class="p-t-10">Passaporte</dt>
+                                <dd>
+                                    <div class="fg-line">
+                                        <input name="passaporte" type="text" class="form-control" value="<?php echo $cliente->passaporte; ?>">
+                                    </div>
+                                </dd>
+                            </dl>
+                            <dl class="dl-horizontal">
+                                <dt class="p-t-10">Origem Contato</dt>
+                                <dd>
+                                    <div class="select">
+                                        <select name="origem_contato" class="form-control" placeholder="Origem do Contato">
+                                            <option value="">Origem do contato...</option>
+                                            <option value="Email">Email</option>
+                                            <option value="Telefone">Telefone</option>
+                                            <option value="Site">Site</option>
+                                            <option value="Pessoal">Pessoal</option>
                                         </select>
                                     </div>
                                 </dd>
                             </dl>
                             <dl class="dl-horizontal">
-                                <dt class="p-t-10">Birthday</dt>
-                                <dd>
-                                    <div class="dtp-container dropdown fg-line">
-                                        <input type='text' class="form-control date-picker" data-toggle="dropdown" placeholder="Click here...">
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl class="dl-horizontal">
-                                <dt class="p-t-10">Martial Status</dt>
+                                <dt class="p-t-10">Data Contato</dt>
                                 <dd>
                                     <div class="fg-line">
-                                        <select class="form-control">
-                                            <option>Single</option>
-                                            <option>Married</option>
-                                            <option>Other</option>
-                                        </select>
+                                        <input name="data_contato" id="data" type="text" class="form-control" value="<?php echo $cliente->data_contato; ?>">
                                     </div>
                                 </dd>
                             </dl>
 
                             <div class="m-t-30">
-                                <button class="btn btn-primary btn-sm">Save</button>
-                                <button data-pmb-action="reset" class="btn btn-link btn-sm">Cancel</button>
+                                <button class="btn btn-primary btn-sm">Atualizar</button>
+                                <button data-pmb-action="reset" class="btn btn-link btn-sm">Cancelar</button>
                             </div>
                         </div>
+                        <?php echo form_close(); ?>
                     </div>
                 </div>
                 <div class="pmb-block">
