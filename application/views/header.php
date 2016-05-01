@@ -14,7 +14,6 @@ foreach ($tarefas->result() as $tarefa)
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Go Pantanal</title>
 
-
     <!-- Vendor CSS -->
     <link href="<?php echo base_url() . "assets/" ?>vendors/bootgrid/jquery.bootgrid.min.css" rel="stylesheet">
     <link href="<?php echo base_url() . "assets/" ?>vendors/bower_components/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
@@ -118,13 +117,11 @@ foreach ($tarefas->result() as $tarefa)
                                 <div class="lv-body">
                                     <?php
                                     foreach ($tarefas->result() as $tarefa) {
-
                                         if ($tarefa->status == 'A') {
-
                                             echo "  <div class='lv-item'>";
                                             echo "<div class='lv-title m-b-5'>" . $tarefa->titulo . "</div>";
                                             echo "<div class='progress'>";
-                                            echo "<div class='progress-bar' role='progressbar' aria-valuenow='100' aria-valuemin='0' aria-valuemax='100' style='width: 100%'>";
+                                            echo "<div class='progress-bar " . $tarefa->cor . "' role='progressbar' aria-valuenow='100' aria-valuemin='0' aria-valuemax='100' style='width: 100%'>";
                                             echo "<span class='sr-only'>100% Complete (success)</span>";
                                             echo "</div>";
                                             echo "</div>";
@@ -193,7 +190,7 @@ foreach ($tarefas->result() as $tarefa)
 
             <ul class="main-menu">
                 <li class="active">
-                    <a href="<?php echo base_url(). 'index.php/index'; ?>"><i class="zmdi zmdi-home"></i> Home</a>
+                    <a href="<?php echo base_url() . 'index.php/index'; ?>"><i class="zmdi zmdi-home"></i> Home</a>
                 </li>
                 <li class="sub-menu">
                     <a href="index.html"><i class="zmdi zmdi-accounts"></i> Clientes</a>

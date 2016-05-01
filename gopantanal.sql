@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 22-Abr-2016 às 09:52
+-- Generation Time: 30-Abr-2016 às 18:11
 -- Versão do servidor: 5.6.15-log
 -- PHP Version: 5.4.24
 
@@ -248,21 +248,20 @@ CREATE TABLE IF NOT EXISTS `tarefa` (
   `data_ini` varchar(100) DEFAULT NULL,
   `data_fim` varchar(100) DEFAULT NULL,
   `status` varchar(1) DEFAULT NULL,
+  `cor` varchar(30) NOT NULL,
+  `id_cliente` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=61 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=62 ;
 
 --
 -- Extraindo dados da tabela `tarefa`
 --
 
-INSERT INTO `tarefa` (`id`, `titulo`, `descricao`, `data_ini`, `data_fim`, `status`) VALUES
-(54, 'Criar orçamento', NULL, 'teste            6', 'teste            6', 'A'),
-(55, 'teste', NULL, 'teste            6', 'teste            6', 'A'),
-(56, 'teste', NULL, 'Wed Mar 02 2016 06:00:00 GMT+0000', 'Thu Mar 03 2016 06:00:00 GMT+0000', 'A'),
-(57, 'Entrar em contato com o cliente João Vitor', NULL, 'teste            6', 'teste            6', 'I'),
-(58, 'Reunião com a organização do evento', NULL, 'Thu Mar 24 2016 06:00:00 GMT+0000', 'Fri Mar 25 2016 06:00:00 GMT+0000', 'A'),
-(59, 'asfasdf', NULL, NULL, NULL, NULL),
-(60, 'asdf', NULL, 'Tue Apr 05 2016 06:00:00 GMT+0000', 'Wed Apr 06 2016 06:00:00 GMT+0000', 'A');
+INSERT INTO `tarefa` (`id`, `titulo`, `descricao`, `data_ini`, `data_fim`, `status`, `cor`, `id_cliente`) VALUES
+(56, 'teste', NULL, 'Wed Mar 02 2016 06:00:00 GMT+0000', 'Thu Mar 03 2016 06:00:00 GMT+0000', 'A', '', 0),
+(58, 'Reunião com a organização do evento', NULL, 'Thu Mar 24 2016 06:00:00 GMT+0000', 'Fri Mar 25 2016 06:00:00 GMT+0000', 'A', '', 0),
+(60, 'asdf', NULL, 'Tue Apr 05 2016 06:00:00 GMT+0000', 'Wed Apr 06 2016 06:00:00 GMT+0000', 'A', '', 0),
+(61, 'çççççççççççççççç', NULL, 'Sat Apr 30 2016 06:00:00 GMT+0000', 'Sun May 01 2016 06:00:00 GMT+0000', 'A', 'bgm-purple', 9);
 
 -- --------------------------------------------------------
 
