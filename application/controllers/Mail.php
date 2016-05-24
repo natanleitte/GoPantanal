@@ -1,7 +1,7 @@
 <?php
 
-include APPPATH . 'controllers\email\Email.php';
-include APPPATH . 'controllers\GerenciadorDeEmails.php';
+include APPPATH . 'controllers/email/Email.php';
+include APPPATH . 'controllers/GerenciadorDeEmails.php';
 
 class Mail extends CI_Controller {
 
@@ -65,12 +65,11 @@ class Mail extends CI_Controller {
     }
 
     public function excluirEmail() {
-        $this->idDoEmailDetalhado = $this->input->get('idDoEmailNoServidor', TRUE);
+        $this->idDoEmailDetalhado = $this->input->get('id', TRUE);
         $this->EmailModel->excluir($this->idDoEmailDetalhado);
-
         $this->data['statusEnvio'] = "";
-        $this->configurarDadosParaExibirPaginaDeDetalhesDeEmail();
-        $this->renderizarParaPaginaDeDetalhesDoEmail();
+        $this->index();
+        
     }
 
     private function renderizarParaPaginaDeDetalhesDoEmail() {
@@ -110,7 +109,7 @@ class Mail extends CI_Controller {
         $configDoArquivo = array(
             'upload_path' => './uploads/',
             'allowed_types' => 'gif|jpg|png|pdf|doc|xls|xlsx|docx',
-            'max_size' => '100'
+            'max_size' => '1000'
         );
         $this->load->library('upload', $configDoArquivo);
         $this->email->initialize($configDoArquivo);
@@ -120,13 +119,14 @@ class Mail extends CI_Controller {
         $this->email->to($email->emailDestinatario);
         $this->email->subject($email->assunto);
         $this->email->message($email->corpoDoEmail);
-
+        
         if ($this->upload->do_upload('userfile')) {
             $attachdata = $this->upload->data();
             $this->email->attach($attachdata['full_path']);
             echo "esta possivelmente anexado!";
             exit();
         }
+        
         return $this->email->send();
     }
 }
