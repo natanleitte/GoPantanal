@@ -1,6 +1,6 @@
 <?php
 
-include APPPATH . 'controllers\utils\DataUtils.php';
+include APPPATH . 'controllers/utils/DataUtils.php';
 
 class Cliente extends CI_Controller {
 
