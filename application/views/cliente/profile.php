@@ -20,12 +20,12 @@ foreach ($cliente->result() as $row) {
         <div class="card" id="profile-main">
             <div class="pm-body">
                 <ul class="tab-nav tn-justified">
-                    <li class="active waves-effect"><a href="#">Início</a></li>
-                    <li class="waves-effect"><a href="#">Compromissos Agendados</a></li>
+                    <li class="active waves-effect"><a id="botao-perfil" href="#">Início</a></li>
+                    <li class="waves-effect"><a id="botao-compromisso" href="#">Compromissos Agendados</a></li>
                     <li class="waves-effect"><a href="#">Orçamentos</a></li>                 
                 </ul>
 
-                <div class="pmb-block">
+                <div id="perfil" class="pmb-block">
                     <div class="pmbb-header">
                         <h2><i class="zmdi zmdi-account m-r-5"></i> Informações</h2>
                         <ul class="actions">
@@ -137,36 +137,71 @@ foreach ($cliente->result() as $row) {
                         </div>
                         <?php echo form_close(); ?>
                     </div>
-                </div>
-                <div class="pmb-block">
-                    <div class="pmbb-header">
-                        <h2><i class="zmdi zmdi-assignment-o m-r-5"></i> Observação</h2>
+                    <div class="pmb-block">
+                        <div class="pmbb-header">
+                            <h2><i class="zmdi zmdi-assignment-o m-r-5"></i> Observação</h2>
 
-                        <ul class="actions">
-                            <li>
-                                <a data-pmb-action="edit" href=""><i class="zmdi zmdi-edit zmdi-hc-5x"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="pmbb-body p-l-30">
-                        <div class="pmbb-view">
-                            <?php echo $cliente->observacao; ?>
+                            <ul class="actions">
+                                <li>
+                                    <a data-pmb-action="edit" href=""><i class="zmdi zmdi-edit zmdi-hc-5x"></i></a>
+                                </li>
+                            </ul>
                         </div>
+                        <div class="pmbb-body p-l-30">
+                            <div class="pmbb-view">
+                                <?php echo $cliente->observacao; ?>
+                            </div>
 
-                        <div class="pmbb-edit">
-                            <?php echo form_open(base_url() . "index.php/cliente/atualizarObservacao?id=" . $cliente->id); ?>
-                            <div class="fg-line">
-                                <textarea name="observacao" class="form-control" rows="5" placeholder="Insira aqui sua observação..."><?php echo $cliente->observacao; ?></textarea>
+                            <div class="pmbb-edit">
+                                <?php echo form_open(base_url() . "index.php/cliente/atualizarObservacao?id=" . $cliente->id); ?>
+                                <div class="fg-line">
+                                    <textarea name="observacao" class="form-control" rows="5" placeholder="Insira aqui sua observação..."><?php echo $cliente->observacao; ?></textarea>
+                                </div>
+                                <div class="m-t-10">
+                                    <button class="btn btn-primary btn-sm">Atualizar</button>
+                                    <button data-pmb-action="reset" class="btn btn-link btn-sm">Cancelar</button>
+                                </div>
+                                <?php echo form_close(); ?>
                             </div>
-                            <div class="m-t-10">
-                                <button class="btn btn-primary btn-sm">Atualizar</button>
-                                <button data-pmb-action="reset" class="btn btn-link btn-sm">Cancelar</button>
-                            </div>
-                            <?php echo form_close(); ?>
                         </div>
                     </div>
                 </div>
+                <div id="compromisso" style="display:none;">
+                    <div class="card-body card-padding">                     
+                            <?php
+                            foreach ($tarefas->result() as $tarefa) {
+                                if ($tarefa->id_cliente === $cliente->id) {
+                                    echo "<div class='p-timeline'>";
+                                        echo "<div class='pt-line c-gray text-right'>";
+                                            echo "<span class='d-block'>" . date('Y', strtotime($tarefa->data_ini)) . "</span>";
+                                            echo date('d/M', strtotime($tarefa->data_ini));
+                                        echo "</div>";
+                                        echo "<div class='pt-body'>";
+                                            echo "<div class='lightbox clearfix'>";
+                                                echo "<h2 class='ptb-title'>" . $tarefa->titulo . "</h2>";
+                                            echo "</div>";
+                                        echo "</div>";
+                                    echo "</div>";
+                                }
+                            }
+                            ?>
+                    </div>
+                </div>
 
+                <script>
+                    $('#botao-compromisso').on('click', function () {
+                        $('#botao-compromisso').parent('li').addClass('active');
+                        $('#compromisso').show();
+                        $('#botao-perfil').parent('li').removeClass('active');
+                        $('#perfil').hide();
+                    });
+                    $('#botao-perfil').on('click', function () {
+                        $('#botao-perfil').parent('li').addClass('active');
+                        $('#compromisso').hide();
+                        $('#botao-compromisso').parent('li').removeClass('active');
+                        $('#perfil').show();
+                    });
+                </script>
             </div>
         </div>
     </div>
