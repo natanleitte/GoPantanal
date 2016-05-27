@@ -1,7 +1,7 @@
-<?php
-foreach ($cliente->result() as $row) {
-    $cliente = $row;
-}
+<?php //
+//foreach ($cliente->result() as $row) {
+//    $cliente = $row;
+//}
 ?>
 
 <script type="text/javascript">
@@ -16,7 +16,7 @@ foreach ($cliente->result() as $row) {
     <div class="container">
 
         <div class="block-header">
-            <h2><?php echo $cliente->nome; ?> <!--<small>Web/UI Developer, Edinburgh, Scotland</small>--></h2>
+            <h2><?php // echo $cliente->nome; ?> <!--<small>Web/UI Developer, Edinburgh, Scotland</small>--></h2>
 
             <ul class="actions m-t-20 hidden-xs">
                 <li class="dropdown">
@@ -50,7 +50,7 @@ foreach ($cliente->result() as $row) {
                         <li class="waves-effect"><a href="#">Guias</a></li>
                     </ul>
 
-
+                    <input type="hidden" value="<?php echo $tour;?>"/>
                     <div class="pmb-block">
                         <div class="pmbb-header">
                             <h2><i class="zmdi zmdi-assignment-o m-r-5"></i> Agende os Hotéis</h2>

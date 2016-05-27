@@ -36,6 +36,7 @@ class Tour extends CI_Controller {
         $data['ultimosCincoEmails'] = $this->EmailModel->obterOsUltimosCincoEmails();
         $data['cliente'] = $this->ClienteModel->getCliente($this->input->get('id', TRUE));
         $data['hoteis'] = $this->HotelModel->getHoteis();
+        $data['tour'] = $this->input->get('id', TRUE);
         
         $this->load->view('header', $data);
         $this->load->view('tour/tour', $data);
