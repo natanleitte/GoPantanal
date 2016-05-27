@@ -22,7 +22,7 @@ foreach ($cliente->result() as $row) {
                 <ul class="tab-nav tn-justified">
                     <li class="active waves-effect"><a id="botao-perfil" href="#">Início</a></li>
                     <li class="waves-effect"><a id="botao-compromisso" href="#">Compromissos Agendados</a></li>
-                    <li class="waves-effect"><a href="#">Orçamentos</a></li>                 
+                    <li class="waves-effect"><a id="botao-orcamento" href="#">Orçamentos</a></li>                 
                 </ul>
 
                 <div id="perfil" class="pmb-block">
@@ -168,23 +168,23 @@ foreach ($cliente->result() as $row) {
                 </div>
                 <div id="compromisso" style="display:none;">
                     <div class="card-body card-padding">                     
-                            <?php
-                            foreach ($tarefas->result() as $tarefa) {
-                                if ($tarefa->id_cliente === $cliente->id) {
-                                    echo "<div class='p-timeline'>";
-                                        echo "<div class='pt-line c-gray text-right'>";
-                                            echo "<span class='d-block'>" . date('Y', strtotime($tarefa->data_ini)) . "</span>";
-                                            echo date('d/M', strtotime($tarefa->data_ini));
-                                        echo "</div>";
-                                        echo "<div class='pt-body'>";
-                                            echo "<div class='lightbox clearfix'>";
-                                                echo "<h2 class='ptb-title'>" . $tarefa->titulo . "</h2>";
-                                            echo "</div>";
-                                        echo "</div>";
-                                    echo "</div>";
-                                }
+                        <?php
+                        foreach ($tarefas->result() as $tarefa) {
+                            if ($tarefa->id_cliente === $cliente->id) {
+                                echo "<div class='p-timeline'>";
+                                echo "<div class='pt-line c-gray text-right'>";
+                                echo "<span class='d-block'>" . date('Y', strtotime($tarefa->data_ini)) . "</span>";
+                                echo date('d/M', strtotime($tarefa->data_ini));
+                                echo "</div>";
+                                echo "<div class='pt-body'>";
+                                echo "<div class='lightbox clearfix'>";
+                                echo "<h2 class='ptb-title'>" . $tarefa->titulo . "</h2>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
                             }
-                            ?>
+                        }
+                        ?>
                     </div>
                 </div>
 
@@ -194,14 +194,156 @@ foreach ($cliente->result() as $row) {
                         $('#compromisso').show();
                         $('#botao-perfil').parent('li').removeClass('active');
                         $('#perfil').hide();
+                        $('#botao-orcamento').parent('li').removeClass('active');
+                        $('#orcamento').hide();
                     });
                     $('#botao-perfil').on('click', function () {
-                        $('#botao-perfil').parent('li').addClass('active');
-                        $('#compromisso').hide();
                         $('#botao-compromisso').parent('li').removeClass('active');
-                        $('#perfil').show();
+                        $('#compromisso').show();
+                        $('#botao-perfil').parent('li').addClass('active');
+                        $('#perfil').hide();
+                        $('#botao-orcamento').parent('li').removeClass('active');
+                        $('#orcamento').hide();
+                    });
+                    $('#botao-orcamento').on('click', function () {
+                        $('#botao-orcamento').parent('li').addClass('active');
+                        $('#orcamento').show();
+                        $('#botao-compromisso').parent('li').removeClass('active');
+                        $('#compromisso').hide();
+                        $('#botao-perfil').parent('li').removeClass('active');
+                        $('#perfil').hide();
                     });
                 </script>
+            </div>
+            <div id="orcamento" style="display:none;">
+                <div class="invoice">
+                    <div class="card">
+                        <div class="card-header ch-alt text-center">
+                            <img class="i-logo" src="<?php echo base_url(); ?>assets/img/logo-grande.png" alt="">
+                        </div>
+                        <div class="card-body card-padding">
+                            <div class="center">
+                                <h3 class="ptb-title">A) BUDGET PANTANAL mit Privattransfer am 1.Tag(P)<br />(3 Tage/2 Nächte)</h3>
+                            </div>
+                            <div class="row m-b-25">
+                                <div class="col-xs-6">
+                                    <div class="text-right">
+                                        <p class="c-gray">Von</p>
+                                        <h4>Martin Arn</h4>
+                                        <span class="text-muted">
+                                            <address>
+                                                1070, Rua Autonomista
+                                                Campo Grande, Mato Grosso do Sul<br>
+                                                Brasil
+                                            </address>
+                                            +55 67 3014-9449 | 9987-1191<br/>
+                                            info@pantanal.com | pantanal@gmx.net
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="i-to">
+                                        <p class="c-gray">Nach</p>
+                                        <h4><?php echo $cliente->nome; ?></h4>
+                                        <span class="text-muted">
+                                            <address>
+                                                <?php echo $cliente->nacionalidade; ?>
+                                            </address>
+                                            <?php echo $cliente->telefone; ?><br/>
+                                            <?php echo $cliente->email; ?>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="row m-t-25 p-0 m-b-25">
+                                <div class="col-xs-4">
+                                    <div class="bgm-blue brd-2 p-15">
+                                        <div class="c-white m-b-5"><b>Datum</b></div>
+                                        <h2 class="m-0 c-white f-300">20/06/2015</h2>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="bgm-green brd-2 p-15">
+                                        <div class="c-white m-b-5"><b>Datenausgabe</b></div>
+                                        <h2 class="m-0 c-white f-300">20/07/2015</h2>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="bgm-red brd-2 p-15">
+                                        <div class="c-white m-b-5"><b>Gesamt</b></div>
+                                        <h2 class="m-0 c-white f-300">$23,980</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="p-25">
+                                <h4 class="c-green f-400">1.Tag</h4>
+                                <p class="c-gray">14:22 Ankunft und Empfang am Flughafen, dann direkt mit Privattransfer zur Pantanal jungle lodge. Ankunft und check-in lodge um ca. 19:00.
+                                    Unterkunft in Privatzimmer mit Klimaanlage, Bad und Kühlschrank. Die jungle lodge ist eine rustikale, kürzlich renovierte Anlage direkt am Mirandafluss mit Speiseraum,
+                                    Aufenthaltsraum,Bar,  Pool und wifi gratis. Das Essen in ist sehr gut!</p>
+
+                                <br/>
+
+                                <h4 class="c-green f-400">2.Tag</h4>
+                                <p class="c-gray">Morgens und Nachmittags, Safariaktivitäten.</p>
+
+                                <br/>
+
+                                <h4 class="c-green f-400">3.Tag</h4>
+                                <p class="c-gray">Morgens, nochmals Safariaktivität, nach dem Mittagessen check-out und transfer mit shuttlebus nach Campo Grande/Bonito oder zur Bushaltestelle für Bus nach Corumbá/Bolivien. Ankunft in Campo Grande 19:00.</p>
+                            </div>
+                            <div class="clearfix"></div>
+                            <table class="table i-table m-t-25 m-b-25">
+                                <thead class="text-uppercase">
+                                <th class="c-gray"></th>
+                                </thead>
+                                <tbody>
+                                <thead>
+                                    <tr>
+                                        <td width="80%">
+                                            <h5 class="text-uppercase f-400">Inbergriffen</h5>
+                                            <p class="text-muted">Privattransfer* Campo Grande - jungle Lodge mit engl. oder deutschspr. Fahrer, Rückfahrt-transfers nach Campo Grande mit shuttlebus, alle
+                                                Übernachtungen mit Vollpension, alle Safariaktivitäten mit englischspr. Guide, alle Taxen. * Der Privattransfer ist nötig, da der shuttlebus nur morgens 10 Uhr ins Pantanal fährt.</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5 class="text-uppercase f-400">Nicht inbegriffen</h5>
+                                            <p class="text-muted">Mittagessen am 1.Tag, Getränke und pers, Ausgaben</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5 class="text-uppercase f-400">Safariaktivitäten im Pantanal sind</h5>
+                                            <p class="text-muted">Jeepsafari, Dschungelwanderung (ca 1,5 Std.), Bootsafari, Nachtexpedition, Kanufahren, Piranha Angeln. Die Reihenfolge dieser Aktivitäten wird von der Lodge organisiert.</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5 class="text-uppercase f-400">Anmerkungen</h5>
+                                            <p class="text-muted">Bei dieser Tour sind für den Transfer am ersten Tag privat unterwegs, danach, zusammen mit Pantanalbesuchern von anderen Angenturen.
+                                                Es ist alles bestens organisert für ein eindrückliches und sorgloses Pantanalerlbnis. Die Safariaktivitäten finden in Gruppen bis ca. 10 Personen statt.</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3"></td>
+                                        <td class="highlight" width="100%">Preis: 430 - Euro/Person<br />(Einzelzimmerzuschlag: 50 - Euro)<td>
+                                    </tr>
+                                </thead> 
+                                </tbody>
+                            </table>
+                        </div>
+                        <footer class="m-t-15 p-20">
+                            <ul class="list-inline text-center list-unstyled">
+                                <li class="m-l-5 m-r-5"><small>info@pantanal.com | pantanal@gmx.net</small></li>
+                                <li class="m-l-5 m-r-5"><small>+55 67 3014-9449 | 9987-1191</small></li>
+                                <li class="m-l-5 m-r-5"><small>www.gopantanal.com</small></li>
+                            </ul>
+                        </footer>
+                    </div>
+                </div>
+                <button class="btn btn-float bgm-red m-btn" data-action="print"><i class="zmdi zmdi-print"></i></button>
             </div>
         </div>
     </div>
