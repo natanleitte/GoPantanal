@@ -45,8 +45,8 @@
 
                 <div class="pm-body clearfix">
                     <ul class="tab-nav tn-justified">
-                        <li class="active waves-effect"><a href="#">Hotéis</a></li>
-                        <li class="waves-effect"><a href="<?php echo base_url() . 'index.php/transportetour?id=' . $tour;' ?>">Transportes</a></li>
+                        <li class="waves-effect"><a href="<?php echo base_url() . 'index.php/hoteltour?id=' . $tour;?>">Hotéis</a></li>
+                        <li class="active waves-effect"><a href="<?php echo base_url() . 'index.php/transportetour/index' ?>">Transportes</a></li>
                         <li class="waves-effect"><a href="#">Passeios</a></li>
                         <li class="waves-effect"><a href="#">Guias</a></li>
                     </ul>
@@ -54,7 +54,7 @@
                     <input type="hidden" value="<?php echo $tour; ?>"/>
                     <div class="pmb-block">
                         <div class="pmbb-header">
-                            <h2><i class="zmdi zmdi-assignment-o m-r-5"></i> Agende os Hotéis</h2>
+                            <h2><i class="zmdi zmdi-assignment-o m-r-5"></i> Agende os Transportes</h2>
                             <form role="form" id="formHotelTour">
                                 <div class="col-sm-6">
                                     <div class="col-sm-6">
