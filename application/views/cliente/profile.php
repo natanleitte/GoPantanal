@@ -15,90 +15,10 @@ foreach ($cliente->result() as $row) {
 
         <div class="block-header">
             <h2><?php echo $cliente->nome; ?> <!--<small>Web/UI Developer, Edinburgh, Scotland</small>--></h2>
-
-            <ul class="actions m-t-20 hidden-xs">
-                <li class="dropdown">
-                    <a href="" data-toggle="dropdown">
-                        <i class="zmdi zmdi-more-vert"></i>
-                    </a>
-
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <li>
-                            <a href="">Privacy Settings</a>
-                        </li>
-                        <li>
-                            <a href="">Account Settings</a>
-                        </li>
-                        <li>
-                            <a href="">Other Settings</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
         </div>
 
         <div class="card" id="profile-main">
-            <div class="pm-overview c-overflow">
-                <div class="pmo-pic">
-                    <div class="p-relative">
-                        <a href="">
-                            <img class="img-responsive" src="<?php echo base_url() . "assets/img/contacts/anonimo.png"; ?>" alt=""> 
-                        </a>
-
-                        <div class="dropdown pmop-message">
-                            <a data-toggle="dropdown" href="" class="btn bgm-white btn-float z-depth-1">
-                                <i class="zmdi zmdi-comment-text-alt"></i>
-                            </a>
-
-                            <div class="dropdown-menu">
-                                <textarea placeholder="Funcionalidade estará disponível em breve..."></textarea>
-
-                                <button class="btn bgm-green btn-float"><i class="zmdi zmdi-mail-send"></i></button>
-                            </div>
-                        </div>
-
-                        <div class="dropdown pmop-message">
-                            <a data-toggle="dropdown" href="" class="btn bgm-white btn-float z-depth-1">
-                                <i class="zmdi zmdi-comment-text-alt"></i>
-                            </a>
-
-                            <div class="dropdown-menu">
-                                <textarea placeholder="Funcionalidade estará disponível em breve..."></textarea>
-
-                                <button class="btn bgm-green btn-float"><i class="zmdi zmdi-mail-send"></i></button>
-                            </div>
-                        </div>
-
-                        <a href="" class="pmop-edit">
-                            <i class="zmdi zmdi-camera"></i> <span class="hidden-xs">Update Profile Picture</span>
-                        </a>
-                    </div>
-
-
-                    <div class="pmo-stat">
-                        <h2 class="m-0 c-white"><?php echo $row->nome; ?></h2>
-                    </div>
-                </div>
-
-                <div class="pmo-block pmo-contact hidden-xs">
-                    <h2>Contato</h2>
-
-                    <ul>
-                        <li><i class="zmdi zmdi-phone"></i> <?php echo $cliente->telefone; ?></li>
-                        <li><i class="zmdi zmdi-email"></i> <?php echo $cliente->email; ?></li>
-                        <!--<li><i class="zmdi zmdi-facebook-box"></i> malinda.hollaway</li>-->
-                        <li><i class="zmdi zmdi-airplane"></i> <?php echo $cliente->passaporte; ?> </li>
-                        <li>
-                            <i class="zmdi zmdi-pin"></i>
-                            <address class="m-b-0 ng-binding">
-                                <?php echo $cliente->nacionalidade; ?>
-                            </address>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="pm-body clearfix">
+            <div class="pm-body">
                 <ul class="tab-nav tn-justified">
                     <li class="active waves-effect"><a href="#">Início</a></li>
                     <li class="waves-effect"><a href="#">Compromissos Agendados</a></li>

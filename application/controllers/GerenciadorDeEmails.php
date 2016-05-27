@@ -1,7 +1,7 @@
 <?php
 
-include 'PhpImap\Mailbox.php';
-include 'PhpImap\IncomingMail.php';
+include 'PhpImap/Mailbox.php';
+include 'PhpImap/IncomingMail.php';
 
 class GerenciadorDeEmails {
 
@@ -12,7 +12,7 @@ class GerenciadorDeEmails {
     private $caixaDeEmails;
 
     public function __construct() {
-        $this->caixaDeEmails = new PhpImap\Mailbox('{' . $this->servidor . ':993/imap/ssl}INBOX', $this->usuario, $this->senha);
+        $this->caixaDeEmails = new PhpImap\Mailbox('{' . $this->servidor . ':993/imap/ssl/novalidate-cert}INBOX', $this->usuario, $this->senha);
         $this->idsDosEmailsRecebidos = $this->caixaDeEmails->searchMailbox();
     }
 
