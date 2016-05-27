@@ -13,7 +13,9 @@ class TransporteTour extends CI_Controller {
         $this->load->model('ClienteModel');
         $this->load->model('UsuarioModel');
         $this->load->model('HotelModel');
+        $this->load->model('TransporteModel');
         $this->load->model('HotelTourModel');
+        $this->load->model('TransporteTourModel');
         $this->UsuarioModel->estaLogado();
         $this->DataUtils = new DataUtils();
     }
@@ -25,7 +27,7 @@ class TransporteTour extends CI_Controller {
         $data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
         $data['ultimosCincoEmails'] = $this->EmailModel->obterOsUltimosCincoEmails();
         $data['cliente'] = $this->ClienteModel->getCliente($this->input->get('id', TRUE));
-        $data['hoteis'] = $this->HotelModel->getHoteis();
+        $data['transportes'] = $this->TransporteModel->getTransportes();
         $data['tour'] = $this->input->get('id', TRUE);
 
         $this->load->view('header', $data);
