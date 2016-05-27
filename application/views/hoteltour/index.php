@@ -46,7 +46,7 @@
                 <div class="pm-body clearfix">
                     <ul class="tab-nav tn-justified">
                         <li class="active waves-effect"><a href="#">Hotéis</a></li>
-                        <li class="waves-effect"><a href="<?php echo base_url() . 'index.php/transportetour?id=' . $tour;' ?>">Transportes</a></li>
+                        <li class="waves-effect"><a href="<?php echo base_url() . 'index.php/transportetour?id=' . $tour;  ?>">Transportes</a></li>
                         <li class="waves-effect"><a href="#">Passeios</a></li>
                         <li class="waves-effect"><a href="#">Guias</a></li>
                     </ul>
