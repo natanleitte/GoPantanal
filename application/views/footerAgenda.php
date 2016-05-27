@@ -79,7 +79,7 @@
                 theme: true, //Do not remove this as it ruin the design
                 selectable: true,
                 selectHelper: true,
-                editable: true,
+                editable: false,
                 //Add Events
 
 <?php
@@ -109,14 +109,13 @@ echo "],";
      * Calendar Widget
      */
     $('#calendar-widget').fullCalendar({
-        contentHeight: 'auto',
         theme: true,
         header: {
             right: '',
             center: 'prev, title, next',
             left: ''
         },
-        editable: true,
+        editable: false,
         <?php
         echo 'events:[';
         foreach ($tarefas->result() as $tarefa) {

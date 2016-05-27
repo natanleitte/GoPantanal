@@ -88,7 +88,7 @@ class Mail extends CI_Controller {
         $email->corpoDoEmail = $this->input->post('corpoDoEmail');
 
         $this->data['statusEnvio'] = $this->configurarEDisparar($email) ? 1 : 0;
-
+    
         $this->configurarDadosParaExibirPaginaDeDetalhesDeEmail();
         $this->renderizarParaPaginaDeDetalhesDoEmail();
     }
@@ -107,7 +107,7 @@ class Mail extends CI_Controller {
         $this->email->initialize($config);
         
         $configDoArquivo = array(
-            'upload_path' => './uploads/',
+            'upload_path' => 'assets/uploads/',
             'allowed_types' => 'gif|jpg|png|pdf|doc|xls|xlsx|docx',
             'max_size' => '1000'
         );
@@ -123,10 +123,10 @@ class Mail extends CI_Controller {
         if ($this->upload->do_upload('userfile')) {
             $attachdata = $this->upload->data();
             $this->email->attach($attachdata['full_path']);
-            echo "esta possivelmente anexado!";
-            exit();
         }
         
-        return $this->email->send();
+        $this->email->send();
+        echo $this->email->print_debugger();
+        exit();
     }
 }
