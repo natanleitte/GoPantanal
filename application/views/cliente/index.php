@@ -4,26 +4,6 @@
 
         <div class="block-header">
             <h2>Clientes</h2>
-
-            <ul class="actions m-t-20 hidden-xs">
-                <li class="dropdown">
-                    <a href="" data-toggle="dropdown">
-                        <i class="zmdi zmdi-more-vert"></i>
-                    </a>
-
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <li>
-                            <a href="">Privacy Settings</a>
-                        </li>
-                        <li>
-                            <a href="">Account Settings</a>
-                        </li>
-                        <li>
-                            <a href="">Other Settings</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
         </div>
 
         <!-- Add button -->
@@ -46,50 +26,6 @@
                             <i class="zmdi zmdi-search"></i>
                         </a>
                     </li>
-                    <li>
-                        <a href="">
-                            <i class="zmdi zmdi-time"></i>
-                        </a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
-                            <i class="zmdi zmdi-sort"></i>
-                        </a>
-
-                        <ul class="dropdown-menu dropdown-menu-right">
-                            <li>
-                                <a href="">Last Modified</a>
-                            </li>
-                            <li>
-                                <a href="">Last Edited</a>
-                            </li>
-                            <li>
-                                <a href="">Name</a>
-                            </li>
-                            <li>
-                                <a href="">Date</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="">
-                            <i class="zmdi zmdi-info"></i>
-                        </a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="" data-toggle="dropdown"="" aria-expanded="false" aria-haspopup="true">
-                            <i class="zmdi zmdi-more-vert"></i>
-                        </a>
-
-                        <ul class="dropdown-menu dropdown-menu-right">
-                            <li>
-                                <a href="">Refresh</a>
-                            </li>
-                            <li>
-                                <a href="">Settings</a>
-                            </li>
-                        </ul>
-                    </li>
                 </ul>
             </div>
 
@@ -107,8 +43,8 @@
                         echo "</a>";
 
                         echo "<div class='c-info'>";
-                        echo "<strong>" . $cliente->nome . "</strong>";
-                        echo "<small>" . $cliente->email . "</small>";
+                        echo "<strong>" . ($cliente->nome === '' ? "Nome não informado" : $cliente->nome)  . "</strong>";
+                        echo "<small>" . ($cliente->email === '' ? "Email não informado" : $cliente->email) . "</small>";
                         echo "</div>";
                         echo "<form action='" . base_url() . "index.php/cliente/profile'>";
                         echo "<div class='c-footer'>";
