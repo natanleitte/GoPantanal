@@ -17,7 +17,7 @@
     <div class="container">
 
         <div class="block-header">
-            <h2><?php // echo $cliente->nome;        ?> <!--<small>Web/UI Developer, Edinburgh, Scotland</small>--></h2>
+            <h2><?php // echo $cliente->nome;         ?> <!--<small>Web/UI Developer, Edinburgh, Scotland</small>--></h2>
 
             <ul class="actions m-t-20 hidden-xs">
                 <li class="dropdown">
@@ -75,7 +75,7 @@
 
                                     <div class="col-sm-4">
                                         <div class='input-group date' id='datetimepicker_ini'>
-                                            <input type='text' class="form-control" name="data_ini" placeholder="Entrada" />
+                                            <input type='text' class="form-control" id="data_ini" name="data_ini" placeholder="Entrada" />
                                             <span class="input-group-addon">
                                                 <span class="glyphicon glyphicon-calendar"></span>
                                             </span>
@@ -84,7 +84,7 @@
 
                                     <div class="col-sm-4">
                                         <div class='input-group date' id='datetimepicker_fim'>
-                                            <input type='text' class="form-control" name="data_fim" placeholder="Saída" />
+                                            <input type='text' class="form-control" id="data_fim" name="data_fim" placeholder="Saída" />
                                             <span class="input-group-addon">
                                                 <span class="glyphicon glyphicon-calendar"></span>
                                             </span>
@@ -97,9 +97,11 @@
                                 </div>
                                 <input type="hidden" name="tour" value="<?php echo $tour; ?>"/>
                             </form>
-                            <button onclick="adicionarHotelTour()" class="btn bgm-blue btn-default btn-icon-text"><i class="zmdi zmdi-arrow-forward"></i> Adicionar Hotel</button>
-
+                            <div class="col-sm-12">
+                                <button onclick="adicionarHotelTour()" class="btn bgm-blue btn-default btn-icon-text"><i class="zmdi zmdi-arrow-forward"></i> Adicionar Hotel</button>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -114,8 +116,8 @@
             type: 'POST',
             data: $("#formHotelTour").serialize(),
             success: function (msg) {
-                swal("Cliente inserido com sucesso!", "", "success");
-//                $("#nome, #email, #telefone, #nacionalidade, #passaporte, #observacao, #data_contato").val('');
+                swal("Hotel inserido com sucesso!", "", "success");
+                $("#data_ini, #data_fim").val('');
             }
         });
         return false;
