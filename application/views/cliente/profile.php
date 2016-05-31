@@ -151,7 +151,8 @@ foreach ($cliente->result() as $row) {
                             <div class="pmbb-view">
                                 <?php echo $cliente->observacao; ?>
                             </div>
-
+                            <br />
+                            <br />
                             <div class="pmbb-edit">
                                 <?php echo form_open(base_url() . "index.php/cliente/atualizarObservacao?id=" . $cliente->id); ?>
                                 <div class="fg-line">
@@ -199,9 +200,9 @@ foreach ($cliente->result() as $row) {
                     });
                     $('#botao-perfil').on('click', function () {
                         $('#botao-compromisso').parent('li').removeClass('active');
-                        $('#compromisso').show();
+                        $('#compromisso').hide();
                         $('#botao-perfil').parent('li').addClass('active');
-                        $('#perfil').hide();
+                        $('#perfil').show();
                         $('#botao-orcamento').parent('li').removeClass('active');
                         $('#orcamento').hide();
                     });
