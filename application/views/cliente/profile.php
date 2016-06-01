@@ -190,29 +190,34 @@ foreach ($cliente->result() as $row) {
                 </div>
 
                 <script>
-                    $('#botao-compromisso').on('click', function () {
-                        $('#botao-compromisso').parent('li').addClass('active');
-                        $('#compromisso').show();
-                        $('#botao-perfil').parent('li').removeClass('active');
-                        $('#perfil').hide();
-                        $('#botao-orcamento').parent('li').removeClass('active');
-                        $('#orcamento').hide();
-                    });
-                    $('#botao-perfil').on('click', function () {
-                        $('#botao-compromisso').parent('li').removeClass('active');
-                        $('#compromisso').hide();
-                        $('#botao-perfil').parent('li').addClass('active');
-                        $('#perfil').show();
-                        $('#botao-orcamento').parent('li').removeClass('active');
-                        $('#orcamento').hide();
-                    });
-                    $('#botao-orcamento').on('click', function () {
-                        $('#botao-orcamento').parent('li').addClass('active');
-                        $('#orcamento').show();
-                        $('#botao-compromisso').parent('li').removeClass('active');
-                        $('#compromisso').hide();
-                        $('#botao-perfil').parent('li').removeClass('active');
-                        $('#perfil').hide();
+                    $(document).ready(function () {
+                        $('#botao-compromisso').on('click', function () {
+                            $('#botao-compromisso').parent('li').addClass('active');
+                            $('#compromisso').show();
+                            $('#botao-perfil').parent('li').removeClass('active');
+                            $('#perfil').hide();
+                            $('#botao-orcamento').parent('li').removeClass('active');
+                            $('#orcamento').hide();
+                        });
+                        $('#botao-perfil').on('click', function () {
+                            $('#botao-compromisso').parent('li').removeClass('active');
+                            $('#compromisso').hide();
+                            $('#botao-perfil').parent('li').addClass('active');
+                            $('#perfil').show();
+                            $('#botao-orcamento').parent('li').removeClass('active');
+                            $('#orcamento').hide();
+                        });
+                        $('#botao-orcamento').on('click', function () {
+                            $('#botao-orcamento').parent('li').addClass('active');
+                            $('#orcamento').show();
+                            $('#botao-compromisso').parent('li').removeClass('active');
+                            $('#compromisso').hide();
+                            $('#botao-perfil').parent('li').removeClass('active');
+                            $('#perfil').hide();
+                        });
+                        $('#datepicker-inicio, #datepicker-fim').datetimepicker({
+                            format: 'DD/MM/YYYY'
+                        });
                     });
                 </script>
             </div>
@@ -223,9 +228,6 @@ foreach ($cliente->result() as $row) {
                             <img class="i-logo" src="<?php echo base_url(); ?>assets/img/logo-grande.png" alt="">
                         </div>
                         <div class="card-body card-padding">
-                            <div class="center">
-                                <h3 class="ptb-title">A) BUDGET PANTANAL mit Privattransfer am 1.Tag(P)<br />(3 Tage/2 Nächte)</h3>
-                            </div>
                             <div class="row m-b-25">
                                 <div class="col-xs-6">
                                     <div class="text-right">
@@ -261,19 +263,37 @@ foreach ($cliente->result() as $row) {
                                 <div class="col-xs-4">
                                     <div class="bgm-blue brd-2 p-15">
                                         <div class="c-white m-b-5"><b>Datum</b></div>
-                                        <h2 class="m-0 c-white f-300">20/06/2015</h2>
+                                        <form>
+                                            <div class='input-group date' id='datepicker-inicio'>
+                                                <span class="input-group-addon">
+                                                    <input id="input-data-inicio" type='text' class="form-control input-group-addon m-0 c-white f-500" placeholder="Inicio do Tour" />
+                                                </span>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                                 <div class="col-xs-4">
                                     <div class="bgm-green brd-2 p-15">
                                         <div class="c-white m-b-5"><b>Datenausgabe</b></div>
-                                        <h2 class="m-0 c-white f-300">20/07/2015</h2>
+                                        <form>
+                                            <div class='input-group date' id='datepicker-fim'>
+                                                <span class="input-group-addon">
+                                                    <input id="input-data-fim" type='text' class="form-control input-group-addon m-0 c-white f-500" placeholder="Inicio do Tour" />
+                                                </span>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                                 <div class="col-xs-4">
                                     <div class="bgm-red brd-2 p-15">
                                         <div class="c-white m-b-5"><b>Gesamt</b></div>
-                                        <h2 class="m-0 c-white f-300">$23,980</h2>
+                                        <form>
+                                            <div class='input-group'>
+                                                <span class="input-group-addon">
+                                                    <input id="valor" type='text' class="form-control input-group-addon m-0 c-white f-500" placeholder="Valor ($)" />
+                                                </span>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -328,7 +348,7 @@ foreach ($cliente->result() as $row) {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="3"></td>
+                                        <td colspan="4"></td>
                                         <td class="highlight" width="100%">Preis: 430 - Euro/Person<br />(Einzelzimmerzuschlag: 50 - Euro)<td>
                                     </tr>
                                 </thead> 
@@ -344,8 +364,8 @@ foreach ($cliente->result() as $row) {
                         </footer>
                     </div>
                 </div>
-                <button class="btn btn-float bgm-red m-btn" data-action="print"><i class="zmdi zmdi-print"></i></button>
             </div>
         </div>
+        <button class="btn btn-float bgm-red m-btn" data-action="print"><i class="zmdi zmdi-print"></i></button>
     </div>
 </section>
