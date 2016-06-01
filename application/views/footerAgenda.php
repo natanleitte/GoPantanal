@@ -123,6 +123,7 @@
             echo '{';
             echo "title:'" . $tarefa->titulo . "',";
             echo "start: new Date('" . $tarefa->data_ini . "'),";
+            echo "end: new Date('" . $tarefa->data_fim . "'),";
             echo "className: '" . $tarefa->cor . "'";
             echo "},";
         }
