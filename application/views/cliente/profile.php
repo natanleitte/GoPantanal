@@ -12,13 +12,8 @@ foreach ($cliente->result() as $row) {
 </script>
 <section id="content">
     <div class="container">
-
-        <div class="block-header">
-            <h2><?php echo $cliente->nome; ?> <!--<small>Web/UI Developer, Edinburgh, Scotland</small>--></h2>
-        </div>
-
         <div class="card" id="profile-main">
-            <div class="pm-body">
+            <div class="pm-body clearfix">
                 <ul class="tab-nav tn-justified">
                     <li class="active waves-effect"><a id="botao-perfil" href="#">Início</a></li>
                     <li class="waves-effect"><a id="botao-compromisso" href="#">Compromissos Agendados</a></li>
@@ -167,7 +162,8 @@ foreach ($cliente->result() as $row) {
                         </div>
                     </div>
                 </div>
-                <div id="compromisso" style="display:none;">
+
+                <div id="compromisso" class="pmb-block" style="display:none;">
                     <div class="card-body card-padding">                     
                         <?php
                         foreach ($tarefas->result() as $tarefa) {
@@ -189,43 +185,10 @@ foreach ($cliente->result() as $row) {
                     </div>
                 </div>
 
-                <script>
-                    $(document).ready(function () {
-                        $('#botao-compromisso').on('click', function () {
-                            $('#botao-compromisso').parent('li').addClass('active');
-                            $('#compromisso').show();
-                            $('#botao-perfil').parent('li').removeClass('active');
-                            $('#perfil').hide();
-                            $('#botao-orcamento').parent('li').removeClass('active');
-                            $('#orcamento').hide();
-                        });
-                        $('#botao-perfil').on('click', function () {
-                            $('#botao-compromisso').parent('li').removeClass('active');
-                            $('#compromisso').hide();
-                            $('#botao-perfil').parent('li').addClass('active');
-                            $('#perfil').show();
-                            $('#botao-orcamento').parent('li').removeClass('active');
-                            $('#orcamento').hide();
-                        });
-                        $('#botao-orcamento').on('click', function () {
-                            $('#botao-orcamento').parent('li').addClass('active');
-                            $('#orcamento').show();
-                            $('#botao-compromisso').parent('li').removeClass('active');
-                            $('#compromisso').hide();
-                            $('#botao-perfil').parent('li').removeClass('active');
-                            $('#perfil').hide();
-                        });
-                        $('#datepicker-inicio, #datepicker-fim').datetimepicker({
-                            format: 'DD/MM/YYYY'
-                        });
-                    });
-                </script>
-            </div>
-            <div id="orcamento" style="display:none;">
-                <div class="invoice">
+                <div id="orcamento" class="pmb-block" style="display:none;">
                     <div class="card">
                         <div class="card-header ch-alt text-center">
-                            <img class="i-logo" src="<?php echo base_url(); ?>assets/img/logo-grande.png" alt="">
+                            <img class="i-logo" src="<?php echo base_url(); ?>assets/img/logo-pequena.png" alt="">
                         </div>
                         <div class="card-body card-padding">
                             <div class="row m-b-25">
@@ -364,6 +327,38 @@ foreach ($cliente->result() as $row) {
                         </footer>
                     </div>
                 </div>
+
+                <script>
+                    $(document).ready(function () {
+                        $('#botao-compromisso').on('click', function () {
+                            $('#botao-compromisso').parent('li').addClass('active');
+                            $('#compromisso').show();
+                            $('#botao-perfil').parent('li').removeClass('active');
+                            $('#perfil').hide();
+                            $('#botao-orcamento').parent('li').removeClass('active');
+                            $('#orcamento').hide();
+                        });
+                        $('#botao-perfil').on('click', function () {
+                            $('#botao-compromisso').parent('li').removeClass('active');
+                            $('#compromisso').hide();
+                            $('#botao-perfil').parent('li').addClass('active');
+                            $('#perfil').show();
+                            $('#botao-orcamento').parent('li').removeClass('active');
+                            $('#orcamento').hide();
+                        });
+                        $('#botao-orcamento').on('click', function () {
+                            $('#botao-orcamento').parent('li').addClass('active');
+                            $('#orcamento').show();
+                            $('#botao-compromisso').parent('li').removeClass('active');
+                            $('#compromisso').hide();
+                            $('#botao-perfil').parent('li').removeClass('active');
+                            $('#perfil').hide();
+                        });
+                        $('#datepicker-inicio, #datepicker-fim').datetimepicker({
+                            format: 'DD/MM/YYYY'
+                        });
+                    });
+                </script>
             </div>
         </div>
         <button class="btn btn-float bgm-red m-btn" data-action="print"><i class="zmdi zmdi-print"></i></button>
