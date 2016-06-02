@@ -45,8 +45,8 @@
 
                 <div class="pm-body clearfix">
                     <ul class="tab-nav tn-justified">
-                        <li class="active waves-effect"><a href="#">Hotéis</a></li>
-                        <li class="waves-effect"><a href="<?php echo base_url() . 'index.php/transportetour?id=' . $tour;  ?>">Transportes</a></li>
+                        <li class="waves-effect"><a href="<?php echo base_url() . 'index.php/hoteltour?id=' . $tour;?>">Hotéis</a></li>
+                        <li class="active waves-effect"><a href="<?php echo base_url() . 'index.php/transportetour/index' ?>">Transportes</a></li>
                         <li class="waves-effect"><a href="#">Passeios</a></li>
                         <li class="waves-effect"><a href="#">Guias</a></li>
                     </ul>
@@ -54,17 +54,17 @@
                     <input type="hidden" value="<?php echo $tour; ?>"/>
                     <div class="pmb-block">
                         <div class="pmbb-header">
-                            <h2><i class="zmdi zmdi-assignment-o m-r-5"></i> Agende os Hotéis</h2>
-                            <form role="form" id="formHotelTour">
+                            <h2><i class="zmdi zmdi-assignment-o m-r-5"></i> Agende os Passeios</h2>
+                            <form role="form" id="formTransporteTour">
                                 <div class="col-sm-6">
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <div class="fg-line">
                                                 <div class="select">
-                                                    <select name="hotel" class="form-control" placeholder="Hotéis">
+                                                    <select name="transporte" class="form-control" placeholder="Transportes">
                                                         <?php
-                                                        foreach ($hoteis->result() as $hotel) {
-                                                            echo "<option value = '" . $hotel->id . "'>" . $hotel->nome . "</option>";
+                                                        foreach ($transportes->result() as $transporte) {
+                                                            echo "<option value = '" . $transporte->id . "'>" . $transporte->nome . "</option>";
                                                         }
                                                         ?>
                                                     </select>
@@ -98,7 +98,7 @@
                                 <input type="hidden" name="tour" value="<?php echo $tour; ?>"/>
                             </form>
                             <div class="col-sm-12">
-                                <button onclick="adicionarHotelTour()" class="btn bgm-blue btn-default btn-icon-text"><i class="zmdi zmdi-arrow-forward"></i> Adicionar Hotel</button>
+                                <button onclick="adicionarTransporteTour()" class="btn bgm-blue btn-default btn-icon-text"><i class="zmdi zmdi-arrow-forward"></i> Adicionar Transporte</button>
                             </div>
                         </div>
 
@@ -109,14 +109,14 @@
 </section>
 
 <script type="text/javascript">
-    function adicionarHotelTour()
+    function adicionarTransporteTour()
     {
         $.ajax({
-            url: '<?= base_url(); ?>' + 'index.php/HotelTour/inserirHotelTour',
+            url: '<?= base_url(); ?>' + 'index.php/transportetour/inserirTransporteTour',
             type: 'POST',
-            data: $("#formHotelTour").serialize(),
+            data: $("#formTransporteTour").serialize(),
             success: function (msg) {
-                swal("Hotel inserido com sucesso!", "", "success");
+                swal("Transporte inserido com sucesso!", "", "success");
                 $("#data_ini, #data_fim").val('');
             }
         });
