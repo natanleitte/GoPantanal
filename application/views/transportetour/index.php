@@ -61,7 +61,7 @@
                                         <div class="form-group">
                                             <div class="fg-line">
                                                 <div class="select">
-                                                    <select name="transporte" class="form-control" placeholder="Hotéis">
+                                                    <select name="transporte" class="form-control" placeholder="Transportes">
                                                         <?php
                                                         foreach ($transportes->result() as $transporte) {
                                                             echo "<option value = '" . $transporte->id . "'>" . $transporte->nome . "</option>";
@@ -98,7 +98,7 @@
                                 <input type="hidden" name="tour" value="<?php echo $tour; ?>"/>
                             </form>
                             <div class="col-sm-12">
-                                <button onclick="adicionarTransporteTour()" class="btn bgm-blue btn-default btn-icon-text"><i class="zmdi zmdi-arrow-forward"></i> Adicionar Hotel</button>
+                                <button onclick="adicionarTransporteTour()" class="btn bgm-blue btn-default btn-icon-text"><i class="zmdi zmdi-arrow-forward"></i> Adicionar Transporte</button>
                             </div>
                         </div>
 
