@@ -6,7 +6,7 @@
             <h2>Agenda</h2>
         </div>
 
-        <div id="calendar-widget"></div>
+        <div id="calendar"></div>
 
         <!-- Add event -->
         <div class="modal fade" id="addNew-event" data-backdrop="static" data-keyboard="false">

@@ -61,7 +61,7 @@
 <script src='<?php echo base_url() . "assets/" ?>vendors/bower_components/fullcalendar/dist/lang/pt-br.js'></script>
 
 <script type="text/javascript">
-    $(document).ready(function () {
+    $(document).ready(function() {
         var date = new Date();
         var d = date.getDate();
         var m = date.getMonth();
@@ -71,63 +71,65 @@
 
         //Generate the Calendar
         cId.fullCalendar({
-        header: {
-        right: '',
+            header: {
+                right: '',
                 center: 'prev, title, next',
                 left: ''
-        },
-                theme: true, //Do not remove this as it ruin the design
-                selectable: true,
-                selectHelper: true,
-                editable: false,
-                //Add Events
+            },
+            theme: true, //Do not remove this as it ruin the design
+            selectable: true,
+            selectHelper: true,
+            editable: true,
 
-<?php
-echo 'events:[';
-foreach ($tarefas->result() as $tarefa) {
-    echo '{';
-    echo "title:'" . $tarefa->titulo . "',";
-    echo "start: new Date('" . $tarefa->data_ini . "'),";
-    echo "end: new Date('" . $tarefa->data_fim . "'),";
-    echo "allDay: true,";
-    echo "className: '" . $tarefa->cor . "'";
-    echo "},";
-}
-echo "],";
-?>
+            //Add Events
+            <?php
+            echo 'events:[';
+            foreach ($tarefas->result() as $tarefa) {
+                echo '{';
+                echo "title:'" . $tarefa->titulo . "',";
+                echo "start: new Date('" . $tarefa->data_ini . "'),";
+                echo "end: new Date('" . $tarefa->data_fim . "'),";
+                echo "allDay: true,";
+                echo "className: '" . $tarefa->cor . "'";
+                echo "},";
+            }
+            echo "],";
+            ?>
 
-        //On Day Select
-        select: function (start, end, allDay) {
-        $('#addNew-event').modal('show');
-        $('#addNew-event input:text').val('');
-        $('#getStart').val(start);
-        $('#getEnd').val(end);
-        }
-    });
+         //On Day Select
+         select: function(start, end, allDay) {
+             $('#addNew-event').modal('show');   
+             $('#addNew-event input:text').val('');
+             $('#getStart').val(start);
+             $('#getEnd').val(end);
+         }
+     });
 
     /*
      * Calendar Widget
      */
     $('#calendar-widget').fullCalendar({
-        theme: true,
         header: {
             right: '',
             center: 'prev, title, next',
             left: ''
         },
-        editable: false,
+        theme: true,
+        editable: true,
+        selectable: true,
         <?php
         echo 'events:[';
         foreach ($tarefas->result() as $tarefa) {
             echo '{';
             echo "title:'" . $tarefa->titulo . "',";
             echo "start: new Date('" . $tarefa->data_ini . "'),";
+            echo "end: new Date('" . $tarefa->data_fim . "'),";
             echo "className: '" . $tarefa->cor . "'";
             echo "},";
         }
         echo "],";
         ?>
-    })();
+    });
 
     //Create and ddd Action button with dropdown in Calendar header. 
     var actionMenu = '<ul class="actions actions-alt" id="fc-actions">' +

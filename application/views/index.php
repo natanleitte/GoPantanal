@@ -8,7 +8,7 @@
                 <!-- Todo Lists -->
                 <div id="todo-lists" style="color: #fff; margin-bottom: 10px; font-family: inherit; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);">
                     <div class="tl-header">
-                        <h2>Resumo de Tarefas</h2>
+                        <h2>Tarefas Pendentes</h2>
                     </div>
 
                     <div class="clearfix"></div>
@@ -16,15 +16,17 @@
                     <div class="tl-body">
                         <?php
                         foreach ($tarefas->result() as $tarefa) {
-                            echo "<div class='checkbox media' >";
-                            echo "<div class='pull-right'>";
-                            echo "</div>";
-                            echo "<div class='media-body'>";
-                            echo "<label>";
-                            echo "<span><b>" . $tarefa->nome . "</b> - " . $tarefa->titulo . "</span>";
-                            echo "</label>";
-                            echo "</div>";
-                            echo "</div>";
+                            if($tarefa->status === 'A'){
+                                echo "<div class='checkbox media' >";
+                                echo "<div class='pull-right'>";
+                                echo "</div>";
+                                echo "<div class='media-body'>";
+                                echo "<label>";
+                                echo "<span><b>" . $tarefa->nome . "</b> - " . $tarefa->titulo . "</span>";
+                                echo "</label>";
+                                echo "</div>";
+                                echo "</div>";
+                            }
                         }
                         ?>
                     </div>
