@@ -26,8 +26,10 @@ class TransporteTour extends CI_Controller {
         $data['emails'] = $this->EmailModel->obterTodos();
         $data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
         $data['ultimosCincoEmails'] = $this->EmailModel->obterOsUltimosCincoEmails();
-        $data['cliente'] = $this->ClienteModel->getCliente($this->input->get('id', TRUE));
         $data['transportes'] = $this->TransporteModel->getTransportes();
+        $data['ultimasTarefas'] = $this->TarefaModel->cincoUltimasTarefas();
+        
+        $data['cliente'] = $this->ClienteModel->getCliente($this->input->get('id', TRUE));
         $data['tour'] = $this->input->get('id', TRUE);
 
         $this->load->view('header', $data);
@@ -45,15 +47,6 @@ class TransporteTour extends CI_Controller {
 
         $this->TransporteTourModel->setTransporteTour($data);
     }
-
-    private function configuracoesBasicasParaCarregarPagina() {
-        $this->data['tarefas'] = $this->TarefaModel->getTarefas();
-        $this->data['emails'] = $this->EmailModel->obterTodos();
-        $this->data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
-        $this->data['clientes'] = $this->ClienteModel->getClientesPorDataDesc();
-        $this->data['ultimosCincoEmails'] = $this->EmailModel->obterOsUltimosCincoEmails();
-    }
-
 }
 
 ?>

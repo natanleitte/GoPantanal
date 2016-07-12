@@ -24,6 +24,8 @@ class HotelTour extends CI_Controller {
         $data['emails'] = $this->EmailModel->obterTodos();
         $data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
         $data['ultimosCincoEmails'] = $this->EmailModel->obterOsUltimosCincoEmails();
+        $data['ultimasTarefas'] = $this->TarefaModel->cincoUltimasTarefas();
+        
         $data['cliente'] = $this->ClienteModel->getCliente($this->input->get('id', TRUE));
         $data['hoteis'] = $this->HotelModel->getHoteis();
         $data['tour'] = $this->input->get('id', TRUE);

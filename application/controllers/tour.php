@@ -18,7 +18,8 @@ class Tour extends CI_Controller {
         $data['emails'] = $this->EmailModel->obterTodos();
         $data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
         $data['ultimosCincoEmails'] = $this->EmailModel->obterOsUltimosCincoEmails();
-
+        $data['ultimasTarefas'] = $this->TarefaModel->cincoUltimasTarefas();
+        
         $data['tour'] = $this->TourModel->getTour($this->input->get('id'));
         echo $data['tour']->id_cliente;
         $data['cliente'] = $this->ClienteModel->getCliente($data['tour']->id_cliente);

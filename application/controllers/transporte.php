@@ -22,7 +22,7 @@ class Transporte extends CI_Controller {
         $data['emails'] = $this->EmailModel->obterTodos();
         $data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
         $data['ultimosCincoEmails'] = $this->EmailModel->obterOsUltimosCincoEmails();
-
+        $data['ultimasTarefas'] = $this->TarefaModel->cincoUltimasTarefas();
         $data['tarefas'] = $this->TarefaModel->getTarefas();
 
         $data['transportes'] = $this->TransporteModel->getTransportes();

@@ -99,6 +99,7 @@ class Cliente extends CI_Controller {
         $this->data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
         $this->data['clientes'] = $this->ClienteModel->getClientesPorDataDesc();
         $this->data['ultimosCincoEmails'] = $this->EmailModel->obterOsUltimosCincoEmails();
+        $this->data['ultimasTarefas'] = $this->TarefaModel->cincoUltimasTarefas();
     }
 
 }

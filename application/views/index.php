@@ -15,18 +15,16 @@
 
                     <div class="tl-body">
                         <?php
-                        foreach ($tarefas->result() as $tarefa) {
-                            if($tarefa->status === 'A'){
-                                echo "<div class='checkbox media' >";
-                                echo "<div class='pull-right'>";
-                                echo "</div>";
-                                echo "<div class='media-body'>";
-                                echo "<label>";
-                                echo "<span><b>" . $tarefa->nome . "</b> - " . $tarefa->titulo . "</span>";
-                                echo "</label>";
-                                echo "</div>";
-                                echo "</div>";
-                            }
+                        foreach ($ultimasTarefas->result() as $tarefa) {
+                            echo "<div class='checkbox media' >";
+                            echo "<div class='pull-right'>";
+                            echo "</div>";
+                            echo "<div class='media-body'>";
+                            echo "<label>";
+                            echo "<span><b>" . $tarefa->nome . "</b> - " . $tarefa->titulo . " - " . date('d/m/Y', strtotime($tarefa->data_ini)) . "</span>";
+                            echo "</label>";
+                            echo "</div>";
+                            echo "</div>";
                         }
                         ?>
                     </div>
@@ -39,5 +37,4 @@
             </div>
         </div>
     </div>
-</section>
 </section>

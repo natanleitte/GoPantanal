@@ -20,6 +20,7 @@ class Mail extends CI_Controller {
     public function index() {
         $this->salvarNovosEmailsNoBanco();
 
+        $data['ultimasTarefas'] = $this->TarefaModel->cincoUltimasTarefas();
         $data['tarefas'] = $this->TarefaModel->getTarefas();
         $data['emails'] = $this->EmailModel->obterTodos();
         $data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();

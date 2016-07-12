@@ -18,6 +18,7 @@ class Tarefa extends CI_Controller {
         $data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
         $data['ultimosCincoEmails'] = $this->EmailModel->obterOsUltimosCincoEmails();
         $data['clientes'] = $this->ClienteModel->getClientes();
+        $data['ultimasTarefas'] = $this->TarefaModel->cincoUltimasTarefas();
 
         $this->load->view('header', $data);
         $this->load->view('tarefa/index', $data);

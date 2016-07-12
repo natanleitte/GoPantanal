@@ -3,9 +3,9 @@
 
 <?php
 $count = 0;
-foreach ($tarefas->result() as $tarefa)
-    if ($tarefa->status == 'A')
-        $count++;
+foreach ($ultimasTarefas->result() as $tarefa) {
+    $count++;
+}
 ?>
 
 <head>
@@ -116,17 +116,15 @@ foreach ($tarefas->result() as $tarefa)
                                 </div>
                                 <div class="lv-body">
                                     <?php
-                                    foreach ($tarefas->result() as $tarefa) {
-                                        if ($tarefa->status == 'A') {
-                                            echo "  <div class='lv-item'>";
-                                            echo "<div class='lv-title m-b-5'>" . $tarefa->titulo . "</div>";
-                                            echo "<div class='progress'>";
-                                            echo "<div class='progress-bar " . $tarefa->cor . "' role='progressbar' aria-valuenow='100' aria-valuemin='0' aria-valuemax='100' style='width: 100%'>";
-                                            echo "<span class='sr-only'>100% Complete (success)</span>";
-                                            echo "</div>";
-                                            echo "</div>";
-                                            echo "</div>";
-                                        }
+                                    foreach ($ultimasTarefas->result() as $tarefa) {
+                                        echo "  <div class='lv-item'>";
+                                        echo "<div class='lv-title m-b-5'>" . $tarefa->titulo . "</div>";
+                                        echo "<div class='progress'>";
+                                        echo "<div class='progress-bar " . $tarefa->cor . "' role='progressbar' aria-valuenow='100' aria-valuemin='0' aria-valuemax='100' style='width: 100%'>";
+                                        echo "<span class='sr-only'>100% Complete (success)</span>";
+                                        echo "</div>";
+                                        echo "</div>";
+                                        echo "</div>";
                                     }
                                     ?>
                                 </div>
@@ -148,10 +146,10 @@ foreach ($tarefas->result() as $tarefa)
                             </li>
                             <li class="divider hidden-xs"></li>
                             <li class="hidden-xs">
-                                <a data-action="fullscreen" href=""><i class="zmdi zmdi-fullscreen"></i> Toggle Fullscreen</a>
+                                <a data-action="fullscreen" href=""><i class="zmdi zmdi-fullscreen"></i>Exibir em Tela Cheia</a>
                             </li>
                             <li>
-                                <a data-action="clear-localstorage" href=""><i class="zmdi zmdi-delete"></i> Clear Local Storage</a>
+                                <a data-action="clear-localstorage" href=""><i class="zmdi zmdi-delete"></i>Limpar Memória Local</a>
                             </li>
                         </ul>
                     </li>

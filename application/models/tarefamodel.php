@@ -27,4 +27,13 @@ class TarefaModel extends CI_Model {
         $this->db->where('id', $id);
         $this->db->delete('tarefa');
     }
+    
+    public function cincoUltimasTarefas(){
+        $this->db->where('status', 'A');
+        $this->db->limit(5);
+        $this->db->order_by('data_ini', 'desc');
+        $this->db->select('tarefa.*, cliente.nome');
+        $this->db->join('cliente', 'cliente.id = tarefa.id_cliente');
+        return $this->db->get("tarefa");
+    }
 }
