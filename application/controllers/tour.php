@@ -2,45 +2,34 @@
 
 class Tour extends CI_Controller {
 
+    private $data;
+    
     public function __construct() {
         parent::__construct();
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->model('TarefaModel');
-        $this->load->model('EmailModel');
         $this->load->model('TourModel');
         $this->load->model('ClienteModel');
         $this->load->model('HotelModel');
     }
 
     public function index() {
-        $data['tarefas'] = $this->TarefaModel->getTarefas();
-        $data['emails'] = $this->EmailModel->obterTodos();
-        $data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
-        $data['ultimosCincoEmails'] = $this->EmailModel->obterOsUltimosCincoEmails();
-        $data['ultimasTarefas'] = $this->TarefaModel->cincoUltimasTarefas();
-        
-        $data['tour'] = $this->TourModel->getTour($this->input->get('id'));
-        echo $data['tour']->id_cliente;
-        $data['cliente'] = $this->ClienteModel->getCliente($data['tour']->id_cliente);
+        $this->data['tour'] = $this->TourModel->getTour($this->input->get('id'), TRUE);
+        $this->data['cliente'] = $this->ClienteModel->getCliente($this->data['tour']->id_cliente);
 
-        $this->load->view('header', $data);
-        $this->load->view('cliente/tour', $data);
+        $this->load->view('header', $this->data);
+        $this->load->view('cliente/tour', $this->data);
         $this->load->view('footer');
     }
 
     public function tour() {
         $this->configuracoesBasicasParaCarregarPagina();
-        $data['tarefas'] = $this->TarefaModel->getTarefas();
-        $data['emails'] = $this->EmailModel->obterTodos();
-        $data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
-        $data['ultimosCincoEmails'] = $this->EmailModel->obterOsUltimosCincoEmails();
-        $data['cliente'] = $this->ClienteModel->getCliente($this->input->get('id', TRUE));
-        $data['hoteis'] = $this->HotelModel->getHoteis();
-        $data['tour'] = $this->input->get('id', TRUE);
+        $this->data['cliente'] = $this->ClienteModel->getCliente($this->input->get('id', TRUE));
+        $this->data['tour'] = $this->input->get('id', TRUE);
         
-        $this->load->view('header', $data);
-        $this->load->view('tour/tour', $data);
+        $this->load->view('header', $this->data);
+        $this->load->view('tour/tour', $this->data);
         $this->load->view('footer');
     }
 
@@ -50,6 +39,7 @@ class Tour extends CI_Controller {
         $this->data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
         $this->data['clientes'] = $this->ClienteModel->getClientesPorDataDesc();
         $this->data['ultimosCincoEmails'] = $this->EmailModel->obterOsUltimosCincoEmails();
+        $this->data['ultimasTarefas'] = $this->TarefaModel->cincoUltimasTarefas();
+        $this->data['hoteis'] = $this->HotelModel->getHoteis();
     }
-
 }

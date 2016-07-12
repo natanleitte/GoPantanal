@@ -19,13 +19,9 @@ class Mail extends CI_Controller {
 
     public function index() {
         $this->salvarNovosEmailsNoBanco();
+        $this->configurarDadosParaExibirPaginaDeDetalhesDeEmail();
 
-        $data['ultimasTarefas'] = $this->TarefaModel->cincoUltimasTarefas();
-        $data['tarefas'] = $this->TarefaModel->getTarefas();
-        $data['emails'] = $this->EmailModel->obterTodos();
-        $data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
-        $data['ultimosCincoEmails'] = $this->EmailModel->obterOsUltimosCincoEmails();
-        $this->load->view('header', $data);
+        $this->load->view('header', $this->data);
         $this->load->view('email/mail');
         $this->load->view('footer');
     }
@@ -33,18 +29,18 @@ class Mail extends CI_Controller {
     private function salvarNovosEmailsNoBanco() {
         $listaDeEmails = $this->gerenciadorDeEmails->obterNovosEmails();
         foreach ($listaDeEmails as $email) {
-            $data['dataDeEnvio'] = $email->dataDeEnvio;
-            $data['assunto'] = $email->assunto;
-            $data['nomeRemetente'] = $email->nomeRemetente;
-            $data['emailRemetente'] = $email->emailRemetente;
-            $data['emailDestinatario'] = $email->emailDestinatario;
-            $data['emailCC'] = $email->emailCC;
-            $data['responderPara'] = $email->responderPara;
-            $data['idDoEmailNoServidor'] = $email->idDoEmailNoServidor;
-            $data['corpoDoEmail'] = $email->corpoDoEmail;
-            $data['foiLido'] = $email->foiLido;
+            $this->data['dataDeEnvio'] = $email->dataDeEnvio;
+            $this->data['assunto'] = $email->assunto;
+            $this->data['nomeRemetente'] = $email->nomeRemetente;
+            $this->data['emailRemetente'] = $email->emailRemetente;
+            $this->data['emailDestinatario'] = $email->emailDestinatario;
+            $this->data['emailCC'] = $email->emailCC;
+            $this->data['responderPara'] = $email->responderPara;
+            $this->data['idDoEmailNoServidor'] = $email->idDoEmailNoServidor;
+            $this->data['corpoDoEmail'] = $email->corpoDoEmail;
+            $this->data['foiLido'] = $email->foiLido;
 
-            $this->EmailModel->incluirEmail($data);
+            $this->EmailModel->incluirEmail($this->data);
         }
     }
 
@@ -63,6 +59,8 @@ class Mail extends CI_Controller {
         $this->data['emails'] = $this->EmailModel->obterTodos();
         $this->data['ultimosCincoEmails'] = $this->EmailModel->obterOsUltimosCincoEmails();
         $this->data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
+        $this->data['ultimasTarefas'] = $this->TarefaModel->cincoUltimasTarefas();
+        $this->data['emails'] = $this->EmailModel->obterTodos();
     }
 
     public function excluirEmail() {
@@ -70,7 +68,6 @@ class Mail extends CI_Controller {
         $this->EmailModel->excluir($this->idDoEmailDetalhado);
         $this->data['statusEnvio'] = "";
         $this->index();
-        
     }
 
     private function renderizarParaPaginaDeDetalhesDoEmail() {
@@ -89,7 +86,7 @@ class Mail extends CI_Controller {
         $email->corpoDoEmail = $this->input->post('corpoDoEmail');
 
         $this->data['statusEnvio'] = $this->configurarEDisparar($email) ? 1 : 0;
-    
+
         $this->configurarDadosParaExibirPaginaDeDetalhesDeEmail();
         $this->renderizarParaPaginaDeDetalhesDoEmail();
     }
@@ -106,7 +103,7 @@ class Mail extends CI_Controller {
         );
         $this->load->library('email');
         $this->email->initialize($config);
-        
+
         $configDoArquivo = array(
             'upload_path' => 'assets/uploads/',
             'allowed_types' => 'gif|jpg|png|pdf|doc|xls|xlsx|docx',
@@ -114,18 +111,18 @@ class Mail extends CI_Controller {
         );
         $this->load->library('upload', $configDoArquivo);
         $this->email->initialize($configDoArquivo);
-        
+
         $this->email->set_newline("\r\n");
         $this->email->from($email->emailRemetente);
         $this->email->to($email->emailDestinatario);
         $this->email->subject($email->assunto);
         $this->email->message($email->corpoDoEmail);
-        
+
         if ($this->upload->do_upload('userfile')) {
             $attachdata = $this->upload->data();
             $this->email->attach($attachdata['full_path']);
         }
-        
+
         $this->email->send();
         echo $this->email->print_debugger();
         exit();

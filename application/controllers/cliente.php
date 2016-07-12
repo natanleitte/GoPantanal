@@ -11,10 +11,6 @@ class Cliente extends CI_Controller {
         $this->load->helper('url');
         $this->load->helper('form');
 
-        $this->load->model('TarefaModel');
-        $this->load->model('EmailModel');
-        $this->load->model('ClienteModel');
-        $this->load->model('UsuarioModel');
         $this->UsuarioModel->estaLogado();
         $this->DataUtils = new DataUtils();
     }
@@ -38,16 +34,16 @@ class Cliente extends CI_Controller {
     public function inserirCliente() {
         $this->load->model("ClienteModel");
 
-        $data['nome'] = $this->input->post('nome');
-        $data['telefone'] = $this->input->post('telefone');
-        $data['email'] = $this->input->post('email');
-        $data['nacionalidade'] = $this->input->post('nacionalidade');
-        $data['passaporte'] = $this->input->post('passaporte');
-        $data['data_contato'] = $this->DataUtils->converteDataParaFormatoDateDoMySql($this->input->post('data_contato'));
-        $data['origem_contato'] = $this->input->post('origem_contato');
-        $data['observacao'] = $this->input->post('observacao');
+        $this->data['nome'] = $this->input->post('nome');
+        $this->data['telefone'] = $this->input->post('telefone');
+        $this->data['email'] = $this->input->post('email');
+        $this->data['nacionalidade'] = $this->input->post('nacionalidade');
+        $this->data['passaporte'] = $this->input->post('passaporte');
+        $this->data['data_contato'] = $this->DataUtils->converteDataParaFormatoDateDoMySql($this->input->post('data_contato'));
+        $this->data['origem_contato'] = $this->input->post('origem_contato');
+        $this->data['observacao'] = $this->input->post('observacao');
 
-        $this->ClienteModel->setCliente($data);
+        $this->ClienteModel->setCliente($this->data);
     }
 
     public function profile() {
@@ -74,16 +70,16 @@ class Cliente extends CI_Controller {
     }
 
     public function atualizarCliente() {
-        $data['nome'] = $this->input->post('nome');
-        $data['telefone'] = $this->input->post('telefone');
-        $data['email'] = $this->input->post('email');
-        $data['nacionalidade'] = $this->input->post('nacionalidade');
-        $data['passaporte'] = $this->input->post('passaporte');
-        $data['data_contato'] = $this->DataUtils->converteDataParaFormatoDateDoMySql($this->input->post('data_contato'));
-        $data['origem_contato'] = $this->input->post('origem_contato');
-        $data['observacao'] = $this->input->post('observacao');
+        $this->data['nome'] = $this->input->post('nome');
+        $this->data['telefone'] = $this->input->post('telefone');
+        $this->data['email'] = $this->input->post('email');
+        $this->data['nacionalidade'] = $this->input->post('nacionalidade');
+        $this->data['passaporte'] = $this->input->post('passaporte');
+        $this->data['data_contato'] = $this->DataUtils->converteDataParaFormatoDateDoMySql($this->input->post('data_contato'));
+        $this->data['origem_contato'] = $this->input->post('origem_contato');
+        $this->data['observacao'] = $this->input->post('observacao');
 
-        $this->ClienteModel->updateCliente($data, $this->input->get('id', TRUE));
+        $this->ClienteModel->updateCliente($this->data, $this->input->get('id', TRUE));
         $this->profile();
     }
 
