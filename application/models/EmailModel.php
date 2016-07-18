@@ -12,6 +12,7 @@ class EmailModel extends CI_Model {
     }
 
     public function obterTodos() {
+        $this->db->order_by('dataDeEnvio', 'desc');
         return $this->db->get('email')->result();
 
     }
