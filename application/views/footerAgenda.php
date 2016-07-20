@@ -56,78 +56,82 @@
 <script src="<?php echo base_url() . "assets/" ?>js/charts.js"></script>
 <script src="<?php echo base_url() . "assets/" ?>js/functions.js"></script>
 <script src="<?php echo base_url() . "assets/" ?>js/demo.js"></script>
+<script src="<?php echo base_url() . "assets/" ?>js/tarefa.js"></script>
 
 <!--Altera linguagem do calendário-->
 <script src='<?php echo base_url() . "assets/" ?>vendors/bower_components/fullcalendar/dist/lang/pt-br.js'></script>
 
 <script type="text/javascript">
     $(document).ready(function () {
-        var date = new Date();
-        var d = date.getDate();
-        var m = date.getMonth();
-        var y = date.getFullYear();
-        var cId = $('#calendar'); //Change the name if you want. I'm also using thsi add button for more actions
+    event.preventDefault();
+    var date = new Date();
+    var d = date.getDate();
+    var m = date.getMonth();
+    var y = date.getFullYear();
+    var cId = $('#calendar'); //Change the name if you want. I'm also using thsi add button for more actions
 
-        //Generate the Calendar
-        cId.fullCalendar({
-        header: {
+    //Generate the Calendar
+    cId.fullCalendar({
+    header: {
         right: '',
-                center: 'prev, title, next',
-                left: ''
-        },
-                theme: true, //Do not remove this as it ruin the design
-                selectable: true,
-                selectHelper: true,
-                editable: true,
-                //Add Events
-<?php
-echo 'events:[';
-foreach ($tarefas->result() as $tarefa) {
-    echo '{';
-    echo "title:'" . $tarefa->titulo . "',";
-    echo "start: new Date('" . $tarefa->data_ini . "'),";
-    echo "end: new Date('" . $tarefa->data_fim . "'),";
-    echo "allDay: true,";
-    echo "className: '" . $tarefa->cor . " notificacao js-tarefa-" . $tarefa->id . "'";
-    echo "},";
-}
-echo "],";
-?>
+        center: 'prev, title, next',
+        left: ''
+    },
+        theme: true, //Do not remove this as it ruin the design
+        selectable: true,
+        selectHelper: true,
+        editable: true,
+        //Add Events
+        <?php
+        echo 'events:[';
+        foreach ($tarefas->result() as $tarefa) {
+            echo '{';
+            echo "title:'" . $tarefa->titulo . "',";
+            echo "start: new Date('" . $tarefa->data_ini . "'),";
+            echo "end: new Date('" . $tarefa->data_fim . "'),";
+            echo "allDay: true,";
+            echo "className: '" . $tarefa->cor . " notificacao js-tarefa-" . $tarefa->id . "'";
+            echo "},";
+        }
+        echo "],";
+        ?>
 
         //On Day Select
         select: function(start, end, allDay) {
-        $('#addNew-event').modal('show');
-        $('#addNew-event input:text').val('');
-        $('#getStart').val(start);
-        $('#getEnd').val(end);
+            $('#addNew-event').modal('show');
+            $('#addNew-event input:text').val('');
+            $('#getStart').val(start);
+            $('#getEnd').val(end);
         }
     });
+    
     /*
      * Calendar Widget
      */
     $('#calendar-widget').fullCalendar({
-        header: {
-            right: '',
-            center: 'prev, title, next',
-            left: ''
-        },
+    header: {
+        right: '',
+        center: 'prev, title, next',
+        left: ''
+    },
         theme: true,
         editable: true,
         selectable: true,
-<?php
-echo 'events:[';
-foreach ($tarefas->result() as $tarefa) {
-    echo '{';
-    echo "title:'" . $tarefa->titulo . "',";
-    echo "start: new Date('" . $tarefa->data_ini . "'),";
-    echo "end: new Date('" . $tarefa->data_fim . "'),";
-    echo "className: '" . $tarefa->cor . "',";
-    echo "id: '" . $tarefa->id . "'";
-    echo "},";
-}
-echo "],";
-?>
+        <?php
+        echo 'events:[';
+        foreach ($tarefas->result() as $tarefa) {
+            echo '{';
+            echo "title:'" . $tarefa->titulo . "',";
+            echo "start: new Date('" . $tarefa->data_ini . "'),";
+            echo "end: new Date('" . $tarefa->data_fim . "'),";
+            echo "allDay: true,";
+            echo "className: '" . $tarefa->cor . " notificacao js-tarefa-" . $tarefa->id . "'";
+            echo "},";
+        }
+        echo "],";
+        ?>
     });
+    
     //Create and ddd Action button with dropdown in Calendar header. 
     var actionMenu = '<ul class="actions actions-alt" id="fc-actions">' +
             '<li class="dropdown">' +
@@ -152,6 +156,7 @@ echo "],";
             '</div>' +
             '</li>';
     cId.find('.fc-toolbar').append(actionMenu);
+    
     //Event Tag Selector
     (function () {
         $('body').on('click', '.event-tag > span', function () {
@@ -159,6 +164,7 @@ echo "],";
             $(this).addClass('selected');
         });
     })();
+    
     //Add new Event
     $('body').on('click', '#addEvent', function () {
         var eventName = $('#eventName').val();
@@ -166,20 +172,21 @@ echo "],";
         if (eventName != '') {
             //Render Event
             $('#calendar').fullCalendar('renderEvent', {
-                title: eventName,
-                start: $('#getStart').val(),
-                end: $('#getEnd').val(),
-                allDay: false,
-                className: tagColor
+            title: eventName,
+                    start: $('#getStart').val(),
+                    end: $('#getEnd').val(),
+                    allDay: false,
+                    className: tagColor
 
             }, true); //Stick the event
 
-            $('#addNew-event form')[0].reset()
+            $('#addNew-event form')[0].reset();
             $('#addNew-event').modal('hide');
         } else {
             $('#eventName').closest('.form-group').addClass('has-error');
         }
     });
+    
     //Calendar views
     $('body').on('click', '#fc-actions [data-view]', function (e) {
         e.preventDefault();
@@ -188,29 +195,10 @@ echo "],";
         $(this).parent().addClass('active');
         cId.fullCalendar('changeView', dataView);
     });
-    //Exibir diálogo com detalhes das tarefas no calendario
-    $('.notificacao').each(function (index) {
-        $(this).on('click', function () {
-            var indexInicio = $(this).attr('class').lastIndexOf('js-tarefa-');
-            var indexFinal = $(this).attr('class').substring(indexInicio + 'js-tarefa-'.length).indexOf(" ");
-            var arrayData = {};
-            arrayData["id"] = $(this).attr('class').substring(indexInicio + 'js-tarefa-'.length).substring(0, indexFinal);
-            obterInformacoesDaTarefa(arrayData);
-        });
-    });
-    obterInformacoesDaTarefa = function (data) {
-        $.ajax({
-            url: '<?= base_url(); ?>' + 'index.php/agenda/buscaTarefa',
-            type: 'POST',
-            datatype: 'json',
-            data: data,
-            success: function (data) {
-                var json = $.parseJSON(data)[0];
-                swal(json.nome, json.titulo);
-            }});
-        }
-    });
+    
+    tarefa.inserirUrl('<?= base_url(); ?>');
+    tarefa.exibirDetalhesDaTarefa();
+});
 </script>
-
 </body>
 </html>
