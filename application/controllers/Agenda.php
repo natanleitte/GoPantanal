@@ -17,12 +17,15 @@ class Agenda extends CI_Controller {
         $data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
         $data['ultimosCincoEmails'] = $this->EmailModel->obterOsUltimosCincoEmails();
         $data['clientes'] = $this->ClienteModel->getClientes();
-        
+
         $this->load->view('header', $data);
         $this->load->view('agenda/index');
         $this->load->view('footerAgenda', $data);
     }
 
+    public function buscaTarefa() {
+        $id = $this->input->post('id');
+        echo json_encode($this->TarefaModel->buscarPor($id));
+    }
 }
-
 ?>

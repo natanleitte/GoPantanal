@@ -36,4 +36,11 @@ class TarefaModel extends CI_Model {
         $this->db->join('cliente', 'cliente.id = tarefa.id_cliente');
         return $this->db->get("tarefa");
     }
+    
+    public function buscarPor($id){
+        $this->db->join('cliente', 'cliente.id = tarefa.id_cliente');
+        $this->db->where('tarefa.id', $id);
+        $query = $this->db->get("tarefa");
+        return $query->result();
+    }
 }

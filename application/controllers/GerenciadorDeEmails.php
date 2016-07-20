@@ -5,6 +5,9 @@ include 'PhpImap/IncomingMail.php';
 
 class GerenciadorDeEmails {
 
+//    private $servidor = 'a2plcpnl0303.prod.iad2.secureserver.net';
+//    private $usuario = 'jorge@leafweb.com.br';
+//    private $senha = 'WolV@972';
     private $servidor = 'imap.gmail.com';
     private $usuario = 'infogopantanal@gmail.com';
     private $senha = '123GoPantanal';

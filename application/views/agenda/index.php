@@ -20,7 +20,7 @@
                             <div class="form-group">
                                 <label for="eventName">Título do Evento</label>
                                 <div class="fg-line">
-                                    <input type="text" class="input-sm form-control" name="titulo" id="eventName" placeholder="ex: Agendar hotel">
+                                    <textarea class="input-sm form-control" name="titulo" id="eventName" placeholder="ex: Agendar hotel" cols="50" rows="4"></textarea>
                                 </div>
                                 <div class="select">
                                     <select class="form-control" name="cliente">
