@@ -13,9 +13,8 @@ class EmailModel extends CI_Model {
 
     public function obterTodos() {
         $this->db->from('email');
-        $this->db->order_by('idDoEmailNoServidor', 'desc');
+        $this->db->order_by('id', 'desc');
         return $this->db->get()->result();
-
     }
 
     public function obterPor($id) {
@@ -36,14 +35,16 @@ class EmailModel extends CI_Model {
         $this->db->replace('email', $data);
     }
 
-    public function obterQuantidadeDeEmailsNaoLidos(){
+    public function obterQuantidadeDeEmailsNaoLidos() {
         $this->db->where('foiLIdo', false);
         return $this->db->get('email')->num_rows();
     }
-    
-    public function obterOsUltimosCincoEmails(){
+
+    public function obterOsUltimosCincoEmails() {
+        $this->db->from('email');
+        $this->db->order_by('id', 'desc');
         $this->db->limit(5);
-        $this->db->order_by('idDoEmailNoServidor', 'desc');
-        return $this->db->get('email')->result();
+        return $this->db->get()->result();
     }
+
 }

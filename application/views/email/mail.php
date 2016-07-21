@@ -13,7 +13,7 @@
                         <th data-column-id="assunto" data-formatter="assunto" data-type="text">Assunto</th>
                         <th data-column-id="data" data-formatter="data" data-type="text">Data</th>
                         <th data-column-id="novo" data-formatter="novo" data-type="numeric" data-hidden="true"></th>
-                        <th data-column-id="id" data-formatter="id" data-type="numeric" data-order="desc" data-hidden="true"></th>
+                        <th data-column-id="id" data-formatter="id" data-type="numeric" data-order="asc" data-hidden="true"></th>
                         <th data-column-id="commands" data-formatter="commands" data-sortable="false"></th>
                     </tr>
                 </thead>
