@@ -94,10 +94,10 @@ class Mail extends CI_Controller {
     public function configurarEDisparar($email) {
         $config = Array(
             'protocol' => 'smtp',
-            'smtp_host' => 'ssl://a2plcpnl0303.prod.iad2.secureserver.net',
-            'smtp_port' => 465,
-            'smtp_user' => 'jorge@leafweb.com.br',
-            'smtp_pass' => 'WolV@972',
+            'smtp_host' => 'smtpout.secureserver.net',
+            'smtp_port' => 80,
+            'smtp_user' => 'info@gopantanal.com',
+            'smtp_pass' => 'alzira5004',
             'mailtype' => 'html',
             'charset' => 'utf-8',
         );
@@ -122,9 +122,7 @@ class Mail extends CI_Controller {
             $attachdata = $this->upload->data();
             $this->email->attach($attachdata['full_path']);
         }
-
         $this->email->send();
         echo $this->email->print_debugger();
-        exit();
     }
 }

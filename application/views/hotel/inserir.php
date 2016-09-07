@@ -11,37 +11,6 @@
     <div class="container">
         <div class="block-header">
             <h2>Hotel</h2>
-
-            <ul class="actions">
-                <li>
-                    <a href="">
-                        <i class="zmdi zmdi-trending-up"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <i class="zmdi zmdi-check-all"></i>
-                    </a>
-                </li>
-                <li class="dropdown">
-                    <a href="" data-toggle="dropdown">
-                        <i class="zmdi zmdi-more-vert"></i>
-                    </a>
-
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <li>
-                            <a href="">Refresh</a>
-                        </li>
-                        <li>
-                            <a href="">Manage Widgets</a>
-                        </li>
-                        <li>
-                            <a href="">Widgets Settings</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-
         </div>
 
         <div class="card">
@@ -50,9 +19,6 @@
             </div>
 
             <div class="card-body card-padding">
-                <!--<p class="c-black f-500 m-b-5">Basic Example</p>-->
-                <!--<small>Place one add-on or button on either side of an input. You may also place one on both sides of an input.</small>-->
-
                 <br/><br/>
                 <form role="form" id="formHotel">
 
@@ -129,7 +95,6 @@
 <script type="text/javascript">
     function adicionarHotel()
     {
-//        alert("ola");
         $.ajax({
             url: '<?= base_url(); ?>' + 'index.php/hotel/inserirHotel',
             type: 'POST',

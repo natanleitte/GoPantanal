@@ -11,6 +11,7 @@ class GerenciadorDeEmails {
 // ###### QUANDO FOR PARA PRODUÇÃO #######
 //    private $usuario = 'infogopantanal@resplandeca.com.br';
 //    private $senha = '123GoPantanal';
+
     private $idsDosEmailsRecebidos;
     private $caixaDeEmails;
 
@@ -47,9 +48,32 @@ class GerenciadorDeEmails {
             $email->corpoDoEmail = quoted_printable_decode($this->caixaDeEmails->obterCorpoDoEmail($emailRetornado->id));
             $email->foiLido = FALSE;
 
+            $this->guardarAnexos($emailRetornado);
             array_push($listaDeNovosEmails, $email);
             $this->caixaDeEmails->markMailAsRead($id);
         }
         return $listaDeNovosEmails;
     }
+
+    public function guardarAnexos($email) {
+        $anexos = $email->getAttachments();
+        foreach ($anexos as $anexo) {
+            if ($anexo['is_attachment'] == 1) {
+                $nomeDoArquivo = $anexo['name'];
+                if (empty($nomeDoArquivo))
+                    $nomeDoArquivo = $anexo['filename'];
+
+                if (empty($nomeDoArquivo))
+                    $nomeDoArquivo = time() . ".dat";
+                $pasta = "assets/uploads/" . $email->subject . "_" . $emailRetornado->date;
+                if (!is_dir($pasta)) {
+                    mkdir($pasta);
+                }
+                $fp = fopen("./" . $pasta . "/" . $email->id . "-" . $nomeDoArquivo, "w+");
+                fwrite($fp, $anexo['attachment']);
+                fclose($fp);
+            }
+        }
+    }
+
 }
