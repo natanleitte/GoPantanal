@@ -30,7 +30,7 @@ foreach ($cliente->result() as $row) {
                             </dl>
                             <dl class="dl-horizontal">
                                 <dt>Email</dt>
-                                <dd><?php echo $cliente->email; ?></dd>
+                                <dd id="emailDoDestinatario"><?php echo $cliente->email; ?></dd>
                             </dl>
                             <dl class="dl-horizontal">
                                 <dt>Telefone</dt>
@@ -196,6 +196,8 @@ foreach ($cliente->result() as $row) {
                     <script>
                         $(document).ready(function () {
                             $(".card-orcamento").hide();
+                            var orcamento = $("#seletetorDeOrcamento").val();
+                            $("." + orcamento).show();
                             $("select").change(function () {
                                 var orcamentoSelecionado = $(this).val();
                                 $(".card-orcamento").hide();
@@ -215,6 +217,33 @@ foreach ($cliente->result() as $row) {
                     <?php include 'orcamentos/fairtradeI.php'; ?>
                     <?php include 'orcamentos/fairtradeII.php'; ?>
                     <?php include 'orcamentos/superBudget195Euro.php'; ?>
+
+                    <div class="btn-demo">
+                        <button class="btn btn-icon bgm-red m-b-30" data-action="print"><i class="zmdi zmdi-print"></i></button>
+                        <button class="btn btn-icon bgm-blue m-b-30" onclick="enviarOrcamento();"><i class="zmdi zmdi-mail-send"></i></button>
+                    </div>
+                    <form id="formOrcamento">
+                        <input id="email" name="email" type="hidden" />
+                        <input id="corpoDoEmail" name="corpoDoEmail" type="hidden" />
+                    </form>
+                    <script type="text/javascript">
+                        function enviarOrcamento()
+                        {
+                            var orcamentoSelecionado = $("#seletetorDeOrcamento").val();
+                            $('#email').val($('#emailDoDestinatario').html());
+                            $('#corpoDoEmail').val($("." + orcamentoSelecionado).html());
+
+                            $.ajax({
+                                url: '<?= base_url(); ?>' + 'index.php/mail/enviarOrcamento',
+                                type: 'POST',
+                                data: $("#formOrcamento").serialize(),
+                                success: function (msg) {
+                                    swal("Orcamento enviado com sucesso!", "", "success");
+                                    $("#email, #corpoDoEmail").val('');
+                                }
+                            });
+                        }
+                    </script>
                 </div>
                 <script>
                     $(document).ready(function () {
@@ -245,9 +274,6 @@ foreach ($cliente->result() as $row) {
                     });
                 </script>
             </div>
-        </div>
-        <div>
-            <button class="btn btn-float bgm-red m-btn" data-action="print"><i class="zmdi zmdi-print"></i></button>
         </div>
     </div>
 </section>
