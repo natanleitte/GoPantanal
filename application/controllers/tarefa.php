@@ -1,6 +1,7 @@
 <?php
 
 include APPPATH . 'controllers/utils/DataUtils.php';
+include APPPATH . 'controllers/GeraPDFServico.php';
 
 class Tarefa extends CI_Controller {
 
@@ -43,7 +44,7 @@ class Tarefa extends CI_Controller {
         $this->TarefaModel->excluir($id);
         $this->index();
     }
-    
+     
     private function carregarConfiguracoesBasicas(){
         $this->data['tarefas'] = $this->TarefaModel->getTarefas();
         $this->data['emails'] = $this->EmailModel->obterTodos();
