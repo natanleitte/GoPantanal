@@ -15,7 +15,9 @@ class Tour extends CI_Controller {
     }
 
     public function index() {
-        $this->data['tour'] = $this->TourModel->getTour($this->input->get('id'), TRUE);
+        $this->configuracoesBasicasParaCarregarPagina();
+
+        $this->data['tour'] = $this->TourModel->getTour($this->input->get('id'));
         $this->data['cliente'] = $this->ClienteModel->getCliente($this->data['tour']->id_cliente);
 
         $this->load->view('header', $this->data);
@@ -25,12 +27,20 @@ class Tour extends CI_Controller {
 
     public function tour() {
         $this->configuracoesBasicasParaCarregarPagina();
-        $this->data['cliente'] = $this->ClienteModel->getCliente($this->input->get('id', TRUE));
-        $this->data['tour'] = $this->input->get('id', TRUE);
+        $this->data['cliente'] = $this->ClienteModel->getCliente($this->input->get('id'));
+        $this->data['tour'] = $this->input->get('id');
         
         $this->load->view('header', $this->data);
         $this->load->view('tour/tour', $this->data);
         $this->load->view('footer');
+    }
+    
+    public function criarTour()
+    {
+        $id_cliente = $this->input->get('id');
+        
+        $tour->id_cliente = $id_cliente;
+        $this->TourModel->setTour($tour);
     }
 
     private function configuracoesBasicasParaCarregarPagina() {
@@ -40,6 +50,5 @@ class Tour extends CI_Controller {
         $this->data['clientes'] = $this->ClienteModel->getClientesPorDataDesc();
         $this->data['ultimosCincoEmails'] = $this->EmailModel->obterOsUltimosCincoEmails();
         $this->data['ultimasTarefas'] = $this->TarefaModel->cincoUltimasTarefas();
-        $this->data['hoteis'] = $this->HotelModel->getHoteis();
     }
 }

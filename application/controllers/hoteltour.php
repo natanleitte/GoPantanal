@@ -18,8 +18,8 @@ class HotelTour extends CI_Controller {
 
     public function index() {
         $this->configuracoesBasicasParaCarregarPagina();
-        $this->data['cliente'] = $this->ClienteModel->getCliente($this->input->get('id', TRUE));
-        $this->data['tour'] = $this->input->get('id', TRUE);
+        $this->data['tour'] = $this->input->get('id');
+       //$this->data['cliente'] = $this->ClienteModel->getCliente($this->input->get('id'));
 
         $this->load->view('header', $this->data);
         $this->load->view('hoteltour/index', $this->data);
