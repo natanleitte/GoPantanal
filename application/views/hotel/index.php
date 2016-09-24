@@ -2,36 +2,6 @@
     <div class="container">
         <div class="block-header">
             <h2>HOTÉIS</h2>
-
-            <ul class="actions">
-                <li>
-                    <a href="">
-                        <i class="zmdi zmdi-trending-up"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <i class="zmdi zmdi-check-all"></i>
-                    </a>
-                </li>
-                <li class="dropdown">
-                    <a href="" data-toggle="dropdown">
-                        <i class="zmdi zmdi-more-vert"></i>
-                    </a>
-
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <li>
-                            <a href="">Refresh</a>
-                        </li>
-                        <li>
-                            <a href="">Manage Widgets</a>
-                        </li>
-                        <li>
-                            <a href="">Widgets Settings</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
         </div>
 
         <div class="card">
@@ -54,16 +24,16 @@
                     </thead>
                     <tbody>
                         <?php
-                        foreach ($hoteis->result() as $hotel)
+                        foreach ($hoteis->result() as $hotel){
                             echo "<tr>";
-                        echo "<td>" . $hotel->nome . "</td>";
-                        echo "<td>" . $hotel->telefone . "</td>";
-                        echo "<td>" . $hotel->email . "</td>";
-                        echo "<td>" . $hotel->responsavel . "</td>";
-                        echo "<td>" . $hotel->endereco . "</td>";
-                        echo "<td>" . $hotel->cidade . "</td>";
-
-                        echo "</tr>";
+                                echo "<td>" . $hotel->nome . "</td>";
+                                echo "<td>" . $hotel->telefone . "</td>";
+                                echo "<td>" . $hotel->email . "</td>";
+                                echo "<td>" . $hotel->responsavel . "</td>";
+                                echo "<td>" . $hotel->endereco . "</td>";
+                                echo "<td>" . $hotel->cidade . "</td>";
+                            echo "</tr>";
+                        }
                         ?>
                     </tbody>
                 </table>

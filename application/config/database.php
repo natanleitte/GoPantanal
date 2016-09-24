@@ -76,7 +76,11 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => 'root',
+    // BANCO DE PRODUÇÃO
+//	'username' => 'leafweb',
+//	'password' => 'leafweb',
+    // BANCO DE DESENVOLVIMENTO
+    	'username' => 'root',
 	'password' => '',
 	'database' => 'gopantanal',
 	'dbdriver' => 'mysqli',

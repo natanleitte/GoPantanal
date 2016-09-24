@@ -35,15 +35,13 @@ foreach ($ultimasTarefas->result() as $tarefa) {
     <link href="<?php echo base_url() . "assets/" ?>css/app.min.2.css" rel="stylesheet">
 
 
-    <!-- ResponsiveTab -->
-    <link type="text/css" href="<?php echo base_url() . "assets/" ?>responsive-tabs/css/responsive-tabs.css" rel="stylesheet">
-    <link type="text/css" href="<?php echo base_url() . "assets/" ?>responsive-tabs/css/style.css" rel="stylesheet">
-
-
     <!-- Following CSS are used only for the Demp purposes thus you can remove this anytime. -->
     <style type="text/css">
         .toggle-switch .ts-label {
             min-width: 130px;
+        }
+        .btn-demo > .btn, .btn-group-demo > .btn-group {
+            margin: 0 5px 10px 0;
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>

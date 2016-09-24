@@ -91,12 +91,37 @@ class Mail extends CI_Controller {
         $this->renderizarParaPaginaDeDetalhesDoEmail();
     }
 
+    public function enviarOrcamento() {
+        $email = new Email;
+        $email->emailRemetente = "info@gopantanal.com";
+        $email->assunto = "[GoPantanal] - Orçamento";
+        $email->emailDestinatario = $this->input->post('email');
+        $url = base_url();
+        $email->corpoDoEmail = '
+                            <!doctype html> 
+                            <html> 
+                                <head>
+                                    <link rel="stylesheet" media="screen" href="http://www.site.com/css/style.css" type="text/css">
+                                    <!-- CSS -->
+                                    <link href="'. $url .'assets/css/app.min.1.css" rel="stylesheet">
+                                    <link href="'. $url .'assets/css/app.min.2.css" rel="stylesheet">
+                                </head> 
+                                <body>
+                                    <div id="wrapper">
+                                        ' . $this->input->post('corpoDoEmail') . '
+                                    </div>
+                                </body> 
+                            </html>';
+
+        $this->configurarEDisparar($email);
+    }
+
     public function configurarEDisparar($email) {
         $config = Array(
             'protocol' => 'smtp',
-            'smtp_host' => 'ssl://a2plcpnl0303.prod.iad2.secureserver.net',
+            'smtp_host' => 'ssl://smtp.gmail.com',
             'smtp_port' => 465,
-            'smtp_user' => 'jorge@leafweb.com.br',
+            'smtp_user' => 'jorge.silva.msbr@gmail.com',
             'smtp_pass' => 'WolV@972',
             'mailtype' => 'html',
             'charset' => 'utf-8',
@@ -116,15 +141,14 @@ class Mail extends CI_Controller {
         $this->email->from($email->emailRemetente);
         $this->email->to($email->emailDestinatario);
         $this->email->subject($email->assunto);
-        $this->email->message($email->corpoDoEmail);
-
+        $this->email->message(quoted_printable_decode($email->corpoDoEmail));
+        
         if ($this->upload->do_upload('userfile')) {
             $attachdata = $this->upload->data();
             $this->email->attach($attachdata['full_path']);
         }
-
+        
         $this->email->send();
-        echo $this->email->print_debugger();
-        exit();
     }
+
 }

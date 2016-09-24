@@ -58,10 +58,6 @@
                     ?>                  
 
                 </div>
-<!--
-                <div class="load-more">
-                    <a href=""><i class="zmdi zmdi-refresh-alt"></i> Carregar Mais...</a>
-                </div>-->
             </div>
         </div>
     </div>  
