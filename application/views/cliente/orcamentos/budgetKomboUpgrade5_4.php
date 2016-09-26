@@ -1,15 +1,15 @@
 <div class="card card-orcamento budgetKomboUpgrade5_4">
-    <div class="card-header ch-alt text-center">
-        <img class="i-logo" src="<?php echo base_url(); ?>assets/img/logo-grande.png" alt="">
-    </div>
+        
+    <?php include "cabecalho.php"; ?>
+
+    <?php include "informacoesDoCliente.php"; ?>
+
     <div class="card-body card-padding">
         <div class="row">
             <div class="text-center">
                 <h3 class="c-green">BUDGET UPGRADE TOUR - PANTANAL E BONITO (P)<br/>(5 Tage/4 Nächte)</h3>
             </div>
         </div>
-
-        <?php include "informacoesDoCliente.php"; ?>
 
         <div class="clearfix"></div>
 
