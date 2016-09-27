@@ -191,6 +191,8 @@ foreach ($cliente->result() as $row) {
                             <option value="fairtradeI">Fairtrade I</option>
                             <option value="fairtradeII">Fairtrade II</option>
                             <option value="superBudget195Euro">Super Budget 195 Euro</option>
+                            <option value="rechnung">Rechnung</option>
+
                         </select>
                     </div>
                     <script>
@@ -217,6 +219,8 @@ foreach ($cliente->result() as $row) {
                     <?php include 'orcamentos/fairtradeI.php'; ?>
                     <?php include 'orcamentos/fairtradeII.php'; ?>
                     <?php include 'orcamentos/superBudget195Euro.php'; ?>
+                    <?php include 'orcamentos/rechnung.php'; ?>
+
 
                     <div class="btn-demo">
                         <button class="btn btn-icon bgm-red m-b-30" data-action="print"><i class="zmdi zmdi-print"></i></button>
