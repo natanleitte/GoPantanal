@@ -1,6 +1,6 @@
 <div class="card card-orcamento budgetPantanal3_2D">
     <div class="card-header ch-alt text-center">
-        <img class="i-logo" src="<?php echo base_url(); ?>assets/img/logo-grande.png" alt="">
+        <img class="i-logo" src="<?php echo base_url(); ?>assets/img/logo-pequena.png" alt="">
     </div>
     <div class="card-body card-padding">
         <div class="row">

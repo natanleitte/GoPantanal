@@ -34,7 +34,7 @@ foreach ($ultimasTarefas->result() as $tarefa) {
     <link href="<?php echo base_url() . "assets/" ?>css/app.min.1.css" rel="stylesheet">
     <link href="<?php echo base_url() . "assets/" ?>css/app.min.2.css" rel="stylesheet">
 
-
+    
     <!-- Following CSS are used only for the Demp purposes thus you can remove this anytime. -->
     <style type="text/css">
         .toggle-switch .ts-label {

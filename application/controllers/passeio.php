@@ -25,9 +25,7 @@ class Passeio extends CI_Controller {
     }
 
     public function inserir() {
-        $data['emails'] = $this->EmailModel->obterTodos();
-        $data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
-        $data['tarefas'] = $this->TarefaModel->getTarefas();
+        $this->configuracoesBasicasParaCarregarPagina();
 
         $this->load->view('header', $this->data);
         $this->load->view('passeio/inserir');

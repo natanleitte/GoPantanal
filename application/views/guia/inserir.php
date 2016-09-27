@@ -138,7 +138,6 @@
 <script type="text/javascript">
     function adicionarGuia()
     {
-//        alert("ola");
         $.ajax({
             url: '<?= base_url(); ?>' + 'index.php/guia/inserirGuia',
             type: 'POST',
