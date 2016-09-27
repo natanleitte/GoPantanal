@@ -1,13 +1,16 @@
-<footer class="m-t-15 p-20">
-    <ul class="list-inline text-center list-unstyled">
-        <li class="m-l-5 m-r-5"><small>info@pantanal.com | pantanal@gmx.net</small></li>
-        <li class="m-l-5 m-r-5"><small>+55 67 3014-9449 | 9987-1191</small></li>
-        <li class="m-l-5 m-r-5"><small>www.gopantanal.com</small></li>
-    </ul>
+<footer class="m-t-15 p-20" style="font-size: 12pt">
     <div class="row">
-        <p class="text-center c-gray">Campo Grande/MS, <?php
+        <p class="text-center c-black">Campo Grande/MS, <?php
             date_default_timezone_set('Europe/Amsterdam');
             echo date('d F Y');
-            ?></p>
+            ?>
+            <br>
+            Martin Arn
+        </p>
     </div>
+    <ul class="list-inline text-center">
+        <li class="m-l-5 m-r-5">BRAZIL PANTANAL TOUR, CNPJ 17.912.824/0001-30, INSCR. MUN. 0018051400-7</li><br>
+        <li class="m-l-5 m-r-5">CADASTUR 12.063837.10.0001-0</li>
+
+    </ul>
 </footer>

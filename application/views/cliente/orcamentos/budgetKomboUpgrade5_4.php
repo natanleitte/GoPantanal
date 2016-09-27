@@ -1,14 +1,6 @@
 <div class="card card-orcamento budgetKomboUpgrade5_4">
         
     <?php include "cabecalho.php"; ?>
-
-    <?php include "informacoesDoCliente.php"; ?>
-    
-    <div class="clearfix"></div>
-
-    <?php include "valoresDoOrcamento.php"; ?>
-
-    <div class="clearfix"></div>
         
     <div class="card-body card-padding">
         <div class="row">

@@ -5,50 +5,38 @@
         });
     });
 </script>
-<div class="row m-t-25 p-0 m-b-25">
-    <div class="col-xs-3">
-        <div class="bgm-blue brd-2 p-15">
-            <div class="c-white m-b-5"><b>Datum</b></div>
-            <form>
-                <div class='input-group date' id='datepicker-inicio'>
-                    <span class="input-group-addon">
-                        <input id="input-data-inicio" type='text' class="form-control input-group-addon m-0 f-500 c-white " placeholder="Inicio do Tour" />
-                    </span>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="col-xs-3">
-        <div class="bgm-green brd-2 p-15">
-            <div class="c-white m-b-5"><b>Datenausgabe</b></div>
+<div class="row m-t-25 p-0 m-b-25 text-center">
+    <div class="col-xs-4">
+        <div class="brd-2 p-15">
+            <div class="c-black m-b-5"><b>Reise Termin von bis</b></div>
             <form>
                 <div class='input-group date' id='datepicker-fim'>
                     <span class="input-group-addon">
-                        <input id="input-data-fim" type='text' class="form-control input-group-addon m-0 f-500  c-white " placeholder="Inicio do Tour" />
+                        <input id="input-data-fim" type='text' class="form-control input-group-addon m-0 f-500" placeholder="Inicio do Tour" />
                     </span>
                 </div>
             </form>
         </div>
     </div>
-    <div class="col-xs-3">
-        <div class="bgm-red brd-2 p-15">
-            <div class="c-white m-b-5"><b>Preis (Euro/Person)</b></div>
+    <div class="col-xs-4">
+        <div class="brd-2 p-15">
+            <div class="c-black m-b-5"><b>Preis pro Person</b></div>
             <form>
                 <div class='input-group'>
                     <span class="input-group-addon">
-                        <input id="valor" type='text' class="form-control input-group-addon m-0  c-white f-500" placeholder="Valor ($)" />
+                        <input id="valor" type='text' class="form-control input-group-addon m-0 f-500" placeholder="Valor ($)" />
                     </span>
                 </div>
             </form>
         </div>
     </div>
-    <div class="col-xs-3">
-        <div class="bgm-red brd-2 p-15">
-            <div class="c-white m-b-5"><b>Gesamt</b></div>
+    <div class="col-xs-4">
+        <div class="brd-2 p-15">
+            <div class="c-black m-b-5"><b>Preis Total</b></div>
             <form>
                 <div class='input-group'>
                     <span class="input-group-addon">
-                        <input id="valor" type='text' class="form-control input-group-addon m-0  c-white f-500" placeholder="Valor ($)" />
+                        <input id="valor" type='text' class="form-control input-group-addon m-0 f-500" placeholder="Valor ($)" />
                     </span>
                 </div>
             </form>
