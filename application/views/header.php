@@ -116,7 +116,7 @@ foreach ($ultimasTarefas->result() as $tarefa) {
                                     <?php
                                     foreach ($ultimasTarefas->result() as $tarefa) {
                                         echo "  <div class='lv-item'>";
-                                        echo "<div class='lv-title m-b-5'>" . $tarefa->titulo . "</div>";
+                                        echo "<div class='lv-title m-b-5'>" . $tarefa->descricao . "</div>";
                                         echo "<div class='progress'>";
                                         echo "<div class='progress-bar " . $tarefa->cor . "' role='progressbar' aria-valuenow='100' aria-valuemin='0' aria-valuemax='100' style='width: 100%'>";
                                         echo "<span class='sr-only'>100% Complete (success)</span>";

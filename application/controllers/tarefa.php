@@ -6,7 +6,7 @@ include APPPATH . 'controllers/GeraPDFServico.php';
 class Tarefa extends CI_Controller {
 
     private $data;
-    
+
     public function __construct() {
         parent::__construct();
         $this->load->helper('url');
@@ -23,7 +23,7 @@ class Tarefa extends CI_Controller {
     }
 
     public function inserirTarefa() {
-        $this->data['titulo'] = $this->input->post('titulo');
+        $this->data['descricao'] = $this->input->post('titulo');
         $this->data['data_ini'] = $this->DataUtils->alterarParaSeisDaManhaA($this->input->post('data_ini'));
         $this->data['data_fim'] = $this->DataUtils->alterarParaSeisDaManhaA($this->input->post('data_fim'));
         $this->data['status'] = $this->input->post('status');
@@ -31,6 +31,23 @@ class Tarefa extends CI_Controller {
         $this->data['cor'] = $this->input->post('cor');
 
         $this->TarefaModel->setTarefa($this->data);
+    }
+
+    public function inserirTarefaDetalhada() {
+        $this->data['descricao'] = $this->input->post('descricao');
+        $this->data['data_ini'] = $this->acrescentarDiasNaDataSendoAQtd($this->input->post('qtdDias'));
+        $this->data['data_fim'] = $this->acrescentarDiasNaDataSendoAQtd($this->input->post('qtdDias'));
+        $this->data['status'] = "A";
+        $this->data['id_cliente'] = $this->input->post('cliente');
+        $this->data['cor'] = $this->input->post('cor');
+
+        $this->TarefaModel->setTarefa($this->data);
+    }
+
+    private function acrescentarDiasNaDataSendoAQtd($quantidade) {
+        $datetime = new DateTime(null, new DateTimeZone('UTC'));
+        $datetime->modify('+'.$quantidade.' days');
+        return $datetime->format('Y-m-d H:i:s') . "+0000";
     }
 
     public function alteraStatusDaTarefa() {
@@ -44,8 +61,8 @@ class Tarefa extends CI_Controller {
         $this->TarefaModel->excluir($id);
         $this->index();
     }
-     
-    private function carregarConfiguracoesBasicas(){
+
+    private function carregarConfiguracoesBasicas() {
         $this->data['tarefas'] = $this->TarefaModel->getTarefas();
         $this->data['emails'] = $this->EmailModel->obterTodos();
         $this->data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
@@ -53,4 +70,5 @@ class Tarefa extends CI_Controller {
         $this->data['clientes'] = $this->ClienteModel->getClientes();
         $this->data['ultimasTarefas'] = $this->TarefaModel->cincoUltimasTarefas();
     }
+
 }

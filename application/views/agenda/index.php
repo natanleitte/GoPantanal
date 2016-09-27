@@ -18,8 +18,8 @@
                     <div class="modal-body">
                         <form class="addEvent" role="form" id="formTarefa">
                             <div class="form-group">
-                                <label for="eventName">Título do Evento</label>
-                                <div class="fg-line">
+                                <label for="eventName">Descrição da Tarefa</label>
+                                <div class="fg-line form-control">
                                     <textarea class="input-sm form-control" name="titulo" id="eventName" placeholder="ex: Agendar hotel" cols="50" rows="4"></textarea>
                                 </div>
                                 <div class="select">
@@ -37,17 +37,8 @@
                             <div id="cor-tarefa" class="form-group">
                                 <label for="eventName">Cores</label>
                                 <div class="event-tag">
-                                    <span data-tag="bgm-teal" class="bgm-teal selected"></span>
-                                    <span data-tag="bgm-red" class="bgm-red"></span>
-                                    <span data-tag="bgm-pink" class="bgm-pink"></span>
-                                    <span data-tag="bgm-blue" class="bgm-blue"></span>
-                                    <span data-tag="bgm-lime" class="bgm-lime"></span>
-                                    <span data-tag="bgm-green" class="bgm-green"></span>
-                                    <span data-tag="bgm-cyan" class="bgm-cyan"></span>
-                                    <span data-tag="bgm-orange" class="bgm-orange"></span>
-                                    <span data-tag="bgm-purple" class="bgm-purple"></span>
                                     <span data-tag="bgm-gray" class="bgm-gray"></span>
-                                    <span data-tag="bgm-black" class="bgm-black"></span>
+                                    <span data-tag="bgm-black" class="bgm-black selected"></span>
                                 </div>
                             </div>
 
@@ -61,7 +52,7 @@
 
                     <div class="modal-footer">
                         <button class="btn btn-link" onclick="adicionarTarefa()" id="addEvent">Adicionar Evento</button>
-                        <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-link" data-dismiss="modal">Sair</button>
                     </div>
                 </div>
             </div>

@@ -77,8 +77,8 @@ $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
     // BANCO DE PRODUÇÃO
-//	'username' => 'leafweb',
-//	'password' => 'leafweb',
+//	'username' => 'gopantanal',
+//	'password' => '123GoPantanal',
     // BANCO DE DESENVOLVIMENTO
     	'username' => 'root',
 	'password' => '',

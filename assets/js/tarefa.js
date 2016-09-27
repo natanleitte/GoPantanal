@@ -39,7 +39,12 @@ tarefa.gerenciaItem = function () {
                     $.ajax({
                         url: $('#base_url').val() + 'index.php/tarefa/inserirTarefa',
                         type: 'POST',
-                        data: {titulo: tituloDaTarefa, data_ini: (dataDaTarefa + " GMT+0000"), data_fim: (dataDaTarefa + " GMT+0000"), status: 'A', cliente: clienteDaTarefa, cor: ''},
+                        data: {titulo: tituloDaTarefa,
+                            data_ini: (dataDaTarefa + " GMT+0000"),
+                            data_fim: (dataDaTarefa + " GMT+0000"),
+                            status: 'A',
+                            cliente: clienteDaTarefa,
+                            cor: 'bgm-black'},
                         success: function (msg) {
                             window.location.reload();
                             swal("Tarefa adicionada.", "", "success");
@@ -83,7 +88,7 @@ tarefa.alteraStatusDaTarefa = function () {
 tarefa.exibirDetalhesDaTarefa = function () {
     //Exibir diálogo com detalhes das tarefas no calendario
     $('.notificacao').each(function (index) {
-        $(this).on('click', function () {
+        $(this).unbind().on('click', function () {
             obterInformacoesDaTarefa( obterIdDaTarefa(this) );
         });
     });
@@ -104,7 +109,7 @@ tarefa.exibirDetalhesDaTarefa = function () {
             data: data,
             success: function (data) {
                 var json = $.parseJSON(data)[0];
-                swal("Cliente: " + json.nome, json.titulo);
+                swal("Cliente: " + json.nome, json.descricao);
             }});
     };
 };

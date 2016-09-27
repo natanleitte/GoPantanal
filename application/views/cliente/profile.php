@@ -8,12 +8,13 @@ foreach ($cliente->result() as $row) {
         <div class="card" id="profile-main">
             <div class="pm-body clearfix">
                 <ul class="tab-nav tn-justified">
-                    <li class="active waves-effect"><a id="botao-perfil" href="#">Início</a></li>
-                    <li class="waves-effect"><a id="botao-compromisso" href="#">Compromissos Agendados</a></li>
-                    <li class="waves-effect"><a id="botao-orcamento" href="#">Orçamentos</a></li>                 
+                    <li class="active waves-effect js-tab-menu"><a id="botao-perfil" href="#">Início</a></li>
+                    <li class="waves-effect js-tab-menu"><a id="botao-agendar-comrpomissos" href="#">Agendar Compromissos</a></li>
+                    <li class="waves-effect js-tab-menu"><a id="botao-compromisso" href="#">Compromissos Agendados</a></li>
+                    <li class="waves-effect js-tab-menu"><a id="botao-orcamento" href="#">Orçamentos</a></li>                 
                 </ul>
 
-                <div id="perfil" class="pmb-block">
+                <div id="perfil" class="pmb-block js-container-tab">
                     <div class="pmbb-header">
                         <h2><i class="zmdi zmdi-account m-r-5"></i> Informações</h2>
                         <ul class="actions">
@@ -156,7 +157,7 @@ foreach ($cliente->result() as $row) {
                     </div>
                 </div>
 
-                <div id="compromisso" class="pmb-block" style="display:none;">
+                <div id="compromisso" class="pmb-block js-container-tab" style="display:none;">
                     <div class="card-body card-padding">                     
                         <?php
                         foreach ($tarefas->result() as $tarefa) {
@@ -168,7 +169,7 @@ foreach ($cliente->result() as $row) {
                                 echo "</div>";
                                 echo "<div class='pt-body'>";
                                 echo "<div class='lightbox clearfix'>";
-                                echo "<h2 class='ptb-title'>" . $tarefa->titulo . "</h2>";
+                                echo "<h2 class='ptb-title'>" . $tarefa->descricao . "</h2>";
                                 echo "</div>";
                                 echo "</div>";
                                 echo "</div>";
@@ -178,7 +179,7 @@ foreach ($cliente->result() as $row) {
                     </div>
                 </div>
 
-                <div id="orcamento" class="pmb-block" style="display:none;">
+                <div id="orcamento" class="pmb-block js-container-tab" style="display:none;">
                     <div class="select select-box">
                         <label for="seletetorDeOrcamento" class="c-blue">Selecione o orçmento que deseja: </label>
                         <select id="seletetorDeOrcamento" class="form-control">
@@ -249,32 +250,63 @@ foreach ($cliente->result() as $row) {
                         }
                     </script>
                 </div>
+
+                <div id="agendar-compromissos" class="pmb-block js-container-tab" style="display:none;">
+                    <div class="col-lg-10">
+                        <div class="alert color bgm-cyan col-lg-1" role="alert"></div>
+                        <span class="col-lg-9">Fazer o orçamento, cotação e bloqueios nas pousadas, etc.</span>
+                        <button class="btn btn-sm btn-group-demo" onclick="perfilCliente.inserirTarefaCom('bgm-cyan', 2, 'Fazer o orçamento, cotação e bloqueios nas pousadas, etc.', <?php echo $cliente->id;?>)">Agendar</button>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="alert color bgm-lightblue col-lg-1" role="alert"></div>
+                        <span class="col-lg-9">Perdir confirmação do orçamento.</span>
+                        <button class="btn btn-sm btn-group-demo" onclick="perfilCliente.inserirTarefaCom('bgm-lightblue', 7, 'Perdir confirmação do orçamento.', <?php echo $cliente->id;?>)">Agendar</button>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="alert color bgm-blue col-lg-1" role="alert"></div>
+                         <span class="col-lg-9">Enviar fatura.</span>
+                        <button class="btn btn-sm btn-group-demo" onclick="perfilCliente.inserirTarefaCom('bgm-blue', 2, 'Enviar fatura.', <?php echo $cliente->id;?>)">Agendar</button>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="alert color bgm-bluegray col-lg-1" role="alert"></div>
+                         <span class="col-lg-9">Enviar comprovante deposito.</span>
+                        <button class="btn btn-sm btn-group-demo" onclick="perfilCliente.inserirTarefaCom('bgm-bluegray', 2, 'Enviar comprovante deposito.', <?php echo $cliente->id;?>)">Agendar</button>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="alert color bgm-lightgreen col-lg-1" role="alert"></div>
+                         <span class="col-lg-9">Confirmar bloqueios nas pousadas, etc.</span>
+                        <button class="btn btn-sm btn-group-demo" onclick="perfilCliente.inserirTarefaCom('bgm-lightgreen', 3, 'Confirmar bloqueios nas pousadas, etc.', <?php echo $cliente->id;?>)">Agendar</button>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="alert color bgm-green col-lg-1" role="alert"></div>
+                         <span class="col-lg-9">Depositar sinal para as pousadas, etc.</span>
+                        <button class="btn btn-sm btn-group-demo" onclick="perfilCliente.inserirTarefaCom('bgm-green', 7, 'Depositar sinal para as pousadas, etc.', <?php echo $cliente->id;?>)">Agendar</button>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="alert color bgm-teal col-lg-1" role="alert"></div>
+                         <span class="col-lg-9">Contato de verificação e lembrar o pagamento restante.</span>
+                        <button class="btn btn-sm btn-group-demo" onclick="perfilCliente.inserirTarefaCom('bgm-teal', 30, 'Contato de verificação e lembrar o pagamento restante.', <?php echo $cliente->id;?>)">Agendar</button>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="alert color bgm-orange col-lg-1" role="alert"></div>
+                         <span class="col-lg-9">Prazo para o pagamento restante.</span>
+                        <button class="btn btn-sm btn-group-demo" onclick="perfilCliente.inserirTarefaCom('bgm-orange', 7, 'Prazo para o pagamento restante.', <?php echo $cliente->id;?>)">Agendar</button>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="alert color bgm-indigo col-lg-1" role="alert"></div>
+                         <span class="col-lg-9">Enviar comprovante do deposito e voucher.</span>
+                        <button class="btn btn-sm btn-group-demo" onclick="perfilCliente.inserirTarefaCom('bgm-indigo', 1, 'Enviar comprovante do deposito e voucher.', <?php echo $cliente->id;?>)">Agendar</button>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="alert color bgm-brown col-lg-1" role="alert"></div>
+                         <span class="col-lg-9">Perguntar feedback.</span>
+                        <button class="btn btn-sm btn-group-demo" onclick="perfilCliente.inserirTarefaCom('bgm-brown', 7, 'Perguntar feedback.', <?php echo $cliente->id;?>)">Agendar</button>
+                    </div>
+                </div>
+
                 <script>
                     $(document).ready(function () {
-                        $('#botao-compromisso').on('click', function () {
-                            $('#botao-compromisso').parent('li').addClass('active');
-                            $('#compromisso').show();
-                            $('#botao-perfil').parent('li').removeClass('active');
-                            $('#perfil').hide();
-                            $('#botao-orcamento').parent('li').removeClass('active');
-                            $('#orcamento').hide();
-                        });
-                        $('#botao-perfil').on('click', function () {
-                            $('#botao-compromisso').parent('li').removeClass('active');
-                            $('#compromisso').hide();
-                            $('#botao-perfil').parent('li').addClass('active');
-                            $('#perfil').show();
-                            $('#botao-orcamento').parent('li').removeClass('active');
-                            $('#orcamento').hide();
-                        });
-                        $('#botao-orcamento').on('click', function () {
-                            $('#botao-orcamento').parent('li').addClass('active');
-                            $('#orcamento').show();
-                            $('#botao-compromisso').parent('li').removeClass('active');
-                            $('#compromisso').hide();
-                            $('#botao-perfil').parent('li').removeClass('active');
-                            $('#perfil').hide();
-                        });
+                        perfilCliente.controladorTabs();
                     });
                 </script>
             </div>
