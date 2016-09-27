@@ -96,15 +96,12 @@ class Mail extends CI_Controller {
         $email->emailRemetente = "info@gopantanal.com";
         $email->assunto = "[GoPantanal] - Orçamento";
         $email->emailDestinatario = $this->input->post('email');
-        $url = base_url();
         $email->corpoDoEmail = '
                             <!doctype html> 
                             <html> 
                                 <head>
-                                    <link rel="stylesheet" media="screen" href="http://www.site.com/css/style.css" type="text/css">
-                                    <!-- CSS -->
-                                    <link href="'. $url .'assets/css/app.min.1.css" rel="stylesheet">
-                                    <link href="'. $url .'assets/css/app.min.2.css" rel="stylesheet">
+                                    <link rel="stylesheet" media="screen" href="http://www.gopantanal.info/assets/css/app.min.1.css" type="text/css">
+                                    <link rel="stylesheet" media="screen" href="http://www.gopantanal.info/assets/css/app.min.1.css" type="text/css">
                                 </head> 
                                 <body>
                                     <div id="wrapper">
@@ -119,10 +116,10 @@ class Mail extends CI_Controller {
     public function configurarEDisparar($email) {
         $config = Array(
             'protocol' => 'smtp',
-            'smtp_host' => 'ssl://smtp.gmail.com',
+            'smtp_host' => 'ssl://a2plcpnl0303.prod.iad2.secureserver.net',
             'smtp_port' => 465,
-            'smtp_user' => 'jorge.silva.msbr@gmail.com',
-            'smtp_pass' => 'WolV@972',
+            'smtp_user' => 'mail@gopantanal.info',
+            'smtp_pass' => 'senha123',
             'mailtype' => 'html',
             'charset' => 'utf-8',
         );
