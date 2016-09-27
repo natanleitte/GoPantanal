@@ -21,7 +21,7 @@
                             echo "</div>";
                             echo "<div class='media-body'>";
                             echo "<label>";
-                            echo "<span><b>" . $tarefa->nome . "</b> - " . $tarefa->titulo . " - " . date('d/m/Y', strtotime($tarefa->data_ini)) . "</span>";
+                            echo "<span><b>" . $tarefa->nome . "</b> - " . $tarefa->descricao . " - " . date('d/m/Y', strtotime($tarefa->data_ini)) . "</span>";
                             echo "</label>";
                             echo "</div>";
                             echo "</div>";

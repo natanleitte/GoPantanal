@@ -56,70 +56,28 @@
 <script src="<?php echo base_url() . "assets/" ?>js/charts.js"></script>
 <script src="<?php echo base_url() . "assets/" ?>js/functions.js"></script>
 <script src="<?php echo base_url() . "assets/" ?>js/demo.js"></script>
+<script src="<?php echo base_url() . "assets/" ?>js/perfilCliente.js"></script>
 
 <!--Altera linguagem do calendário-->
 <script src='<?php echo base_url() . "assets/" ?>vendors/bower_components/fullcalendar/dist/lang/pt-br.js'></script>
 
 <script type="text/javascript">
-
     $(document).ready(function () {
         $("#busca").keyup(function () {
-//            alert("Handler for .keyup() called.");
-        $.ajax({
-            url: '<?= base_url(); ?>' + 'index.php/cliente/buscaCliente',
-            type: 'POST',
-            datatype: 'json',
-            data: {query: $("#busca").val()},
-            success: function (data) {
-                for($i=0; $i < data.length; $i++){
-
-                console.log(data[$i]['nome']);
-            
-            }//fim do laço
-                
-//                swal("Cliente inserido com sucesso!", "", "success");
-//                $("#nome, #email, #telefone, #endereco, #passaporte").val('');
-            }
-        });
-//        $("#clientes").empty();
-//            $('#clientes').append(" 
-<?php
-//   echo"$('#clientes').append('";
-
-//   foreach ($clientes->result() as $cliente) {
-//
-////       echo "<div class='col-md-2 col-sm-4 col-xs-6'>";
-////       echo "<div class='c-item'>";
-////       echo "<a href='" . base_url() . "index.php/cliente/profile?id=" . $cliente->id . "' class='ci-avatar'>";
-////       echo "<img src='" . base_url() . "assets/img/contacts/10.jpg' alt=''>";
-////       echo "</a>";
-//       echo"$('#clientes').append('";
-//       echo "<div class='c-info'><strong>" . $cliente->nome . "</strong>";
-//       echo "<small>" . $cliente->email . "</small>";
-//       echo "</div>";
-//
-////       echo "<div class='c-footer'>";
-////       echo "<button class='waves-effect'><i class='zmdi zmdi-person-add'></i> Add</button>";
-////       echo "</div>";
-////       echo "</div>";
-////       echo "</div>";
-//          echo "');";
-//
-//   }
-?>
-//    +");
-
+            $.ajax({
+                url: '<?= base_url(); ?>' + 'index.php/cliente/buscaCliente',
+                type: 'POST',
+                datatype: 'json',
+                data: {query: $("#busca").val()},
+                success: function (data) {
+                    for ($i = 0; $i < data.length; $i++) {
+                        console.log(data[$i]['nome']);
+                    }
+                }
+            });
         });
     });
 </script>
-//<?php
-//   echo "<script type='text/javascript'>";
-//
-//   foreach ($tarefas->result() as $tarefa) {
-//       echo var person = {firstName:"John", lastName:"Doe", age:46};
-//   }
-//
-?>
 
 </body>
 </html>

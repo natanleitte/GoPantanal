@@ -1,27 +1,30 @@
 var perfilCliente = {};
 var URL;
 
-perfilCliente.inserirUrl = function(url){
+perfilCliente.inserirUrl = function (url) {
     URL = url;
 };
 
 perfilCliente.controladorTabs = function () {
-    $('#botao-compromisso').on('click', function () {
+    $('.js-container-tab').hide();
+    $('.active').show();
+
+    $('#botao-agendar-comrpomissos').unbind().on('click', function () {
+        esconderTabsInativas();
+        exibirTabAtiva($('#botao-agendar-comrpomissos'), $('#agendar-compromissos'));
+    });
+
+    $('#botao-compromisso').unbind().on('click', function () {
         esconderTabsInativas();
         exibirTabAtiva($('#botao-compromisso'), $('#compromisso'));
     });
-    $('#botao-perfil').on('click', function () {
+    $('#botao-perfil').unbind().on('click', function () {
         esconderTabsInativas();
         exibirTabAtiva($('#botao-perfil'), $('#perfil'));
     });
-    $('#botao-orcamento').on('click', function () {
+    $('#botao-orcamento').unbind().on('click', function () {
         esconderTabsInativas();
         exibirTabAtiva($('#botao-orcamento'), $('#orcamento'));
-    });
-
-    $('#botao-agendar-comrpomissos').on('click', function () {
-        esconderTabsInativas();
-        exibirTabAtiva($('#botao-agendar-comrpomissos'), $('#agendar-compromissos'));
     });
 
     function exibirTabAtiva(nomeDoBotao, conteudoDaTab) {
@@ -46,7 +49,23 @@ perfilCliente.inserirTarefaCom = function (cor, qtdDias, descricao, idCliente) {
             cliente: idCliente
         },
         success: function (msg) {
-            swal("Tarefa agendada, para daqui há " + qtdDias + " dias!", "", "success");
+            swal("Tarefa agendada, para daqui " + qtdDias + " dia(s)!", "", "success");
+        }
+    });
+};
+
+perfilCliente.enviarOrcamento = function () {
+    var orcamentoSelecionado = $("#seletetorDeOrcamento").val();
+    $('#email').val($('#emailDoDestinatario').html());
+    $('#corpoDoEmail').val($("." + orcamentoSelecionado).html());
+
+    $.ajax({
+        url: '<?= base_url(); ?>' + 'index.php/mail/enviarOrcamento',
+        type: 'POST',
+        data: $("#formOrcamento").serialize(),
+        success: function (msg) {
+            swal("Orcamento enviado com sucesso!", "", "success");
+            $("#email, #corpoDoEmail").val('');
         }
     });
 };

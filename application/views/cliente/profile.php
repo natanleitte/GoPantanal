@@ -14,7 +14,7 @@ foreach ($cliente->result() as $row) {
                     <li class="waves-effect js-tab-menu"><a id="botao-orcamento" href="#">Orçamentos</a></li>                 
                 </ul>
 
-                <div id="perfil" class="pmb-block js-container-tab">
+                <section id="perfil" class="pmb-block js-container-tab active">
                     <div class="pmbb-header">
                         <h2><i class="zmdi zmdi-account m-r-5"></i> Informações</h2>
                         <ul class="actions">
@@ -155,9 +155,9 @@ foreach ($cliente->result() as $row) {
                             </div>
                         </div>
                     </div>
-                </div>
+                </section>
 
-                <div id="compromisso" class="pmb-block js-container-tab" style="display:none;">
+                <section id="compromisso" class="pmb-block js-container-tab">
                     <div class="card-body card-padding">                     
                         <?php
                         foreach ($tarefas->result() as $tarefa) {
@@ -177,9 +177,9 @@ foreach ($cliente->result() as $row) {
                         }
                         ?>
                     </div>
-                </div>
+                </section>
 
-                <div id="orcamento" class="pmb-block js-container-tab" style="display:none;">
+                <section id="orcamento" class="pmb-block js-container-tab">
                     <div class="select select-box">
                         <label for="seletetorDeOrcamento" class="c-blue">Selecione o orçmento que deseja: </label>
                         <select id="seletetorDeOrcamento" class="form-control">
@@ -225,84 +225,66 @@ foreach ($cliente->result() as $row) {
 
                     <div class="btn-demo">
                         <button class="btn btn-icon bgm-red m-b-30" data-action="print"><i class="zmdi zmdi-print"></i></button>
-                        <button class="btn btn-icon bgm-blue m-b-30" onclick="enviarOrcamento();"><i class="zmdi zmdi-mail-send"></i></button>
+                        <button class="btn btn-icon bgm-blue m-b-30" onclick="perfilCliente.enviarOrcamento()"><i class="zmdi zmdi-mail-send"></i></button>
                     </div>
                     <form id="formOrcamento">
                         <input id="email" name="email" type="hidden" />
                         <input id="corpoDoEmail" name="corpoDoEmail" type="hidden" />
                     </form>
-                    <script type="text/javascript">
-                        function enviarOrcamento()
-                        {
-                            var orcamentoSelecionado = $("#seletetorDeOrcamento").val();
-                            $('#email').val($('#emailDoDestinatario').html());
-                            $('#corpoDoEmail').val($("." + orcamentoSelecionado).html());
+                </section>
 
-                            $.ajax({
-                                url: '<?= base_url(); ?>' + 'index.php/mail/enviarOrcamento',
-                                type: 'POST',
-                                data: $("#formOrcamento").serialize(),
-                                success: function (msg) {
-                                    swal("Orcamento enviado com sucesso!", "", "success");
-                                    $("#email, #corpoDoEmail").val('');
-                                }
-                            });
-                        }
-                    </script>
-                </div>
-
-                <div id="agendar-compromissos" class="pmb-block js-container-tab" style="display:none;">
+                <section id="agendar-compromissos" class="pmb-block js-container-tab">
                     <div class="col-lg-10">
                         <div class="alert color bgm-cyan col-lg-1" role="alert"></div>
                         <span class="col-lg-9">Fazer o orçamento, cotação e bloqueios nas pousadas, etc.</span>
-                        <button class="btn btn-sm btn-group-demo" onclick="perfilCliente.inserirTarefaCom('bgm-cyan', 2, 'Fazer o orçamento, cotação e bloqueios nas pousadas, etc.', <?php echo $cliente->id;?>)">Agendar</button>
+                        <button class="btn btn-sm btn-group-demo" onclick="perfilCliente.inserirTarefaCom('bgm-cyan', 2, 'Fazer o orçamento, cotação e bloqueios nas pousadas, etc.', <?php echo $cliente->id; ?>)">Agendar</button>
                     </div>
                     <div class="col-lg-10">
                         <div class="alert color bgm-lightblue col-lg-1" role="alert"></div>
                         <span class="col-lg-9">Perdir confirmação do orçamento.</span>
-                        <button class="btn btn-sm btn-group-demo" onclick="perfilCliente.inserirTarefaCom('bgm-lightblue', 7, 'Perdir confirmação do orçamento.', <?php echo $cliente->id;?>)">Agendar</button>
+                        <button class="btn btn-sm btn-group-demo" onclick="perfilCliente.inserirTarefaCom('bgm-lightblue', 7, 'Perdir confirmação do orçamento.', <?php echo $cliente->id; ?>)">Agendar</button>
                     </div>
                     <div class="col-lg-10">
                         <div class="alert color bgm-blue col-lg-1" role="alert"></div>
-                         <span class="col-lg-9">Enviar fatura.</span>
-                        <button class="btn btn-sm btn-group-demo" onclick="perfilCliente.inserirTarefaCom('bgm-blue', 2, 'Enviar fatura.', <?php echo $cliente->id;?>)">Agendar</button>
+                        <span class="col-lg-9">Enviar fatura.</span>
+                        <button class="btn btn-sm btn-group-demo" onclick="perfilCliente.inserirTarefaCom('bgm-blue', 2, 'Enviar fatura.', <?php echo $cliente->id; ?>)">Agendar</button>
                     </div>
                     <div class="col-lg-10">
                         <div class="alert color bgm-bluegray col-lg-1" role="alert"></div>
-                         <span class="col-lg-9">Enviar comprovante deposito.</span>
-                        <button class="btn btn-sm btn-group-demo" onclick="perfilCliente.inserirTarefaCom('bgm-bluegray', 2, 'Enviar comprovante deposito.', <?php echo $cliente->id;?>)">Agendar</button>
+                        <span class="col-lg-9">Enviar comprovante deposito.</span>
+                        <button class="btn btn-sm btn-group-demo" onclick="perfilCliente.inserirTarefaCom('bgm-bluegray', 2, 'Enviar comprovante deposito.', <?php echo $cliente->id; ?>)">Agendar</button>
                     </div>
                     <div class="col-lg-10">
                         <div class="alert color bgm-lightgreen col-lg-1" role="alert"></div>
-                         <span class="col-lg-9">Confirmar bloqueios nas pousadas, etc.</span>
-                        <button class="btn btn-sm btn-group-demo" onclick="perfilCliente.inserirTarefaCom('bgm-lightgreen', 3, 'Confirmar bloqueios nas pousadas, etc.', <?php echo $cliente->id;?>)">Agendar</button>
+                        <span class="col-lg-9">Confirmar bloqueios nas pousadas, etc.</span>
+                        <button class="btn btn-sm btn-group-demo" onclick="perfilCliente.inserirTarefaCom('bgm-lightgreen', 3, 'Confirmar bloqueios nas pousadas, etc.', <?php echo $cliente->id; ?>)">Agendar</button>
                     </div>
                     <div class="col-lg-10">
                         <div class="alert color bgm-green col-lg-1" role="alert"></div>
-                         <span class="col-lg-9">Depositar sinal para as pousadas, etc.</span>
-                        <button class="btn btn-sm btn-group-demo" onclick="perfilCliente.inserirTarefaCom('bgm-green', 7, 'Depositar sinal para as pousadas, etc.', <?php echo $cliente->id;?>)">Agendar</button>
+                        <span class="col-lg-9">Depositar sinal para as pousadas, etc.</span>
+                        <button class="btn btn-sm btn-group-demo" onclick="perfilCliente.inserirTarefaCom('bgm-green', 7, 'Depositar sinal para as pousadas, etc.', <?php echo $cliente->id; ?>)">Agendar</button>
                     </div>
                     <div class="col-lg-10">
                         <div class="alert color bgm-teal col-lg-1" role="alert"></div>
-                         <span class="col-lg-9">Contato de verificação e lembrar o pagamento restante.</span>
-                        <button class="btn btn-sm btn-group-demo" onclick="perfilCliente.inserirTarefaCom('bgm-teal', 30, 'Contato de verificação e lembrar o pagamento restante.', <?php echo $cliente->id;?>)">Agendar</button>
+                        <span class="col-lg-9">Contato de verificação e lembrar o pagamento restante.</span>
+                        <button class="btn btn-sm btn-group-demo" onclick="perfilCliente.inserirTarefaCom('bgm-teal', 30, 'Contato de verificação e lembrar o pagamento restante.', <?php echo $cliente->id; ?>)">Agendar</button>
                     </div>
                     <div class="col-lg-10">
                         <div class="alert color bgm-orange col-lg-1" role="alert"></div>
-                         <span class="col-lg-9">Prazo para o pagamento restante.</span>
-                        <button class="btn btn-sm btn-group-demo" onclick="perfilCliente.inserirTarefaCom('bgm-orange', 7, 'Prazo para o pagamento restante.', <?php echo $cliente->id;?>)">Agendar</button>
+                        <span class="col-lg-9">Prazo para o pagamento restante.</span>
+                        <button class="btn btn-sm btn-group-demo" onclick="perfilCliente.inserirTarefaCom('bgm-orange', 7, 'Prazo para o pagamento restante.', <?php echo $cliente->id; ?>)">Agendar</button>
                     </div>
                     <div class="col-lg-10">
                         <div class="alert color bgm-indigo col-lg-1" role="alert"></div>
-                         <span class="col-lg-9">Enviar comprovante do deposito e voucher.</span>
-                        <button class="btn btn-sm btn-group-demo" onclick="perfilCliente.inserirTarefaCom('bgm-indigo', 1, 'Enviar comprovante do deposito e voucher.', <?php echo $cliente->id;?>)">Agendar</button>
+                        <span class="col-lg-9">Enviar comprovante do deposito e voucher.</span>
+                        <button class="btn btn-sm btn-group-demo" onclick="perfilCliente.inserirTarefaCom('bgm-indigo', 1, 'Enviar comprovante do deposito e voucher.', <?php echo $cliente->id; ?>)">Agendar</button>
                     </div>
                     <div class="col-lg-10">
                         <div class="alert color bgm-brown col-lg-1" role="alert"></div>
-                         <span class="col-lg-9">Perguntar feedback.</span>
-                        <button class="btn btn-sm btn-group-demo" onclick="perfilCliente.inserirTarefaCom('bgm-brown', 7, 'Perguntar feedback.', <?php echo $cliente->id;?>)">Agendar</button>
+                        <span class="col-lg-9">Perguntar feedback.</span>
+                        <button class="btn btn-sm btn-group-demo" onclick="perfilCliente.inserirTarefaCom('bgm-brown', 7, 'Perguntar feedback.', <?php echo $cliente->id; ?>)">Agendar</button>
                     </div>
-                </div>
+                </section>
 
                 <script>
                     $(document).ready(function () {
