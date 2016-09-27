@@ -58,7 +58,7 @@ foreach ($ultimasTarefas->result() as $tarefa) {
             </li>
 
             <li class="logo hidden-xs">
-                <a href="<?php echo base_url(); ?>">Go Pantanal <small> beta </small></a>
+                <a href="<?php echo base_url() . "index.php/index"; ?>">Go Pantanal <small> beta </small></a>
             </li>
 
             <li class="pull-right">

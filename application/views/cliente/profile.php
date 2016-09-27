@@ -211,26 +211,29 @@ foreach ($cliente->result() as $row) {
 
                     <br/>
 
-                    <?php include 'orcamentos/budgetKomboUpgrade5_4.php'; ?>
-                    <?php include 'orcamentos/budgetKombo5_4D.php'; ?>
-                    <?php include 'orcamentos/budgetPantanal3_2D.php'; ?>
-                    <?php include 'orcamentos/budgetPantanal3_2P.php'; ?>
-                    <?php include 'orcamentos/budgetPantanal4_3P.php'; ?>
-                    <?php include 'orcamentos/budgetPantanal4_3D.php'; ?>
-                    <?php include 'orcamentos/fairtradeI.php'; ?>
-                    <?php include 'orcamentos/fairtradeII.php'; ?>
-                    <?php include 'orcamentos/superBudget195Euro.php'; ?>
-                    <?php include 'orcamentos/rechnung.php'; ?>
+                    <section id="orcamentos-modelos">
+                        <?php include 'orcamentos/budgetKomboUpgrade5_4.php'; ?>
+                        <?php include 'orcamentos/budgetKombo5_4D.php'; ?>
+                        <?php include 'orcamentos/budgetPantanal3_2D.php'; ?>
+                        <?php include 'orcamentos/budgetPantanal3_2P.php'; ?>
+                        <?php include 'orcamentos/budgetPantanal4_3P.php'; ?>
+                        <?php include 'orcamentos/budgetPantanal4_3D.php'; ?>
+                        <?php include 'orcamentos/fairtradeI.php'; ?>
+                        <?php include 'orcamentos/fairtradeII.php'; ?>
+                        <?php include 'orcamentos/superBudget195Euro.php'; ?>
+                        <?php include 'orcamentos/rechnung.php'; ?>
+                    </section>
 
-
-                    <div class="btn-demo">
-                        <button class="btn btn-icon bgm-red m-b-30" data-action="print"><i class="zmdi zmdi-print"></i></button>
-                        <button class="btn btn-icon bgm-blue m-b-30" onclick="perfilCliente.enviarOrcamento()"><i class="zmdi zmdi-mail-send"></i></button>
-                    </div>
-                    <form id="formOrcamento">
-                        <input id="email" name="email" type="hidden" />
-                        <input id="corpoDoEmail" name="corpoDoEmail" type="hidden" />
-                    </form>
+                    <section id="botoes">
+                        <div class="btn-demo">
+                            <button class="btn btn-icon bgm-red m-b-30" data-action="print"><i class="zmdi zmdi-print"></i></button>
+                            <button class="btn btn-icon bgm-blue m-b-30" onclick="perfilCliente.enviarOrcamento()"><i class="zmdi zmdi-mail-send"></i></button>
+                        </div>
+                        <form id="formOrcamento">
+                            <input id="email" name="email" type="hidden" />
+                            <input id="corpoDoEmail" name="corpoDoEmail" type="hidden" />
+                        </form>
+                    </section>
                 </section>
 
                 <section id="agendar-compromissos" class="pmb-block js-container-tab">
