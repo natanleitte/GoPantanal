@@ -46,7 +46,7 @@ perfilCliente.inserirTarefaCom = function (cor, qtdDias, descricao, idCliente) {
             cliente: idCliente
         },
         success: function (msg) {
-            swal("Tarefa agendada!", "", "success");
+            swal("Tarefa agendada, para daqui há " + qtdDias + " dias!", "", "success");
         }
     });
 };
