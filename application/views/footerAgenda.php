@@ -86,7 +86,7 @@
 echo 'events:[';
 foreach ($tarefas->result() as $tarefa) {
     echo '{';
-    echo "title:'" . $tarefa->titulo . "',";
+    echo "title:'" . $tarefa->descricao . "',";
     echo "start: new Date('" . $tarefa->data_ini . "'),";
     echo "end: new Date('" . $tarefa->data_fim . "'),";
     echo "allDay: true,";
@@ -120,7 +120,7 @@ echo "],";
 echo 'events:[';
 foreach ($tarefas->result() as $tarefa) {
     echo '{';
-    echo "title:'" . $tarefa->titulo . "',";
+    echo "title:'" . $tarefa->descricao . "',";
     echo "start: new Date('" . $tarefa->data_ini . "'),";
     echo "end: new Date('" . $tarefa->data_fim . "'),";
     echo "allDay: true,";

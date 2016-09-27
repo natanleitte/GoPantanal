@@ -61,7 +61,7 @@
 
                     <div class="modal-footer">
                         <button class="btn btn-link" onclick="adicionarTarefa()" id="addEvent">Adicionar Evento</button>
-                        <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-link" data-dismiss="modal">Sair</button>
                     </div>
                 </div>
             </div>

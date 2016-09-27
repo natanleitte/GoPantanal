@@ -8,12 +8,13 @@ foreach ($cliente->result() as $row) {
         <div class="card" id="profile-main">
             <div class="pm-body clearfix">
                 <ul class="tab-nav tn-justified">
-                    <li class="active waves-effect"><a id="botao-perfil" href="#">Início</a></li>
-                    <li class="waves-effect"><a id="botao-compromisso" href="#">Compromissos Agendados</a></li>
-                    <li class="waves-effect"><a id="botao-orcamento" href="#">Orçamentos</a></li>                 
+                    <li class="active waves-effect js-tab-menu"><a id="botao-perfil" href="#">Início</a></li>
+                    <li class="waves-effect js-tab-menu"><a id="botao-agendar-comrpomissos" href="#">Agendar Compromissos</a></li>
+                    <li class="waves-effect js-tab-menu"><a id="botao-compromisso" href="#">Compromissos Agendados</a></li>
+                    <li class="waves-effect js-tab-menu"><a id="botao-orcamento" href="#">Orçamentos</a></li>                 
                 </ul>
 
-                <div id="perfil" class="pmb-block">
+                <div id="perfil" class="pmb-block js-container-tab">
                     <div class="pmbb-header">
                         <h2><i class="zmdi zmdi-account m-r-5"></i> Informações</h2>
                         <ul class="actions">
@@ -156,7 +157,7 @@ foreach ($cliente->result() as $row) {
                     </div>
                 </div>
 
-                <div id="compromisso" class="pmb-block" style="display:none;">
+                <div id="compromisso" class="pmb-block js-container-tab" style="display:none;">
                     <div class="card-body card-padding">                     
                         <?php
                         foreach ($tarefas->result() as $tarefa) {
@@ -168,7 +169,7 @@ foreach ($cliente->result() as $row) {
                                 echo "</div>";
                                 echo "<div class='pt-body'>";
                                 echo "<div class='lightbox clearfix'>";
-                                echo "<h2 class='ptb-title'>" . $tarefa->titulo . "</h2>";
+                                echo "<h2 class='ptb-title'>" . $tarefa->descricao . "</h2>";
                                 echo "</div>";
                                 echo "</div>";
                                 echo "</div>";
@@ -178,7 +179,7 @@ foreach ($cliente->result() as $row) {
                     </div>
                 </div>
 
-                <div id="orcamento" class="pmb-block" style="display:none;">
+                <div id="orcamento" class="pmb-block js-container-tab" style="display:none;">
                     <div class="select select-box">
                         <label for="seletetorDeOrcamento" class="c-blue">Selecione o orçmento que deseja: </label>
                         <select id="seletetorDeOrcamento" class="form-control">
@@ -245,32 +246,40 @@ foreach ($cliente->result() as $row) {
                         }
                     </script>
                 </div>
+                
+                <div id="agendar-compromissos" class="pmb-block js-container-tab" style="display:none;">
+                    
+                </div>
+                
                 <script>
                     $(document).ready(function () {
                         $('#botao-compromisso').on('click', function () {
-                            $('#botao-compromisso').parent('li').addClass('active');
-                            $('#compromisso').show();
-                            $('#botao-perfil').parent('li').removeClass('active');
-                            $('#perfil').hide();
-                            $('#botao-orcamento').parent('li').removeClass('active');
-                            $('#orcamento').hide();
+                            esconderTabsInativas();
+                            exibirTabAtiva($('#botao-compromisso'), $('#compromisso'));
                         });
                         $('#botao-perfil').on('click', function () {
-                            $('#botao-compromisso').parent('li').removeClass('active');
-                            $('#compromisso').hide();
-                            $('#botao-perfil').parent('li').addClass('active');
-                            $('#perfil').show();
-                            $('#botao-orcamento').parent('li').removeClass('active');
-                            $('#orcamento').hide();
+                            esconderTabsInativas();
+                            exibirTabAtiva($('#botao-perfil'), $('#perfil'));
                         });
                         $('#botao-orcamento').on('click', function () {
-                            $('#botao-orcamento').parent('li').addClass('active');
-                            $('#orcamento').show();
-                            $('#botao-compromisso').parent('li').removeClass('active');
-                            $('#compromisso').hide();
-                            $('#botao-perfil').parent('li').removeClass('active');
-                            $('#perfil').hide();
+                            esconderTabsInativas();
+                            exibirTabAtiva($('#botao-orcamento'), $('#orcamento'));
                         });
+                        
+                        $('#botao-agendar-comrpomissos').on('click', function () {
+                            esconderTabsInativas();
+                            exibirTabAtiva($('#botao-agendar-comrpomissos'), $('#agendar-compromissos'));
+                        });
+                        
+                        function exibirTabAtiva(nomeDoBotao, conteudoDaTab){
+                            nomeDoBotao.parent('li').addClass('active');
+                            conteudoDaTab.show();
+                        }
+                        
+                        function esconderTabsInativas(){
+                            $('.js-tab-menu').removeClass('active');
+                            $('.js-container-tab').hide();
+                        }
                     });
                 </script>
             </div>
