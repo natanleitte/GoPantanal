@@ -12,8 +12,19 @@ class TourModel extends CI_Model {
     }
 
     public function getTour($id) {
+        $this->load->database();
         $this->db->where('id', $id);
-        return $this->db->get("tour");
+        $query = $this->db->get("tour");
+        
+        foreach($query->result() as $item)
+        {
+            return $item;
+        }
     }
+    
+    public function setTour($data) {
+           $this->load->database();
+           $this->db->insert("tour", $data);
+       }
 
 }
