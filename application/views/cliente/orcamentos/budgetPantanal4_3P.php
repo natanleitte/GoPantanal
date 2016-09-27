@@ -1,21 +1,13 @@
 <div class="card card-orcamento budgetPantanal4_3P">
-    <div class="card-header ch-alt text-center">
-        <img class="i-logo" src="<?php echo base_url(); ?>assets/img/logo-pequena.png" alt="">
-    </div>
+
+    <?php include "cabecalho.php"; ?>
+
     <div class="card-body card-padding">
         <div class="row">
             <div class="text-center">
                 <h3 class="c-green">BUDGET PANTANAL (P)<br/>(4 Tage/3 Nächte)</h3>
             </div>
         </div>
-
-        <?php include "informacoesDoCliente.php"; ?>
-
-        <div class="clearfix"></div>
-
-        <?php include "valoresDoOrcamento.php"; ?>
-
-        <div class="clearfix"></div>
 
         <div class="p-25">
             <h4 class="c-green f-400">1.Tag</h4>
