@@ -83,7 +83,7 @@ tarefa.alteraStatusDaTarefa = function () {
 tarefa.exibirDetalhesDaTarefa = function () {
     //Exibir diálogo com detalhes das tarefas no calendario
     $('.notificacao').each(function (index) {
-        $(this).on('click', function () {
+        $(this).unbind().on('click', function () {
             obterInformacoesDaTarefa( obterIdDaTarefa(this) );
         });
     });
@@ -104,7 +104,7 @@ tarefa.exibirDetalhesDaTarefa = function () {
             data: data,
             success: function (data) {
                 var json = $.parseJSON(data)[0];
-                swal("Cliente: " + json.nome, json.titulo);
+                swal("Cliente: " + json.nome, json.descricao);
             }});
     };
 };
