@@ -39,7 +39,12 @@ tarefa.gerenciaItem = function () {
                     $.ajax({
                         url: $('#base_url').val() + 'index.php/tarefa/inserirTarefa',
                         type: 'POST',
-                        data: {titulo: tituloDaTarefa, data_ini: (dataDaTarefa + " GMT+0000"), data_fim: (dataDaTarefa + " GMT+0000"), status: 'A', cliente: clienteDaTarefa, cor: ''},
+                        data: {titulo: tituloDaTarefa,
+                            data_ini: (dataDaTarefa + " GMT+0000"),
+                            data_fim: (dataDaTarefa + " GMT+0000"),
+                            status: 'A',
+                            cliente: clienteDaTarefa,
+                            cor: 'bgm-black'},
                         success: function (msg) {
                             window.location.reload();
                             swal("Tarefa adicionada.", "", "success");
