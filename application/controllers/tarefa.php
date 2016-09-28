@@ -1,7 +1,6 @@
 <?php
 
 include APPPATH . 'controllers/utils/DataUtils.php';
-include APPPATH . 'controllers/GeraPDFServico.php';
 
 class Tarefa extends CI_Controller {
 

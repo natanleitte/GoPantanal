@@ -46,7 +46,7 @@
                         echo "<label>";
                         echo "<input id='" . $tarefa->id . "' class='js-tarefa-cadastrada' type='checkbox'>";
                         echo "<i class='input-helper'></i>";
-                        echo "<span><b>" . $tarefa->nome . "</b> - " . $tarefa->titulo . "</span>";
+                        echo "<span><b>" . $tarefa->nome . "</b> - " . $tarefa->descricao . "</span>";
                         echo "</label>";
                         echo "</div>";
                         echo "</div>";
