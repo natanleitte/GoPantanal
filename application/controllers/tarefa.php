@@ -45,7 +45,7 @@ class Tarefa extends CI_Controller {
 
     private function acrescentarDiasNaDataSendoAQtd($quantidade) {
         $datetime = new DateTime(null, new DateTimeZone('UTC'));
-        $datetime->modify('+'.$quantidade.' days');
+        $datetime->modify('+' . $quantidade . ' days');
         return $datetime->format('Y-m-d H:i:s') . "+0000";
     }
 
@@ -59,6 +59,29 @@ class Tarefa extends CI_Controller {
         $id = $this->input->get('id', TRUE);
         $this->TarefaModel->excluir($id);
         $this->index();
+    }
+
+    public function gerarPDF() {
+        $this->load->library('dompdf_gen');
+
+        $html = '<!doctype html> 
+                    <html> 
+                        <head>
+                            <link rel="stylesheet" href="'.  base_url() .'assets/css/app.min.1.css" type="text/css">
+                        </head> 
+                        <body>
+                            <div id="wrapper">
+                                ' . $this->input->post('html') . '
+                            </div>
+                        </body> 
+                    </html>';
+        $nome = $this->input->post('nome');
+        
+        $this->dompdf->load_html($html);
+        $this->dompdf->set_paper("A4");
+        $this->dompdf->set_base_path(base_url() .'assets/css/app.min.1.css');
+        $this->dompdf->render();
+        $this->dompdf->stream($nome);
     }
 
     private function carregarConfiguracoesBasicas() {

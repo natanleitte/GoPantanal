@@ -101,7 +101,6 @@ class Mail extends CI_Controller {
                             <html> 
                                 <head>
                                     <link rel="stylesheet" media="screen" href="http://www.gopantanal.info/assets/css/app.min.1.css" type="text/css">
-                                    <link rel="stylesheet" media="screen" href="http://www.gopantanal.info/assets/css/app.min.1.css" type="text/css">
                                 </head> 
                                 <body>
                                     <div id="wrapper">
@@ -139,13 +138,12 @@ class Mail extends CI_Controller {
         $this->email->to($email->emailDestinatario);
         $this->email->subject($email->assunto);
         $this->email->message(quoted_printable_decode($email->corpoDoEmail));
-        
+
         if ($this->upload->do_upload('userfile')) {
             $attachdata = $this->upload->data();
             $this->email->attach($attachdata['full_path']);
         }
-        
+
         $this->email->send();
     }
-
 }

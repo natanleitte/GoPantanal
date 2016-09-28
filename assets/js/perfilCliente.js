@@ -60,7 +60,7 @@ perfilCliente.enviarOrcamento = function () {
     $('#corpoDoEmail').val($("." + orcamentoSelecionado).html());
 
     $.ajax({
-        url: '<?= base_url(); ?>' + 'index.php/mail/enviarOrcamento',
+        url: URL + 'index.php/mail/enviarOrcamento',
         type: 'POST',
         data: $("#formOrcamento").serialize(),
         success: function (msg) {
@@ -68,4 +68,25 @@ perfilCliente.enviarOrcamento = function () {
             $("#email, #corpoDoEmail").val('');
         }
     });
+};
+
+perfilCliente.gerarPDF = function () {
+    var orcamentoSelecionado = $("#seletetorDeOrcamento").val();
+    $('#html').val($("." + orcamentoSelecionado).html());
+    $('#nome').val($("#seletetorDeOrcamento").val());
+//    var orcamentoSelecionado = $("#seletetorDeOrcamento").val();
+//    var html = $("." + orcamentoSelecionado).html();
+//    var nome = $("#seletetorDeOrcamento").val();
+//
+//    console.log(html);
+//    console.log(nome);
+//
+//    $.ajax({
+//        url: URL + 'index.php/tarefa/gerarPDF',
+//        type: 'POST',
+//        data: {html:html, nome: nome},
+//        success: function (msg) {
+//            swal(msg, "", "success");
+//        }
+//    });
 };

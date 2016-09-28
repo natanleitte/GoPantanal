@@ -226,7 +226,11 @@ foreach ($cliente->result() as $row) {
 
                     <section id="botoes">
                         <div class="btn-demo">
-                            <button class="btn btn-icon bgm-red m-b-30" data-action="print"><i class="zmdi zmdi-print"></i></button>
+                            <?php echo form_open(base_url() . 'index.php/tarefa/gerarPDF'); ?>
+                                <input id="nome" name="nome" type="hidden" />
+                                <input id="html" name="html" type="hidden" />
+                                <button class="btn btn-icon bgm-red m-b-30" onclick="perfilCliente.gerarPDF()"><i class="zmdi zmdi-print"></i></button>
+                            <?php echo form_close()?>
                             <button class="btn btn-icon bgm-blue m-b-30" onclick="perfilCliente.enviarOrcamento()"><i class="zmdi zmdi-mail-send"></i></button>
                         </div>
                         <form id="formOrcamento">
