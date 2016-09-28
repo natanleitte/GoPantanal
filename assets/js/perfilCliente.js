@@ -59,34 +59,22 @@ perfilCliente.enviarOrcamento = function () {
     $('#email').val($('#emailDoDestinatario').html());
     $('#corpoDoEmail').val($("." + orcamentoSelecionado).html());
 
-    $.ajax({
-        url: URL + 'index.php/mail/enviarOrcamento',
-        type: 'POST',
-        data: $("#formOrcamento").serialize(),
-        success: function (msg) {
-            swal("Orcamento enviado com sucesso!", "", "success");
-            $("#email, #corpoDoEmail").val('');
-        }
-    });
+//    $.ajax({
+//        url: URL + 'index.php/mail/enviarOrcamento',
+//        type: 'POST',
+//        data: $("#formOrcamento").serialize(),
+//        success: function (msg) {
+//            swal("Orcamento enviado com sucesso!", "", "success");
+//            $("#email, #corpoDoEmail").val('');
+//        }
+//    });
 };
 
 perfilCliente.gerarPDF = function () {
     var orcamentoSelecionado = $("#seletetorDeOrcamento").val();
+    $("." + orcamentoSelecionado).find('input').each(function(){
+        $(this).replaceWith($("<span />").text(this.value))
+    });
     $('#html').val($("." + orcamentoSelecionado).html());
     $('#nome').val($("#seletetorDeOrcamento").val());
-//    var orcamentoSelecionado = $("#seletetorDeOrcamento").val();
-//    var html = $("." + orcamentoSelecionado).html();
-//    var nome = $("#seletetorDeOrcamento").val();
-//
-//    console.log(html);
-//    console.log(nome);
-//
-//    $.ajax({
-//        url: URL + 'index.php/tarefa/gerarPDF',
-//        type: 'POST',
-//        data: {html:html, nome: nome},
-//        success: function (msg) {
-//            swal(msg, "", "success");
-//        }
-//    });
 };

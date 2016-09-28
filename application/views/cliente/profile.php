@@ -231,12 +231,12 @@ foreach ($cliente->result() as $row) {
                                 <input id="html" name="html" type="hidden" />
                                 <button class="btn btn-icon bgm-red m-b-30" onclick="perfilCliente.gerarPDF()"><i class="zmdi zmdi-print"></i></button>
                             <?php echo form_close()?>
-                            <button class="btn btn-icon bgm-blue m-b-30" onclick="perfilCliente.enviarOrcamento()"><i class="zmdi zmdi-mail-send"></i></button>
                         </div>
-                        <form id="formOrcamento">
+                        <?php echo form_open(base_url() . 'index.php/mail/enviarOrcamento'); ?>
                             <input id="email" name="email" type="hidden" />
                             <input id="corpoDoEmail" name="corpoDoEmail" type="hidden" />
-                        </form>
+                            <button class="btn btn-icon bgm-blue m-b-30" onclick="perfilCliente.enviarOrcamento()"><i class="zmdi zmdi-mail-send"></i></button>
+                        <?php echo form_close()?>
                     </section>
                 </section>
 

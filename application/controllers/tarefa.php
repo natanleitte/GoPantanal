@@ -78,7 +78,7 @@ class Tarefa extends CI_Controller {
         $nome = $this->input->post('nome');
         
         $this->dompdf->load_html($html);
-        $this->dompdf->set_paper("A4");
+        $this->dompdf->set_paper("A4", 'landscape');
         $this->dompdf->set_base_path(base_url() .'assets/css/app.min.1.css');
         $this->dompdf->render();
         $this->dompdf->stream($nome);
