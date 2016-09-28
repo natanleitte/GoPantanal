@@ -226,11 +226,11 @@ foreach ($cliente->result() as $row) {
 
                     <section id="botoes">
                         <div class="btn-demo">
-                            <?php echo form_open(base_url() . 'index.php/tarefa/gerarPDF'); ?>
+                            <form id="form-gerador-de-orcamento" action="<?php echo base_url(); ?>index.php/tarefa/gerarPDF" method="post" accept-charset="utf-8">
                                 <input id="nome" name="nome" type="hidden" />
                                 <input id="html" name="html" type="hidden" />
-                                <button class="btn btn-icon bgm-red m-b-30" onclick="perfilCliente.gerarPDF()"><i class="zmdi zmdi-print"></i></button>
-                            <?php echo form_close()?>
+                                <button class="btn btn-icon bgm-red m-b-30" onclick="perfilCliente.prepararParaGerarPDF()"><i class="zmdi zmdi-print"></i></button>
+                            </form>
                         </div>
                         <?php echo form_open(base_url() . 'index.php/mail/enviarOrcamento'); ?>
                             <input id="email" name="email" type="hidden" />

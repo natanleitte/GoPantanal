@@ -70,10 +70,10 @@ perfilCliente.enviarOrcamento = function () {
 //    });
 };
 
-perfilCliente.gerarPDF = function () {
+perfilCliente.prepararParaGerarPDF = function () {
     var orcamentoSelecionado = $("#seletetorDeOrcamento").val();
     $("." + orcamentoSelecionado).find('input').each(function(){
-        $(this).replaceWith($("<span />").text(this.value))
+        $(this).replaceWith($("<span style='font-size: 12px'/>").text(this.value));
     });
     $('#html').val($("." + orcamentoSelecionado).html());
     $('#nome').val($("#seletetorDeOrcamento").val());

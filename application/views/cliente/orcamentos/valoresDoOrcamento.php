@@ -1,13 +1,6 @@
-<script type="text/javascript">
-    $(function () {
-        $('#data').datetimepicker({
-            format: 'DD/MM/YYYY'
-        });
-    });
-</script>
-<div class="row m-t-25 p-0 m-b-25 text-center">
-    <div class="col-xs-4">
-        <div class="brd-2 p-15">
+<div class="text-center">
+    <div class="p-25">
+        <div class="col-xs-4">
             <div class="c-black m-b-5"><b>Reise Termin von bis</b></div>
             <form>
                 <div class='input-group date' id='datepicker-fim'>
@@ -17,9 +10,7 @@
                 </div>
             </form>
         </div>
-    </div>
-    <div class="col-xs-4">
-        <div class="brd-2 p-15">
+        <div class="col-xs-4">
             <div class="c-black m-b-5"><b>Preis pro Person</b></div>
             <form>
                 <div class='input-group'>
@@ -29,9 +20,7 @@
                 </div>
             </form>
         </div>
-    </div>
-    <div class="col-xs-4">
-        <div class="brd-2 p-15">
+        <div class="col-xs-4">
             <div class="c-black m-b-5"><b>Preis Total</b></div>
             <form>
                 <div class='input-group'>
@@ -45,7 +34,7 @@
 </div>
 <script>
     $(document).ready(function () {
-        $('#datepicker-inicio, #datepicker-fim').datetimepicker({
+        $('#datepicker-inicio, #datepicker-fim, #data').datetimepicker({
             format: 'DD/MM/YYYY'
         });
     });
