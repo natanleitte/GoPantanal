@@ -66,9 +66,6 @@ class Tarefa extends CI_Controller {
 
         $html = '<!doctype html> 
                     <html> 
-                        <head>
-                            <link rel="stylesheet" href="'.  base_url() .'assets/css/app.min.1.css" type="text/css">
-                        </head> 
                         <body>
                             <section class="container">
                                 <div class="pm-body">
