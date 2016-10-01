@@ -297,7 +297,7 @@ foreach ($cliente->result() as $row) {
                 <section id="tour-individual" class="pmb-block js-container-tab">
                     <div class="pmbb-body card-padding">
                         <div class="form-wizard-basic fw-container">
-                            <ul class="tab-nav text-center">
+                            <ul class="tab-nav text-center" data-tab-color="green">
                                 <li class="active"><a href="#hotelTour" data-toggle="tab">Hotel</a></li>
                                 <li><a href="#passeioTour" data-toggle="tab">Passeio</a></li>
                                 <li><a href="#transporteTour" data-toggle="tab">Transporte</a></li>
@@ -323,8 +323,8 @@ foreach ($cliente->result() as $row) {
 
                         <div class="clearfix"></div>
 
-                        <div class="jumbotron col">
-                            <div class="right color c-blue">
+                        <div class="jumbotron text-center">
+                            <div class="right color c-green">
                                 <h1>Total do tour R$ 0,00</h1>
                             </div>
                         </div>
