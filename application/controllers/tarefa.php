@@ -91,5 +91,4 @@ class Tarefa extends CI_Controller {
         $this->data['clientes'] = $this->ClienteModel->getClientes();
         $this->data['ultimasTarefas'] = $this->TarefaModel->cincoUltimasTarefas();
     }
-
 }

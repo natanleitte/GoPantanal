@@ -96,6 +96,10 @@ class Cliente extends CI_Controller {
         $this->data['clientes'] = $this->ClienteModel->getClientesPorDataDesc();
         $this->data['ultimosCincoEmails'] = $this->EmailModel->obterOsUltimosCincoEmails();
         $this->data['ultimasTarefas'] = $this->TarefaModel->cincoUltimasTarefas();
+        $this->data['hoteis'] = $this->HotelModel->getHoteis();
+        $this->data['guias'] = $this->GuiaModel->getGuias();
+        $this->data['passeios'] = $this->PasseioModel->getPasseios();
+        $this->data['transportes'] = $this->TransporteModel->getTransportes();
     }
 
 }

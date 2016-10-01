@@ -8,24 +8,20 @@ perfilCliente.inserirUrl = function (url) {
 perfilCliente.controladorTabs = function () {
     $('.js-container-tab').hide();
     $('.active').show();
-
-    $('#botao-agendar-comrpomissos').unbind().on('click', function () {
-        esconderTabsInativas();
-        exibirTabAtiva($('#botao-agendar-comrpomissos'), $('#agendar-compromissos'));
-    });
-
-    $('#botao-compromisso').unbind().on('click', function () {
-        esconderTabsInativas();
-        exibirTabAtiva($('#botao-compromisso'), $('#compromisso'));
-    });
-    $('#botao-perfil').unbind().on('click', function () {
-        esconderTabsInativas();
-        exibirTabAtiva($('#botao-perfil'), $('#perfil'));
-    });
-    $('#botao-orcamento').unbind().on('click', function () {
-        esconderTabsInativas();
-        exibirTabAtiva($('#botao-orcamento'), $('#orcamento'));
-    });
+    
+    casoHajaUmCliqueExibeATabAtiva($('#botao-agendar-comrpomissos'), $('#agendar-compromissos'));
+    casoHajaUmCliqueExibeATabAtiva($('#botao-compromisso'), $('#compromisso'));
+    casoHajaUmCliqueExibeATabAtiva($('#botao-perfil'), $('#perfil'));
+    casoHajaUmCliqueExibeATabAtiva($('#botao-orcamento'), $('#orcamento'));
+    casoHajaUmCliqueExibeATabAtiva($('#botao-tour-individual'), $('#tour-individual'));
+    
+    
+    function casoHajaUmCliqueExibeATabAtiva(nomeDoBotao, conteudoDaTab) {
+        nomeDoBotao.unbind().on('click', function () {
+            esconderTabsInativas();
+            exibirTabAtiva(nomeDoBotao, conteudoDaTab);
+        });
+    }
 
     function exibirTabAtiva(nomeDoBotao, conteudoDaTab) {
         nomeDoBotao.parent('li').addClass('active');
@@ -58,21 +54,11 @@ perfilCliente.enviarOrcamento = function () {
     var orcamentoSelecionado = $("#seletetorDeOrcamento").val();
     $('#email').val($('#emailDoDestinatario').html());
     $('#corpoDoEmail').val($("." + orcamentoSelecionado).html());
-
-//    $.ajax({
-//        url: URL + 'index.php/mail/enviarOrcamento',
-//        type: 'POST',
-//        data: $("#formOrcamento").serialize(),
-//        success: function (msg) {
-//            swal("Orcamento enviado com sucesso!", "", "success");
-//            $("#email, #corpoDoEmail").val('');
-//        }
-//    });
 };
 
 perfilCliente.prepararParaGerarPDF = function () {
     var orcamentoSelecionado = $("#seletetorDeOrcamento").val();
-    $("." + orcamentoSelecionado).find('input').each(function(){
+    $("." + orcamentoSelecionado).find('input').each(function () {
         $(this).replaceWith($("<span style='font-size: 12px'/>").text(this.value));
     });
     $('#html').val($("." + orcamentoSelecionado).html());

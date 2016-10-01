@@ -11,7 +11,8 @@ foreach ($cliente->result() as $row) {
                     <li class="active waves-effect js-tab-menu"><a id="botao-perfil" href="#">Início</a></li>
                     <li class="waves-effect js-tab-menu"><a id="botao-agendar-comrpomissos" href="#">Agendar Compromissos</a></li>
                     <li class="waves-effect js-tab-menu"><a id="botao-compromisso" href="#">Compromissos Agendados</a></li>
-                    <li class="waves-effect js-tab-menu"><a id="botao-orcamento" href="#">Orçamentos</a></li>                 
+                    <li class="waves-effect js-tab-menu"><a id="botao-orcamento" href="#">Orçamentos</a></li>
+                    <li class="waves-effect js-tab-menu"><a id="botao-tour-individual" href="#">Tour Individual</a></li>
                 </ul>
 
                 <section id="perfil" class="pmb-block js-container-tab active">
@@ -226,17 +227,17 @@ foreach ($cliente->result() as $row) {
 
                     <section id="botoes">
                         <div class="btn-demo">
-                            <form id="form-gerador-de-orcamento" action="<?php echo base_url(); ?>index.php/tarefa/gerarPDF" method="post" accept-charset="utf-8">
-                                <input id="nome" name="nome" type="hidden" />
-                                <input id="html" name="html" type="hidden" />
-                                <button class="btn btn-icon bgm-red m-b-30" onclick="perfilCliente.prepararParaGerarPDF()"><i class="zmdi zmdi-print"></i></button>
-                            </form>
+                            <?php echo form_open(base_url() . "index.php/tarefa/gerarPDF"); ?>
+                            <input id="nome" name="nome" type="hidden" />
+                            <input id="html" name="html" type="hidden" />
+                            <button class="btn btn-icon bgm-red m-b-30" onclick="perfilCliente.prepararParaGerarPDF()"><i class="zmdi zmdi-print"></i></button>
+                            <?php echo form_close() ?>
                         </div>
                         <?php echo form_open(base_url() . 'index.php/mail/enviarOrcamento'); ?>
-                            <input id="email" name="email" type="hidden" />
-                            <input id="corpoDoEmail" name="corpoDoEmail" type="hidden" />
-                            <button class="btn btn-icon bgm-blue m-b-30" onclick="perfilCliente.enviarOrcamento()"><i class="zmdi zmdi-mail-send"></i></button>
-                        <?php echo form_close()?>
+                        <input id="email" name="email" type="hidden" />
+                        <input id="corpoDoEmail" name="corpoDoEmail" type="hidden" />
+                        <button class="btn btn-icon bgm-blue m-b-30" onclick="perfilCliente.enviarOrcamento()"><i class="zmdi zmdi-mail-send"></i></button>
+                        <?php echo form_close() ?>
                     </section>
                 </section>
 
@@ -290,6 +291,43 @@ foreach ($cliente->result() as $row) {
                         <div class="alert color bgm-brown col-lg-1" role="alert"></div>
                         <span class="col-lg-9">Perguntar feedback.</span>
                         <button class="btn btn-sm btn-group-demo" onclick="perfilCliente.inserirTarefaCom('bgm-brown', 7, 'Perguntar feedback.', <?php echo $cliente->id; ?>)">Agendar</button>
+                    </div>
+                </section>
+
+                <section id="tour-individual" class="pmb-block js-container-tab">
+                    <div class="pmbb-body card-padding">
+                        <div class="form-wizard-basic fw-container">
+                            <ul class="tab-nav text-center">
+                                <li class="active"><a href="#hotelTour" data-toggle="tab">Hotel</a></li>
+                                <li><a href="#passeioTour" data-toggle="tab">Passeio</a></li>
+                                <li><a href="#transporteTour" data-toggle="tab">Transporte</a></li>
+                                <li><a href="#guiaTour" data-toggle="tab">Guia</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane fade active in" id="hotelTour">
+                                    <?php include "tourIndividual/hotelTour.php"; ?>
+                                </div>
+                                <div class="tab-pane fade" id="passeioTour">
+                                    <?php include "tourIndividual/passeioTour.php"; ?>
+                                </div>
+                                <div class="tab-pane fade" id="transporteTour">
+                                    <?php include "tourIndividual/transporteTour.php"; ?>
+                                </div>
+                                <div class="tab-pane fade" id="guiaTour">
+                                    <?php include "tourIndividual/guiaTour.php"; ?>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="jumbotron col">
+                            <div class="right color c-blue">
+                                <h1>Total do tour R$ 0,00</h1>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
