@@ -32,10 +32,3 @@
         </div>
     </div>
 </div>
-<script>
-    $(document).ready(function () {
-        $('#datepicker-inicio, #datepicker-fim, #data').datetimepicker({
-            format: 'DD/MM/YYYY'
-        });
-    });
-</script>

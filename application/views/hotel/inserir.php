@@ -128,7 +128,6 @@
 <script type="text/javascript">
     function adicionarHotel()
     {
-//        alert("ola");
         $.ajax({
             url: '<?= base_url(); ?>' + 'index.php/hotel/inserirHotel',
             type: 'POST',

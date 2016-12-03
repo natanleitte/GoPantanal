@@ -1,7 +1,7 @@
 <div id="hoteis">
     <div id="lista-de-hoteis">
         <div class="row">
-            <?php echo form_open(base_url() . 'index.php/tourIndividual/adicionarHotel'); ?>                                    
+            <?php echo form_open(); ?>                                    
             <div class="col-sm-6">
                 <div class="form-group">
                     <label for="hoteis" class="control-label">Selecione um Hotel</label>
@@ -16,12 +16,9 @@
                     </div>
                 </div>
             </div>
-
-            <input type="hidden" name="idCliente" />
-
             <div class="col-sm-6">
                 <div class="form-group">
-                    <button class="btn btn-icon bgm-green m-b-40" ><i class="zmdi zmdi-plus-circle zmdi-"></i></button>
+                    <button class="btn btn-icon bgm-green m-b-40" onclick="tour.inserirHotel()"><i class="zmdi zmdi-plus-circle zmdi-"></i></button>
                 </div>
             </div>
 
@@ -45,7 +42,7 @@
                 </thead>
                 <tbody>
                     <?php
-                    foreach ($hoteis->result() as $hotel) {
+                    foreach ($hoteisTour->result() as $hotel) {
                         echo "<tr>";
                         echo "<td>" . $hotel->nome . "</td>";
                         echo "<td>" . $hotel->telefone . "</td>";

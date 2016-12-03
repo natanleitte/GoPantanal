@@ -43,7 +43,7 @@
                         echo "</a>";
 
                         echo "<div class='c-info'>";
-                        echo "<strong>" . ($cliente->nome === '' ? "Nome não informado" : $cliente->nome)  . "</strong>";
+                        echo "<strong>" . ($cliente->nome === '' ? "Nome não informado" : $cliente->nome) . "</strong>";
                         echo "<small>" . ($cliente->email === '' ? "Email não informado" : $cliente->email) . "</small>";
                         echo "</div>";
                         echo "<form action='" . base_url() . "index.php/cliente/profile'>";
@@ -61,6 +61,12 @@
             </div>
         </div>
     </div>  
-
+    <script type="text/javascript">
+        $(function () {
+            $('#datepicker-inicio, #datepicker-fim, #data, #datetimepicker1').datetimepicker({
+                format: 'DD/MM/YYYY'
+            });
+        });
+    </script>
 </section>
 

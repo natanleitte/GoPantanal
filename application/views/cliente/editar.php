@@ -125,10 +125,8 @@
 <script type="text/javascript">
     function atualizarCliente()
     {
-        //Warning Message
         swal({
             title: "Tem certeza que deseja realizar esta alteração?",
-//            text: "Você irá alterar os dados deste cliente!",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#2196f3",
@@ -136,20 +134,15 @@
             cancelButtonText: "Cancelar",
             closeOnConfirm: false
         }, function () {
-//                    swal("Deleted!", "Your imaginary file has been deleted.", "success"); 
             $.ajax({
                 url: '<?= base_url(); ?>' + 'index.php/cliente/atualizarCliente',
                 type: 'POST',
                 data: $("#formCliente").serialize(),
                 success: function (msg) {
                     swal("Cliente alterado com sucesso!", "", "success");
-//                $("#nome, #email, #telefone, #endereco, #passaporte").val('');
                 }
             });
         });
-
-//        alert("ola");
-
         return false;
     }
 </script>

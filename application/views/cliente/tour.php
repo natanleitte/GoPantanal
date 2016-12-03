@@ -9,16 +9,16 @@
 
         <div class="tab-content">
             <div class="tab-pane fade active in" id="hotelTour">
-                <?php include "hotelTour.php"; ?>
+                <?php include "tourIndividual/hotelTour.php"; ?>
             </div>
             <div class="tab-pane fade" id="passeioTour">
-                <?php include "passeioTour.php"; ?>
+                <?php include "tourIndividual/passeioTour.php"; ?>
             </div>
             <div class="tab-pane fade" id="transporteTour">
-                <?php include "transporteTour.php"; ?>
+                <?php include "tourIndividual/transporteTour.php"; ?>
             </div>
             <div class="tab-pane fade" id="guiaTour">
-                <?php include "guiaTour.php"; ?>
+                <?php include "tourIndividual/guiaTour.php"; ?>
             </div>
         </div>
 

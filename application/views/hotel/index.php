@@ -24,14 +24,14 @@
                     </thead>
                     <tbody>
                         <?php
-                        foreach ($hoteis->result() as $hotel){
+                        foreach ($hoteis->result() as $hotel) {
                             echo "<tr>";
-                                echo "<td>" . $hotel->nome . "</td>";
-                                echo "<td>" . $hotel->telefone . "</td>";
-                                echo "<td>" . $hotel->email . "</td>";
-                                echo "<td>" . $hotel->responsavel . "</td>";
-                                echo "<td>" . $hotel->endereco . "</td>";
-                                echo "<td>" . $hotel->cidade . "</td>";
+                            echo "<td>" . $hotel->nome . "</td>";
+                            echo "<td>" . $hotel->telefone . "</td>";
+                            echo "<td>" . $hotel->email . "</td>";
+                            echo "<td>" . $hotel->responsavel . "</td>";
+                            echo "<td>" . $hotel->endereco . "</td>";
+                            echo "<td>" . $hotel->cidade . "</td>";
                             echo "</tr>";
                         }
                         ?>

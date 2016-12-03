@@ -32,11 +32,11 @@ foreach ($cliente->result() as $row) {
                 </section>
 
                 <section id="tour-individual" class="pmb-block js-container-tab">
-                    <?php include "tourIndividual/tour.php"; ?>
+                    <?php include "tour.php"; ?>
                 </section>
 
                 <script>
-                    $(document).ready(function () {
+                    $(document).ready(function(){
                         perfilCliente.controladorTabs();
                     });
                 </script>

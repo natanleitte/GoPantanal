@@ -89,6 +89,16 @@ class Cliente extends CI_Controller {
         return $clientes->result();
     }
 
+    public function adicionarHotelTour() {
+        $this->data['id_tour'] = 2;
+        $this->data['id_hotel'] = $this->input->post('idHotel');
+        $this->data['data_ini'] = "";
+        $this->data['data_fim'] = "";
+        $this->data['preco'] = 0;
+
+        $this->HotelTourModel->setHotelTour($this->data);
+    }
+
     private function configuracoesBasicasParaCarregarPagina() {
         $this->data['tarefas'] = $this->TarefaModel->getTarefas();
         $this->data['emails'] = $this->EmailModel->obterTodos();
@@ -97,6 +107,7 @@ class Cliente extends CI_Controller {
         $this->data['ultimosCincoEmails'] = $this->EmailModel->obterOsUltimosCincoEmails();
         $this->data['ultimasTarefas'] = $this->TarefaModel->cincoUltimasTarefas();
         $this->data['hoteis'] = $this->HotelModel->getHoteis();
+        $this->data['hoteisTour'] = $this->HotelTourModel->getHoteis();
         $this->data['guias'] = $this->GuiaModel->getGuias();
         $this->data['passeios'] = $this->PasseioModel->getPasseios();
         $this->data['transportes'] = $this->TransporteModel->getTransportes();

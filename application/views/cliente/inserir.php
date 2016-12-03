@@ -1,11 +1,3 @@
-<script type="text/javascript">
-    $(function () {
-        $('#datetimepicker1').datetimepicker({
-            format: 'DD/MM/YYYY'
-        });
-    });
-</script>
-
 <section id="content">
     <div class="container">
         <div class="block-header">
