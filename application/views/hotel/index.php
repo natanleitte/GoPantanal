@@ -20,7 +20,7 @@
                             <th>Endereço</th>
                             <th>Cidade</th>
                             <th>Conta</th>
-                            <th>Agencia</th>
+                            <th>Agência</th>
                             <th>Banco</th>
                             <th>Titular</th>
                         </tr>

@@ -15,7 +15,18 @@ tour.inserirHotel = function () {
         },
         success: function (hotelCadastrado) {
             hotelCadastrado = $.parseJSON(hotelCadastrado);
-            html = "<tr id='linha-do-hotel-" + hotelCadastrado.id + "'><td>" + hotelCadastrado.nome + "</td><td>" + hotelCadastrado.telefone + "</td><td>" + hotelCadastrado.email + "</td><td>" + hotelCadastrado.responsavel + "</td><td>" + hotelCadastrado.endereco + "</td><td>" + hotelCadastrado.cidade + "</td><td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='tour.exclruirHotel(" + hotelCadastrado.id + ")'><span class='zmdi zmdi-delete'></span></button></td></tr>";
+            html = "<tr id='linha-do-hotel-" + hotelCadastrado.id + "'>" + 
+                    "<td>" + hotelCadastrado.nome + "</td>" + 
+                    "<td>" + hotelCadastrado.telefone + "</td>" +
+                    "<td>" + hotelCadastrado.email + "</td>" +
+                    "<td>" + hotelCadastrado.responsavel + "</td>" +
+                    "<td>" + hotelCadastrado.endereco + "</td>" +
+                    "<td>" + hotelCadastrado.cidade + "</td>" +
+                    "<td>" + hotelCadastrado.conta + "</td>" +
+                    "<td>" + hotelCadastrado.agencia + "</td>" +
+                    "<td>" + hotelCadastrado.banco + "</td>" +
+                    "<td>" + hotelCadastrado.titular_conta + "</td>" +
+                    "<td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='tour.exclruirHotel(" + hotelCadastrado.id + ")'><span class='zmdi zmdi-delete'></span></button></td></tr>";
             $('.js-hoteis-tour-individual tr:last').after(html);
             swal("Adicionado!", "", "success");
         }

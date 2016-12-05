@@ -142,7 +142,7 @@
 
                             <div class="input-group">
                                 <div class="fg-line">    
-                                    <input type="text" id="agencia" name="agencia" class="form-control" placeholder="Agencia">
+                                    <input type="text" id="agencia" name="agencia" class="form-control" placeholder="Agência">
                                 </div>
                                 <span class="input-group-addon"><i class="zmdi zmdi-lock-outline"></i></span>
                             </div>

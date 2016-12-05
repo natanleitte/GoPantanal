@@ -23,7 +23,11 @@ class HotelTourModel extends CI_Model {
                 "hotel.email, " .
                 "hotel.responsavel, " .
                 "hotel.endereco, " .
-                "hotel.cidade"
+                "hotel.cidade, " .
+                "hotel.conta, " .
+                "hotel.agencia, " .
+                "hotel.banco, " .
+                "hotel.titular_conta"
         );
         $this->db->from($this->nomeDaTabela);
         $this->db->join("hotel", "hotel.id = " . $this->nomeDaTabela . ".id_hotel");
@@ -38,7 +42,11 @@ class HotelTourModel extends CI_Model {
                 "hotel.email, " .
                 "hotel.responsavel, " .
                 "hotel.endereco, " .
-                "hotel.cidade"
+                "hotel.cidade, " .
+                "hotel.conta, " .
+                "hotel.agencia, " .
+                "hotel.banco, " .
+                "hotel.titular_conta"
         );
         $this->db->from($this->nomeDaTabela);
         $this->db->join("hotel", "hotel.id = " . $this->nomeDaTabela . ".id_hotel");
