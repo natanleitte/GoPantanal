@@ -14,12 +14,15 @@
                     <thead>
                         <tr>
                             <th data-column-id="id" data-type="numeric">Nome</th>
-                            <th data-column-id="sender">Telefone</th>
+                            <th>Telefone</th>
                             <th data-column-id="received" data-order="desc">Email</th>
-                            <th data-column-id="sender">Responsável</th>
-                            <th data-column-id="sender">Endereço</th>
-                            <th data-column-id="sender">Cidade</th>
-
+                            <th>Responsável</th>
+                            <th>Endereço</th>
+                            <th>Cidade</th>
+                            <th>Conta</th>
+                            <th>Agencia</th>
+                            <th>Banco</th>
+                            <th>Titular</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,6 +35,10 @@
                             echo "<td>" . $hotel->responsavel . "</td>";
                             echo "<td>" . $hotel->endereco . "</td>";
                             echo "<td>" . $hotel->cidade . "</td>";
+                            echo "<td>" . $hotel->conta . "</td>";
+                            echo "<td>" . $hotel->agencia . "</td>";
+                            echo "<td>" . $hotel->banco . "</td>";
+                            echo "<td>" . $hotel->titular_conta . "</td>";
                             echo "</tr>";
                         }
                         ?>

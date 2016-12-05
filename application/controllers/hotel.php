@@ -41,6 +41,10 @@ class Hotel extends CI_Controller {
         $this->data['responsavel'] = $this->input->post('responsavel');
         $this->data['endereco'] = $this->input->post('endereco');
         $this->data['cidade'] = $this->input->post('cidade');
+        $this->data['conta'] = $this->input->post('conta');
+        $this->data['agencia'] = $this->input->post('agencia');
+        $this->data['banco'] = $this->input->post('banco');
+        $this->data['titular_conta'] = $this->input->post('titular');
 
         $this->HotelModel->setHotel($this->data);
     }
@@ -56,5 +60,3 @@ class Hotel extends CI_Controller {
     }
 
 }
-
-?>

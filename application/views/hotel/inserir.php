@@ -83,6 +83,24 @@
                             </div>
 
                             <br/>
+
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="zmdi zmdi-balance"></i></span>
+                                <div class="fg-line">    
+                                    <input type="text" id="banco" name="banco" class="form-control" placeholder="Banco">
+                                </div>
+                            </div>
+
+                            <br/>
+
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="zmdi zmdi-account-circle"></i></span>
+                                <div class="fg-line">    
+                                    <input type="text" id="titular" name="titular" class="form-control" placeholder="Titular da Conta">
+                                </div>
+                            </div>
+
+                            <br/>
                         </div>
 
                         <div class="col-sm-6">                       
@@ -113,6 +131,24 @@
 
                             <br/>
 
+                            <div class="input-group">
+                                <div class="fg-line">    
+                                    <input type="text" id="conta" name="conta" class="form-control" placeholder="Conta">
+                                </div>
+                                <span class="input-group-addon"><i class="zmdi zmdi-lock-outline"></i></span>
+                            </div>
+
+                            <br/>
+
+                            <div class="input-group">
+                                <div class="fg-line">    
+                                    <input type="text" id="agencia" name="agencia" class="form-control" placeholder="Agencia">
+                                </div>
+                                <span class="input-group-addon"><i class="zmdi zmdi-lock-outline"></i></span>
+                            </div>
+
+                            <br/>
+
                         </div>                        
                     </div>
                 </form>
@@ -134,9 +170,8 @@
             data: $("#formHotel").serialize(),
             success: function (msg) {
                 swal("Hotel inserido com sucesso!", "", "success");
-                $("#nome, #email, #telefone, #responsavel, #endereco, #cidade").val('');
+                $("#nome, #email, #telefone, #responsavel, #endereco, #cidade, #conta, #agencia, #titular, #banco").val('');
             }
         });
-        return false;
     }
 </script>
