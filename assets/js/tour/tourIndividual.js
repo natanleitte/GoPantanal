@@ -66,3 +66,34 @@ tour.exclruirPasseio = function (idPasseio) {
         }
     });
 };
+
+tour.inserirTransporte = function () {
+    idTransporte = $("#transportes option:selected").val();
+    $.ajax({
+        url: URL + 'index.php/TourIndividual/adicionaTransporteTour',
+        type: 'POST',
+        data: {
+            idTransporte: idTransporte
+        },
+        success: function (transporteCadastrado) {
+            transporteCadastrado = $.parseJSON(transporteCadastrado);
+            html = "<tr id='linha-do-transporte-" + transporteCadastrado.id + "'><td>" + transporteCadastrado.nome + "</td><td>" + transporteCadastrado.telefone + "</td><td>" + transporteCadastrado.email + "</td><td>" + transporteCadastrado.responsavel + "</td><td>" + transporteCadastrado.endereco + "</td><td>" + transporteCadastrado.cidade + "</td><td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='tour.exclruirPasseio(" + transporteCadastrado.id + ")'><span class='zmdi zmdi-delete'></span></button></td></tr>";
+            $('.js-transportes-tour-individual tr:last').after(html);
+            swal("Adicionado!", "", "success");
+        }
+    });
+};
+
+tour.exclruirTransporte = function (idTransporte) {
+    $.ajax({
+        url: URL + 'index.php/TourIndividual/excluirTransporteTour',
+        type: 'POST',
+        data: {
+            idTransporte: idTransporte
+        },
+        success: function (msg) {
+            $('#linha-do-transporte-' + idTransporte).remove();
+            swal("Excluido!", "", "success");
+        }
+    });
+};

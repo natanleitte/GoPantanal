@@ -102,6 +102,7 @@ class Cliente extends CI_Controller {
         $this->data['passeios'] = $this->PasseioModel->getPasseios();
         $this->data['passeiosTour'] = $this->PasseioTourModel->obterTodos();
         $this->data['transportes'] = $this->TransporteModel->getTransportes();
+        $this->data['transportesTour'] = $this->TransporteTourModel->obterTodos();
     }
 
 }

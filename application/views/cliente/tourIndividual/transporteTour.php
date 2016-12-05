@@ -4,9 +4,9 @@
             <?php echo form_open(base_url() . 'index.php/tourIndividual/adicionarHotel'); ?>                                    
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label for="hoteis" class="control-label">Selecione um Transporte</label>
+                    <label for="transporte" class="control-label">Selecione um Transporte</label>
                     <div class="select">
-                        <select id="hoteis" name="hotel" class="form-control" placeholder="Hotéis">
+                        <select id="transportes" name="transporte" class="form-control" placeholder="Transportes">
                             <?php
                             foreach ($transportes->result() as $transporte) {
                                 echo "<option value = '" . $transporte->id . "'>" . $transporte->nome . " | " . $transporte->cidade . "</option>";
@@ -16,21 +16,18 @@
                     </div>
                 </div>
             </div>
-
-            <input type="hidden" name="idCliente" />
-
+            <?php echo form_close() ?>
             <div class="col-sm-6">
                 <div class="form-group">
-                    <button class="btn btn-icon bgm-green m-b-40" ><i class="zmdi zmdi-plus-circle zmdi-"></i></button>
+                    <button class="btn btn-icon bgm-green m-b-40" onclick="tour.inserirTransporte()"><i class="zmdi zmdi-plus-circle zmdi-"></i></button>
                 </div>
             </div>
 
-            <?php echo form_close() ?>
         </div>
     </div>
 
     <div class="table-responsive">
-        <table id="data-table-basic" class="table table-striped">
+        <table id="data-table-basic" class="table table-striped js-transportes-tour-individual">
             <thead>
                 <tr>
                     <th data-column-id="id" data-type="numeric">Nome</th>
@@ -44,15 +41,15 @@
             </thead>
             <tbody>
                 <?php
-                foreach ($transportes->result() as $transporte) {
-                    echo "<tr>";
+                foreach ($transportesTour->result() as $transporte) {
+                    echo "<tr id='linha-do-transporte-". $transporte->id ."'>";
                     echo "<td>" . $transporte->nome . "</td>";
                     echo "<td>" . $transporte->telefone . "</td>";
                     echo "<td>" . $transporte->email . "</td>";
                     echo "<td>" . $transporte->responsavel . "</td>";
                     echo "<td>" . $transporte->endereco . "</td>";
                     echo "<td>" . $transporte->cidade . "</td>";
-
+                    echo "<td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='tour.exclruirTransporte(" . $transporte->id . ")'><span class='zmdi zmdi-delete'></span></button></td>";
                     echo "</tr>";
                 }
                 ?>
