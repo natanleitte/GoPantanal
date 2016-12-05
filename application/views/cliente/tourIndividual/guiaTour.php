@@ -4,9 +4,9 @@
             <?php echo form_open(base_url() . 'index.php/tourIndividual/adicionarHotel'); ?>                                    
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label for="hoteis" class="control-label">Selecione um Guia</label>
+                    <label for="guias" class="control-label">Selecione um Guia</label>
                     <div class="select">
-                        <select id="hoteis" name="hotel" class="form-control" placeholder="Hotéis">
+                        <select id="guias" name="guia" class="form-control" placeholder="Guias">
                             <?php
                             foreach ($guias->result() as $guia) {
                                 echo "<option value = '" . $guia->id . "'>" . $guia->nome . " | " . $guia->cidade . "</option>";
@@ -16,51 +16,46 @@
                     </div>
                 </div>
             </div>
-
-            <input type="hidden" name="idCliente" />
-
+            <?php echo form_close() ?>
             <div class="col-sm-6">
                 <div class="form-group">
-                    <button class="btn btn-icon bgm-green m-b-40" ><i class="zmdi zmdi-plus-circle zmdi-"></i></button>
+                    <button class="btn btn-icon bgm-green m-b-40" onclick="tour.inserirGuia()"><i class="zmdi zmdi-plus-circle zmdi-"></i></button>
                 </div>
             </div>
 
-            <?php echo form_close() ?>
         </div>
     </div>
 
-    <div id="lista-de-hoteis-cadastrados-no-tour">
-        <div class="table-responsive">
-                <table id="data-table-basic" class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th data-column-id="id" data-type="numeric">Nome</th>
-                            <th data-column-id="sender">Idioma</th>
-                            <th data-column-id="sender">Telefone</th>
-                            <th data-column-id="received" data-order="desc">Email</th>
-                            <th data-column-id="sender">Responsável</th>
-                            <th data-column-id="sender">Endereço</th>
-                            <th data-column-id="sender">Cidade</th>
+    <div class="table-responsive">
+        <table id="data-table-basic" class="table table-striped js-guias-tour-individual">
+            <thead>
+                <tr>
+                    <th data-column-id="id" data-type="numeric">Nome</th>
+                    <th data-column-id="sender">Idioma</th>
+                    <th data-column-id="sender">Telefone</th>
+                    <th data-column-id="received" data-order="desc">Email</th>
+                    <th data-column-id="sender">Responsável</th>
+                    <th data-column-id="sender">Endereço</th>
+                    <th data-column-id="sender">Cidade</th>
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        foreach ($guias->result() as $guia) {
-                            echo "<tr>";
-                            echo "<td>" . $guia->nome . "</td>";
-                            echo "<td>" . $guia->idioma . "</td>";
-                            echo "<td>" . $guia->telefone . "</td>";
-                            echo "<td>" . $guia->email . "</td>";
-                            echo "<td>" . $guia->responsavel . "</td>";
-                            echo "<td>" . $guia->endereco . "</td>";
-                            echo "<td>" . $guia->cidade . "</td>";
-
-                            echo "</tr>";
-                        }
-                        ?>
-                    </tbody>
-                </table>
-            </div>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                foreach ($guiasTour->result() as $guia) {
+                    echo "<tr id='linha-do-guia-" . $guia->id . "'>";
+                    echo "<td>" . $guia->nome . "</td>";
+                    echo "<td>" . $guia->idioma . "</td>";
+                    echo "<td>" . $guia->telefone . "</td>";
+                    echo "<td>" . $guia->email . "</td>";
+                    echo "<td>" . $guia->responsavel . "</td>";
+                    echo "<td>" . $guia->endereco . "</td>";
+                    echo "<td>" . $guia->cidade . "</td>";
+                    echo "<td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='tour.exclruirGuia(" . $guia->id . ")'><span class='zmdi zmdi-delete'></span></button></td>";
+                    echo "</tr>";
+                }
+                ?>
+            </tbody>
+        </table>
     </div>
 </div>

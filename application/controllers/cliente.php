@@ -99,6 +99,7 @@ class Cliente extends CI_Controller {
         $this->data['hoteis'] = $this->HotelModel->getHoteis();
         $this->data['hoteisTour'] = $this->HotelTourModel->obterTodos();
         $this->data['guias'] = $this->GuiaModel->getGuias();
+        $this->data['guiasTour'] = $this->GuiaTourModel->obterTodos();
         $this->data['passeios'] = $this->PasseioModel->getPasseios();
         $this->data['passeiosTour'] = $this->PasseioTourModel->obterTodos();
         $this->data['transportes'] = $this->TransporteModel->getTransportes();

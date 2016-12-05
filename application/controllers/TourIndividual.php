@@ -55,4 +55,21 @@ class TourIndividual extends CI_Controller {
         $id = $this->input->post('idTransporte');
         $this->TransporteTourModel->excluir($id);
     }
+
+    public function adicionaGuiaTour() {
+        $this->data['id_tour'] = 2;
+        $this->data['id_guia'] = $this->input->post('idGuia');
+        $this->data['data_ini'] = "";
+        $this->data['data_fim'] = "";
+        $this->data['preco'] = 0;
+
+        $id = $this->GuiaTourModel->inserir($this->data);
+        echo json_encode($this->GuiaTourModel->obterPor($id));
+    }
+
+    public function excluirGuiaTour() {
+        $id = $this->input->post('idGuia');
+        $this->GuiaTourModel->excluir($id);
+    }
+
 }

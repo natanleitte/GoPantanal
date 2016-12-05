@@ -97,3 +97,34 @@ tour.exclruirTransporte = function (idTransporte) {
         }
     });
 };
+
+tour.inserirGuia = function () {
+    idGuia = $("#guias option:selected").val();
+    $.ajax({
+        url: URL + 'index.php/TourIndividual/adicionaGuiaTour',
+        type: 'POST',
+        data: {
+            idGuia: idGuia
+        },
+        success: function (guiaCadastrado) {
+            guiaCadastrado = $.parseJSON(guiaCadastrado);
+            html = "<tr id='linha-do-guia-" + guiaCadastrado.id + "'><td>" + guiaCadastrado.nome + "</td><td>" + guiaCadastrado.telefone + "</td><td>" + guiaCadastrado.email + "</td><td>" + guiaCadastrado.responsavel + "</td><td>" + guiaCadastrado.endereco + "</td><td>" + guiaCadastrado.cidade + "</td><td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='tour.exclruirPasseio(" + guiaCadastrado.id + ")'><span class='zmdi zmdi-delete'></span></button></td></tr>";
+            $('.js-guias-tour-individual tr:last').after(html);
+            swal("Adicionado!", "", "success");
+        }
+    });
+};
+
+tour.exclruirGuia = function (idGuia) {
+    $.ajax({
+        url: URL + 'index.php/TourIndividual/excluirGuiaTour',
+        type: 'POST',
+        data: {
+            idGuia: idGuia
+        },
+        success: function (msg) {
+            $('#linha-do-guia-' + idGuia).remove();
+            swal("Excluido!", "", "success");
+        }
+    });
+};
