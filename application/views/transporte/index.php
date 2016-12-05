@@ -55,14 +55,14 @@
                     <tbody>
                         <?php
                         foreach ($transportes->result() as $transporte) {
-                            echo "<tr>";
+                            echo "<tr id='transporte-" . $transporte->id . "'>";
                             echo "<td>" . $transporte->nome . "</td>";
                             echo "<td>" . $transporte->telefone . "</td>";
                             echo "<td>" . $transporte->email . "</td>";
                             echo "<td>" . $transporte->responsavel . "</td>";
                             echo "<td>" . $transporte->endereco . "</td>";
                             echo "<td>" . $transporte->cidade . "</td>";
-
+                            echo "<td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='excluirTransporte(" . $transporte->id . ")'><span class='zmdi zmdi-delete'></span></button></td>";
                             echo "</tr>";
                         }
                         ?>
@@ -71,3 +71,19 @@
             </div>
         </div>                    
 </section>
+<script type="text/javascript">
+    function excluirTransporte(idTransporte)
+    {
+        $.ajax({
+            url: '<?= base_url(); ?>' + 'index.php/transporte/excluirTransporte',
+            type: 'POST',
+            data: {
+                idTransporte: idTransporte
+            },
+            success: function (msg) {
+                $('#transporte-' + idTransporte).remove();
+                swal("Transporte excluido com sucesso!", "", "success");
+            }
+        });
+    }
+</script>

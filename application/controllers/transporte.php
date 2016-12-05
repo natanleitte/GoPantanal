@@ -5,7 +5,7 @@ include APPPATH . 'controllers/utils/DataUtils.php';
 class Transporte extends CI_Controller {
 
     private $data;
-    
+
     public function __construct() {
         parent::__construct();
         $this->load->helper('url');
@@ -46,6 +46,11 @@ class Transporte extends CI_Controller {
         $this->TransporteModel->setTransporte($this->data);
     }
 
+    public function excluirTransporte() {
+        $id = $this->input->post('idTransporte');
+        $this->TransporteModel->excluir($id);
+    }
+
     private function configuracoesBasicasParaCarregarAPagina() {
         $this->data['emails'] = $this->EmailModel->obterTodos();
         $this->data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
@@ -54,5 +59,5 @@ class Transporte extends CI_Controller {
         $this->data['tarefas'] = $this->TarefaModel->getTarefas();
         $this->data['transportes'] = $this->TransporteModel->getTransportes();
     }
+
 }
-?>

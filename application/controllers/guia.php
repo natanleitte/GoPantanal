@@ -46,6 +46,11 @@ class Guia extends CI_Controller {
         $this->GuiaModel->setGuia($this->data);
     }
 
+    public function excluirGuia() {
+        $id = $this->input->post('idGuia');
+        $this->GuiaModel->excluir($id);
+    }
+
     private function configuracoesBasicasParaCarregarPagina() {
         $this->data['tarefas'] = $this->TarefaModel->getTarefas();
         $this->data['emails'] = $this->EmailModel->obterTodos();
@@ -55,5 +60,7 @@ class Guia extends CI_Controller {
         $this->data['ultimasTarefas'] = $this->TarefaModel->cincoUltimasTarefas();
         $this->data['guias'] = $this->GuiaModel->getGuias();
     }
+
 }
+
 ?>

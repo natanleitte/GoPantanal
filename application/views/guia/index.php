@@ -56,7 +56,7 @@
                     <tbody>
                         <?php
                         foreach ($guias->result() as $guia) {
-                            echo "<tr>";
+                            echo "<tr id='guia-" . $guia->id . "'>";
                             echo "<td>" . $guia->nome . "</td>";
                             echo "<td>" . $guia->idioma . "</td>";
                             echo "<td>" . $guia->telefone . "</td>";
@@ -64,7 +64,7 @@
                             echo "<td>" . $guia->responsavel . "</td>";
                             echo "<td>" . $guia->endereco . "</td>";
                             echo "<td>" . $guia->cidade . "</td>";
-
+                            echo "<td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='excluirGuia(" . $guia->id . ")'><span class='zmdi zmdi-delete'></span></button></td>";
                             echo "</tr>";
                         }
                         ?>
@@ -73,3 +73,19 @@
             </div>
         </div>                    
 </section>
+<script type="text/javascript">
+    function excluirGuia(idGuia)
+    {
+        $.ajax({
+            url: '<?= base_url(); ?>' + 'index.php/guia/excluirGuia',
+            type: 'POST',
+            data: {
+                idGuia: idGuia
+            },
+            success: function (msg) {
+                $('#guia-' + idGuia).remove();
+                swal("Guia excluido com sucesso!", "", "success");
+            }
+        });
+    }
+</script>
