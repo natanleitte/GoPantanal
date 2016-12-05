@@ -78,7 +78,6 @@
             });
         });
     });
-    tarefa.inserirUrl('<?= base_url(); ?>');
 </script>
 
 </body>

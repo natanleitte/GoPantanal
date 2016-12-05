@@ -38,6 +38,7 @@ foreach ($cliente->result() as $row) {
                 <script>
                     $(document).ready(function(){
                         perfilCliente.controladorTabs();
+                        tour.inserirUrl('<?= base_url(); ?>');
                     });
                 </script>
             </div>

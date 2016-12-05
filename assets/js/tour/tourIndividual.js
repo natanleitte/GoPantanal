@@ -5,15 +5,64 @@ tour.inserirUrl = function (url) {
     URL = url;
 };
 
-tour.inserirHotel = function(){
+tour.inserirHotel = function () {
+    idHotel = $("#hoteis option:selected").val();
     $.ajax({
-        url: URL + 'index.php/cliente/adicionarHotelTour',
+        url: URL + 'index.php/TourIndividual/adicionarHotelTour',
         type: 'POST',
         data: {
-            idHotel: $("#hoteis").val()
+            idHotel: idHotel
+        },
+        success: function (hotelCadastrado) {
+            hotelCadastrado = $.parseJSON(hotelCadastrado);
+            html = "<tr id='linha-do-hotel-" + hotelCadastrado.id + "'><td>" + hotelCadastrado.nome + "</td><td>" + hotelCadastrado.telefone + "</td><td>" + hotelCadastrado.email + "</td><td>" + hotelCadastrado.responsavel + "</td><td>" + hotelCadastrado.endereco + "</td><td>" + hotelCadastrado.cidade + "</td><td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='tour.exclruirHotel(" + hotelCadastrado.id + ")'><span class='zmdi zmdi-delete'></span></button></td></tr>";
+            $('.js-hoteis-tour-individual tr:last').after(html);
+            swal("Adicionado!", "", "success");
+        }
+    });
+};
+
+tour.exclruirHotel = function (idHotel) {
+    $.ajax({
+        url: URL + 'index.php/TourIndividual/excluirHotelTour',
+        type: 'POST',
+        data: {
+            idHotel: idHotel
         },
         success: function (msg) {
+            $('#linha-do-hotel-' + idHotel).remove();
+            swal("Excluido!", "", "success");
+        }
+    });
+};
+
+tour.inserirPasseio = function () {
+    idPasseio = $("#passeios option:selected").val();
+    $.ajax({
+        url: URL + 'index.php/TourIndividual/adicionaPasseioTour',
+        type: 'POST',
+        data: {
+            idPasseio: idPasseio
+        },
+        success: function (passeioCadastrado) {
+            passeioCadastrado = $.parseJSON(passeioCadastrado);
+            html = "<tr id='linha-do-passeio-" + passeioCadastrado.id + "'><td>" + passeioCadastrado.nome + "</td><td>" + passeioCadastrado.telefone + "</td><td>" + passeioCadastrado.email + "</td><td>" + passeioCadastrado.responsavel + "</td><td>" + passeioCadastrado.endereco + "</td><td>" + passeioCadastrado.cidade + "</td><td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='tour.exclruirPasseio(" + passeioCadastrado.id + ")'><span class='zmdi zmdi-delete'></span></button></td></tr>";
+            $('.js-passeios-tour-individual tr:last').after(html);
             swal("Adicionado!", "", "success");
+        }
+    });
+};
+
+tour.exclruirPasseio = function (idPasseio) {
+    $.ajax({
+        url: URL + 'index.php/TourIndividual/excluirPasseioTour',
+        type: 'POST',
+        data: {
+            idPasseio: idPasseio
+        },
+        success: function (msg) {
+            $('#linha-do-passeio-' + idPasseio).remove();
+            swal("Excluido!", "", "success");
         }
     });
 };

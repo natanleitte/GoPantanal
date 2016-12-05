@@ -1,12 +1,12 @@
 <div id="hoteis">
     <div id="lista-de-hoteis">
         <div class="row">
-            <?php echo form_open(base_url() . 'index.php/tourIndividual/adicionarHotel'); ?>                                    
+            <?php echo form_open(); ?>                                    
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label for="hoteis" class="control-label">Selecione um Passeio</label>
+                    <label for="passeios" class="control-label">Selecione um Passeio</label>
                     <div class="select">
-                        <select id="hoteis" name="hotel" class="form-control" placeholder="Hotéis">
+                        <select id="passeios" name="passeios" class="form-control" placeholder="Passeios">
                             <?php
                             foreach ($passeios->result() as $passeio) {
                                 echo "<option value = '" . $passeio->id . "'>" . $passeio->nome . " | " . $passeio->cidade . "</option>";
@@ -16,22 +16,20 @@
                     </div>
                 </div>
             </div>
-
-            <input type="hidden" name="idCliente" />
+            <?php echo form_close() ?>
 
             <div class="col-sm-6">
                 <div class="form-group">
-                    <button class="btn btn-icon bgm-green m-b-40" ><i class="zmdi zmdi-plus-circle zmdi-"></i></button>
+                    <button class="btn btn-icon bgm-green m-b-40" onclick="tour.inserirPasseio()"><i class="zmdi zmdi-plus-circle zmdi-"></i></button>
                 </div>
             </div>
 
-            <?php echo form_close() ?>
         </div>
     </div>
 
     <div id="lista-de-hoteis-cadastrados-no-tour">
         <div class="table-responsive">
-            <table id="data-table-basic" class="table table-striped">
+            <table id="data-table-basic" class="table table-striped js-passeios-tour-individual">
                 <thead>
                     <tr>
                         <th data-column-id="id" data-type="numeric">Nome</th>
@@ -45,15 +43,15 @@
                 </thead>
                 <tbody>
                     <?php
-                    foreach ($passeios->result() as $passeio) {
-                        echo "<tr>";
+                    foreach ($passeiosTour->result() as $passeio) {
+                        echo "<tr id='linha-do-passeio-". $passeio->id ."'>";
                         echo "<td>" . $passeio->nome . "</td>";
                         echo "<td>" . $passeio->telefone . "</td>";
                         echo "<td>" . $passeio->email . "</td>";
                         echo "<td>" . $passeio->responsavel . "</td>";
                         echo "<td>" . $passeio->endereco . "</td>";
                         echo "<td>" . $passeio->cidade . "</td>";
-
+                        echo "<td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='tour.exclruirPasseio(".$passeio->id.")'><span class='zmdi zmdi-delete'></span></button></td>";
                         echo "</tr>";
                     }
                     ?>

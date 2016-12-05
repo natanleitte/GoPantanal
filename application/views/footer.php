@@ -71,6 +71,7 @@
 <script src="<?php echo base_url() . "assets/" ?>js/tarefa.js"></script>
 <script src="<?php echo base_url() . "assets/" ?>js/perfilCliente.js"></script>
 <script src="<?php echo base_url() . "assets/" ?>js/demo.js"></script>
+<script src="<?php echo base_url() . "assets/" ?>js/tour/tourIndividual.js"></script>
 
 <!--Altera linguagem do calendário-->
 <script src='<?php echo base_url() . "assets/" ?>vendors/bower_components/fullcalendar/dist/lang/pt-br.js'></script>

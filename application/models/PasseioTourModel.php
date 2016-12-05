@@ -1,8 +1,8 @@
 <?php
 
-class HotelTourModel extends CI_Model {
+class PasseioTourModel extends CI_Model {
 
-    private $nomeDaTabela = 'hotel_tour';
+    private $nomeDaTabela = 'passeio_tour';
 
     public function __construct() {
         parent::__construct();
@@ -18,30 +18,30 @@ class HotelTourModel extends CI_Model {
     public function obterTodos() {
         $this->db->select(
                 $this->nomeDaTabela . ".id, " .
-                "hotel.nome, " .
-                "hotel.telefone, " .
-                "hotel.email, " .
-                "hotel.responsavel, " .
-                "hotel.endereco, " .
-                "hotel.cidade"
+                "passeio.nome, " .
+                "passeio.telefone, " .
+                "passeio.email, " .
+                "passeio.responsavel, " .
+                "passeio.endereco, " .
+                "passeio.cidade"
         );
         $this->db->from($this->nomeDaTabela);
-        $this->db->join("hotel", "hotel.id = " . $this->nomeDaTabela . ".id_hotel");
+        $this->db->join("passeio", "passeio.id = " . $this->nomeDaTabela . ".id_passeio");
         return $this->db->get();
     }
 
     public function obterPor($id) {
         $this->db->select(
                 $this->nomeDaTabela . ".id, " .
-                "hotel.nome, " .
-                "hotel.telefone, " .
-                "hotel.email, " .
-                "hotel.responsavel, " .
-                "hotel.endereco, " .
-                "hotel.cidade"
+                "passeio.nome, " .
+                "passeio.telefone, " .
+                "passeio.email, " .
+                "passeio.responsavel, " .
+                "passeio.endereco, " .
+                "passeio.cidade"
         );
         $this->db->from($this->nomeDaTabela);
-        $this->db->join("hotel", "hotel.id = " . $this->nomeDaTabela . ".id_hotel");
+        $this->db->join("passeio", "passeio.id = " . $this->nomeDaTabela . ".id_passeio");
         $this->db->where($this->nomeDaTabela . ".id", $id);
         return $this->db->get()->row();
     }
