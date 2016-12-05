@@ -20,6 +20,9 @@ class HotelModel extends CI_Model {
         $this->db->where("id", $id);
         return $this->db->get("hotel")->row();
     }
+    
+    public function excluir($id) {
+        $this->db->where("id", $id);
+        echo $this->db->delete("hotel");
+    }
 }
-
-?>

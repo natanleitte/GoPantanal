@@ -49,6 +49,11 @@ class Hotel extends CI_Controller {
         $this->HotelModel->setHotel($this->data);
     }
 
+    public function excluirHotel() {
+        $id = $this->input->post('idHotel');
+        $this->HotelModel->excluir($id);
+    }
+
     private function configuracoesBasicasParaCarregarPagina() {
         $this->data['tarefas'] = $this->TarefaModel->getTarefas();
         $this->data['emails'] = $this->EmailModel->obterTodos();

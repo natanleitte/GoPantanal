@@ -5,7 +5,7 @@ include APPPATH . 'controllers/utils/DataUtils.php';
 class Passeio extends CI_Controller {
 
     private $data;
-    
+
     public function __construct() {
         parent::__construct();
         $this->load->helper('url');
@@ -45,6 +45,11 @@ class Passeio extends CI_Controller {
         $this->PasseioModel->setPasseio($this->data);
     }
 
+    public function excluirPasseio() {
+        $id = $this->input->post('idPasseio');
+        $this->PasseioModel->excluir($id);
+    }
+
     private function configuracoesBasicasParaCarregarPagina() {
         $this->data['tarefas'] = $this->TarefaModel->getTarefas();
         $this->data['emails'] = $this->EmailModel->obterTodos();
@@ -54,5 +59,7 @@ class Passeio extends CI_Controller {
         $this->data['ultimasTarefas'] = $this->TarefaModel->cincoUltimasTarefas();
         $this->data['passeios'] = $this->PasseioModel->getPasseios();
     }
+
 }
+
 ?>

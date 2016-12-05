@@ -28,7 +28,7 @@
                     <tbody>
                         <?php
                         foreach ($hoteis->result() as $hotel) {
-                            echo "<tr>";
+                            echo "<tr id='hotel-" . $hotel->id . "'>";
                             echo "<td>" . $hotel->nome . "</td>";
                             echo "<td>" . $hotel->telefone . "</td>";
                             echo "<td>" . $hotel->email . "</td>";
@@ -39,6 +39,7 @@
                             echo "<td>" . $hotel->agencia . "</td>";
                             echo "<td>" . $hotel->banco . "</td>";
                             echo "<td>" . $hotel->titular_conta . "</td>";
+                            echo "<td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='excluirHotel(" . $hotel->id . ")'><span class='zmdi zmdi-delete'></span></button></td>";
                             echo "</tr>";
                         }
                         ?>
@@ -47,3 +48,19 @@
             </div>
         </div>                    
 </section>
+<script type="text/javascript">
+    function excluirHotel(idHotel)
+    {
+        $.ajax({
+            url: '<?= base_url(); ?>' + 'index.php/hotel/excluirHotel',
+            type: 'POST',
+            data: {
+                idHotel: idHotel
+            },
+            success: function (msg) {
+                $('#hotel-' + idHotel).remove();
+                swal("Hotel excluido com sucesso!", "", "success");
+            }
+        });
+    }
+</script>

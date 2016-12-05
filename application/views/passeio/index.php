@@ -55,14 +55,14 @@
                     <tbody>
                         <?php
                         foreach ($passeios->result() as $passeio) {
-                            echo "<tr>";
+                            echo "<tr id='passeio-" . $passeio->id . "'>";
                             echo "<td>" . $passeio->nome . "</td>";
                             echo "<td>" . $passeio->telefone . "</td>";
                             echo "<td>" . $passeio->email . "</td>";
                             echo "<td>" . $passeio->responsavel . "</td>";
                             echo "<td>" . $passeio->endereco . "</td>";
                             echo "<td>" . $passeio->cidade . "</td>";
-
+                            echo "<td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='excluirPasseio(" . $passeio->id . ")'><span class='zmdi zmdi-delete'></span></button></td>";
                             echo "</tr>";
                         }
                         ?>
@@ -71,3 +71,19 @@
             </div>
         </div>                    
 </section>
+<script type="text/javascript">
+    function excluirPasseio(idPasseio)
+    {
+        $.ajax({
+            url: '<?= base_url(); ?>' + 'index.php/passeio/excluirPasseio',
+            type: 'POST',
+            data: {
+                idPasseio: idPasseio
+            },
+            success: function (msg) {
+                $('#passeio-' + idPasseio).remove();
+                swal("Passeio excluido com sucesso!", "", "success");
+            }
+        });
+    }
+</script>
