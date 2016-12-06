@@ -4,8 +4,9 @@
             <?php echo form_open(base_url() . 'index.php/tourIndividual/adicionarHotel'); ?>                                    
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label for="transporte" class="control-label">Selecione um Transporte</label>
-                    <div class="select">
+                    <label for="transporte" class="control-label">Selecione um Transporte com seu respectivo valor</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="zmdi zmdi-car"></i></span>
                         <select id="transportes" name="transporte" class="form-control" placeholder="Transportes">
                             <?php
                             foreach ($transportes->result() as $transporte) {
@@ -13,6 +14,10 @@
                             }
                             ?>
                         </select>
+                        <span class="input-group-addon"><i class="zmdi zmdi-money-box"></i></span>
+                        <div class="fg-line">
+                            <input type="text" id="valor-transporte" name="valor" class="form-control" placeholder="Valor($)">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -42,7 +47,7 @@
             <tbody>
                 <?php
                 foreach ($transportesTour->result() as $transporte) {
-                    echo "<tr id='linha-do-transporte-". $transporte->id ."'>";
+                    echo "<tr id='linha-do-transporte-" . $transporte->id . "'>";
                     echo "<td>" . $transporte->nome . "</td>";
                     echo "<td>" . $transporte->telefone . "</td>";
                     echo "<td>" . $transporte->email . "</td>";

@@ -4,8 +4,9 @@
             <?php echo form_open(base_url() . 'index.php/tourIndividual/adicionarHotel'); ?>                                    
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label for="guias" class="control-label">Selecione um Guia</label>
-                    <div class="select">
+                    <label for="hoteis" class="control-label">Selecione um Guia com seu respectivo valor</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="zmdi zmdi-face"></i></span>
                         <select id="guias" name="guia" class="form-control" placeholder="Guias">
                             <?php
                             foreach ($guias->result() as $guia) {
@@ -13,6 +14,10 @@
                             }
                             ?>
                         </select>
+                        <span class="input-group-addon"><i class="zmdi zmdi-money-box"></i></span>
+                        <div class="fg-line">
+                            <input type="text" id="valor-guia" name="valor" class="form-control" placeholder="Valor($)">
+                        </div>
                     </div>
                 </div>
             </div>

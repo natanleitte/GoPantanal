@@ -7,11 +7,13 @@ tour.inserirUrl = function (url) {
 
 tour.inserirHotel = function () {
     idHotel = $("#hoteis option:selected").val();
+    valor = $("#valor-hotel").val();
     $.ajax({
         url: URL + 'index.php/TourIndividual/adicionarHotelTour',
         type: 'POST',
         data: {
             idHotel: idHotel,
+            valor: valor,
             idCliente: urlParam('id')
         },
         success: function (hotelCadastrado) {
@@ -50,11 +52,13 @@ tour.exclruirHotel = function (idHotel) {
 
 tour.inserirPasseio = function () {
     idPasseio = $("#passeios option:selected").val();
+    valor = $("#valor-passeio").val();
     $.ajax({
         url: URL + 'index.php/TourIndividual/adicionaPasseioTour',
         type: 'POST',
         data: {
             idPasseio: idPasseio,
+            valor: valor,
             idCliente: urlParam('id')
         },
         success: function (passeioCadastrado) {
@@ -82,11 +86,13 @@ tour.exclruirPasseio = function (idPasseio) {
 
 tour.inserirTransporte = function () {
     idTransporte = $("#transportes option:selected").val();
+    valor = $("#valor-transporte").val();
     $.ajax({
         url: URL + 'index.php/TourIndividual/adicionaTransporteTour',
         type: 'POST',
         data: {
             idTransporte: idTransporte,
+            valor: valor,
             idCliente: urlParam('id')
         },
         success: function (transporteCadastrado) {
@@ -114,11 +120,13 @@ tour.exclruirTransporte = function (idTransporte) {
 
 tour.inserirGuia = function () {
     idGuia = $("#guias option:selected").val();
+    valor = $("#valor-guia").val();
     $.ajax({
         url: URL + 'index.php/TourIndividual/adicionaGuiaTour',
         type: 'POST',
         data: {
             idGuia: idGuia,
+            valor: valor,
             idCliente: urlParam('id')
         },
         success: function (guiaCadastrado) {

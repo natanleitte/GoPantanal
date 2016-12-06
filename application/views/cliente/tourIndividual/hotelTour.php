@@ -4,8 +4,9 @@
             <?php echo form_open(); ?>                                    
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label for="hoteis" class="control-label">Selecione um Hotel</label>
-                    <div class="select">
+                    <label for="hoteis" class="control-label">Selecione um Hotel com seu respectivo valor</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="zmdi zmdi-hotel"></i></span>
                         <select id="hoteis" name="hotel" class="form-control" placeholder="Hotéis">
                             <?php
                             foreach ($hoteis->result() as $hotel) {
@@ -13,6 +14,10 @@
                             }
                             ?>
                         </select>
+                        <span class="input-group-addon"><i class="zmdi zmdi-money-box"></i></span>
+                        <div class="fg-line">
+                            <input type="text" id="valor-hotel" name="valor" class="form-control" placeholder="Valor($)">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -47,7 +52,7 @@
                 <tbody>
                     <?php
                     foreach ($hoteisTour->result() as $hotel) {
-                        echo "<tr id='linha-do-hotel-". $hotel->id ."'>";
+                        echo "<tr id='linha-do-hotel-" . $hotel->id . "'>";
                         echo "<td>" . $hotel->nome . "</td>";
                         echo "<td>" . $hotel->telefone . "</td>";
                         echo "<td>" . $hotel->email . "</td>";
@@ -58,7 +63,7 @@
                         echo "<td>" . $hotel->agencia . "</td>";
                         echo "<td>" . $hotel->banco . "</td>";
                         echo "<td>" . $hotel->titular_conta . "</td>";
-                        echo "<td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='tour.exclruirHotel(".$hotel->id.")'><span class='zmdi zmdi-delete'></span></button></td>";
+                        echo "<td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='tour.exclruirHotel(" . $hotel->id . ")'><span class='zmdi zmdi-delete'></span></button></td>";
                         echo "</tr>";
                     }
                     ?>

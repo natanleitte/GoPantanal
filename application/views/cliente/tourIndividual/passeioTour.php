@@ -4,8 +4,9 @@
             <?php echo form_open(); ?>                                    
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label for="passeios" class="control-label">Selecione um Passeio</label>
-                    <div class="select">
+                    <label for="passeios" class="control-label">Selecione um Passeio com seu respectivo valor</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="zmdi zmdi-nature-people"></i></span>
                         <select id="passeios" name="passeios" class="form-control" placeholder="Passeios">
                             <?php
                             foreach ($passeios->result() as $passeio) {
@@ -13,6 +14,10 @@
                             }
                             ?>
                         </select>
+                        <span class="input-group-addon"><i class="zmdi zmdi-money-box"></i></span>
+                        <div class="fg-line">
+                            <input type="text" id="valor-passeio" name="valor" class="form-control" placeholder="Valor($)">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -44,14 +49,14 @@
                 <tbody>
                     <?php
                     foreach ($passeiosTour->result() as $passeio) {
-                        echo "<tr id='linha-do-passeio-". $passeio->id ."'>";
+                        echo "<tr id='linha-do-passeio-" . $passeio->id . "'>";
                         echo "<td>" . $passeio->nome . "</td>";
                         echo "<td>" . $passeio->telefone . "</td>";
                         echo "<td>" . $passeio->email . "</td>";
                         echo "<td>" . $passeio->responsavel . "</td>";
                         echo "<td>" . $passeio->endereco . "</td>";
                         echo "<td>" . $passeio->cidade . "</td>";
-                        echo "<td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='tour.exclruirPasseio(".$passeio->id.")'><span class='zmdi zmdi-delete'></span></button></td>";
+                        echo "<td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='tour.exclruirPasseio(" . $passeio->id . ")'><span class='zmdi zmdi-delete'></span></button></td>";
                         echo "</tr>";
                     }
                     ?>
