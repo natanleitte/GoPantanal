@@ -70,5 +70,10 @@ class GuiaTourModel extends CI_Model {
         $this->db->where("id", $id);
         echo $this->db->delete($this->nomeDaTabela);
     }
-
+    
+    public function obterTotalPeloIdDoTour($idTour){
+        $this->db->select('SUM(preco) as total');
+        $this->db->where('id_tour', $idTour);
+        return $this->db->get($this->nomeDaTabela)->row('total');
+    }
 }

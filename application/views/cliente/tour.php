@@ -28,7 +28,7 @@
 
     <div class="jumbotron text-center">
         <div class="right color c-green">
-            <h1>Total do tour R$ 0,00</h1>
+            <h1>Total do tour R$<span id="valor-total-do-tour"></span></h1>
         </div>
     </div>
 </div>

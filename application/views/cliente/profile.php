@@ -12,7 +12,7 @@ foreach ($cliente->result() as $row) {
                     <li class="waves-effect js-tab-menu"><a id="botao-agendar-comrpomissos" href="#">Agendar Compromissos</a></li>
                     <li class="waves-effect js-tab-menu"><a id="botao-compromisso" href="#">Compromissos Agendados</a></li>
                     <li class="waves-effect js-tab-menu"><a id="botao-orcamento" href="#">Orçamentos</a></li>
-                    <li class="waves-effect js-tab-menu"><a id="botao-tour-individual" href="#">Tour Individual</a></li>
+                    <li class="waves-effect js-tab-menu"><a id="botao-tour-individual" href="#" onclick="tour.atualizarValorTotalDoTour()">Tour Individual</a></li>
                 </ul>
 
                 <section id="perfil" class="pmb-block js-container-tab active">

@@ -75,5 +75,17 @@ class TourIndividual extends CI_Controller {
         $id = $this->input->post('idGuia');
         $this->GuiaTourModel->excluir($id);
     }
+    
+    public function total(){
+        $idCliente = $this->input->post('idCliente');
+        $idTour = $this->TourModel->obterIdPeloCliente($idCliente);
+        $valores = array(
+                        floatval($this->GuiaTourModel->obterTotalPeloIdDoTour($idTour)),
+                        floatval($this->HotelTourModel->obterTotalPeloIdDoTour($idTour)),
+                        floatval($this->TransporteTourModel->obterTotalPeloIdDoTour($idTour)),
+                        floatval($this->PasseioTourModel->obterTotalPeloIdDoTour($idTour))
+                );
+        echo json_encode(array_sum($valores));
+    }
 
 }

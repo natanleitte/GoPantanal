@@ -7,7 +7,7 @@ tour.inserirUrl = function (url) {
 
 tour.inserirHotel = function () {
     idHotel = $("#hoteis option:selected").val();
-    valor = $("#valor-hotel").val();
+    valor = $("#valor-hotel").val().replace('R$', '');
     $.ajax({
         url: URL + 'index.php/TourIndividual/adicionarHotelTour',
         type: 'POST',
@@ -31,6 +31,7 @@ tour.inserirHotel = function () {
                     "<td>" + hotelCadastrado.titular_conta + "</td>" +
                     "<td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='tour.exclruirHotel(" + hotelCadastrado.id + ")'><span class='zmdi zmdi-delete'></span></button></td></tr>";
             $('.js-hoteis-tour-individual tr:last').after(html);
+            tour.atualizarValorTotalDoTour();
             swal("Adicionado!", "", "success");
         }
     });
@@ -45,6 +46,7 @@ tour.exclruirHotel = function (idHotel) {
         },
         success: function (msg) {
             $('#linha-do-hotel-' + idHotel).remove();
+            tour.atualizarValorTotalDoTour();
             swal("Excluido!", "", "success");
         }
     });
@@ -65,6 +67,7 @@ tour.inserirPasseio = function () {
             passeioCadastrado = $.parseJSON(passeioCadastrado);
             html = "<tr id='linha-do-passeio-" + passeioCadastrado.id + "'><td>" + passeioCadastrado.nome + "</td><td>" + passeioCadastrado.telefone + "</td><td>" + passeioCadastrado.email + "</td><td>" + passeioCadastrado.responsavel + "</td><td>" + passeioCadastrado.endereco + "</td><td>" + passeioCadastrado.cidade + "</td><td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='tour.exclruirPasseio(" + passeioCadastrado.id + ")'><span class='zmdi zmdi-delete'></span></button></td></tr>";
             $('.js-passeios-tour-individual tr:last').after(html);
+            tour.atualizarValorTotalDoTour();
             swal("Adicionado!", "", "success");
         }
     });
@@ -79,6 +82,7 @@ tour.exclruirPasseio = function (idPasseio) {
         },
         success: function (msg) {
             $('#linha-do-passeio-' + idPasseio).remove();
+            tour.atualizarValorTotalDoTour();
             swal("Excluido!", "", "success");
         }
     });
@@ -99,6 +103,7 @@ tour.inserirTransporte = function () {
             transporteCadastrado = $.parseJSON(transporteCadastrado);
             html = "<tr id='linha-do-transporte-" + transporteCadastrado.id + "'><td>" + transporteCadastrado.nome + "</td><td>" + transporteCadastrado.telefone + "</td><td>" + transporteCadastrado.email + "</td><td>" + transporteCadastrado.responsavel + "</td><td>" + transporteCadastrado.endereco + "</td><td>" + transporteCadastrado.cidade + "</td><td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='tour.exclruirPasseio(" + transporteCadastrado.id + ")'><span class='zmdi zmdi-delete'></span></button></td></tr>";
             $('.js-transportes-tour-individual tr:last').after(html);
+            tour.atualizarValorTotalDoTour();
             swal("Adicionado!", "", "success");
         }
     });
@@ -113,6 +118,7 @@ tour.exclruirTransporte = function (idTransporte) {
         },
         success: function (msg) {
             $('#linha-do-transporte-' + idTransporte).remove();
+            tour.atualizarValorTotalDoTour();
             swal("Excluido!", "", "success");
         }
     });
@@ -133,6 +139,7 @@ tour.inserirGuia = function () {
             guiaCadastrado = $.parseJSON(guiaCadastrado);
             html = "<tr id='linha-do-guia-" + guiaCadastrado.id + "'><td>" + guiaCadastrado.nome + "</td><td>" + guiaCadastrado.telefone + "</td><td>" + guiaCadastrado.email + "</td><td>" + guiaCadastrado.responsavel + "</td><td>" + guiaCadastrado.endereco + "</td><td>" + guiaCadastrado.cidade + "</td><td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='tour.exclruirPasseio(" + guiaCadastrado.id + ")'><span class='zmdi zmdi-delete'></span></button></td></tr>";
             $('.js-guias-tour-individual tr:last').after(html);
+            tour.atualizarValorTotalDoTour();
             swal("Adicionado!", "", "success");
         }
     });
@@ -147,10 +154,26 @@ tour.exclruirGuia = function (idGuia) {
         },
         success: function (msg) {
             $('#linha-do-guia-' + idGuia).remove();
+            tour.atualizarValorTotalDoTour();
             swal("Excluido!", "", "success");
         }
     });
 };
+
+tour.atualizarValorTotalDoTour = function(){
+        $.ajax({
+        url: URL + 'index.php/TourIndividual/total',
+        type: 'POST',
+        data: {
+            idCliente: urlParam('id')
+        },
+        success: function (total) {
+            console.log(total);
+            $('#valor-total-do-tour').html(total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1."));
+            $('#valor-total-do-tour').maskMoney();
+        }
+    });
+}
 
 //Função para pegar parametro da url
 urlParam = function(name){

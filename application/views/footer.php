@@ -84,15 +84,12 @@
 
 <script>
     $('.monetario').maskMoney({
-        prefix: 'R$',
+        prefix: 'R$ ',
         allowZero: true,
-        thousands: '.',
+        thousands: '',
         decimal: ',',
         affixesStay: true
     });
-
-    $('.decimal-duas-casas').inputmask("Regex", {regex: "[0-9]{0,10}[,]{1,1}[0-9]{0,3}"});
-
     perfilCliente.inserirUrl('<?= base_url(); ?>');
 </script>
 
