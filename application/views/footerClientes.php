@@ -62,6 +62,17 @@
 <!--Altera linguagem do calendário-->
 <script src='<?php echo base_url() . "assets/" ?>vendors/bower_components/fullcalendar/dist/lang/pt-br.js'></script>
 
+<!-- INPUTMASK -->
+<script src="<?php echo base_url() . "assets/" ?>js/js-inputmask/jquery.inputmask.js"></script>
+<script src="<?php echo base_url() . "assets/" ?>js/js-inputmask/inputmask.js"></script>
+<script src="<?php echo base_url() . "assets/" ?>js/js-inputmask/inputmask.date.extensions.js"></script>
+<script src="<?php echo base_url() . "assets/" ?>js/js-inputmask/inputmask.dependencyLib.js"></script>
+<script src="<?php echo base_url() . "assets/" ?>js/js-inputmask/inputmask.extensions.js"></script>
+<script src="<?php echo base_url() . "assets/" ?>js/js-inputmask/inputmask.numeric.extensions.js"></script>
+<script src="<?php echo base_url() . "assets/" ?>js/js-inputmask/inputmask.phone.extensions.js"></script>
+<script src="<?php echo base_url() . "assets/" ?>js/js-inputmask/inputmask.regex.extensions.js"></script>
+
+
 <script type="text/javascript">
     $(document).ready(function () {
         $("#busca").keyup(function () {

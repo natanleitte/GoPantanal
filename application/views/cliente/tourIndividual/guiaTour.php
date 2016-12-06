@@ -16,7 +16,7 @@
                         </select>
                         <span class="input-group-addon"><i class="zmdi zmdi-money-box"></i></span>
                         <div class="fg-line">
-                            <input type="text" id="valor-guia" name="valor" class="form-control" placeholder="Valor($)">
+                            <input type="text" id="valor-guia" name="valor" class="form-control monetario" placeholder="Valor($)">
                         </div>
                     </div>
                 </div>
