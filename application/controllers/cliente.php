@@ -43,7 +43,16 @@ class Cliente extends CI_Controller {
         $this->data['origem_contato'] = $this->input->post('origem_contato');
         $this->data['observacao'] = $this->input->post('observacao');
 
-        $this->ClienteModel->setCliente($this->data);
+        $id = $this->ClienteModel->setCliente($this->data);
+        $this->criarTourIndividual($id);
+    }
+
+    private function criarTourIndividual($id) {
+        $this->data = [];
+        $this->data['id_cliente'] = $id;
+        $this->data['data_tour_ini'] = "";
+        $this->data['data_tour_fim'] = "";
+        $this->TourModel->inserir($this->data);
     }
 
     public function profile() {
@@ -90,6 +99,7 @@ class Cliente extends CI_Controller {
     }
 
     private function configuracoesBasicasParaCarregarPagina() {
+        $idCliente = $this->input->get('id', TRUE);
         $this->data['tarefas'] = $this->TarefaModel->getTarefas();
         $this->data['emails'] = $this->EmailModel->obterTodos();
         $this->data['qtdDeEmailsNaoLidos'] = $this->EmailModel->obterQuantidadeDeEmailsNaoLidos();
@@ -97,13 +107,13 @@ class Cliente extends CI_Controller {
         $this->data['ultimosCincoEmails'] = $this->EmailModel->obterOsUltimosCincoEmails();
         $this->data['ultimasTarefas'] = $this->TarefaModel->cincoUltimasTarefas();
         $this->data['hoteis'] = $this->HotelModel->getHoteis();
-        $this->data['hoteisTour'] = $this->HotelTourModel->obterTodos();
+        $this->data['hoteisTour'] = $this->HotelTourModel->obterTodosDeUmCliente($idCliente);
         $this->data['guias'] = $this->GuiaModel->getGuias();
-        $this->data['guiasTour'] = $this->GuiaTourModel->obterTodos();
+        $this->data['guiasTour'] = $this->GuiaTourModel->obterTodosDeUmCliente($idCliente);
         $this->data['passeios'] = $this->PasseioModel->getPasseios();
-        $this->data['passeiosTour'] = $this->PasseioTourModel->obterTodos();
+        $this->data['passeiosTour'] = $this->PasseioTourModel->obterTodosDeUmCliente($idCliente);
         $this->data['transportes'] = $this->TransporteModel->getTransportes();
-        $this->data['transportesTour'] = $this->TransporteTourModel->obterTodos();
+        $this->data['transportesTour'] = $this->TransporteTourModel->obterTodosDeUmCliente($idCliente);
     }
 
 }

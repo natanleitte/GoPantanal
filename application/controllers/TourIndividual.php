@@ -9,7 +9,8 @@ class TourIndividual extends CI_Controller {
     }
 
     public function adicionarHotelTour() {
-        $this->data['id_tour'] = 2;
+        $idCliente = $this->input->post('idCliente');
+        $this->data['id_tour'] = $this->TourModel->obterIdPeloCliente($idCliente);
         $this->data['id_hotel'] = $this->input->post('idHotel');
         $this->data['data_ini'] = "";
         $this->data['data_fim'] = "";
@@ -25,7 +26,8 @@ class TourIndividual extends CI_Controller {
     }
 
     public function adicionaPasseioTour() {
-        $this->data['id_tour'] = 2;
+        $idCliente = $this->input->post('idCliente');
+        $this->data['id_tour'] = $this->TourModel->obterIdPeloCliente($idCliente);
         $this->data['id_passeio'] = $this->input->post('idPasseio');
         $this->data['data_ini'] = "";
         $this->data['data_fim'] = "";
@@ -41,7 +43,8 @@ class TourIndividual extends CI_Controller {
     }
 
     public function adicionaTransporteTour() {
-        $this->data['id_tour'] = 2;
+        $idCliente = $this->input->post('idCliente');
+        $this->data['id_tour'] = $this->TourModel->obterIdPeloCliente($idCliente);
         $this->data['id_transporte'] = $this->input->post('idTransporte');
         $this->data['data_ini'] = "";
         $this->data['data_fim'] = "";
@@ -57,7 +60,8 @@ class TourIndividual extends CI_Controller {
     }
 
     public function adicionaGuiaTour() {
-        $this->data['id_tour'] = 2;
+        $idCliente = $this->input->post('idCliente');
+        $this->data['id_tour'] = $this->TourModel->obterIdPeloCliente($idCliente);
         $this->data['id_guia'] = $this->input->post('idGuia');
         $this->data['data_ini'] = "";
         $this->data['data_fim'] = "";

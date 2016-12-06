@@ -11,7 +11,8 @@ tour.inserirHotel = function () {
         url: URL + 'index.php/TourIndividual/adicionarHotelTour',
         type: 'POST',
         data: {
-            idHotel: idHotel
+            idHotel: idHotel,
+            idCliente: urlParam('id')
         },
         success: function (hotelCadastrado) {
             hotelCadastrado = $.parseJSON(hotelCadastrado);
@@ -53,7 +54,8 @@ tour.inserirPasseio = function () {
         url: URL + 'index.php/TourIndividual/adicionaPasseioTour',
         type: 'POST',
         data: {
-            idPasseio: idPasseio
+            idPasseio: idPasseio,
+            idCliente: urlParam('id')
         },
         success: function (passeioCadastrado) {
             passeioCadastrado = $.parseJSON(passeioCadastrado);
@@ -84,7 +86,8 @@ tour.inserirTransporte = function () {
         url: URL + 'index.php/TourIndividual/adicionaTransporteTour',
         type: 'POST',
         data: {
-            idTransporte: idTransporte
+            idTransporte: idTransporte,
+            idCliente: urlParam('id')
         },
         success: function (transporteCadastrado) {
             transporteCadastrado = $.parseJSON(transporteCadastrado);
@@ -115,7 +118,8 @@ tour.inserirGuia = function () {
         url: URL + 'index.php/TourIndividual/adicionaGuiaTour',
         type: 'POST',
         data: {
-            idGuia: idGuia
+            idGuia: idGuia,
+            idCliente: urlParam('id')
         },
         success: function (guiaCadastrado) {
             guiaCadastrado = $.parseJSON(guiaCadastrado);
@@ -138,4 +142,15 @@ tour.exclruirGuia = function (idGuia) {
             swal("Excluido!", "", "success");
         }
     });
+};
+
+//Função para pegar parametro da url
+urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results === null){
+       return null;
+    }
+    else{
+       return results[1] || 0;
+    }
 };

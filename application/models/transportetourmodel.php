@@ -30,6 +30,23 @@ class TransporteTourModel extends CI_Model {
         return $this->db->get();
     }
 
+    public function obterTodosDeUmCliente($idCliente) {
+        $this->db->select(
+                $this->nomeDaTabela . ".id, " .
+                "transporte.nome, " .
+                "transporte.telefone, " .
+                "transporte.email, " .
+                "transporte.responsavel, " .
+                "transporte.endereco, " .
+                "transporte.cidade"
+        );
+        $this->db->from($this->nomeDaTabela);
+        $this->db->join("transporte", "transporte.id = " . $this->nomeDaTabela . ".id_transporte");
+        $this->db->join("tour", "tour.id = " . $this->nomeDaTabela . ".id_tour");
+        $this->db->where("tour.id_cliente", $idCliente);
+        return $this->db->get();
+    }
+
     public function obterPor($id) {
         $this->db->select(
                 $this->nomeDaTabela . ".id, " .

@@ -30,6 +30,23 @@ class PasseioTourModel extends CI_Model {
         return $this->db->get();
     }
 
+    public function obterTodosDeUmCliente($idCliente) {
+        $this->db->select(
+                $this->nomeDaTabela . ".id, " .
+                "passeio.nome, " .
+                "passeio.telefone, " .
+                "passeio.email, " .
+                "passeio.responsavel, " .
+                "passeio.endereco, " .
+                "passeio.cidade"
+        );
+        $this->db->from($this->nomeDaTabela);
+        $this->db->join("passeio", "passeio.id = " . $this->nomeDaTabela . ".id_passeio");
+        $this->db->join("tour", "tour.id = " . $this->nomeDaTabela . ".id_tour");
+        $this->db->where("tour.id_cliente", $idCliente);
+        return $this->db->get();
+    }
+
     public function obterPor($id) {
         $this->db->select(
                 $this->nomeDaTabela . ".id, " .

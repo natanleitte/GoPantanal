@@ -31,6 +31,24 @@ class GuiaTourModel extends CI_Model {
         return $this->db->get();
     }
 
+    public function obterTodosDeUmCliente($idCliente) {
+        $this->db->select(
+                $this->nomeDaTabela . ".id, " .
+                "guia.nome, " .
+                "guia.idioma, " .
+                "guia.telefone, " .
+                "guia.email, " .
+                "guia.responsavel, " .
+                "guia.endereco, " .
+                "guia.cidade"
+        );
+        $this->db->from($this->nomeDaTabela);
+        $this->db->join("guia", "guia.id = " . $this->nomeDaTabela . ".id_guia");
+        $this->db->join("tour", "tour.id = " . $this->nomeDaTabela . ".id_tour");
+        $this->db->where("tour.id_cliente", $idCliente);
+        return $this->db->get();
+    }
+
     public function obterPor($id) {
         $this->db->select(
                 $this->nomeDaTabela . ".id, " .

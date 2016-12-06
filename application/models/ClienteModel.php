@@ -10,6 +10,7 @@
        public function setCliente($data) {
            $this->load->database();
            $this->db->insert("cliente", $data);
+           return $this->db->insert_id();
        }
 
        public function getClientes() {
