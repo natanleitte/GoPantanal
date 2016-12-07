@@ -37,6 +37,7 @@
             <table id="data-table-basic" class="table table-striped js-passeios-tour-individual">
                 <thead>
                     <tr>
+                        <th data-column-id="sender">Preço</th>
                         <th data-column-id="id" data-type="numeric">Nome</th>
                         <th data-column-id="sender">Telefone</th>
                         <th data-column-id="received" data-order="desc">Email</th>
@@ -50,6 +51,7 @@
                     <?php
                     foreach ($passeiosTour->result() as $passeio) {
                         echo "<tr id='linha-do-passeio-" . $passeio->id . "'>";
+                        echo "<td>" . $passeio->preco . "</td>";
                         echo "<td>" . $passeio->nome . "</td>";
                         echo "<td>" . $passeio->telefone . "</td>";
                         echo "<td>" . $passeio->email . "</td>";

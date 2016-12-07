@@ -24,6 +24,7 @@ class GuiaTourModel extends CI_Model {
                 "guia.email, " .
                 "guia.responsavel, " .
                 "guia.endereco, " .
+                $this->nomeDaTabela . ".preco, " .
                 "guia.cidade"
         );
         $this->db->from($this->nomeDaTabela);
@@ -40,6 +41,7 @@ class GuiaTourModel extends CI_Model {
                 "guia.email, " .
                 "guia.responsavel, " .
                 "guia.endereco, " .
+                $this->nomeDaTabela . ".preco, " .
                 "guia.cidade"
         );
         $this->db->from($this->nomeDaTabela);
@@ -58,6 +60,7 @@ class GuiaTourModel extends CI_Model {
                 "guia.email, " .
                 "guia.responsavel, " .
                 "guia.endereco, " .
+                $this->nomeDaTabela . ".preco, " .
                 "guia.cidade"
         );
         $this->db->from($this->nomeDaTabela);

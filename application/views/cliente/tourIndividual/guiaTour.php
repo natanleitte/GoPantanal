@@ -35,6 +35,7 @@
         <table id="data-table-basic" class="table table-striped js-guias-tour-individual">
             <thead>
                 <tr>
+                    <th data-column-id="sender">Preço</th>
                     <th data-column-id="id" data-type="numeric">Nome</th>
                     <th data-column-id="sender">Idioma</th>
                     <th data-column-id="sender">Telefone</th>
@@ -49,6 +50,7 @@
                 <?php
                 foreach ($guiasTour->result() as $guia) {
                     echo "<tr id='linha-do-guia-" . $guia->id . "'>";
+                    echo "<td>" . $guia->preco . "</td>";
                     echo "<td>" . $guia->nome . "</td>";
                     echo "<td>" . $guia->idioma . "</td>";
                     echo "<td>" . $guia->telefone . "</td>";

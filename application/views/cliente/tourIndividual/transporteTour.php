@@ -35,6 +35,7 @@
         <table id="data-table-basic" class="table table-striped js-transportes-tour-individual">
             <thead>
                 <tr>
+                    <th data-column-id="sender">Preço</th>
                     <th data-column-id="id" data-type="numeric">Nome</th>
                     <th data-column-id="sender">Telefone</th>
                     <th data-column-id="received" data-order="desc">Email</th>
@@ -48,6 +49,7 @@
                 <?php
                 foreach ($transportesTour->result() as $transporte) {
                     echo "<tr id='linha-do-transporte-" . $transporte->id . "'>";
+                    echo "<td>" . $transporte->preco . "</td>";
                     echo "<td>" . $transporte->nome . "</td>";
                     echo "<td>" . $transporte->telefone . "</td>";
                     echo "<td>" . $transporte->email . "</td>";

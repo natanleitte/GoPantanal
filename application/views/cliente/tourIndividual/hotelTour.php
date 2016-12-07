@@ -36,6 +36,7 @@
             <table id="data-table-basic" class="table table-striped js-hoteis-tour-individual">
                 <thead>
                     <tr>
+                        <th >Preço</th>
                         <th data-column-id="id" data-type="numeric">Nome</th>
                         <th data-column-id="sender">Telefone</th>
                         <th data-column-id="received" data-order="desc">Email</th>
@@ -54,6 +55,7 @@
                     foreach ($hoteisTour->result() as $hotel) {
                         echo "<tr id='linha-do-hotel-" . $hotel->id . "'>";
                         echo "<td>" . $hotel->nome . "</td>";
+                        echo "<td>" . $hotel->preco . "</td>";
                         echo "<td>" . $hotel->telefone . "</td>";
                         echo "<td>" . $hotel->email . "</td>";
                         echo "<td>" . $hotel->responsavel . "</td>";

@@ -24,6 +24,7 @@ class HotelTourModel extends CI_Model {
                 "hotel.responsavel, " .
                 "hotel.endereco, " .
                 "hotel.cidade, " .
+                $this->nomeDaTabela . ".preco, " .
                 "hotel.conta, " .
                 "hotel.agencia, " .
                 "hotel.banco, " .
@@ -43,6 +44,7 @@ class HotelTourModel extends CI_Model {
                 "hotel.responsavel, " .
                 "hotel.endereco, " .
                 "hotel.cidade, " .
+                $this->nomeDaTabela . ".preco, " .
                 "hotel.conta, " .
                 "hotel.agencia, " .
                 "hotel.banco, " .
@@ -65,6 +67,7 @@ class HotelTourModel extends CI_Model {
                 "hotel.responsavel, " .
                 "hotel.endereco, " .
                 "hotel.cidade, " .
+                $this->nomeDaTabela . ".preco, " .
                 "hotel.conta, " .
                 "hotel.agencia, " .
                 "hotel.banco, " .

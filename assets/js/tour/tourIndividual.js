@@ -19,6 +19,7 @@ tour.inserirHotel = function () {
         success: function (hotelCadastrado) {
             hotelCadastrado = $.parseJSON(hotelCadastrado);
             html = "<tr id='linha-do-hotel-" + hotelCadastrado.id + "'>" + 
+                    "<td>" + hotelCadastrado.preco + "</td>" + 
                     "<td>" + hotelCadastrado.nome + "</td>" + 
                     "<td>" + hotelCadastrado.telefone + "</td>" +
                     "<td>" + hotelCadastrado.email + "</td>" +
@@ -65,7 +66,16 @@ tour.inserirPasseio = function () {
         },
         success: function (passeioCadastrado) {
             passeioCadastrado = $.parseJSON(passeioCadastrado);
-            html = "<tr id='linha-do-passeio-" + passeioCadastrado.id + "'><td>" + passeioCadastrado.nome + "</td><td>" + passeioCadastrado.telefone + "</td><td>" + passeioCadastrado.email + "</td><td>" + passeioCadastrado.responsavel + "</td><td>" + passeioCadastrado.endereco + "</td><td>" + passeioCadastrado.cidade + "</td><td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='tour.exclruirPasseio(" + passeioCadastrado.id + ")'><span class='zmdi zmdi-delete'></span></button></td></tr>";
+            html = "<tr id='linha-do-passeio-" + passeioCadastrado.id + "'>" +
+                    "<td>" + passeioCadastrado.preco + "</td>" +
+                    "<td>" + passeioCadastrado.nome + "</td>" +
+                    "<td>" + passeioCadastrado.telefone + "</td>" +
+                    "<td>" + passeioCadastrado.email + "</td>" +
+                    "<td>" + passeioCadastrado.responsavel + "</td>" +
+                    "<td>" + passeioCadastrado.endereco + "</td>" +
+                    "<td>" + passeioCadastrado.cidade + "</td>" +
+                    "<td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='tour.exclruirPasseio(" + passeioCadastrado.id + ")'><span class='zmdi zmdi-delete'></span></button></td>" +
+                    "</tr>";
             $('.js-passeios-tour-individual tr:last').after(html);
             tour.atualizarValorTotalDoTour();
             swal("Adicionado!", "", "success");
@@ -101,7 +111,16 @@ tour.inserirTransporte = function () {
         },
         success: function (transporteCadastrado) {
             transporteCadastrado = $.parseJSON(transporteCadastrado);
-            html = "<tr id='linha-do-transporte-" + transporteCadastrado.id + "'><td>" + transporteCadastrado.nome + "</td><td>" + transporteCadastrado.telefone + "</td><td>" + transporteCadastrado.email + "</td><td>" + transporteCadastrado.responsavel + "</td><td>" + transporteCadastrado.endereco + "</td><td>" + transporteCadastrado.cidade + "</td><td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='tour.exclruirPasseio(" + transporteCadastrado.id + ")'><span class='zmdi zmdi-delete'></span></button></td></tr>";
+            html = "<tr id='linha-do-transporte-" + transporteCadastrado.id + "'>" +
+                    "<td>" + transporteCadastrado.preco + "</td>" +
+                    "<td>" + transporteCadastrado.nome + "</td>" +
+                    "<td>" + transporteCadastrado.telefone + "</td>" +
+                    "<td>" + transporteCadastrado.email + "</td>" +
+                    "<td>" + transporteCadastrado.responsavel + "</td>" +
+                    "<td>" + transporteCadastrado.endereco + "</td>" +
+                    "<td>" + transporteCadastrado.cidade + "</td>" +
+                    "<td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='tour.exclruirPasseio(" + transporteCadastrado.id + ")'><span class='zmdi zmdi-delete'></span></button></td>" +
+                    "</tr>";
             $('.js-transportes-tour-individual tr:last').after(html);
             tour.atualizarValorTotalDoTour();
             swal("Adicionado!", "", "success");
@@ -137,7 +156,16 @@ tour.inserirGuia = function () {
         },
         success: function (guiaCadastrado) {
             guiaCadastrado = $.parseJSON(guiaCadastrado);
-            html = "<tr id='linha-do-guia-" + guiaCadastrado.id + "'><td>" + guiaCadastrado.nome + "</td><td>" + guiaCadastrado.telefone + "</td><td>" + guiaCadastrado.email + "</td><td>" + guiaCadastrado.responsavel + "</td><td>" + guiaCadastrado.endereco + "</td><td>" + guiaCadastrado.cidade + "</td><td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='tour.exclruirPasseio(" + guiaCadastrado.id + ")'><span class='zmdi zmdi-delete'></span></button></td></tr>";
+            html = "<tr id='linha-do-guia-" + guiaCadastrado.id + "'>" +
+                    "<td>" + guiaCadastrado.preco + "</td>" +
+                    "<td>" + guiaCadastrado.nome + "</td>" +
+                    "<td>" + guiaCadastrado.telefone + "</td>" +
+                    "<td>" + guiaCadastrado.email + "</td>" +
+                    "<td>" + guiaCadastrado.responsavel + "</td>" +
+                    "<td>" + guiaCadastrado.endereco + "</td>" +
+                    "<td>" + guiaCadastrado.cidade + "</td>" +
+                    "<td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='tour.exclruirPasseio(" + guiaCadastrado.id + ")'><span class='zmdi zmdi-delete'></span></button></td>" +
+                    "</tr>";
             $('.js-guias-tour-individual tr:last').after(html);
             tour.atualizarValorTotalDoTour();
             swal("Adicionado!", "", "success");

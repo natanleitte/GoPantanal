@@ -23,6 +23,7 @@ class TransporteTourModel extends CI_Model {
                 "transporte.email, " .
                 "transporte.responsavel, " .
                 "transporte.endereco, " .
+                $this->nomeDaTabela . ".preco, " .
                 "transporte.cidade"
         );
         $this->db->from($this->nomeDaTabela);
@@ -38,6 +39,7 @@ class TransporteTourModel extends CI_Model {
                 "transporte.email, " .
                 "transporte.responsavel, " .
                 "transporte.endereco, " .
+                $this->nomeDaTabela . ".preco, " .
                 "transporte.cidade"
         );
         $this->db->from($this->nomeDaTabela);
@@ -55,6 +57,7 @@ class TransporteTourModel extends CI_Model {
                 "transporte.email, " .
                 "transporte.responsavel, " .
                 "transporte.endereco, " .
+                $this->nomeDaTabela . ".preco, " .
                 "transporte.cidade"
         );
         $this->db->from($this->nomeDaTabela);
