@@ -32,7 +32,7 @@
     </div>
 
     <div class="table-responsive">
-        <table id="data-table-basic" class="table table-striped js-guias-tour-individual">
+        <table id="data-table-basic" class="table table-striped js-guias-tour-individual" style="font-size: small">
             <thead>
                 <tr>
                     <th data-column-id="sender">Preço</th>
@@ -50,7 +50,7 @@
                 <?php
                 foreach ($guiasTour->result() as $guia) {
                     echo "<tr id='linha-do-guia-" . $guia->id . "'>";
-                    echo "<td>" . $guia->preco . "</td>";
+                    echo "<td>" . money_format('%.2n', $guia->preco) . "</td>";
                     echo "<td>" . $guia->nome . "</td>";
                     echo "<td>" . $guia->idioma . "</td>";
                     echo "<td>" . $guia->telefone . "</td>";

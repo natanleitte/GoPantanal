@@ -77,6 +77,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url() . "assets/" ?>js/jquery.maskMoney.min.js"></script>
 
+<script src="<?php echo base_url() . "assets/" ?>js/jquery.priceformat.min.js"></script>
 
 <!--Altera linguagem do calendário-->
 <script src='<?php echo base_url() . "assets/" ?>vendors/bower_components/fullcalendar/dist/lang/pt-br.js'></script>
@@ -86,7 +87,7 @@
     $('.monetario').maskMoney({
         prefix: 'R$ ',
         allowZero: true,
-        thousands: '',
+        thousands: '.',
         decimal: ',',
         affixesStay: true
     });

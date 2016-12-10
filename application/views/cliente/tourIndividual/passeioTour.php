@@ -34,7 +34,7 @@
 
     <div id="lista-de-hoteis-cadastrados-no-tour">
         <div class="table-responsive">
-            <table id="data-table-basic" class="table table-striped js-passeios-tour-individual">
+            <table id="data-table-basic" class="table table-striped js-passeios-tour-individual" style="font-size: small">
                 <thead>
                     <tr>
                         <th data-column-id="sender">Preço</th>
@@ -51,7 +51,7 @@
                     <?php
                     foreach ($passeiosTour->result() as $passeio) {
                         echo "<tr id='linha-do-passeio-" . $passeio->id . "'>";
-                        echo "<td>" . $passeio->preco . "</td>";
+                        echo "<td>" . money_format('%.2n', $passeio->preco) . "</td>";
                         echo "<td>" . $passeio->nome . "</td>";
                         echo "<td>" . $passeio->telefone . "</td>";
                         echo "<td>" . $passeio->email . "</td>";

@@ -32,7 +32,7 @@
     </div>
 
     <div class="table-responsive">
-        <table id="data-table-basic" class="table table-striped js-transportes-tour-individual">
+        <table id="data-table-basic" class="table table-striped js-transportes-tour-individual" style="font-size: small">
             <thead>
                 <tr>
                     <th data-column-id="sender">Preço</th>
@@ -49,7 +49,7 @@
                 <?php
                 foreach ($transportesTour->result() as $transporte) {
                     echo "<tr id='linha-do-transporte-" . $transporte->id . "'>";
-                    echo "<td>" . $transporte->preco . "</td>";
+                    echo "<td>" . money_format('%.2n', $transporte->preco) . "</td>";
                     echo "<td>" . $transporte->nome . "</td>";
                     echo "<td>" . $transporte->telefone . "</td>";
                     echo "<td>" . $transporte->email . "</td>";

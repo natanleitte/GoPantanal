@@ -7,7 +7,7 @@ tour.inserirUrl = function (url) {
 
 tour.inserirHotel = function () {
     idHotel = $("#hoteis option:selected").val();
-    valor = $("#valor-hotel").val().replace('R$', '');
+    valor = obterNumeroFormatado("valor-hotel");
     $.ajax({
         url: URL + 'index.php/TourIndividual/adicionarHotelTour',
         type: 'POST',
@@ -18,9 +18,9 @@ tour.inserirHotel = function () {
         },
         success: function (hotelCadastrado) {
             hotelCadastrado = $.parseJSON(hotelCadastrado);
-            html = "<tr id='linha-do-hotel-" + hotelCadastrado.id + "'>" + 
-                    "<td>" + hotelCadastrado.preco + "</td>" + 
-                    "<td>" + hotelCadastrado.nome + "</td>" + 
+            html = "<tr id='linha-do-hotel-" + hotelCadastrado.id + "'>" +
+                    "<td id='valor-do-hotel'>" + hotelCadastrado.preco + "</td>" +
+                    "<td>" + hotelCadastrado.nome + "</td>" +
                     "<td>" + hotelCadastrado.telefone + "</td>" +
                     "<td>" + hotelCadastrado.email + "</td>" +
                     "<td>" + hotelCadastrado.responsavel + "</td>" +
@@ -33,6 +33,7 @@ tour.inserirHotel = function () {
                     "<td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='tour.exclruirHotel(" + hotelCadastrado.id + ")'><span class='zmdi zmdi-delete'></span></button></td></tr>";
             $('.js-hoteis-tour-individual tr:last').after(html);
             tour.atualizarValorTotalDoTour();
+            formatarValorAposIncluirNaTabela('valor-do-hotel');
             swal("Adicionado!", "", "success");
         }
     });
@@ -55,7 +56,7 @@ tour.exclruirHotel = function (idHotel) {
 
 tour.inserirPasseio = function () {
     idPasseio = $("#passeios option:selected").val();
-    valor = $("#valor-passeio").val();
+    valor = obterNumeroFormatado("valor-passeio");
     $.ajax({
         url: URL + 'index.php/TourIndividual/adicionaPasseioTour',
         type: 'POST',
@@ -67,7 +68,7 @@ tour.inserirPasseio = function () {
         success: function (passeioCadastrado) {
             passeioCadastrado = $.parseJSON(passeioCadastrado);
             html = "<tr id='linha-do-passeio-" + passeioCadastrado.id + "'>" +
-                    "<td>" + passeioCadastrado.preco + "</td>" +
+                    "<td id='valor-do-passeio'>" + passeioCadastrado.preco + "</td>" +
                     "<td>" + passeioCadastrado.nome + "</td>" +
                     "<td>" + passeioCadastrado.telefone + "</td>" +
                     "<td>" + passeioCadastrado.email + "</td>" +
@@ -78,6 +79,7 @@ tour.inserirPasseio = function () {
                     "</tr>";
             $('.js-passeios-tour-individual tr:last').after(html);
             tour.atualizarValorTotalDoTour();
+            formatarValorAposIncluirNaTabela('valor-do-passeio');
             swal("Adicionado!", "", "success");
         }
     });
@@ -100,7 +102,7 @@ tour.exclruirPasseio = function (idPasseio) {
 
 tour.inserirTransporte = function () {
     idTransporte = $("#transportes option:selected").val();
-    valor = $("#valor-transporte").val();
+    valor = obterNumeroFormatado("valor-transporte");
     $.ajax({
         url: URL + 'index.php/TourIndividual/adicionaTransporteTour',
         type: 'POST',
@@ -112,7 +114,7 @@ tour.inserirTransporte = function () {
         success: function (transporteCadastrado) {
             transporteCadastrado = $.parseJSON(transporteCadastrado);
             html = "<tr id='linha-do-transporte-" + transporteCadastrado.id + "'>" +
-                    "<td>" + transporteCadastrado.preco + "</td>" +
+                    "<td id='valor-do-transporte'>" + transporteCadastrado.preco + "</td>" +
                     "<td>" + transporteCadastrado.nome + "</td>" +
                     "<td>" + transporteCadastrado.telefone + "</td>" +
                     "<td>" + transporteCadastrado.email + "</td>" +
@@ -123,6 +125,7 @@ tour.inserirTransporte = function () {
                     "</tr>";
             $('.js-transportes-tour-individual tr:last').after(html);
             tour.atualizarValorTotalDoTour();
+            formatarValorAposIncluirNaTabela('valor-do-transporte');
             swal("Adicionado!", "", "success");
         }
     });
@@ -145,7 +148,7 @@ tour.exclruirTransporte = function (idTransporte) {
 
 tour.inserirGuia = function () {
     idGuia = $("#guias option:selected").val();
-    valor = $("#valor-guia").val();
+    valor = obterNumeroFormatado("valor-guia");
     $.ajax({
         url: URL + 'index.php/TourIndividual/adicionaGuiaTour',
         type: 'POST',
@@ -157,7 +160,7 @@ tour.inserirGuia = function () {
         success: function (guiaCadastrado) {
             guiaCadastrado = $.parseJSON(guiaCadastrado);
             html = "<tr id='linha-do-guia-" + guiaCadastrado.id + "'>" +
-                    "<td>" + guiaCadastrado.preco + "</td>" +
+                    "<td id='valor-do-guia'>" + guiaCadastrado.preco + "</td>" +
                     "<td>" + guiaCadastrado.nome + "</td>" +
                     "<td>" + guiaCadastrado.telefone + "</td>" +
                     "<td>" + guiaCadastrado.email + "</td>" +
@@ -168,6 +171,7 @@ tour.inserirGuia = function () {
                     "</tr>";
             $('.js-guias-tour-individual tr:last').after(html);
             tour.atualizarValorTotalDoTour();
+            formatarValorAposIncluirNaTabela('valor-do-hotel');
             swal("Adicionado!", "", "success");
         }
     });
@@ -188,8 +192,8 @@ tour.exclruirGuia = function (idGuia) {
     });
 };
 
-tour.atualizarValorTotalDoTour = function(){
-        $.ajax({
+tour.atualizarValorTotalDoTour = function () {
+    $.ajax({
         url: URL + 'index.php/TourIndividual/total',
         type: 'POST',
         data: {
@@ -197,19 +201,32 @@ tour.atualizarValorTotalDoTour = function(){
         },
         success: function (total) {
             console.log(total);
-            $('#valor-total-do-tour').html(total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1."));
-            $('#valor-total-do-tour').maskMoney();
+            $('#valor-total-do-tour').html(total.toString().replace(/\"/g, '').replace('R$', ''));
         }
     });
-}
+};
 
 //Função para pegar parametro da url
-urlParam = function(name){
+urlParam = function (name) {
     var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-    if (results === null){
-       return null;
-    }
-    else{
-       return results[1] || 0;
+    if (results === null) {
+        return null;
+    } else {
+        return results[1] || 0;
     }
 };
+
+obterNumeroFormatado = function (objeto) {
+    var valor = $("#" + objeto).val().replace('R$', '').replace(/\./g, '').replace(',', '.');
+    console.log(valor);
+    return valor;
+};
+
+formatarValorAposIncluirNaTabela = function (objeto) {
+    $('#' + objeto).priceFormat({
+        prefix: 'R$ ',
+        centsSeparator: ',',
+        thousandsSeparator: '.',
+        clearPrefix: true
+    });
+}
