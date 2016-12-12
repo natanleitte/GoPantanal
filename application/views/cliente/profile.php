@@ -12,6 +12,7 @@ foreach ($cliente->result() as $row) {
                     <li class="waves-effect js-tab-menu"><a id="botao-agendar-comrpomissos" href="#">Agendar Compromissos</a></li>
                     <li class="waves-effect js-tab-menu"><a id="botao-compromisso" href="#">Compromissos Agendados</a></li>
                     <li class="waves-effect js-tab-menu"><a id="botao-orcamento" href="#">Orçamentos</a></li>
+                    <li class="waves-effect js-tab-menu"><a id="botao-documentos" href="#">Documentos</a></li>
                     <li class="waves-effect js-tab-menu"><a id="botao-tour-individual" href="#" onclick="tour.atualizarValorTotalDoTour()">Tour Individual</a></li>
                 </ul>
 
@@ -26,7 +27,11 @@ foreach ($cliente->result() as $row) {
                 <section id="orcamento" class="pmb-block js-container-tab">
                     <?php include "orcamento.php"; ?>
                 </section>
-
+                
+                <section id="documentos" class="pmb-block js-container-tab">
+                    <?php include "documentos.php"; ?>
+                </section>
+                
                 <section id="agendar-compromissos" class="pmb-block js-container-tab">
                     <?php include "compromissosPreDefinidos.php"; ?>
                 </section>

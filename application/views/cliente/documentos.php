@@ -1,7 +1,7 @@
 <div class="select select-box">
-    <label for="seletetorDeOrcamento" class="c-blue">Selecione o orçamento que deseja: </label>
-    <select id="seletetorDeOrcamento" class="form-control">
-        <option value="budgetKomboUpgrade5_4">Budget Kombo Upgrade 5-4</option>
+    <label for="seletorDeDocumentos" class="c-blue">Selecione o orçamento que deseja: </label>
+    <select id="seletetorDeDocumentos" class="form-control">
+        <option value="fatura">Fatura</option>
         <option value="budgetKombo5_4D">Budget Kombo 5-4 (D)</option>
         <option value="budgetPantanal3_2D">budget Pantanal 3-2 (D)</option>
         <option value="budgetPantanal3_2P">Budget Pantanal 3-2 (P)</option>
@@ -17,7 +17,7 @@
 <script>
     $(document).ready(function () {
         $(".card-orcamento").hide();
-        var orcamento = $("#seletetorDeOrcamento").val();
+        var orcamento = $("#seletorDeDocumentos").val();
         $("." + orcamento).show();
         $("select").change(function () {
             var orcamentoSelecionado = $(this).val();
@@ -29,8 +29,8 @@
 
 <br/>
 
-<section id="orcamentos-modelos">
-    <?php include 'orcamentos/budgetKomboUpgrade5_4.php'; ?>
+<section id="documentos-modelos">
+    <?php include 'documentos/fatura.php'; ?>
     <?php include 'orcamentos/budgetKombo5_4D.php'; ?>
     <?php include 'orcamentos/budgetPantanal3_2D.php'; ?>
     <?php include 'orcamentos/budgetPantanal3_2P.php'; ?>

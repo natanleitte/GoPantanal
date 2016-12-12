@@ -13,6 +13,7 @@ perfilCliente.controladorTabs = function () {
     casoHajaUmCliqueExibeATabAtiva($('#botao-compromisso'), $('#compromisso'));
     casoHajaUmCliqueExibeATabAtiva($('#botao-perfil'), $('#perfil'));
     casoHajaUmCliqueExibeATabAtiva($('#botao-orcamento'), $('#orcamento'));
+    casoHajaUmCliqueExibeATabAtiva($('#botao-documentos'), $('#documentos'));
     casoHajaUmCliqueExibeATabAtiva($('#botao-tour-individual'), $('#tour-individual'));
     
     
