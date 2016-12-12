@@ -33,29 +33,30 @@
 
     <div id="lista-de-hoteis-cadastrados-no-tour">
         <div class="table-responsive">
-            <table id="data-table-basic" class="table table-striped js-hoteis-tour-individual">
+            <table id="tabela-de-hoteis" class="table table-striped js-hoteis-tour-individual" style="font-size: small">
                 <thead>
                     <tr>
-                        <th >Preço</th>
+                        <th data-column-id="preco">Preço</th>
                         <th data-column-id="id" data-type="numeric">Nome</th>
-                        <th data-column-id="sender">Telefone</th>
-                        <th data-column-id="received" data-order="desc">Email</th>
-                        <th data-column-id="sender">Responsável</th>
-                        <th data-column-id="sender">Endereço</th>
-                        <th data-column-id="sender">Cidade</th>
-                        <th data-column-id="sender">Conta</th>
-                        <th data-column-id="sender">Agência</th>
-                        <th data-column-id="sender">Banco</th>
-                        <th data-column-id="sender">Titular</th>
+                        <th data-column-id="telefone">Telefone</th>
+                        <th data-column-id="email" data-order="desc">Email</th>
+                        <th data-column-id="responsavel">Responsável</th>
+                        <th data-column-id="endereco">Endereço</th>
+                        <th data-column-id="cidade">Cidade</th>
+                        <th data-column-id="conta">Conta</th>
+                        <th data-column-id="agencia">Agência</th>
+                        <th data-column-id="banco">Banco</th>
+                        <th data-column-id="titular">Titular</th>
 
                     </tr>
                 </thead>
                 <tbody>
                     <?php
+                    setlocale(LC_MONETARY, 'pt_BR.UTF-8');
                     foreach ($hoteisTour->result() as $hotel) {
                         echo "<tr id='linha-do-hotel-" . $hotel->id . "'>";
+                        echo "<td>" . money_format('%.2n', $hotel->preco) . "</td>";
                         echo "<td>" . $hotel->nome . "</td>";
-                        echo "<td>" . $hotel->preco . "</td>";
                         echo "<td>" . $hotel->telefone . "</td>";
                         echo "<td>" . $hotel->email . "</td>";
                         echo "<td>" . $hotel->responsavel . "</td>";
