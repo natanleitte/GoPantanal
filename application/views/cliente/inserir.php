@@ -128,6 +128,5 @@
                 $("#nome, #email, #telefone, #nacionalidade, #passaporte, #observacao, #data_contato").val('');
             }
         });
-        return false;
     }
 </script>

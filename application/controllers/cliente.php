@@ -20,7 +20,7 @@ class Cliente extends CI_Controller {
 
         $this->load->view('header', $this->data);
         $this->load->view('cliente/index', $this->data);
-        $this->load->view('footerClientes', $this->data);
+        $this->load->view('footer', $this->data);
     }
 
     public function inserir() {
