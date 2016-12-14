@@ -189,7 +189,7 @@ foreach ($ultimasTarefas->result() as $tarefa) {
                     <a href="<?php echo base_url() . 'index.php/index'; ?>"><i class="zmdi zmdi-home"></i> Home</a>
                 </li>
                 <li class="sub-menu">
-                    <a href="index.html"><i class="zmdi zmdi-accounts"></i> Clientes</a>
+                    <a href="#"><i class="zmdi zmdi-accounts"></i> Clientes</a>
                     <ul>
                         <li><a href="<?php echo base_url() . "index.php/" ?>cliente">Ver Todos</a></li>
                         <li><a href="<?php echo base_url() . "index.php/" ?>cliente/inserir">Inserir</a></li>

@@ -5,7 +5,7 @@
             <form>
                 <div class='input-group date' id='datepicker-fim'>
                     <span class="input-group-addon">
-                        <input id="input-data-fim" type='text' class="form-control input-group-addon m-0 f-500" placeholder="Inicio do Tour" />
+                        <input id="input-data-fim" type='text' class="form-control input-group-addon m-0 f-500 formatar-data" placeholder="Inicio do Tour" />
                     </span>
                 </div>
             </form>
@@ -15,7 +15,7 @@
             <form>
                 <div class='input-group'>
                     <span class="input-group-addon">
-                        <input id="valor" type='text' class="form-control input-group-addon m-0 f-500" placeholder="Valor ($)" />
+                        <input id="valor" type='text' class="form-control input-group-addon m-0 f-500 monetario" placeholder="Valor ($)" />
                     </span>
                 </div>
             </form>
@@ -25,7 +25,7 @@
             <form>
                 <div class='input-group'>
                     <span class="input-group-addon">
-                        <input id="valor" type='text' class="form-control input-group-addon m-0 f-500" placeholder="Valor ($)" />
+                        <input id="valor" type='text' class="form-control input-group-addon m-0 f-500 monetario" placeholder="Valor ($)" />
                     </span>
                 </div>
             </form>

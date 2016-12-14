@@ -8,15 +8,15 @@ perfilCliente.inserirUrl = function (url) {
 perfilCliente.controladorTabs = function () {
     $('.js-container-tab').hide();
     $('.active').show();
-    
+
     casoHajaUmCliqueExibeATabAtiva($('#botao-agendar-comrpomissos'), $('#agendar-compromissos'));
     casoHajaUmCliqueExibeATabAtiva($('#botao-compromisso'), $('#compromisso'));
     casoHajaUmCliqueExibeATabAtiva($('#botao-perfil'), $('#perfil'));
     casoHajaUmCliqueExibeATabAtiva($('#botao-orcamento'), $('#orcamento'));
     casoHajaUmCliqueExibeATabAtiva($('#botao-documentos'), $('#documentos'));
     casoHajaUmCliqueExibeATabAtiva($('#botao-tour-individual'), $('#tour-individual'));
-    
-    
+
+
     function casoHajaUmCliqueExibeATabAtiva(nomeDoBotao, conteudoDaTab) {
         nomeDoBotao.unbind().on('click', function () {
             esconderTabsInativas();
@@ -64,4 +64,20 @@ perfilCliente.prepararParaGerarPDF = function () {
     });
     $('#html').val($("." + orcamentoSelecionado).html());
     $('#nome').val($("#seletetorDeOrcamento").val());
+};
+
+perfilCliente.buscar = function(){
+    $("#busca").keyup(function () {
+        $.ajax({
+            url: '<?= base_url(); ?>' + 'index.php/cliente/buscaCliente',
+            type: 'POST',
+            datatype: 'json',
+            data: {query: $("#busca").val()},
+            success: function (data) {
+                for ($i = 0; $i < data.length; $i++) {
+                    console.log(data[$i]['nome']);
+                }
+            }
+        });
+    });
 };

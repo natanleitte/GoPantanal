@@ -68,15 +68,13 @@
 
 <script src="<?php echo base_url() . "assets/" ?>js/charts.js"></script>
 <script src="<?php echo base_url() . "assets/" ?>js/functions.js"></script>
-<script src="<?php echo base_url() . "assets/" ?>js/tarefa.js"></script>
-<script src="<?php echo base_url() . "assets/" ?>js/perfilCliente.js"></script>
 <script src="<?php echo base_url() . "assets/" ?>js/demo.js"></script>
+<script src="<?php echo base_url() . "assets/" ?>js/perfilCliente.js"></script>
 <script src="<?php echo base_url() . "assets/" ?>js/tour/tourIndividual.js"></script>
+<script src="<?php echo base_url() . "assets/" ?>js/tarefa.js"></script>
 
 <!-- MONEY_MASK -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url() . "assets/" ?>js/jquery.maskMoney.min.js"></script>
-
 <script src="<?php echo base_url() . "assets/" ?>js/jquery.priceformat.min.js"></script>
 
 <!--Altera linguagem do calendário-->
@@ -92,6 +90,7 @@
         affixesStay: true
     });
     perfilCliente.inserirUrl('<?= base_url(); ?>');
+    perfilCliente.buscar();
 </script>
 
 
