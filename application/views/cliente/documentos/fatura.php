@@ -1,22 +1,24 @@
 <div class="card card-orcamento fatura">
-        
+
     <?php include "cabecalho.php"; ?>
-        
+
     <div class="card-body card-padding">
         <div class="row">
             <div class="text-center">
-                <h3 class="c-green">FATURA</h3>
+                <h3 class="c-black">Rechnung</h3>
             </div>
         </div>
 
-        
+
+        <div class="span 6">
+             <div class="form form-inline">
+                 <h4>Reisedatum:
+                <input id="valor" type='text' placeholder="Entrada" />
+            </div>
+        </div>
 
         <div class="p-25">
-            <h4 class="c-green f-400">1.Tag</h4>
-            <p>10:00 Abfahrt shuttlebus zur Pantanal jungle lodge. Ankunft und check-in lodge um ca. 15:00,danach bereits
-                erste Safariaktivität. Unterkunft in Privatzimmer mit Klimaanlage, Bad und Kühlschrank. Die jungle lodge ist eine 
-                rustikale aber komfortable, kürzlich renovierte Anlage direkt am Mirandafluss mit Speiseraum, Aufenthaltsraum, Bar,
-                Pool und wifi gratis. Das Essen in ist sehr gut!</p>
+
 
             <br/>
 
