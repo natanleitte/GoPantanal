@@ -44,7 +44,7 @@ foreach ($ultimasTarefas->result() as $tarefa) {
             margin: 0 5px 10px 0;
         }
     </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body class="toggled sw-toggled">
     <header id="header" class="clearfix" data-current-skin="blue">

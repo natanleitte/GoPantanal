@@ -7,14 +7,7 @@
 </div>
 <script>
     $(document).ready(function () {
-        $(".card-orcamento").hide();
-        var orcamento = $("#seletorDeDocumentos").val();
-        $("." + orcamento).show();
-        $("select").change(function () {
-            var orcamentoSelecionado = $(this).val();
-            $(".card-orcamento").hide();
-            $("." + orcamentoSelecionado).show();
-        });
+        perfilCliente.exibirDocumentos();
     });
 </script>
 
@@ -26,19 +19,21 @@
 </section>
 
 <section id="botoes" class="content">
-    <div class="card">
-        <div class="card-body card-padding">
-            <div class="btn-demo">
+    <div class="card-body card-padding">
+        <div class="btn-demo">
+            <div class="col-lg-1">
                 <?php echo form_open(base_url() . "index.php/tarefa/gerarPDF"); ?>
                 <input id="nome" name="nome" type="hidden" />
                 <input id="html" name="html" type="hidden" />
                 <button class="btn btn-primary btn-icon btn-warning waves-effect waves-circle waves-float" onclick="perfilCliente.prepararParaGerarPDF()"><i class="zmdi zmdi-print"></i></button>
                 <?php echo form_close(); ?>
+            </div>
+            <div class="col-lg-1">
                 <?php echo form_open(base_url() . 'index.php/mail/enviarOrcamento'); ?>
                 <input id="email" name="email" type="hidden" />
                 <input id="corpoDoEmail" name="corpoDoEmail" type="hidden" />
                 <button class="btn btn-info btn-icon waves-effect waves-circle waves-float" onclick="perfilCliente.enviarOrcamento()"><i class="zmdi zmdi-mail-send"></i></button>
-                    <?php echo form_close(); ?>
+                <?php echo form_close(); ?>
             </div>
         </div>
     </div>

@@ -15,6 +15,7 @@ perfilCliente.controladorTabs = function () {
     casoHajaUmCliqueExibeATabAtiva($('#botao-orcamento'), $('#orcamento'));
     casoHajaUmCliqueExibeATabAtiva($('#botao-documentos'), $('#documentos'));
     casoHajaUmCliqueExibeATabAtiva($('#botao-tour-individual'), $('#tour-individual'));
+    casoHajaUmCliqueExibeATabAtiva($('#botao-teste'), $('#teste'));
 
 
     function casoHajaUmCliqueExibeATabAtiva(nomeDoBotao, conteudoDaTab) {
@@ -51,12 +52,6 @@ perfilCliente.inserirTarefaCom = function (cor, qtdDias, descricao, idCliente) {
     });
 };
 
-perfilCliente.enviarOrcamento = function () {
-    var orcamentoSelecionado = $("#seletetorDeOrcamento").val();
-    $('#email').val($('#emailDoDestinatario').html());
-    $('#corpoDoEmail').val($("." + orcamentoSelecionado).html());
-};
-
 perfilCliente.prepararParaGerarPDF = function () {
     var orcamentoSelecionado = $("#seletetorDeOrcamento").val();
     $("." + orcamentoSelecionado).find('input').each(function () {
@@ -66,7 +61,7 @@ perfilCliente.prepararParaGerarPDF = function () {
     $('#nome').val($("#seletetorDeOrcamento").val());
 };
 
-perfilCliente.buscar = function(){
+perfilCliente.buscar = function () {
     $("#busca").keyup(function () {
         $.ajax({
             url: '<?= base_url(); ?>' + 'index.php/cliente/buscaCliente',
@@ -81,3 +76,26 @@ perfilCliente.buscar = function(){
         });
     });
 };
+
+perfilCliente.exibirOrcamentos = function () {
+    $(".card-orcamento").hide();
+    var orcamento = $("#seletetorDeOrcamento").val();
+    $("." + orcamento).show();
+    $("select").change(function () {
+        var orcamentoSelecionado = $(this).val();
+        $(".card-orcamento").hide();
+        $("." + orcamentoSelecionado).show();
+    });
+};
+
+perfilCliente.exibirDocumentos = function(){
+    $(".card-orcamento").hide();
+    var orcamento = $("#seletorDeDocumentos").val();
+    $("." + orcamento).show();
+    $("select").change(function () {
+        var orcamentoSelecionado = $(this).val();
+        $(".card-orcamento").hide();
+        $("." + orcamentoSelecionado).show();
+    });
+}
+;

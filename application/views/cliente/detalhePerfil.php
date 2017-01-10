@@ -3,7 +3,9 @@
         <h2><i class="zmdi zmdi-account m-r-5"></i> Informações</h2>
         <ul class="actions">
             <li>
-                <a data-pmb-action="edit" href=""><i class="zmdi zmdi-edit zmdi-hc-5x"></i></a>
+                <a data-pmb-action="edit" href="#">
+                    <i class="zmdi zmdi-edit zmdi-hc-5x"></i>
+                </a>
             </li>
         </ul>
     </div>
@@ -110,33 +112,33 @@
         </div>
         <?php echo form_close(); ?>
     </div>
-    <div class="pmb-block">
-        <div class="pmbb-header">
-            <h2><i class="zmdi zmdi-assignment-o m-r-5"></i> Observação</h2>
+</div>
+<div class="pmb-block">
+    <div class="pmbb-header">
+        <h2><i class="zmdi zmdi-assignment-o m-r-5"></i> Observação</h2>
 
-            <ul class="actions">
-                <li>
-                    <a data-pmb-action="edit" href=""><i class="zmdi zmdi-edit zmdi-hc-5x"></i></a>
-                </li>
-            </ul>
+        <ul class="actions">
+            <li>
+                <a data-pmb-action="edit" href=""><i class="zmdi zmdi-edit zmdi-hc-5x"></i></a>
+            </li>
+        </ul>
+    </div>
+    <div class="pmbb-body p-l-30">
+        <div class="pmbb-view">
+            <?php echo $cliente->observacao; ?>
         </div>
-        <div class="pmbb-body p-l-30">
-            <div class="pmbb-view">
-                <?php echo $cliente->observacao; ?>
+        <br />
+        <br />
+        <div class="pmbb-edit">
+            <?php echo form_open(base_url() . "index.php/cliente/atualizarObservacao?id=" . $cliente->id); ?>
+            <div class="fg-line">
+                <textarea name="observacao" class="form-control" rows="5" placeholder="Insira aqui sua observação..."><?php echo $cliente->observacao; ?></textarea>
             </div>
-            <br />
-            <br />
-            <div class="pmbb-edit">
-                <?php echo form_open(base_url() . "index.php/cliente/atualizarObservacao?id=" . $cliente->id); ?>
-                <div class="fg-line">
-                    <textarea name="observacao" class="form-control" rows="5" placeholder="Insira aqui sua observação..."><?php echo $cliente->observacao; ?></textarea>
-                </div>
-                <div class="m-t-10">
-                    <button class="btn btn-primary btn-sm">Atualizar</button>
-                    <button data-pmb-action="reset" class="btn btn-link btn-sm">Cancelar</button>
-                </div>
-                <?php echo form_close(); ?>
+            <div class="m-t-10">
+                <button class="btn btn-primary btn-sm">Atualizar</button>
+                <button data-pmb-action="reset" class="btn btn-link btn-sm">Cancelar</button>
             </div>
+            <?php echo form_close(); ?>
         </div>
     </div>
 </div>
