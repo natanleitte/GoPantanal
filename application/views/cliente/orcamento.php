@@ -1,7 +1,7 @@
 <div class="select select-box">
     <label for="seletetorDeOrcamento" class="c-blue">Selecione o orçamento que deseja: </label>
     <select id="seletetorDeOrcamento" class="form-control">
-        <option value="budgetKomboUpgrade5_4">Budget Kombo Upgrade 5-4</option>
+        <option value="budgetKomboUpgrade5_4" selected>Budget Kombo Upgrade 5-4</option>
         <option value="budgetKombo5_4D">Budget Kombo 5-4 (D)</option>
         <option value="budgetPantanal3_2D">budget Pantanal 3-2 (D)</option>
         <option value="budgetPantanal3_2P">Budget Pantanal 3-2 (P)</option>
@@ -16,14 +16,7 @@
 </div>
 <script>
     $(document).ready(function () {
-        $(".card-orcamento").hide();
-        var orcamento = $("#seletetorDeOrcamento").val();
-        $("." + orcamento).show();
-        $("select").change(function () {
-            var orcamentoSelecionado = $(this).val();
-            $(".card-orcamento").hide();
-            $("." + orcamentoSelecionado).show();
-        });
+        perfilCliente.exibirOrcamentos();
     });
 </script>
 
@@ -43,19 +36,17 @@
 </section>
 
 <section id="botoes" class="content">
-    <div class="card">
-        <div class="card-body card-padding">
-            <div class="btn-demo">
+    <div class="card-body card-padding">
+        <div class="btn-demo col">
+            <div class="col-lg-1">
                 <?php echo form_open(base_url() . "index.php/tarefa/gerarPDF"); ?>
                 <input id="nome" name="nome" type="hidden" />
                 <input id="html" name="html" type="hidden" />
                 <button class="btn btn-primary btn-icon btn-warning waves-effect waves-circle waves-float" onclick="perfilCliente.prepararParaGerarPDF()"><i class="zmdi zmdi-print"></i></button>
                 <?php echo form_close(); ?>
-                <?php echo form_open(base_url() . 'index.php/mail/enviarOrcamento'); ?>
-                <input id="email" name="email" type="hidden" />
-                <input id="corpoDoEmail" name="corpoDoEmail" type="hidden" />
-                <button class="btn btn-info btn-icon waves-effect waves-circle waves-float" onclick="perfilCliente.enviarOrcamento()"><i class="zmdi zmdi-mail-send"></i></button>
-                    <?php echo form_close(); ?>
+            </div>
+            <div class="col-lg-1">
+                <button class="btn btn-info btn-icon waves-effect waves-circle waves-float" onclick="email.enviarDocumento()"><i class="zmdi zmdi-mail-send"></i></button>
             </div>
         </div>
     </div>

@@ -5,13 +5,9 @@ include 'PhpImap/IncomingMail.php';
 
 class GerenciadorDeEmails {
 
-    private $servidor = 'a2plcpnl0791.prod.iad2.secureserver.net';
-// ###### QUANDO FOR PARA USAR LOCAL #######
-//    private $usuario = 'jorge@leafweb.com.br';
-//    private $senha = 'WolV@972';
-    
+    private $servidor = 'a2plcpnl0425.prod.iad2.secureserver.net';
 // ###### QUANDO FOR PARA PRODUÇÃO #######
-    private $usuario = 'gopantanal@gopantanal.info';
+    private $usuario = 'gopantanal@resplandeca.com.br';
     private $senha = '123GoPantanal';
     
     private $idsDosEmailsRecebidos;

@@ -27,11 +27,11 @@ foreach ($cliente->result() as $row) {
                 <section id="orcamento" class="pmb-block js-container-tab">
                     <?php include "orcamento.php"; ?>
                 </section>
-                
+
                 <section id="documentos" class="pmb-block js-container-tab">
                     <?php include "documentos.php"; ?>
                 </section>
-                
+
                 <section id="agendar-compromissos" class="pmb-block js-container-tab">
                     <?php include "compromissosPreDefinidos.php"; ?>
                 </section>
@@ -41,7 +41,7 @@ foreach ($cliente->result() as $row) {
                 </section>
 
                 <script>
-                    $(document).ready(function(){
+                    $(document).ready(function () {
                         perfilCliente.controladorTabs();
                         tour.inserirUrl('<?= base_url(); ?>');
                     });

@@ -86,7 +86,8 @@ class Mail extends CI_Controller {
         $email->corpoDoEmail = $this->input->post('corpoDoEmail');
 
         $this->data['statusEnvio'] = $this->configurarEDisparar($email) ? 1 : 0;
-
+        
+        echo "Status do envio: " . $this->data['statusEnvio'];
         $this->configurarDadosParaExibirPaginaDeDetalhesDeEmail();
         $this->renderizarParaPaginaDeDetalhesDoEmail();
     }
@@ -94,13 +95,12 @@ class Mail extends CI_Controller {
     public function enviarOrcamento() {
         $email = new Email;
         $email->emailRemetente = "info@gopantanal.com";
-        $email->assunto = "[GoPantanal] - Orçamento";
+        $email->assunto = "[GoPantanal] - Documentos";
         $email->emailDestinatario = $this->input->post('email');
         $email->corpoDoEmail = '
                             <!doctype html> 
                             <html> 
                                 <head>
-                                    <link rel="stylesheet" media="screen" href="http://www.gopantanal.info/assets/css/app.min.1.css" type="text/css">
                                 </head> 
                                 <body>
                                     <div id="wrapper">
@@ -108,17 +108,17 @@ class Mail extends CI_Controller {
                                     </div>
                                 </body> 
                             </html>';
-
+        echo var_dump($email->corpoDoEmail);
         $this->configurarEDisparar($email);
     }
 
     public function configurarEDisparar($email) {
         $config = Array(
             'protocol' => 'smtp',
-            'smtp_host' => 'ssl://a2plcpnl0303.prod.iad2.secureserver.net',
+            'smtp_host' => 'ssl://a2plcpnl0425.prod.iad2.secureserver.net',
             'smtp_port' => 465,
-            'smtp_user' => 'mail@gopantanal.info',
-            'smtp_pass' => 'senha123',
+            'smtp_user' => 'gopantanal@resplandeca.com.br',
+            'smtp_pass' => '123GoPantanal',
             'mailtype' => 'html',
             'charset' => 'utf-8',
         );
@@ -144,6 +144,6 @@ class Mail extends CI_Controller {
             $this->email->attach($attachdata['full_path']);
         }
 
-        $this->email->send();
+        return $this->email->send();
     }
 }
