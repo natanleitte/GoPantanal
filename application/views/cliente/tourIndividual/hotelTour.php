@@ -58,7 +58,7 @@
                         <th data-column-id="nome">Nome</th>
                         <th data-column-id="cidade">Cidade</th>
                         <th data-column-id="inicio">Data de Inicio</th>
-                        <th data-column-id="fim" data-order="desc">Fata Final</th>
+                        <th data-column-id="fim" data-order="desc">Data Final</th>
                     </tr>
                 </thead>
                 <tbody>
