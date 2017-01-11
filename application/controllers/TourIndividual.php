@@ -1,4 +1,5 @@
 <?php
+include APPPATH . 'controllers/utils/DataUtils.php';
 
 class TourIndividual extends CI_Controller {
 
@@ -6,14 +7,15 @@ class TourIndividual extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
+        $this->DataUtils = new DataUtils();
     }
 
     public function adicionarHotelTour() {
         $idCliente = $this->input->post('idCliente');
         $this->data['id_tour'] = $this->TourModel->obterIdPeloCliente($idCliente);
         $this->data['id_hotel'] = $this->input->post('idHotel');
-        $this->data['data_ini'] = "";
-        $this->data['data_fim'] = "";
+        $this->data['data_ini'] = $this->DataUtils->converteDataParaFormatoDateDoMySql($this->input->post('dataInicio'));
+        $this->data['data_fim'] = $this->DataUtils->converteDataParaFormatoDateDoMySql($this->input->post('dataFim'));
         $this->data['preco'] = doubleval($this->input->post('valor'));
         
         $id = $this->HotelTourModel->inserir($this->data);
@@ -29,8 +31,8 @@ class TourIndividual extends CI_Controller {
         $idCliente = $this->input->post('idCliente');
         $this->data['id_tour'] = $this->TourModel->obterIdPeloCliente($idCliente);
         $this->data['id_passeio'] = $this->input->post('idPasseio');
-        $this->data['data_ini'] = "";
-        $this->data['data_fim'] = "";
+        $this->data['data_ini'] = $this->DataUtils->converteDataParaFormatoDateDoMySql($this->input->post('dataInicio'));
+        $this->data['data_fim'] = $this->DataUtils->converteDataParaFormatoDateDoMySql($this->input->post('dataFim'));
         $this->data['preco'] = doubleval($this->input->post('valor'));
 
         $id = $this->PasseioTourModel->inserir($this->data);
@@ -46,8 +48,8 @@ class TourIndividual extends CI_Controller {
         $idCliente = $this->input->post('idCliente');
         $this->data['id_tour'] = $this->TourModel->obterIdPeloCliente($idCliente);
         $this->data['id_transporte'] = $this->input->post('idTransporte');
-        $this->data['data_ini'] = "";
-        $this->data['data_fim'] = "";
+        $this->data['data_ini'] = $this->DataUtils->converteDataParaFormatoDateDoMySql($this->input->post('dataInicio'));
+        $this->data['data_fim'] = $this->DataUtils->converteDataParaFormatoDateDoMySql($this->input->post('dataFim'));
         $this->data['preco'] = doubleval($this->input->post('valor'));
 
         $id = $this->TransporteTourModel->inserir($this->data);
@@ -63,8 +65,8 @@ class TourIndividual extends CI_Controller {
         $idCliente = $this->input->post('idCliente');
         $this->data['id_tour'] = $this->TourModel->obterIdPeloCliente($idCliente);
         $this->data['id_guia'] = $this->input->post('idGuia');
-        $this->data['data_ini'] = "";
-        $this->data['data_fim'] = "";
+        $this->data['data_ini'] = $this->DataUtils->converteDataParaFormatoDateDoMySql($this->input->post('dataInicio'));
+        $this->data['data_fim'] = $this->DataUtils->converteDataParaFormatoDateDoMySql($this->input->post('dataFim'));
         $this->data['preco'] = doubleval($this->input->post('valor'));
 
         $id = $this->GuiaTourModel->inserir($this->data);

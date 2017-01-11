@@ -24,6 +24,8 @@ class PasseioTourModel extends CI_Model {
                 "passeio.responsavel, " .
                 "passeio.endereco, " .
                 $this->nomeDaTabela . ".preco, " .
+                $this->nomeDaTabela . ".data_ini, " .
+                $this->nomeDaTabela . ".data_fim, " .
                 "passeio.cidade"
         );
         $this->db->from($this->nomeDaTabela);
@@ -40,6 +42,8 @@ class PasseioTourModel extends CI_Model {
                 "passeio.responsavel, " .
                 "passeio.endereco, " .
                 $this->nomeDaTabela . ".preco, " .
+                $this->nomeDaTabela . ".data_ini, " .
+                $this->nomeDaTabela . ".data_fim, " .
                 "passeio.cidade"
         );
         $this->db->from($this->nomeDaTabela);
@@ -58,6 +62,8 @@ class PasseioTourModel extends CI_Model {
                 "passeio.responsavel, " .
                 "passeio.endereco, " .
                 $this->nomeDaTabela . ".preco, " .
+                $this->nomeDaTabela . ".data_ini, " .
+                $this->nomeDaTabela . ".data_fim, " .
                 "passeio.cidade"
         );
         $this->db->from($this->nomeDaTabela);

@@ -1,10 +1,8 @@
 var tour = {};
 var URL;
-
 tour.inserirUrl = function (url) {
     URL = url;
 };
-
 tour.inserirHotel = function () {
     idHotel = $("#hoteis option:selected").val();
     valor = obterNumeroFormatado("valor-hotel");
@@ -14,31 +12,16 @@ tour.inserirHotel = function () {
         data: {
             idHotel: idHotel,
             valor: valor,
+            dataInicio: $('#data-ini-hotel').val(),
+            dataFim: $('#data-fim-hotel').val(),
             idCliente: urlParam('id')
         },
         success: function (hotelCadastrado) {
-            hotelCadastrado = $.parseJSON(hotelCadastrado);
-            html = "<tr id='linha-do-hotel-" + hotelCadastrado.id + "'>" +
-                    "<td id='valor-do-hotel'>" + hotelCadastrado.preco + "</td>" +
-                    "<td>" + hotelCadastrado.nome + "</td>" +
-                    "<td>" + hotelCadastrado.telefone + "</td>" +
-                    "<td>" + hotelCadastrado.email + "</td>" +
-                    "<td>" + hotelCadastrado.responsavel + "</td>" +
-                    "<td>" + hotelCadastrado.endereco + "</td>" +
-                    "<td>" + hotelCadastrado.cidade + "</td>" +
-                    "<td>" + hotelCadastrado.conta + "</td>" +
-                    "<td>" + hotelCadastrado.agencia + "</td>" +
-                    "<td>" + hotelCadastrado.banco + "</td>" +
-                    "<td>" + hotelCadastrado.titular_conta + "</td>" +
-                    "<td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='tour.exclruirHotel(" + hotelCadastrado.id + ")'><span class='zmdi zmdi-delete'></span></button></td></tr>";
-            $('.js-hoteis-tour-individual tr:last').after(html);
-            tour.atualizarValorTotalDoTour();
-            formatarValorAposIncluirNaTabela('valor-do-hotel');
-            swal("Adicionado!", "", "success");
+            var nomeMetodoDeExclusao = "hotel";
+            inserirNovoItemNaTabelaComMensagemDeSucesso(hotelCadastrado, nomeMetodoDeExclusao);
         }
     });
 };
-
 tour.exclruirHotel = function (idHotel) {
     $.ajax({
         url: URL + 'index.php/TourIndividual/excluirHotelTour',
@@ -53,7 +36,6 @@ tour.exclruirHotel = function (idHotel) {
         }
     });
 };
-
 tour.inserirPasseio = function () {
     idPasseio = $("#passeios option:selected").val();
     valor = obterNumeroFormatado("valor-passeio");
@@ -63,28 +45,16 @@ tour.inserirPasseio = function () {
         data: {
             idPasseio: idPasseio,
             valor: valor,
+            dataInicio: $('#data-ini-passeio').val(),
+            dataFim: $('#data-fim-passeio').val(),
             idCliente: urlParam('id')
         },
         success: function (passeioCadastrado) {
-            passeioCadastrado = $.parseJSON(passeioCadastrado);
-            html = "<tr id='linha-do-passeio-" + passeioCadastrado.id + "'>" +
-                    "<td id='valor-do-passeio'>" + passeioCadastrado.preco + "</td>" +
-                    "<td>" + passeioCadastrado.nome + "</td>" +
-                    "<td>" + passeioCadastrado.telefone + "</td>" +
-                    "<td>" + passeioCadastrado.email + "</td>" +
-                    "<td>" + passeioCadastrado.responsavel + "</td>" +
-                    "<td>" + passeioCadastrado.endereco + "</td>" +
-                    "<td>" + passeioCadastrado.cidade + "</td>" +
-                    "<td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='tour.exclruirPasseio(" + passeioCadastrado.id + ")'><span class='zmdi zmdi-delete'></span></button></td>" +
-                    "</tr>";
-            $('.js-passeios-tour-individual tr:last').after(html);
-            tour.atualizarValorTotalDoTour();
-            formatarValorAposIncluirNaTabela('valor-do-passeio');
-            swal("Adicionado!", "", "success");
+            var nomeMetodoDeExclusao = "passeio";
+            inserirNovoItemNaTabelaComMensagemDeSucesso(passeioCadastrado, nomeMetodoDeExclusao);
         }
     });
 };
-
 tour.exclruirPasseio = function (idPasseio) {
     $.ajax({
         url: URL + 'index.php/TourIndividual/excluirPasseioTour',
@@ -99,7 +69,6 @@ tour.exclruirPasseio = function (idPasseio) {
         }
     });
 };
-
 tour.inserirTransporte = function () {
     idTransporte = $("#transportes option:selected").val();
     valor = obterNumeroFormatado("valor-transporte");
@@ -109,28 +78,16 @@ tour.inserirTransporte = function () {
         data: {
             idTransporte: idTransporte,
             valor: valor,
+            dataInicio: $('#data-ini-transporte').val(),
+            dataFim: $('#data-fim-transporte').val(),
             idCliente: urlParam('id')
         },
         success: function (transporteCadastrado) {
-            transporteCadastrado = $.parseJSON(transporteCadastrado);
-            html = "<tr id='linha-do-transporte-" + transporteCadastrado.id + "'>" +
-                    "<td id='valor-do-transporte'>" + transporteCadastrado.preco + "</td>" +
-                    "<td>" + transporteCadastrado.nome + "</td>" +
-                    "<td>" + transporteCadastrado.telefone + "</td>" +
-                    "<td>" + transporteCadastrado.email + "</td>" +
-                    "<td>" + transporteCadastrado.responsavel + "</td>" +
-                    "<td>" + transporteCadastrado.endereco + "</td>" +
-                    "<td>" + transporteCadastrado.cidade + "</td>" +
-                    "<td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='tour.exclruirPasseio(" + transporteCadastrado.id + ")'><span class='zmdi zmdi-delete'></span></button></td>" +
-                    "</tr>";
-            $('.js-transportes-tour-individual tr:last').after(html);
-            tour.atualizarValorTotalDoTour();
-            formatarValorAposIncluirNaTabela('valor-do-transporte');
-            swal("Adicionado!", "", "success");
+            var nomeMetodoDeExclusao = "transporte";
+            inserirNovoItemNaTabelaComMensagemDeSucesso(transporteCadastrado, nomeMetodoDeExclusao);
         }
     });
 };
-
 tour.exclruirTransporte = function (idTransporte) {
     $.ajax({
         url: URL + 'index.php/TourIndividual/excluirTransporteTour',
@@ -145,7 +102,6 @@ tour.exclruirTransporte = function (idTransporte) {
         }
     });
 };
-
 tour.inserirGuia = function () {
     idGuia = $("#guias option:selected").val();
     valor = obterNumeroFormatado("valor-guia");
@@ -155,24 +111,13 @@ tour.inserirGuia = function () {
         data: {
             idGuia: idGuia,
             valor: valor,
+            dataInicio: $('#data-ini-guia').val(),
+            dataFim: $('#data-fim-guia').val(),
             idCliente: urlParam('id')
         },
         success: function (guiaCadastrado) {
-            guiaCadastrado = $.parseJSON(guiaCadastrado);
-            html = "<tr id='linha-do-guia-" + guiaCadastrado.id + "'>" +
-                    "<td id='valor-do-guia'>" + guiaCadastrado.preco + "</td>" +
-                    "<td>" + guiaCadastrado.nome + "</td>" +
-                    "<td>" + guiaCadastrado.telefone + "</td>" +
-                    "<td>" + guiaCadastrado.email + "</td>" +
-                    "<td>" + guiaCadastrado.responsavel + "</td>" +
-                    "<td>" + guiaCadastrado.endereco + "</td>" +
-                    "<td>" + guiaCadastrado.cidade + "</td>" +
-                    "<td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='tour.exclruirPasseio(" + guiaCadastrado.id + ")'><span class='zmdi zmdi-delete'></span></button></td>" +
-                    "</tr>";
-            $('.js-guias-tour-individual tr:last').after(html);
-            tour.atualizarValorTotalDoTour();
-            formatarValorAposIncluirNaTabela('valor-do-hotel');
-            swal("Adicionado!", "", "success");
+            var nomeMetodoDeExclusao = "guia";
+            inserirNovoItemNaTabelaComMensagemDeSucesso(guiaCadastrado, nomeMetodoDeExclusao);
         }
     });
 };
@@ -217,6 +162,7 @@ urlParam = function (name) {
 };
 
 obterNumeroFormatado = function (objeto) {
+    console.log(objeto);
     var valor = $("#" + objeto).val().replace('R$', '').replace(/\./g, '').replace(',', '.');
     console.log(valor);
     return valor;
@@ -229,4 +175,20 @@ formatarValorAposIncluirNaTabela = function (objeto) {
         thousandsSeparator: '.',
         clearPrefix: true
     });
-}
+};
+
+inserirNovoItemNaTabelaComMensagemDeSucesso = function (objetoJSON, nomeDaGuia) {
+    objetoParseado = $.parseJSON(objetoJSON);
+    html = "<tr id='linha-do-"+ nomeDaGuia.toLowerCase() +"-" + objetoParseado.id + "'>" +
+            "<td id='valor-do-"+ nomeDaGuia.toLowerCase() +"'>" + objetoParseado.preco + "</td>" +
+            "<td>" + objetoParseado.nome + "</td>" +
+            "<td>" + objetoParseado.cidade + "</td>" +
+            "<td>" + objetoParseado.data_ini + "</td>" +
+            "<td>" + objetoParseado.data_fim + "</td>" +
+            "<td><button type='button' class='btn btn-icon waves-effect waves-circle' onclick='tour.excluir" + nomeDaGuia.substr(0,1).toUpperCase()+nomeDaGuia.substr(1) + "(" + objetoParseado.id + ")'><span class='zmdi zmdi-delete'></span></button></td>" +
+            "</tr>";
+    $(".js-" + nomeDaGuia.toLowerCase() + "-tour-individual tr:last").after(html);
+    tour.atualizarValorTotalDoTour();
+    formatarValorAposIncluirNaTabela('valor-do-' + nomeDaGuia.toLowerCase());
+    swal("Adicionado!", "", "success");
+};

@@ -64,12 +64,12 @@
 <![endif]-->
 
 <!-- [GoPantanal] - Bibliotecas JQuery especificas -->
-<script src="<?php echo base_url() ?>assets/js/perfilCliente.js"></script>
 <script src="<?php echo base_url() ?>assets/js/tour/tourIndividual.js"></script>
+<script src="<?php echo base_url() ?>assets/js/perfilCliente.js"></script>
 <script src="<?php echo base_url() ?>assets/js/email/email.js"></script>
 <script src="<?php echo base_url() ?>assets/js/tarefa.js"></script>
 
- <!-- MONEY_MASK -->
+<!-- MONEY_MASK -->
 <script src="<?php echo base_url() ?>assets/js/jquery.maskMoney.min.js"></script>
 <script src="<?php echo base_url() ?>assets/js/jquery.priceformat.min.js"></script>
 
@@ -83,6 +83,11 @@
         thousands: '.',
         decimal: ',',
         affixesStay: true
+    });
+    $(function () {
+        $('.datepicker').datetimepicker({
+            format: 'DD/MM/YYYY'
+        });
     });
     perfilCliente.inserirUrl('<?= base_url(); ?>');
     email.inserirUrl('<?= base_url(); ?>');

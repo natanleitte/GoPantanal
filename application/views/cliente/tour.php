@@ -32,3 +32,10 @@
         </div>
     </div>
 </div>
+<script>
+    $(function () {
+            $('.datepicker').datetimepicker({
+                format: 'DD/MM/YYYY'
+            });
+        });
+</script>
