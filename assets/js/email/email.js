@@ -13,8 +13,8 @@ email.enviarOrcamento = function () {
 };
 
 email.enviarDocumento = function () {
-    var orcamentoSelecionado = $("#seletorDeDocumentos").val();
-    var nomeDoOrcamentoSelecionado = $("#seletorDeDocumentos option:selected").text();
+    var orcamentoSelecionado = $("#seletetorDeDocumentos").val();
+    var nomeDoOrcamentoSelecionado = $("#seletetorDeDocumentos option:selected").text();
     var email = $('#emailDoDestinatario').html();
     enviar(orcamentoSelecionado, nomeDoOrcamentoSelecionado, email);
 };
