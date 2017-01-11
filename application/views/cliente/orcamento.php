@@ -46,7 +46,7 @@
                 <?php echo form_close(); ?>
             </div>
             <div class="col-lg-1">
-                <button class="btn btn-info btn-icon waves-effect waves-circle waves-float" onclick="email.enviarDocumento()"><i class="zmdi zmdi-mail-send"></i></button>
+                <button class="btn btn-info btn-icon waves-effect waves-circle waves-float" onclick="email.enviarOrcamento()"><i class="zmdi zmdi-mail-send"></i></button>
             </div>
         </div>
     </div>

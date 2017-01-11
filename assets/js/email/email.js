@@ -5,11 +5,21 @@ email.inserirUrl = function (url) {
     URL = url;
 };
 
-email.enviarDocumento = function () {
+email.enviarOrcamento = function () {
     var orcamentoSelecionado = $("#seletetorDeOrcamento").val();
-    var nomeDoOrcamentoSelecionado = $( "#seletetorDeOrcamento option:selected" ).text();
+    var nomeDoOrcamentoSelecionado = $("#seletetorDeOrcamento option:selected").text();
     var email = $('#emailDoDestinatario').html();
-    
+    enviar(orcamentoSelecionado, nomeDoOrcamentoSelecionado, email);
+};
+
+email.enviarDocumento = function () {
+    var orcamentoSelecionado = $("#seletorDeDocumentos").val();
+    var nomeDoOrcamentoSelecionado = $("#seletorDeDocumentos option:selected").text();
+    var email = $('#emailDoDestinatario').html();
+    enviar(orcamentoSelecionado, nomeDoOrcamentoSelecionado, email);
+};
+
+enviar = function (orcamentoSelecionado, nomeDoOrcamentoSelecionado, email) {
     $.ajax({
         url: URL + 'index.php/mail/enviarOrcamento',
         type: 'POST',
@@ -18,10 +28,10 @@ email.enviarDocumento = function () {
             corpoDoEmail: $("." + orcamentoSelecionado).html()
         },
         success: function () {
-            swal("O documento: "+ nomeDoOrcamentoSelecionado +" foi encaminhado com sucesso para " + email, "", "success");
+            swal("O documento: " + nomeDoOrcamentoSelecionado + " foi encaminhado com sucesso para " + email, "", "success");
         },
-        error: function(){
-            swal("Não foi possivel enviar o documento: "+ nomeDoOrcamentoSelecionado +". Favor contatar o desenvolvedor.", "", "error");
+        error: function () {
+            swal("Não foi possivel enviar o documento: " + nomeDoOrcamentoSelecionado + ". Favor contatar o desenvolvedor.", "", "error");
         }
     });
-};
+}

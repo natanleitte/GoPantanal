@@ -79,7 +79,7 @@ perfilCliente.buscar = function () {
 
 perfilCliente.exibirOrcamentos = function () {
     $(".card-orcamento").hide();
-    var orcamento = $("#seletetorDeOrcamento").val();
+    var orcamento = $("#seletetorDeOrcamento option:first").val();
     $("." + orcamento).show();
     $("select").change(function () {
         var orcamentoSelecionado = $(this).val();
@@ -89,8 +89,9 @@ perfilCliente.exibirOrcamentos = function () {
 };
 
 perfilCliente.exibirDocumentos = function(){
-    $(".card-orcamento").hide();
-    var orcamento = $("#seletorDeDocumentos").val();
+    $(".card-documento").hide();
+    var orcamento = $("#seletetorDeDocumentos option:first").val();
+    console.log(orcamento);
     $("." + orcamento).show();
     $("select").change(function () {
         var orcamentoSelecionado = $(this).val();

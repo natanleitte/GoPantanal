@@ -1,7 +1,7 @@
 <div class="select select-box">
     <label for="seletorDeDocumentos" class="c-blue">Selecione o documento que deseja: </label>
     <select id="seletetorDeDocumentos" class="form-control">
-        <option value="fatura">Fatura</option>
+        <option value="fatura" selected>Fatura</option>
         <option value="confirmacaoDePagamento">Confirmação de Pagamento</option>
     </select>
 </div>
@@ -29,11 +29,7 @@
                 <?php echo form_close(); ?>
             </div>
             <div class="col-lg-1">
-                <?php echo form_open(base_url() . 'index.php/mail/enviarOrcamento'); ?>
-                <input id="email" name="email" type="hidden" />
-                <input id="corpoDoEmail" name="corpoDoEmail" type="hidden" />
-                <button class="btn btn-info btn-icon waves-effect waves-circle waves-float" onclick="perfilCliente.enviarOrcamento()"><i class="zmdi zmdi-mail-send"></i></button>
-                <?php echo form_close(); ?>
+                <button class="btn btn-info btn-icon waves-effect waves-circle waves-float" onclick="email.enviarDocumento()"><i class="zmdi zmdi-mail-send"></i></button>
             </div>
         </div>
     </div>

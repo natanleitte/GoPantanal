@@ -1,4 +1,4 @@
-<div class="card card-orcamento confirmacaoDePagamento">
+<div class="card card-documento confirmacaoDePagamento">
 
     <?php include "cabecalho.php"; ?>
 
