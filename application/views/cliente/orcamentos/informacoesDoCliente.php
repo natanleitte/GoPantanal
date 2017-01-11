@@ -20,9 +20,16 @@
                     <form>
                         <div class='input-group date' id='datepicker-inicio'>
                             <span class="input-group-addon">
-                                <input id="input-data-inicio" type='text' class="form-control input-group-addon m-0 f-500 c-black " placeholder="Datum" />
+                                <input id="input-data-inicio" value="" type='text' class="form-control input-group-addon m-0 f-500 c-black datepicker" placeholder="Datum" />
                             </span>
                         </div>
+                        <script>
+                            $(document).ready(function () {
+                                var d = new Date();
+                                var strDate = d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
+                                $('#input-data-inicio').val(strDate);
+                            });
+                        </script>
                     </form>
                 </div>
             </div>

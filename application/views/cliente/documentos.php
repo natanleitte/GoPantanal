@@ -23,9 +23,9 @@
         <div class="btn-demo">
             <div class="col-lg-1">
                 <?php echo form_open(base_url() . "index.php/tarefa/gerarPDF"); ?>
-                <input id="nome" name="nome" type="hidden" />
-                <input id="html" name="html" type="hidden" />
-                <button class="btn btn-primary btn-icon btn-warning waves-effect waves-circle waves-float" onclick="perfilCliente.prepararParaGerarPDF()"><i class="zmdi zmdi-print"></i></button>
+                <input id="nome_seletetorDeDocumentos" name="nome" type="hidden" />
+                <input id="html_seletetorDeDocumentos" name="html" type="hidden" />
+                <button class="btn btn-primary btn-icon btn-warning waves-effect waves-circle waves-float" onclick="perfilCliente.prepararParaGerarPDF('seletetorDeDocumentos')"><i class="zmdi zmdi-print"></i></button>
                 <?php echo form_close(); ?>
             </div>
             <div class="col-lg-1">

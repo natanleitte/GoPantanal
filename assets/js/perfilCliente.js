@@ -52,13 +52,13 @@ perfilCliente.inserirTarefaCom = function (cor, qtdDias, descricao, idCliente) {
     });
 };
 
-perfilCliente.prepararParaGerarPDF = function () {
-    var orcamentoSelecionado = $("#seletetorDeOrcamento").val();
+perfilCliente.prepararParaGerarPDF = function (nomeDoSeletor) {
+    var orcamentoSelecionado = $("#" + nomeDoSeletor).val();
     $("." + orcamentoSelecionado).find('input').each(function () {
         $(this).replaceWith($("<span style='font-size: 12px'/>").text(this.value));
     });
-    $('#html').val($("." + orcamentoSelecionado).html());
-    $('#nome').val($("#seletetorDeOrcamento").val());
+    $('#html_'+ nomeDoSeletor).val($("." + orcamentoSelecionado).html());
+    $('#nome_'+ nomeDoSeletor).val($("#" + nomeDoSeletor).val());
 };
 
 perfilCliente.buscar = function () {
@@ -95,7 +95,7 @@ perfilCliente.exibirDocumentos = function(){
     $("." + orcamento).show();
     $("select").change(function () {
         var orcamentoSelecionado = $(this).val();
-        $(".card-orcamento").hide();
+        $(".card-documento").hide();
         $("." + orcamentoSelecionado).show();
     });
 }
