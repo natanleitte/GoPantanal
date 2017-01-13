@@ -34,18 +34,20 @@
     <?php include 'orcamentos/rechnung.php'; ?>
 </section>
 
-<section id="botoes" class="content">
+<section id="botoes" class="content">'
     <div class="card-body card-padding">
         <div class="btn-demo col">
             <div class="col-lg-1">
-                <?php echo form_open(base_url() . "index.php/tarefa/gerarPDF"); ?>
-                <input id="nome_seletetorDeOrcamento" name="nome" type="hidden" />
-                <input id="html_seletetorDeOrcamento" name="html" type="hidden" />
                 <button class="btn btn-primary btn-icon btn-warning waves-effect waves-circle waves-float" onclick="perfilCliente.prepararParaGerarPDF('seletetorDeOrcamento')"><i class="zmdi zmdi-print"></i></button>
-                <?php echo form_close(); ?>
             </div>
             <div class="col-lg-1">
                 <button class="btn btn-info btn-icon waves-effect waves-circle waves-float" onclick="email.enviarOrcamento()"><i class="zmdi zmdi-mail-send"></i></button>
+            </div>
+            <div class="col-lg-1">
+                <form id="form_seletetorDeOrcamento" action="<?php echo base_url() . "index.php/tarefa/gerarPDF"; ?>" method="post" accept-charset="utf-8">
+                    <input id="nome_seletetorDeOrcamento" name="nome" type="hidden" />
+                    <input id="html_seletetorDeOrcamento" name="html" type="hidden" />
+                </form>
             </div>
         </div>
     </div>

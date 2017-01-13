@@ -22,14 +22,16 @@
     <div class="card-body card-padding">
         <div class="btn-demo">
             <div class="col-lg-1">
-                <?php echo form_open(base_url() . "index.php/tarefa/gerarPDF"); ?>
-                <input id="nome_seletetorDeDocumentos" name="nome" type="hidden" />
-                <input id="html_seletetorDeDocumentos" name="html" type="hidden" />
                 <button class="btn btn-primary btn-icon btn-warning waves-effect waves-circle waves-float" onclick="perfilCliente.prepararParaGerarPDF('seletetorDeDocumentos')"><i class="zmdi zmdi-print"></i></button>
-                <?php echo form_close(); ?>
             </div>
             <div class="col-lg-1">
                 <button class="btn btn-info btn-icon waves-effect waves-circle waves-float" onclick="email.enviarDocumento()"><i class="zmdi zmdi-mail-send"></i></button>
+            </div>
+            <div class="col-lg-1">
+                <form id="form_seletetorDeDocumentos" action="<?php echo base_url() . "index.php/tarefa/gerarPDF"; ?>" method="post" accept-charset="utf-8">
+                    <input id="nome_seletetorDeDocumentos" name="nome" type="hidden" />
+                    <input id="html_seletetorDeDocumentos" name="html" type="hidden" />
+                </form>
             </div>
         </div>
     </div>

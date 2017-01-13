@@ -9,6 +9,9 @@ email.enviarOrcamento = function () {
     var orcamentoSelecionado = $("#seletetorDeOrcamento").val();
     var nomeDoOrcamentoSelecionado = $("#seletetorDeOrcamento option:selected").text();
     var email = $('#emailDoDestinatario').html();
+    $("." + orcamentoSelecionado).find('input').each(function () {
+        $(this).replaceWith($("<span style='font-size: 12px'/>").text(this.value));
+    });
     enviar(orcamentoSelecionado, nomeDoOrcamentoSelecionado, email);
 };
 
@@ -16,6 +19,9 @@ email.enviarDocumento = function () {
     var orcamentoSelecionado = $("#seletetorDeDocumentos").val();
     var nomeDoOrcamentoSelecionado = $("#seletetorDeDocumentos option:selected").text();
     var email = $('#emailDoDestinatario').html();
+    $("." + orcamentoSelecionado).find('input').each(function () {
+        $(this).replaceWith($("<span style='font-size: 12px'/>").text(this.value));
+    });
     enviar(orcamentoSelecionado, nomeDoOrcamentoSelecionado, email);
 };
 

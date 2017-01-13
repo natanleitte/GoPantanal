@@ -5,7 +5,7 @@
             <form>
                 <div class='input-group date' id='datepicker-fim'>
                     <span class="input-group-addon">
-                        <input id="input-data-fim" type='text' class="form-control input-group-addon m-0 f-500 formatar-data" placeholder="Inicio do Tour" />
+                        <input id="input-data-fim" type='text' class="form-control input-group-addon m-0 f-500 formatar-data datepicker" placeholder="Inicio do Tour" />
                     </span>
                 </div>
             </form>

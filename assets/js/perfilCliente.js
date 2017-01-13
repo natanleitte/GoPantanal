@@ -54,11 +54,14 @@ perfilCliente.inserirTarefaCom = function (cor, qtdDias, descricao, idCliente) {
 
 perfilCliente.prepararParaGerarPDF = function (nomeDoSeletor) {
     var orcamentoSelecionado = $("#" + nomeDoSeletor).val();
+    var nomeDoOrcamentoSelecionado = $("#" + nomeDoSeletor + " option:selected").text();
     $("." + orcamentoSelecionado).find('input').each(function () {
         $(this).replaceWith($("<span style='font-size: 12px'/>").text(this.value));
     });
-    $('#html_'+ nomeDoSeletor).val($("." + orcamentoSelecionado).html());
-    $('#nome_'+ nomeDoSeletor).val($("#" + nomeDoSeletor).val());
+    $('#html_' + nomeDoSeletor).val($("." + orcamentoSelecionado).html());
+    $('#nome_' + nomeDoSeletor).val($("#" + nomeDoSeletor).val());
+
+    $('#form_' + nomeDoSeletor).submit();
 };
 
 perfilCliente.buscar = function () {
@@ -88,7 +91,7 @@ perfilCliente.exibirOrcamentos = function () {
     });
 };
 
-perfilCliente.exibirDocumentos = function(){
+perfilCliente.exibirDocumentos = function () {
     $(".card-documento").hide();
     var orcamento = $("#seletetorDeDocumentos option:first").val();
     console.log(orcamento);
