@@ -25,6 +25,10 @@ email.enviarDocumento = function () {
     enviar(orcamentoSelecionado, nomeDoOrcamentoSelecionado, email);
 };
 
+email.enviarTour = function (email) {
+    enviar("corpo-do-tour-individual", "Tour Individual", email);
+};
+
 enviar = function (orcamentoSelecionado, nomeDoOrcamentoSelecionado, email) {
     $.ajax({
         url: URL + 'index.php/mail/enviarOrcamento',

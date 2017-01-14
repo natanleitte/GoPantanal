@@ -105,7 +105,7 @@ class Mail extends CI_Controller {
                                 </head> 
                                 <body>
                                     <div id="wrapper" class="row">
-                                        <div class=".col-md-6 .col-md-offset-3">
+                                        <div class="col-md-8 pull-left">
                                             ' . $this->input->post('corpoDoEmail') . '
                                         </div>
                                     </div>
@@ -131,7 +131,7 @@ class Mail extends CI_Controller {
         $configDoArquivo = array(
             'upload_path' => 'assets/uploads/',
             'allowed_types' => 'gif|jpg|png|pdf|doc|xls|xlsx|docx',
-            'max_size' => '1000'
+            'max_size' => '9000'
         );
         $this->load->library('upload', $configDoArquivo);
         $this->email->initialize($configDoArquivo);

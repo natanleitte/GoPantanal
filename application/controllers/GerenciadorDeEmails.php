@@ -34,7 +34,7 @@ class GerenciadorDeEmails {
         $listaDeNovosEmails = array();
         foreach ($this->idsDosEmailsRecebidos as $id) {
             $emailRetornado = $this->obterEmailPor($id);
-            $email = new Email;
+            $email = new Email();
             $email->dataDeEnvio = $emailRetornado->date;
             $email->assunto = $emailRetornado->subject;
             $email->nomeRemetente = $emailRetornado->fromName;

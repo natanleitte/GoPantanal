@@ -64,6 +64,13 @@ perfilCliente.prepararParaGerarPDF = function (nomeDoSeletor) {
     $('#form_' + nomeDoSeletor).submit();
 };
 
+perfilCliente.prepararArquivoTourPDF = function (nomeDoSeletor) {
+    $('#html_' + nomeDoSeletor).val($(".corpo-do-tour-individual").html());
+    $('#nome_' + nomeDoSeletor).val('Tour Individual');
+
+    $('#form_' + nomeDoSeletor).submit();
+};
+
 perfilCliente.buscar = function () {
     $("#busca").keyup(function () {
         $.ajax({

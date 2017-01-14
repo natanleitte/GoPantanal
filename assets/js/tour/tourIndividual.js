@@ -147,6 +147,7 @@ tour.atualizarValorTotalDoTour = function () {
         success: function (total) {
             console.log(total);
             $('#valor-total-do-tour').html(total.toString().replace(/\"/g, '').replace('R$', ''));
+            $('#preis-total-impressao').html(total.toString().replace(/\"/g, '').replace('R$', ''));
         }
     });
 };
